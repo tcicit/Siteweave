@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compile | Benutzer Dokumentation</title>
+
+    
+    
+    <meta name="description" content="Projekt Dokumentation">
+    
+    
+    <meta name="keywords" content="Doku, Projekt, Static Generator">
+    
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/breadcrumbs.css">
+    
+    <link rel="stylesheet" href="../css/plugins/contact_form.css">
+    
+    <link rel="stylesheet" href="../css/plugins/details.css">
+    
+    <link rel="stylesheet" href="../css/plugins/gallery.css">
+    
+    <link rel="stylesheet" href="../css/plugins/grid-box.css">
+    
+    <link rel="stylesheet" href="../css/plugins/image.css">
+    
+    <link rel="stylesheet" href="../css/plugins/infobox.css">
+    
+    <link rel="stylesheet" href="../css/plugins/latest_posts.css">
+    
+    <link rel="stylesheet" href="../css/plugins/list_dir.css">
+    
+    <link rel="stylesheet" href="../css/plugins/search.css">
+    
+    <link rel="stylesheet" href="../css/plugins/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/tags.css">
+    
+    <link rel="stylesheet" href="../css/plugins/toc.css">
+    
+</head>
+<body>
+    <header>
+    
+    <a href="../index.html" class="logo-link">
+        <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
+    </a>
+    
+    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <nav>
+        <ul>
+        
+        <li>
+            <a href="../about.html">About</a>
+            
+        </li>
+        
+        </ul>
+    </nav>
+</header>
+
+    <div class="doc-container">
+        <aside class="sidebar">
+            <h3>Inhalt</h3>
+            <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
+            <ul class="nav-menu">
+<li class="dropdown">
+  <button class="dropbtn">01 Introduction</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../01-introduction/installation.html">Installation & Requirements</a></li>
+<li><a href="../01-introduction/first-steps.html">First Steps</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">02 User Manual</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../02-user-manual/interface.html">Interface</a></li>
+<li><a href="../02-user-manual/editor.html">Editor & Markdown</a></li>
+<li><a href="../02-user-manual/media.html">Medien & Bilder</a></li>
+<li><a href="../02-user-manual/frontmatter.html">Frontmatter</a></li>
+<li><a href="../02-user-manual/project-tools.html">Project-tools</a></li>
+<li><a href="../02-user-manual/site-renderer.html">Site Renderer</a></li>
+<li><a href="../02-user-manual/deployment.html">Deployment</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">03 Configuration</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
+<li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
+<li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
+<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown active-parent">
+  <button class="dropbtn">04 Development</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
+<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
+<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/compile.html" class="active">Compile</a></li>
+<li><a href="../04-development/app-context.html">App Context</a></li>
+<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">06 Plugins</button>
+  <div class="dropdown-content">
+<ul>
+<li class="dropdown">
+  <button class="dropbtn">Assets</button>
+  <div class="dropdown-content">
+<ul>
+</ul>
+  </div>
+</li>
+<li><a href="../06-plugins/obfuscate_test.html">Adresse Verschleierung (obfuscate)</a></li>
+<li><a href="../06-plugins/date.html">Aktuelles Datum</a></li>
+<li><a href="../06-plugins/box.html">Box Plugin Test</a></li>
+<li><a href="../06-plugins/breadcrumps.html">Breadcrumbs Plugin Test</a></li>
+<li><a href="../06-plugins/csv-test.html">CSV Import Test</a></li>
+<li><a href="../06-plugins/color.html">Color-Plugin</a></li>
+<li><a href="../06-plugins/details.html">Details Plugins</a></li>
+<li><a href="../06-plugins/gallerie.html">Galerie Test</a></li>
+<li><a href="../06-plugins/grid-box.html">Grid und Box</a></li>
+<li><a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a></li>
+<li><a href="../06-plugins/image.html">Image Plugin Test</a></li>
+<li><a href="../06-plugins/include.html">Include Plugin Test</a></li>
+<li><a href="../06-plugins/infoboxen.html">Infobox Test</a></li>
+<li><a href="../06-plugins/latest_post.html">Latest Post Test</a></li>
+<li><a href="../06-plugins/list_dir.html">List Dir Plugin</a></li>
+<li><a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a></li>
+<li><a href="../06-plugins/tabellen.html">Tabellen Test</a></li>
+<li><a href="../06-plugins/tags.html">Tags Plugin</a></li>
+<li><a href="../06-plugins/toc-test.html">Toc Test</a></li>
+</ul>
+  </div>
+</li>
+</ul>
+        </aside>
+
+        <main class="content">
+            
+    <h1>Compile</h1>
+    
+    
+    <p style="color: #888; font-size: 0.9em;">Zuletzt aktualisiert: 2025-01-01</p>
+    
+
+    <nav class="breadcrumbs">
+    <ol>
+
+            <li>
+
+                    <a href="../index.html">Home</a>
+
+            </li>
+
+            <li>
+
+                    <a href="../04-development/index.html">04 Development</a>
+
+            </li>
+
+            <li>
+
+                    <span>Compile</span>
+
+            </li>
+
+    </ol>
+</nav>
+
+<p>Compiling a Python application into a standalone application (also known as “freezing”) bundles your scripts, the Python interpreter, and all dependencies into a single executable package. The most common and robust tool for this is PyInstaller.</p>
+<p>Here is a step-by-step guide on how to proceed:</p>
+<h3>Step 1: Install PyInstaller</h3>
+<p>If you haven't already done so, install PyInstaller with pip:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pyinstaller
+</code></pre></div>
+
+<h3>Step 2: Preparations</h3>
+<ol>
+<li>
+<p>Icon format: PyInstaller requires a specific format for the application icon:</p>
+</li>
+<li>
+<p>Windows: .ico</p>
+</li>
+<li>macOS: .icns</li>
+</ol>
+<p>You will need to convert your assets/logo/app_logo.png to the appropriate format. There are free online tools available for this.</p>
+<ol>
+<li>Important note about manage_translations.py: This script calls the command line tool pybabel with subprocess.check_call. This will fail in the compiled application because pybabel does not exist there as a standalone program.</li>
+</ol>
+<p>You have two options for the compiled app:</p>
+<p>Recommendation: Consider this script a pure developer tool and remove it from the build process (by removing it from the hiddenimports in the configuration file below).</p>
+<p>Alternative (more complex): Rewrite the script so that it imports the babel library directly and uses its Python functions instead of calling an external command.</p>
+<h3>Step 3: Create the build.spec file</h3>
+<p>The best way to compile a complex project like yours is to use a .spec file. This is the central “assembly instructions” for PyInstaller.</p>
+<p>Create a new file called build.spec in the root directory of your project (/home/xyz/Documents/Development/Python/apps/tci-static-site/).</p>
+<p>New file: <strong>build.spec</strong></p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="c1"># -*- mode: python ; coding: utf-8 -*-</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># FIX: __file__ is not available in PyInstaller spec files.</span>
+<span class="c1"># We use the current working directory instead.</span>
+<span class="n">project_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+<span class="n">block_cipher</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="p">[</span><span class="err">‘</span><span class="n">run_editor</span><span class="o">.</span><span class="n">py</span><span class="err">’</span><span class="p">],</span>
+    <span class="n">pathex</span><span class="o">=</span><span class="p">[</span><span class="n">project_root</span><span class="p">],</span>
+    <span class="n">binaries</span><span class="o">=</span><span class="p">[],</span>
+    <span class="c1"># All non-code files and directories required for the application are listed here.</span>
+    <span class="c1"># Format: (‘source path’, ‘target folder in build’)</span>
+    <span class="c1"># Format: (‘source path’, ‘target folder in build’)</span>
+    <span class="n">datas</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">assets</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">assets</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">locales</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">locales</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">workers</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">workers</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">plugins</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">plugins</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">project_templates</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">project_templates</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">app_config</span><span class="o">.</span><span class="n">yaml</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="o">.</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">babel</span><span class="o">.</span><span class="n">cfg</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="o">.</span><span class="err">’</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">hiddenimports</span><span class="o">=</span><span class="p">[</span>
+        <span class="err">‘</span><span class="n">babel</span><span class="o">.</span><span class="n">localedata</span><span class="err">’</span><span class="p">,</span>
+        <span class="err">‘</span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">py2_warn</span><span class="err">’</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">hookspath</span><span class="o">=</span><span class="p">[],</span>
+    <span class="n">runtime_hooks</span><span class="o">=</span><span class="p">[],</span>
+    <span class="n">excludes</span><span class="o">=</span><span class="p">[],</span>
+    <span class="n">win_no_prefer_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">win_private_assemblies</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cipher</span><span class="o">=</span><span class="n">block_cipher</span><span class="p">,</span>
+    <span class="n">noarchive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">pyz</span> <span class="o">=</span> <span class="n">PYZ</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pure</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">zipped_data</span><span class="p">,</span> <span class="n">cipher</span><span class="o">=</span><span class="n">block_cipher</span><span class="p">)</span>
+
+<span class="n">exe</span> <span class="o">=</span> <span class="n">EXE</span><span class="p">(</span><span class="n">pyz</span><span class="p">,</span>
+          <span class="n">a</span><span class="o">.</span><span class="n">scripts</span><span class="p">,</span>
+          <span class="p">[],</span> <span class="c1"># IMPORTANT: Empty list for binaries here</span>
+          <span class="n">exclude_binaries</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># IMPORTANT: Prevents binaries from being packed into the EXE (for folder mode)</span>
+          <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">tci</span><span class="o">-</span><span class="n">static</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">editor</span><span class="err">’</span><span class="p">,</span>
+          <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">bootloader_ignore_signals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">strip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">upx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">console</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Important for GUI applications</span>
+          <span class="n">icon</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_root</span><span class="p">,</span> <span class="err">‘</span><span class="n">assets</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">logo</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">app_logo</span><span class="o">.</span><span class="n">png</span><span class="err">’</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="n">coll</span> <span class="o">=</span> <span class="n">COLLECT</span><span class="p">(</span><span class="n">exe</span><span class="p">,</span>
+               <span class="n">a</span><span class="o">.</span><span class="n">binaries</span><span class="p">,</span>
+               <span class="n">a</span><span class="o">.</span><span class="n">zipfiles</span><span class="p">,</span>
+               <span class="n">a</span><span class="o">.</span><span class="n">datas</span><span class="p">,</span>
+               <span class="n">strip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">upx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">upx_exclude</span><span class="o">=</span><span class="p">[],</span>
+               <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">tci</span><span class="o">-</span><span class="n">static</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">editor</span><span class="err">’</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Step 4: Start compilation</h3>
+<p>Open a terminal in the root directory of your project.</p>
+<p>Execute the following commands:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="c1"># 1. Delete old build artifacts (important!)</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>build<span class="w"> </span>dist
+
+<span class="c1"># 2. Recompile</span>
+pyinstaller<span class="w"> </span>build.spec
+</code></pre></div>
+
+<p>PyInstaller will now create two folders: build (for temporary files) and dist (for the result).</p>
+<p>In the dist folder, you will find a subfolder named after your app (e.g., TCI-Static-Site-Editor). This folder contains the executable file and all necessary dependencies. You can share this entire folder.</p>
+<h3>Step 5: Folder vs. single file mode</h3>
+<p>A folder (default): By default, the .spec file creates a folder with many files. This is the most robust and fastest to start.
+A single file: If you prefer a single .exe file, you can easily customize the command:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>build.spec
+</code></pre></div>
+
+<p>Note that this will cause the application to take a little longer to start, as all files must be unpacked into a temporary directory each time it is launched.
+That's the whole process! The .spec file is the key to success, as it gives you full control over what is included in your final application.</p>
+<h2>Basic structure of a .spec file</h2>
+<p>The file is divided into three main blocks, which are executed sequentially:</p>
+<ul>
+<li>Analysis: The “detective.” This block analyzes your scripts, finds all imports and dependencies, and decides which files need to be packaged.</li>
+<li>EXE: The “builder.” This block takes the results of the analysis and creates the actual executable file (.exe on Windows).</li>
+<li>COLLECT: The “packager.” This block collects the .exe file and all other necessary resources (images, DLLs, etc.) and places them in a final output folder.</li>
+</ul>
+<h3>1. The Analysis Block in Detail</h3>
+<p>This is the most important and complex part. Here you define everything that goes into your app.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">app_entry_point</span><span class="p">],</span>  <span class="c1"># -&gt; [‘run_editor.py’]</span>
+    <span class="n">pathex</span><span class="o">=</span><span class="p">[</span><span class="err">‘</span><span class="o">.</span><span class="err">’</span><span class="p">],</span>
+    <span class="n">datas</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">assets</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">assets</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">locales</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">locales</span><span class="err">’</span><span class="p">),</span>
+        <span class="p">(</span><span class="err">‘</span><span class="n">project_templates</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">project_templates</span><span class="err">’</span><span class="p">),</span>
+    <span class="p">],</span>
+    <span class="n">hiddenimports</span><span class="o">=</span><span class="p">[</span>
+        <span class="err">‘</span><span class="n">PyQt6</span><span class="o">.</span><span class="n">sip</span><span class="err">’</span><span class="p">,</span>
+        <span class="err">‘</span><span class="n">compress_images</span><span class="err">’</span><span class="p">,</span>
+        <span class="c1"># ...</span>
+    <span class="p">],</span>
+    <span class="c1"># ...</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>The [app_entry_point]: This is the list of main entry points for your application. PyInstaller starts its analysis here. For your app, this is run_editor.py, which starts QApplication.  </li>
+<li>pathex=[‘.’]: Tells PyInstaller which directories to search for modules in. [‘.’] means “Search in the current directory as well.” This is important so that your local imports such as from core.i18n import ... are found.</li>
+<li>datas=[ ... ]: One of the most important options for any app with resources. It copies non-code files or entire folders into the final application.</li>
+<li>Format: (‘source on your hard drive’, ‘target folder in the app’)</li>
+<li>Example: (‘assets’, ‘assets’) means: “Take the entire assets folder from my project and place it as a folder named assets in the main directory of the compiled app.”</li>
+</ul>
+<p>Why is this necessary? Your app accesses images, templates, and translation files at runtime (os.path.join(‘assets’, ...)). Without datas, these files would be missing and the app would crash.</p>
+<ul>
+<li>hiddenimports=[ ... ]: The “lifeline” for modules that PyInstaller cannot find automatically.</li>
+</ul>
+<p>Why is this necessary? PyInstaller analyzes the code statically. If a module is imported dynamically (e.g., based on a configuration file or, as in your case, by loading “app” scripts from a folder), PyInstaller does not see this import.</p>
+<p>Examples in your app:</p>
+<p>compress_images, site_renderer, etc.: These scripts are loaded dynamically as “tools.” We need to list them explicitly here.
+PyQt6.QtWebEngineCore: Some PyQt modules are loaded internally in a way that PyInstaller may overlook. It is best practice to add them as hiddenimports to avoid runtime errors.</p>
+<h3>2. The EXE block in detail</h3>
+<p>This block configures the actual executable file.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="n">exe</span> <span class="o">=</span> <span class="n">EXE</span><span class="p">(</span>
+    <span class="n">pyz</span><span class="p">,</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">scripts</span><span class="p">,</span>
+    <span class="c1"># ...</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">app_name</span><span class="p">,</span>
+    <span class="n">console</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">icon</span><span class="o">=</span><span class="n">icon_path</span><span class="p">,)</span>
+</code></pre></div>
+
+<ul>
+<li>name=app_name: Sets the file name of the executable (e.g., TCI-Static-Site-Editor.exe).</li>
+<li>console=False: A crucial setting for GUI applications!</li>
+</ul>
+<p>False (default for GUI): The application starts without an additional black command line window in the background. This is what you want for a professional-looking app.</p>
+<ul>
+<li>True: The application would always start with a console window. This is useful for debugging or for pure command line tools.</li>
+<li>icon=icon_path: Assigns your application icon to the .exe file. This is the icon that will be displayed in Windows Explorer, shortcuts, and the taskbar. It must be in the platform-specific format (.ico for Windows).</li>
+</ul>
+<h3>3. The COLLECT block in detail</h3>
+<p>This block brings everything together and creates the final folder that you pass on to your users.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="n">coll</span> <span class="o">=</span> <span class="n">COLLECT</span><span class="p">(</span>
+    <span class="n">exe</span><span class="p">,</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">binaries</span><span class="p">,</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">zipfiles</span><span class="p">,</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">datas</span><span class="p">,</span>
+    <span class="c1"># ...</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">app_name</span><span class="p">,)</span>
+</code></pre></div>
+
+<ul>
+<li>exe, a.binaries, a.zipfiles, a.datas: These lines instruct the packer to collect the created .exe file, all binary files found (such as DLLs), the packed Python modules (pyz), and your resource files (datas).</li>
+<li>name=app_name: Sets the name of the output folder that will be created in the dist directory. If app_name is set to TCI-Static-Site-Editor, your entire program will end up in the dist/TCI-Static-Site-Editor folder.</li>
+</ul>
+<p>In summary, the .spec file is an explicit build instruction that gives you much more control than simple command line options and is essential for projects that are more complex than a single script.</p>
+<h2>Optional single file app</h2>
+<p>You can achieve this with a single option, but there is an important adjustment in the code that is necessary for this.</p>
+<p>Here are the complete instructions.</p>
+<h3>Step 1: The command line option</h3>
+<p>To instruct PyInstaller to create a single .exe file instead of a folder, use the --onefile option.</p>
+<p>The command for compiling therefore changes to:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>build.spec
+</code></pre></div>
+
+<p>That's all there is to the command. PyInstaller will now pack everything into a single executable file in the dist folder.</p>
+<h3>Step 2: The crucial code adjustment (path to resources)</h3>
+<p>The problem: When your app is launched as a single .exe file, it unpacks all the necessary resources (such as your assets, locales, and project_templates) into a temporary directory (e.g., under C:\Users\<user>\AppData\Local\Temp_MEIxxxxxx). Your code, which assumes a fixed project_root, would no longer be able to find these files.</p>
+<p>The solution: We need to adjust the starting point of your application (run_editor.py) so that it recognizes whether it is running in a compiled app and adjusts the path to the resources accordingly. PyInstaller provides a special variable sys._MEIPASS for this purpose.</p>
+<p>Here is the necessary change for your run_editor.py:</p>
+<p><strong>run_editor.py</strong></p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="err">‘</span><span class="n">linux</span><span class="err">’</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="err">“</span><span class="n">QTWEBENGINE_CHROMIUM_FLAGS</span><span class="err">”</span><span class="p">]</span> <span class="o">=</span> <span class="err">“</span><span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">gpu</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">sandbox</span> <span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">features</span><span class="o">=</span><span class="n">Vulkan</span><span class="err">”</span>
+
+
+<span class="c1"># Ensure that we can import modules from the current directory</span>
+
+
+<span class="n">project_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_project_root</span><span class="p">():</span>
+    <span class="err">“”“</span><span class="n">Determines</span> <span class="n">the</span> <span class="n">root</span> <span class="n">path</span><span class="p">,</span> <span class="n">works</span> <span class="k">for</span> <span class="n">development</span> <span class="ow">and</span> <span class="n">PyInstaller</span> <span class="n">bundle</span><span class="o">.</span><span class="err">”“”</span>
+    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="err">‘</span><span class="n">frozen</span><span class="err">’</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="err">‘</span><span class="n">_MEIPASS</span><span class="err">’</span><span class="p">):</span>
+        <span class="c1"># Running in a PyInstaller bundle (as .exe)</span>
+        <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">_MEIPASS</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Running in a normal development environment</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="n">project_root</span> <span class="o">=</span> <span class="n">get_project_root</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">project_root</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">project_root</span><span class="p">)</span>
+</code></pre></div>
+
+<p>What does this code do? The new function get_project_root checks whether the app is “frozen.”</p>
+<p>If so, it returns the path to the temporary folder (sys._MEIPASS).
+If not (you are running python run_editor.py), it returns the normal project folder.</p>
+<p>By setting project_root to the result of this function, all your existing lines of code such as os.path.join(project_root, “assets”, ...) will automatically work both in development and in the compiled .exe file.</p>
+<p>Summary of the procedure</p>
+<ul>
+<li>Modify code: Add the get_project_root function to your run_editor.py as shown in the diff above.</li>
+<li>Compile: Run the build command with the --onefile option.</li>
+</ul>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>build.spec
+</code></pre></div>
+
+<ul>
+<li>Result: In the dist folder, you will now find a single TCI-Static-Site-Editor.exe that you can share.</li>
+</ul>
+<h3>Advantages and disadvantages of the single-file method</h3>
+<p>Advantages:</p>
+<p>Easy to share: The user only has to download and run a single file. Very user-friendly.
+Tidy: No folder with hundreds of files.</p>
+<p>Disadvantages:</p>
+<p>Slower startup: Each time it is launched, the application must unpack all its components into the temporary directory. Depending on the size of the app, this can take a few seconds. Launching from a folder is almost instantaneous.</p>
+<p>Temporary files: If the app crashes, the temporary folder may not be deleted.</p>
+<p>For final distribution to end users, the single-file method is often the best choice, despite the slightly slower startup.</p>
+
+        </main>
+    </div>
+
+    <footer>
+    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    
+    <span class="footer-links">
+        
+        <a href="../datenschutz.html">Datenschutz</a> |
+        
+        <a href="../impressum.htm">Impressum</a>
+        
+    </span>
+    
+</footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

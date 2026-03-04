@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="{{ relative_prefix }}css/style.css">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="homepage-layout">
+        <main class="homepage-main">
+            <h1>{{ page_title }}</h1>
+            
+            {# Zeigt den Inhalt aus index.md an, falls vorhanden #}
+            {% if homepage_content %}
+                <div class="homepage-content">
+                    {{ homepage_content | safe }}
+                </div>
+            {% else %}
+                <p>Willkommen auf meiner Sammlungsseite. Wählen Sie eine Seite aus dem Inhaltsverzeichnis aus, um zu beginnen.</p>
+            {% endif %}
+        </main>
+        <aside class="homepage-sidebar">
+            <h2>Inhaltsverzeichnis</h2>
+            <ul class="nav-menu">
+
+                {{ generate_index_html(site_structure, relative_prefix, current_output_path) | safe }}
+            </ul>
+        </aside>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

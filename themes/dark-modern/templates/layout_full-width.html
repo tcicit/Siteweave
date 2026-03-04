@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <article>
+        {% if title %}
+        <div class="title">
+           <h1>{{ title }}</h1>
+        </div>
+        {% endif %}
+        {% if featured_image %}
+        <div class="featured-image">
+            <img src="{{ featured_image }}" alt="{{ title }}">
+        </div>
+        {% endif %} 
+        
+        <div class="content">
+            {{ content }}
+        </div>
+    </article>
+{% endblock %}

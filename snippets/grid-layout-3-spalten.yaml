@@ -1,0 +1,14 @@
+category: Layout
+code: '[[grid cols="3"]]
+
+  [[box title="Spalte 1"]]Inhalt 1[[/box]]
+
+  [[box title="Spalte 2"]]Inhalt 2[[/box]]
+
+  [[box title="Spalte 3"]]Inhalt 3[[/box]]
+
+  [[/grid]]
+
+  '
+name: Grid Layout (3 Spalten)
+order: 13

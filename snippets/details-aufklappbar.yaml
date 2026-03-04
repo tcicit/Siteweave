@@ -1,0 +1,10 @@
+category: Layout
+code: '[[details summary="Mehr anzeigen"]]
+
+  Versteckter Inhalt
+
+  [[/details]]
+
+  '
+name: Details (Aufklappbar)
+order: 14

@@ -1,0 +1,17 @@
+{
+    "plugins": {
+        "line-length": {
+            "enabled": false
+        },
+        "no-inline-html": {
+            "enabled": false
+        },
+        "no-duplicate-header": {
+            "enabled": false
+        },
+        "ol-prefix": {
+            "enabled": false
+        }
+    }
+}
+

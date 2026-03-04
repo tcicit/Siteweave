@@ -1,0 +1,4 @@
+category: Galerie
+code: '[[gallery  path="assets/images"]]'
+name: Bilder-Galerie alle Bilder im Path
+order: 12

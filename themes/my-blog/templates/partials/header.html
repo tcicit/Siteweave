@@ -1,0 +1,21 @@
+<header>
+    <div class="container">
+        <h1><a href="{{ relative_prefix }}index.html">{{ config.site_name }}</a></h1>
+        <nav>
+            <ul>
+            {% for link in config.header_links %}
+            <li>
+                <a href="{{ relative_prefix }}{{ link.url }}">{{ link.title }}</a>
+                {% if link.children %}
+                <ul class="dropdown">
+                    {% for sublink in link.children %}
+                    <li><a href="{{ relative_prefix }}{{ sublink.url }}">{{ sublink.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</header>

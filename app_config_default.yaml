@@ -1,0 +1,89 @@
+action_icons:
+  about_act: info
+  bold_act: bold
+  code_act: code
+  config_act: settings
+  dark_mode_act: dark_mode
+  exit_act: cancel
+  gallery_act: gallery
+  h1_act: h1
+  h2_act: h2
+  h3_act: h3
+  insert_file_act: link
+  insert_img_act: image
+  italic_act: italic
+  manage_snippets_act: snippet_folder
+  new_act: add
+  ol_act: list_numbered
+  open_browser_act: open_in_browser
+  redo_act: redo
+  render_act: render
+  replace_act: change_circle
+  save_act: save
+  search_act: search
+  select_all_act: select_all
+  switch_project_act: start
+  table_act: table
+  toggle_preview_act: preview
+  ul_act: list_ul
+  undo_act: undo
+  project_settings_act: settings
+  lint_markdown_act: spellcheck
+  toggle_line_numbers_act: numbers
+  create_project_act: directions_run
+  emoji_act: emoji
+autosave_interval: 60
+autosave_on_close: true
+autosave_on_switch: true
+auto_open_last_project: true
+editor_font_size: 12
+editor_font_family: Monospace
+preview_font_family: Sans Serif
+preview_font_size: 14
+view_dark_mode: false
+view_show_preview: true
+view_show_toolbar: true
+window_width: 3206
+window_height: 1743
+window_x: 0
+window_y: 0
+view_show_line_numbers: false
+language: en
+toolbar_layout:
+- new_act
+- save_act
+- search_act
+- undo_act
+- redo_act
+- select_all_act
+- separator
+- toggle_preview_act
+- switch_project_act
+- config_act
+- separator
+- spacer
+- insert_img_act
+- insert_file_act
+- gallery_act
+- separator
+- bold_act
+- italic_act
+- code_act
+- separator
+- h1_act
+- h2_act
+- h3_act
+- separator
+- ul_act
+- ol_act
+- table_act
+- emoji_act
+- spacer
+- render_act
+- open_browser_act
+paths:
+  snippets: snippets
+  themes: themes
+recent_projects:
+- /home/tci/Dokumente/Entwicklung/Python/apps/ Siteweave/dokumentation
+

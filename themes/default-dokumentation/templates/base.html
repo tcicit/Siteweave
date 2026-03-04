@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | {{ config.site_name }}</title>
+
+    {# -- SEO Meta Tags -- #}
+    {% if config.meta_description %}
+    <meta name="description" content="{{ config.meta_description }}">
+    {% endif %}
+    {% if config.meta_keywords %}
+    <meta name="keywords" content="{{ config.meta_keywords }}">
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ relative_prefix }}css/style.css">
+    {% for css_file in plugin_css_files %}
+    <link rel="stylesheet" href="{{ relative_prefix }}{{ css_file }}">
+    {% endfor %}
+</head>
+<body>
+    {% include 'partials/header.html' %}
+
+    <div class="doc-container">
+        <aside class="sidebar">
+            <h3>Inhalt</h3>
+            <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
+            {{ generate_index_html(site_structure, relative_prefix, current_output_path) | safe }}
+        </aside>
+
+        <main class="content">
+            {% block content %}
+                {{ content }}
+            {% endblock %}
+        </main>
+    </div>
+
+    {% include 'partials/footer.html' %}
+    <script src="{{ relative_prefix }}js/main.js"></script>
+</body>
+</html>

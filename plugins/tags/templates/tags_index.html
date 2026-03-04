@@ -1,0 +1,14 @@
+<h1>{{ page_title }}</h1>
+
+<p>Hier findest du eine Übersicht aller verwendeten Tags. Klicke auf einen Tag, um alle zugehörigen Seiten anzuzeigen.</p>
+
+<div class="tag-cloud">
+{% for tag in tags %}
+    {# Die Schriftgröße wird basierend auf der Anzahl der Artikel angepasst, um populäre Tags hervorzuheben #}
+    <a href="{{ tag.slug }}.html" class="tag-cloud-item" style="font-size: calc(0.8em + {{ tag.count }} * 0.1em);">
+        {{ tag.name }} <span class="tag-count">({{ tag.count }})</span>
+    </a>
+{% else %}
+    <p>Es wurden noch keine Tags vergeben.</p>
+{% endfor %}
+</div>

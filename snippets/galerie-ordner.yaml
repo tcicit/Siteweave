@@ -1,0 +1,4 @@
+category: Medien
+code: '[[gallery path="assets/images" layout="grid" cols="3"]]'
+name: Galerie (Ordner)
+order: 17

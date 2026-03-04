@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Themes & Layouts | Benutzer Dokumentation</title>
+
+    
+    
+    <meta name="description" content="Projekt Dokumentation">
+    
+    
+    <meta name="keywords" content="Doku, Projekt, Static Generator">
+    
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/breadcrumbs.css">
+    
+    <link rel="stylesheet" href="../css/plugins/contact_form.css">
+    
+    <link rel="stylesheet" href="../css/plugins/details.css">
+    
+    <link rel="stylesheet" href="../css/plugins/gallery.css">
+    
+    <link rel="stylesheet" href="../css/plugins/grid-box.css">
+    
+    <link rel="stylesheet" href="../css/plugins/image.css">
+    
+    <link rel="stylesheet" href="../css/plugins/infobox.css">
+    
+    <link rel="stylesheet" href="../css/plugins/latest_posts.css">
+    
+    <link rel="stylesheet" href="../css/plugins/list_dir.css">
+    
+    <link rel="stylesheet" href="../css/plugins/search.css">
+    
+    <link rel="stylesheet" href="../css/plugins/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/tags.css">
+    
+    <link rel="stylesheet" href="../css/plugins/toc.css">
+    
+</head>
+<body>
+    <header>
+    
+    <a href="../index.html" class="logo-link">
+        <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
+    </a>
+    
+    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <nav>
+        <ul>
+        
+        <li>
+            <a href="../about.html">About</a>
+            
+        </li>
+        
+        </ul>
+    </nav>
+</header>
+
+    <div class="doc-container">
+        <aside class="sidebar">
+            <h3>Inhalt</h3>
+            <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
+            <ul class="nav-menu">
+<li class="dropdown">
+  <button class="dropbtn">01 Introduction</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../01-introduction/installation.html">Installation & Requirements</a></li>
+<li><a href="../01-introduction/first-steps.html">First Steps</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">02 User Manual</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../02-user-manual/interface.html">Interface</a></li>
+<li><a href="../02-user-manual/editor.html">Editor & Markdown</a></li>
+<li><a href="../02-user-manual/media.html">Medien & Bilder</a></li>
+<li><a href="../02-user-manual/frontmatter.html">Frontmatter</a></li>
+<li><a href="../02-user-manual/project-tools.html">Project-tools</a></li>
+<li><a href="../02-user-manual/site-renderer.html">Site Renderer</a></li>
+<li><a href="../02-user-manual/deployment.html">Deployment</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown active-parent">
+  <button class="dropbtn">03 Configuration</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
+<li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/themes.html" class="active">Themes & Layouts</a></li>
+<li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
+<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">04 Development</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
+<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
+<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/compile.html">Compile</a></li>
+<li><a href="../04-development/app-context.html">App Context</a></li>
+<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">06 Plugins</button>
+  <div class="dropdown-content">
+<ul>
+<li class="dropdown">
+  <button class="dropbtn">Assets</button>
+  <div class="dropdown-content">
+<ul>
+</ul>
+  </div>
+</li>
+<li><a href="../06-plugins/obfuscate_test.html">Adresse Verschleierung (obfuscate)</a></li>
+<li><a href="../06-plugins/date.html">Aktuelles Datum</a></li>
+<li><a href="../06-plugins/box.html">Box Plugin Test</a></li>
+<li><a href="../06-plugins/breadcrumps.html">Breadcrumbs Plugin Test</a></li>
+<li><a href="../06-plugins/csv-test.html">CSV Import Test</a></li>
+<li><a href="../06-plugins/color.html">Color-Plugin</a></li>
+<li><a href="../06-plugins/details.html">Details Plugins</a></li>
+<li><a href="../06-plugins/gallerie.html">Galerie Test</a></li>
+<li><a href="../06-plugins/grid-box.html">Grid und Box</a></li>
+<li><a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a></li>
+<li><a href="../06-plugins/image.html">Image Plugin Test</a></li>
+<li><a href="../06-plugins/include.html">Include Plugin Test</a></li>
+<li><a href="../06-plugins/infoboxen.html">Infobox Test</a></li>
+<li><a href="../06-plugins/latest_post.html">Latest Post Test</a></li>
+<li><a href="../06-plugins/list_dir.html">List Dir Plugin</a></li>
+<li><a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a></li>
+<li><a href="../06-plugins/tabellen.html">Tabellen Test</a></li>
+<li><a href="../06-plugins/tags.html">Tags Plugin</a></li>
+<li><a href="../06-plugins/toc-test.html">Toc Test</a></li>
+</ul>
+  </div>
+</li>
+</ul>
+        </aside>
+
+        <main class="content">
+            
+    <h1>Themes & Layouts</h1>
+    
+    
+    <p style="color: #888; font-size: 0.9em;">Zuletzt aktualisiert: 2026-01-18</p>
+    
+
+    <nav class="breadcrumbs">
+    <ol>
+
+            <li>
+
+                    <a href="../index.html">Home</a>
+
+            </li>
+
+            <li>
+
+                    <a href="../03-configuration/index.html">03 Configuration</a>
+
+            </li>
+
+            <li>
+
+                    <span>Themes & Layouts</span>
+
+            </li>
+
+    </ol>
+</nav>
+
+<p>The design of your website is determined by <strong>themes</strong> and <strong>layouts</strong>.</p>
+<ul>
+<li><strong>Themes</strong> are complete design packages (CSS, JavaScript, templates).</li>
+<li><strong>Layouts</strong> are specific structure templates for individual pages (e.g., blog post vs. home page).</li>
+</ul>
+<h2>1. Themes</h2>
+<p>A theme bundles the appearance of your website. Instead of starting from scratch for each project, you can activate a theme and get started right away.</p>
+<h3>Activating a theme</h3>
+<p>You can specify the desired theme in your <code>config.yaml</code>:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="c1"># config.yaml</span>
+<span class="nt">themes_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“themes”</span><span class="w">  </span><span class="c1"># The folder where your themes are located</span>
+<span class="nt">site_theme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“my-new-theme”</span><span class="w"> </span><span class="c1"># The name of the subfolder</span>
+</code></pre></div>
+
+<h3>Creating your own theme</h3>
+<p>To create your own theme, create a new folder in the <code>themes</code> directory. The name of this folder is the theme name.</p>
+<p>The structure of a theme looks like this:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>themes/
+└── my-new-theme/
+    ├── templates/          # HTML templates (Jinja2)
+    │   ├── base.html       # The basic framework (HTML, Head, Body)
+    │   ├── layout_post.html
+    │   └── ...
+    └── assets/             # Static files
+        ├── css/
+        │   └── style.css
+        ├── js/
+        │   └── script.js
+        └── images/
+            └── screenshot.png
+</code></pre></div>
+
+<h3>The Override Mechanism (Fallback)</h3>
+<p>The editor uses an intelligent system to find files. For example, if it needs <code>base.html</code>, it searches in this order:</p>
+<ol>
+<li><strong>Project folder:</strong> Is there <code>templates/base.html</code> in your current project? If so, use that (highest priority).</li>
+<li><strong>Theme folder:</strong> Is there a <code>themes/my-theme/templates/base.html</code>? If so, use this.</li>
+<li><strong>Default (fallback):</strong> If nothing is found, the editor uses its built-in default files.</li>
+</ol>
+<p><strong>What this means for you:</strong>
+You can use a theme and still customize individual parts. If you don't like the theme's footer, copy <code>footer.html</code> from the theme to your project's <code>templates</code> folder and edit it there. Your version takes precedence, while the rest continues to come from the theme.</p>
+<h2>2. Templates &amp; Layouts (Jinja2)</h2>
+<p>The Static Site Editor uses <strong>Jinja2</strong> as its template engine. This allows you to completely customize the look of your website without having to change the content of your Markdown files.</p>
+<h3>The template structure</h3>
+<ul>
+<li><strong><code>base.html</code></strong>: The basic framework. This is where CSS files are included and the <code>{% block content %}</code> is defined.</li>
+<li><strong><code>layout_*.html</code></strong>: Specific layouts. They usually inherit from <code>base.html</code>.</li>
+</ul>
+<h3>Example: A complete <code>base.html</code></h3>
+<p>Here is an example of a solid <code>base.html</code> that correctly includes CSS, JavaScript, and navigation. Pay special attention to the use of <code>{{ relative_prefix }}</code> so that links work on all subpages.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ page_title }} - {{ site_name }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- CSS integration with relative path --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ relative_prefix }}css/style.css&quot;</span><span class="p">&gt;</span>
+
+    {% if config.site_favicon %}
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;icon&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ relative_prefix }}{{ config.site_favicon }}&quot;</span><span class="p">&gt;</span>
+    {% endif %}
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;logo&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ relative_prefix }}index.html&quot;</span><span class="p">&gt;</span>{{ site_name }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                {% for link in config.header_links %}
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="cm">&lt;!-- relative_prefix ensures that the link is always correct --&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ relative_prefix }}{{ link.url }}&quot;</span><span class="p">&gt;</span>{{ link.title }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                {% endfor %}
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+        <span class="cm">&lt;!-- Placeholder for the content of specific layouts --&gt;</span>
+        {% block content %}
+            {{ content }}
+        {% endblock %}
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="ni">&amp;copy;</span> {{ now.year }} {{ site_name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- JavaScript integration --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ relative_prefix }}js/script.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Create a new layout</h3>
+<p>Create a file in the <code>templates/</code> folder (of your project or theme), e.g. <code>layout_special.html</code>.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="cm">&lt;!-- templates/layout_special.html --&gt;</span>
+{% extends “base.html” %}
+
+{% block content %}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;special-design&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ page_title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>
+            {{ content }}
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{% endblock %}
+</code></pre></div>
+
+<h2>3. Available variables</h2>
+<p>Your templates provide you with various variables that are automatically filled in by the editor:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>{{ content }}</code></td>
+<td style="text-align: left;">The content of your Markdown file converted to HTML.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{{ page_title }}</code></td>
+<td style="text-align: left;">The title of the page (from the front matter).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{{ site_name }}</code></td>
+<td style="text-align: left;">The name of the website (from <code>config.yaml</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{{ date }}</code></td>
+<td style="text-align: left;">The date of the page (from the front matter).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{{ relative_prefix }}</code></td>
+<td style="text-align: left;">The relative path to the main directory (e.g., <code>../</code>). Important for links to CSS/JS files.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{{ current_page_path }}</code></td>
+<td style="text-align: left;">The file path of the current page.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{{ current_output_path }}</code></td>
+<td style="text-align: left;">The path of the generated HTML file (e.g., <code>/index.html</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{{ site_structure }}</code></td>
+<td style="text-align: left;">An object containing the entire navigation structure (for menus).</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, all fields that you define in the <strong>front matter</strong> of your Markdown file are available as variables.</p>
+<p><strong>Example:</strong>
+Markdown:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nn">---</span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">John Doe</span>
+<span class="nt">mood</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Happy</span>
+<span class="nn">---</span>
+</code></pre></div>
+
+<p>Template:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Written by {{ author }} (mood: {{ mood }})<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h2>4. Jinja2 Basics</h2>
+<p>Jinja2 is very powerful. You can use loops (<code>{% for %}</code>), conditions (<code>{% if %}</code>) and filters to build your page dynamically. For more information, see the official Jinja2 documentation.</p>
+<p><a href="https://jinja.palletsprojects.com/en/stable/">Official Jinja documentation</a></p>
+<h2>5. Examples of header and footer implementation</h2>
+<h3>Implementing navigation (header)</h3>
+<p>To display the <code>header_links</code> defined in <code>config.yaml</code> (including the new dropdowns), the template must iterate through the list and check if <code>sublinks</code> are present.</p>
+<h4>Sample code (Jinja2)</h4>
+<p>Insert this block in your <code>base.html</code> or <code>partials/header.html</code> where you want the menu to appear:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;main-nav&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    {% for link in config.header_links %}
+      {# Check whether the link leads to the current page #}
+      {% set is_active = False %}
+      {% if link.url %}
+        {% set norm_url = link.url if link.url.startswith(‘/’) else ‘/’ + link.url %}
+        {% if norm_url == current_output_path %}{% set is_active = True %}{% endif %}
+      {% endif %}
+
+      {# Check whether submenu items (sublinks) exist #}
+      {% if link.sublinks %}
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dropdown {{ ‘active’ if is_active else ‘’ }}&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ link.url | default(‘#’) }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dropbtn&quot;</span><span class="p">&gt;</span>
+            {{ link.title }}
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;caret&quot;</span><span class="p">&gt;</span>▼<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dropdown-content&quot;</span><span class="p">&gt;</span>
+            {% for sublink in link.sublinks %}
+              <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ sublink.url }}&quot;</span><span class="p">&gt;</span>{{ sublink.title }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            {% endfor %}
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      {% else %}
+        {# Normal link without submenu #}
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;{{ ‘active’ if is_active else ‘’ }}&quot;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ link.url }}&quot;</span><span class="p">&gt;</span>{{ link.title }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      {% endif %}
+    {% endfor %}
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h2>Layout CSS (Cascading Style Sheets)</h2>
+<h3>CSS (example)</h3>
+<p>To make the dropdown appear when you hover over it with the mouse, you need the appropriate CSS in your <code>style.css</code>:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="c">/* Dropdown container */</span>
+<span class="p">.</span><span class="nc">dropdown</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-block</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c">/* Dropdown content (hidden by default) */</span>
+<span class="p">.</span><span class="nc">dropdown-content</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">min-width</span><span class="p">:</span><span class="w"> </span><span class="mi">160</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="w">  </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Links in dropdown */</span>
+<span class="p">.</span><span class="nc">dropdown-content</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Display on hover or when active */</span>
+<span class="p">.</span><span class="nc">dropdown</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">.</span><span class="nc">dropdown-content</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c">/* Highlight active link */</span>
+<span class="p">.</span><span class="nc">main-nav</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">active</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#007bff</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<h3>Mobile navigation (hamburger menu)</h3>
+<p>A space-saving “hamburger menu” is standard for mobile devices. Here is a simple implementation.</p>
+<h4>HTML extension</h4>
+<p>Add a button and an ID to the navigation area:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="cm">&lt;!-- Hamburger icon (visible on mobile) --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;javascript:void(0);&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;toggleMenu()&quot;</span><span class="p">&gt;</span><span class="ni">&amp;#9776;</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Navigation with ID for JS access --&gt;</span>
+<span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;main-nav&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myTopnav&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- ... Your Jinja loop for links ... --&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h4>CSS for mobile (style.css)</h4>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="c">/* Hide hamburger icon by default */</span>
+<span class="p">.</span><span class="nc">icon</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c">/* Mobile view (max. 768px) */</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">max-width</span><span class="o">:</span><span class="w"> </span><span class="nt">768px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">icon</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span><span class="w"> </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">main-nav</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">main-nav</span><span class="p">.</span><span class="nc">responsive</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c">/* Set via JS */</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">main-nav</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span><span class="w"> </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>JavaScript</h2>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">toggleMenu</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="err">“</span><span class="nx">myTopnav</span><span class="err">”</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="err">“</span><span class="nx">main</span><span class="o">-</span><span class="nx">nav</span><span class="err">”</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="err">“</span><span class="w"> </span><span class="nx">responsive</span><span class="err">”</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">“</span><span class="nx">main</span><span class="o">-</span><span class="nx">nav</span><span class="err">”</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>Various tips and tricks</h2>
+<h3>Footer customization (3-column layout)</h3>
+<p>A classic footer often contains contact information, social media links, and legal links. Here is an example of a 3-column layout that dynamically loads this data from <code>config.yaml</code>.</p>
+<p>HTML structure (footer.html)</p>
+<p>html</p>
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- Column 1: Contact / Address -->
+    <div class="footer-column">
+      <h3>Contact</h3>
+      {% if config.contact %}
+        <p><strong>{{ config.contact.name }}</strong></p>
+        <p>{{ config.contact.address }}</p>
+        <p>Email: {{ config.contact.email }}</p>
+        <p>Tel: {{ config.contact.phone }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Column 2: Social Media -->
+    <div class="footer-column">
+      <h3>Social Media</h3>
+      <ul class="social-links">
+        {% for platform, link in config.social.items() %}
+          <li><a href="{{ link }}" target="_blank">{{ platform | title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Column 3: Links -->
+    <div class="footer-column">
+      <h3>Links</h3>
+      <ul class="footer-links">
+        {% for link in config.footer_links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ now.year }} {{ config.site_name }}. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="err">####</span><span class="w"> </span><span class="nt">CSS</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">layout</span><span class="w"> </span><span class="o">(</span><span class="nt">style</span><span class="p">.</span><span class="nc">css</span><span class="o">)</span>
+
+<span class="err">```</span><span class="nt">css</span>
+<span class="p">.</span><span class="nc">site-footer</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c">/* Flexbox for the columns */</span>
+<span class="p">.</span><span class="nc">footer-content</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">  </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
+<span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-around</span><span class="p">;</span>
+<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">footer-column</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">min-width</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">footer-column</span><span class="w"> </span><span class="nt">h3</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#555</span><span class="p">;</span><span class="w"> </span><span class="k">padding-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">footer-column</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">list-style</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">footer-column</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ddd</span><span class="p">;</span><span class="w"> </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">footer-column</span><span class="w"> </span><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span><span class="w"> </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">underline</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">footer-bottom</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w"> </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">border-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#444</span><span class="p">;</span><span class="w"> </span><span class="k">padding-top</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+        </main>
+    </div>
+
+    <footer>
+    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    
+    <span class="footer-links">
+        
+        <a href="../datenschutz.html">Datenschutz</a> |
+        
+        <a href="../impressum.htm">Impressum</a>
+        
+    </span>
+    
+</footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

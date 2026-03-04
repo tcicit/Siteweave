@@ -1,0 +1,4 @@
+category: Sicherheit
+code: '[[obfuscate email="info@example.com" label="Schreiben Sie uns"]]'
+name: E-Mail Link (Geschützt)
+order: 25

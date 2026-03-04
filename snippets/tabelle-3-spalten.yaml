@@ -1,0 +1,6 @@
+name: Tabelle 3 Spalten
+code: "First Header | Second Header | Third Header\n------------- | -------------\
+  \ | ------------- \nContent Cell | Content Cell | Content Cell \nContent Cell |\
+  \ Content Cell | Content Cell\nContent Cell | Content Cell | Content Cell"
+category: Tabellen
+order: 27

@@ -1,0 +1,10 @@
+<aside class="sidebar">
+    <h2>Navigation</h2>
+    <div class="sidebar-nav">
+        {{ generate_index_html(site_structure, relative_prefix, current_output_path) | safe }}
+    </div>
+
+    {# Hier könntest du weitere Sidebar-Inhalte hinzufügen #}
+    {# z.B. mit Plugins wie [[latest_posts]] oder [[tags_cloud]] #}
+
+</aside>

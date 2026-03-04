@@ -1,0 +1,44 @@
+/* CSS für das Grid- und Box-Plugin */
+.plugin-grid {
+    display: grid;
+    gap: 1.5rem; /* Abstand zwischen den Boxen */
+    margin-block: 2rem; /* Abstand oben/unten vom gesamten Grid */
+}
+
+.plugin-box {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: var(--ui-background-color); /* Nutzt jetzt die Design-Variable */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.plugin-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.08);
+}
+
+.plugin-box-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-light-color); /* Nutzt jetzt die Design-Variable */
+    padding-bottom: 0.75rem;
+    font-size: 1.2em;
+    color: var(--text-color); /* Nutzt jetzt die Design-Variable */
+}
+
+.plugin-box-content {
+    flex-grow: 1;
+}
+
+.plugin-box-content p:last-child {
+    margin-bottom: 0;
+}
+
+.plugin-box-content ul,
+.plugin-box-content ol {
+    padding-left: 1.2rem;
+}

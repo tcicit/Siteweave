@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    {% if author %}<meta name="author" content="{{ author }}">{% endif %}
+    {% if tags %}<meta name="keywords" content="{{ tags | join(', ') }}">{% endif %}
+    <link rel="stylesheet" href="{{ relative_prefix }}css/style.css">
+</head>
+<body>
+    {% include 'header.html' %}
+    <main class="gallery-main">
+        <h1>{{ page_title }}</h1>
+        
+        {# Metadaten aus dem Front-Matter anzeigen, falls vorhanden #}
+        {% if date or author or tags %}
+        <div class="metadata">
+            {% if author %}<strong>Autor:</strong> {{ author }}<br>{% endif %}
+            {% if date %}<strong>Datum:</strong> {{ date }}<br>{% endif %}
+            {% if tags %}<strong>Tags:</strong> 
+                {% for tag in tags %}
+                    <a href="{{ relative_prefix }}tags/{{ tag | slugify }}.html">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {# Einleitungstext der Galerie, falls vorhanden #}
+        <div class="gallery-intro">
+            {{ content | safe }}
+        </div>
+
+        {# Das Grid wird hier durch eine Schleife im Template erzeugt #}
+        {% if gallery_images %}
+        <div class="gallery-grid">
+            {% for image in gallery_images %}
+            <figure>
+                <img src="{{ image.src }}" alt="{{ image.alt }}">
+                {% if image.alt %}<figcaption>{{ image.alt }}</figcaption>{% endif %}
+            </figure>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>

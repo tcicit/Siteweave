@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | {{ config.site_name }}</title>
+    <link rel="stylesheet" href="{{ relative_prefix }}css/style.css">
+    {% for js_file in config.custom_js_files %}
+        <script src="{{ relative_prefix }}{{ js_file }}"></script>
+    {% endfor %}
+    {% for css_file in plugin_css_files %}
+        <link rel="stylesheet" href="{{ relative_prefix }}{{ css_file }}">
+    {% endfor %}
+    {% for js_file in plugin_js_files %}
+        <script src="{{ relative_prefix }}{{ js_file }}"></script>
+    {% endfor %}
+    {% if config.site_favicon %}
+        <link rel="icon" href="{{ relative_prefix }}{{ config.site_favicon }}">
+    {% endif %}
+</head>
+<body>
+
+    {% include 'partials/header.html' %}    
+     <div class="container">
+        <main class="content">
+            {% block content %}
+                {{ content }}
+            {% endblock %}
+        </main>
+    </div>
+
+    {% include 'partials/footer.html' %}
+
+</body>
+</html>

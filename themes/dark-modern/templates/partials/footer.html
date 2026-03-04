@@ -1,0 +1,10 @@
+<footer>
+    <span>&copy; {{ now.year }} {{ config.site_name }}. Erstellt mit Sitewave.</span>
+    {% if config.footer_links %}
+    <span class="footer-links">
+        {% for link in config.footer_links %}
+        <a href="{{ relative_prefix }}{{ link.url }}">{{ link.title }}</a>{% if not loop.last %} |{% endif %}
+        {% endfor %}
+    </span>
+    {% endif %}
+</footer>

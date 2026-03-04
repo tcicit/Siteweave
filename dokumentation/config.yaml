@@ -1,0 +1,62 @@
+site_name: Benutzer Dokumentation
+site_url: http://localhost:8000
+content_directory: content
+site_output_directory: site_output
+assets_directory: assets
+plugin_directory: plugins
+backup_directory: backup
+markdown_extensions:
+- .md
+- .markdown
+log_level: INFO
+image_compression:
+  compressed_suffix: -compressed
+  jpeg_quality: 85
+  png_compression: 6
+  extensions:
+  - .jpg
+  - .jpeg
+  - .png
+normalization:
+  excluded_dirs:
+  - _spezial
+linter:
+  defaults:
+    author: TCI
+    layout: doc
+default_template: full-width
+site_logo: assets/app_logo.svg
+site_favicon: assets/app_logo.png
+pdf_export:
+  export_path: pdf_exports
+  page_size: A4
+  orientation: portrait
+  margin_top: 2cm
+  margin_right: 2cm
+  margin_bottom: 2cm
+  margin_left: 2cm
+  show_cover_page: true
+  show_page_numbers: true
+  show_print_date: true
+  custom_css_path: ''
+contact:
+  name: Thomas Cigolla
+  address: Teststrasse 1
+  email: tesr@test.com
+backup_on_render: false
+backup_rotation: 10
+header_links:
+- title: About
+  url: about.html
+footer_links:
+- title: Datenschutz
+  url: datenschutz.html
+- title: Impressum
+  url: impressum.htm
+social:
+  Linkedin: linkedin.com
+themes_directory: themes
+site_theme: default-dokumentation
+default_author: TCI
+meta_description: Projekt Dokumentation
+meta_keywords: Doku, Projekt, Static Generator

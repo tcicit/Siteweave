@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Scripts & Automatisierung | Benutzer Dokumentation</title>
+
+    
+    
+    <meta name="description" content="Projekt Dokumentation">
+    
+    
+    <meta name="keywords" content="Doku, Projekt, Static Generator">
+    
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/breadcrumbs.css">
+    
+    <link rel="stylesheet" href="../css/plugins/contact_form.css">
+    
+    <link rel="stylesheet" href="../css/plugins/details.css">
+    
+    <link rel="stylesheet" href="../css/plugins/gallery.css">
+    
+    <link rel="stylesheet" href="../css/plugins/grid-box.css">
+    
+    <link rel="stylesheet" href="../css/plugins/image.css">
+    
+    <link rel="stylesheet" href="../css/plugins/infobox.css">
+    
+    <link rel="stylesheet" href="../css/plugins/latest_posts.css">
+    
+    <link rel="stylesheet" href="../css/plugins/list_dir.css">
+    
+    <link rel="stylesheet" href="../css/plugins/search.css">
+    
+    <link rel="stylesheet" href="../css/plugins/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/tags.css">
+    
+    <link rel="stylesheet" href="../css/plugins/toc.css">
+    
+</head>
+<body>
+    <header>
+    
+    <a href="../index.html" class="logo-link">
+        <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
+    </a>
+    
+    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <nav>
+        <ul>
+        
+        <li>
+            <a href="../about.html">About</a>
+            
+        </li>
+        
+        </ul>
+    </nav>
+</header>
+
+    <div class="doc-container">
+        <aside class="sidebar">
+            <h3>Inhalt</h3>
+            <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
+            <ul class="nav-menu">
+<li class="dropdown">
+  <button class="dropbtn">01 Introduction</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../01-introduction/installation.html">Installation & Requirements</a></li>
+<li><a href="../01-introduction/first-steps.html">First Steps</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">02 User Manual</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../02-user-manual/interface.html">Interface</a></li>
+<li><a href="../02-user-manual/editor.html">Editor & Markdown</a></li>
+<li><a href="../02-user-manual/media.html">Medien & Bilder</a></li>
+<li><a href="../02-user-manual/frontmatter.html">Frontmatter</a></li>
+<li><a href="../02-user-manual/project-tools.html">Project-tools</a></li>
+<li><a href="../02-user-manual/site-renderer.html">Site Renderer</a></li>
+<li><a href="../02-user-manual/deployment.html">Deployment</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown active-parent">
+  <button class="dropbtn">03 Configuration</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
+<li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
+<li><a href="../03-configuration/worker-scripts.html" class="active">Worker Scripts & Automatisierung</a></li>
+<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">04 Development</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
+<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
+<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/compile.html">Compile</a></li>
+<li><a href="../04-development/app-context.html">App Context</a></li>
+<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">06 Plugins</button>
+  <div class="dropdown-content">
+<ul>
+<li class="dropdown">
+  <button class="dropbtn">Assets</button>
+  <div class="dropdown-content">
+<ul>
+</ul>
+  </div>
+</li>
+<li><a href="../06-plugins/obfuscate_test.html">Adresse Verschleierung (obfuscate)</a></li>
+<li><a href="../06-plugins/date.html">Aktuelles Datum</a></li>
+<li><a href="../06-plugins/box.html">Box Plugin Test</a></li>
+<li><a href="../06-plugins/breadcrumps.html">Breadcrumbs Plugin Test</a></li>
+<li><a href="../06-plugins/csv-test.html">CSV Import Test</a></li>
+<li><a href="../06-plugins/color.html">Color-Plugin</a></li>
+<li><a href="../06-plugins/details.html">Details Plugins</a></li>
+<li><a href="../06-plugins/gallerie.html">Galerie Test</a></li>
+<li><a href="../06-plugins/grid-box.html">Grid und Box</a></li>
+<li><a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a></li>
+<li><a href="../06-plugins/image.html">Image Plugin Test</a></li>
+<li><a href="../06-plugins/include.html">Include Plugin Test</a></li>
+<li><a href="../06-plugins/infoboxen.html">Infobox Test</a></li>
+<li><a href="../06-plugins/latest_post.html">Latest Post Test</a></li>
+<li><a href="../06-plugins/list_dir.html">List Dir Plugin</a></li>
+<li><a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a></li>
+<li><a href="../06-plugins/tabellen.html">Tabellen Test</a></li>
+<li><a href="../06-plugins/tags.html">Tags Plugin</a></li>
+<li><a href="../06-plugins/toc-test.html">Toc Test</a></li>
+</ul>
+  </div>
+</li>
+</ul>
+        </aside>
+
+        <main class="content">
+            
+    <h1>Worker Scripts & Automatisierung</h1>
+    
+    
+    <p style="color: #888; font-size: 0.9em;">Zuletzt aktualisiert: 2025-01-10</p>
+    
+
+    <nav class="breadcrumbs">
+    <ol>
+
+            <li>
+
+                    <a href="../index.html">Home</a>
+
+            </li>
+
+            <li>
+
+                    <a href="../03-configuration/index.html">03 Configuration</a>
+
+            </li>
+
+            <li>
+
+                    <span>Worker Scripts & Automatisierung</span>
+
+            </li>
+
+    </ol>
+</nav>
+
+<p>Worker scripts are Python scripts located in the <code>workers</code> directory of your project. They are designed for project-wide tasks that are independent of editing a single file.</p>
+<p><strong>Typical use cases:</strong>
+* Check all links in the project for validity (<code>link_checker</code>).
+* Create a backup of the <code>content</code> folder (<code>backup_tool</code>).
+* Synchronize the project with a Git repository (<code>git_sync</code>).
+* Upload the finished website to a server (deployment script).</p>
+<h2>1. The <code>run(context)</code> function</h2>
+<p>Each worker must have a function called <code>run</code> that accepts a <code>context</code> dictionary as an argument.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="c1"># workers/my_worker.py</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Extract required data from the context</span>
+    <span class="n">project_path</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="err">‘</span><span class="n">project_root</span><span class="err">’</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="err">“</span><span class="n">Worker</span> <span class="ow">is</span> <span class="n">running</span> <span class="ow">in</span> <span class="n">project</span> <span class="p">{</span><span class="n">project_path</span><span class="p">}</span><span class="err">!”</span><span class="p">)</span>
+    <span class="c1"># ... your logic goes here ...</span>
+</code></pre></div>
+
+<p>This <code>context</code> is usually provided by the GUI and contains information such as project paths and configurations. However, to run the worker outside of the GUI (e.g., in an automation script), we need to create this context manually.</p>
+<h2>2. Run worker via command line</h2>
+<p>To call a worker directly, we need a small “runner” script. This script is responsible for loading the project configuration, creating the <code>context</code>, and running the desired worker.</p>
+<p>Create a new file called <code>run_worker.py</code> in the root directory of your editor with the following content:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="c1"># run_worker.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="err">“</span><span class="n">TCI</span> <span class="n">Static</span> <span class="n">Site</span> <span class="n">Worker</span> <span class="n">Runner</span><span class="err">”</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="err">“</span><span class="o">--</span><span class="n">project</span><span class="err">”</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Absolute path to the project directory.&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="err">“</span><span class="o">--</span><span class="n">worker</span><span class="err">”</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of the worker (without .py), e.g., ‘link_checker’.&quot;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="err">“</span><span class="n">Error</span><span class="p">:</span> <span class="n">Project</span> <span class="n">directory</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span> <span class="p">{</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">}</span><span class="err">”</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Load the project configuration (simplified)</span>
+    <span class="c1"># In a real implementation, you would load config.yaml here</span>
+    <span class="n">project_config</span> <span class="o">=</span> <span class="p">{</span><span class="err">‘</span><span class="n">site_name</span><span class="err">’</span><span class="p">:</span> <span class="err">‘</span><span class="n">My</span> <span class="n">Project</span><span class="err">’</span><span class="p">}</span> 
+
+    <span class="c1"># Create the context</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;project_root&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+        <span class="err">‘</span><span class="n">content_dir</span><span class="err">’</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="err">‘</span><span class="n">content</span><span class="err">’</span><span class="p">),</span>
+        <span class="err">‘</span><span class="n">assets_dir</span><span class="err">’</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="err">‘</span><span class="n">assets</span><span class="err">’</span><span class="p">),</span>
+        <span class="err">‘</span><span class="n">config</span><span class="err">’</span><span class="p">:</span> <span class="n">project_config</span><span class="p">,</span>
+        <span class="err">‘</span><span class="n">source</span><span class="err">’</span><span class="p">:</span> <span class="err">‘</span><span class="n">command_line</span><span class="err">’</span> <span class="c1"># Useful to know where the call came from</span>
+    <span class="p">}</span>
+
+    <span class="n">worker_name</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">worker</span>
+    <span class="n">worker_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="err">‘</span><span class="n">workers</span><span class="err">’</span><span class="p">,</span> <span class="n">f</span><span class="err">“</span><span class="p">{</span><span class="n">worker_name</span><span class="p">}</span><span class="o">.</span><span class="n">py</span><span class="err">”</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">worker_path</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="err">“</span><span class="n">Error</span><span class="p">:</span> <span class="n">Worker</span> <span class="n">script</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span> <span class="p">{</span><span class="n">worker_path</span><span class="p">}</span><span class="err">”</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Load and execute the worker</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span><span class="n">worker_name</span><span class="p">,</span> <span class="n">worker_path</span><span class="p">)</span>
+        <span class="n">worker_module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+        <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">worker_module</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">worker_module</span><span class="p">,</span> <span class="err">‘</span><span class="n">run</span><span class="err">’</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="err">“</span><span class="o">---</span> <span class="n">Running</span> <span class="n">worker</span> <span class="err">‘</span><span class="p">{</span><span class="n">worker_name</span><span class="p">}</span><span class="err">’</span> <span class="k">for</span> <span class="n">project</span> <span class="err">‘</span><span class="p">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">)}</span><span class="err">’</span> <span class="o">---</span><span class="err">”</span><span class="p">)</span>
+            <span class="n">worker_module</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="err">“</span><span class="o">---</span> <span class="n">Worker</span> <span class="n">execution</span> <span class="n">completed</span> <span class="o">---</span><span class="err">”</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="err">“</span><span class="n">Error</span><span class="p">:</span> <span class="n">No</span> <span class="err">‘</span><span class="n">run</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="err">’</span> <span class="n">function</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">worker</span> <span class="err">‘</span><span class="p">{</span><span class="n">worker_name</span><span class="p">}</span><span class="err">’</span><span class="o">.</span><span class="err">”</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="err">“</span><span class="n">An</span> <span class="n">error</span> <span class="n">occurred</span><span class="p">:</span> <span class="p">{</span><span class="n">e</span><span class="p">}</span><span class="err">”</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="err">“</span><span class="n">__main__</span><span class="err">”</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>Example 3: Automating a link checker</h3>
+<p>With the <code>run_worker.py</code> script, you can now start each worker from the command line. This is perfect for CI/CD pipelines (e.g., with GitHub Actions) or simple cron jobs.</p>
+<p><strong>Example call in the terminal:</strong></p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>python<span class="w"> </span>run_worker.py<span class="w"> </span>--project<span class="w"> </span>“/path/to/my/blog-project”<span class="w"> </span>--worker<span class="w"> </span>“link_checker”
+</code></pre></div>
+
+<p>This command runs the link checker for your blog project and outputs the results directly in the terminal without you having to open the GUI.</p>
+
+        </main>
+    </div>
+
+    <footer>
+    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    
+    <span class="footer-links">
+        
+        <a href="../datenschutz.html">Datenschutz</a> |
+        
+        <a href="../impressum.htm">Impressum</a>
+        
+    </span>
+    
+</footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

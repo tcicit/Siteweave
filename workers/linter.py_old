@@ -1,0 +1,18 @@
+from core.linter import run as run_linter
+from core.i18n import _
+'''
+Worker-Skript, das die Frontmatter-Metadaten aller Markdown-Dateien im Content-Ordner überprüft und korrigiert.
+Es ist als eigenständiges Skript konzipiert, das über die Kommandozeile aufgerufen werden kann, aber auch von der GUI als Worker genutzt werden kann.
+Die Logik für die Überprüfung und Korrektur befindet sich in 'workers/frontmatter_checker.py', 
+um eine saubere séparation zwischen der GUI-Integration und der eigentlichen Funktionalität zu ermöglichen.     
+
+'''
+# --- Worker Metadata ---
+name = _("Frontmatter Linter")
+description = _("Checks and corrects metadata.")
+hidden = False
+category = "project"
+
+
+def run(context):
+    return run_linter(context)

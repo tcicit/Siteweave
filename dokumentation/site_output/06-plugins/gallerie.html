@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Test | Benutzer Dokumentation</title>
+
+    
+    
+    <meta name="description" content="Projekt Dokumentation">
+    
+    
+    <meta name="keywords" content="Doku, Projekt, Static Generator">
+    
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/breadcrumbs.css">
+    
+    <link rel="stylesheet" href="../css/plugins/contact_form.css">
+    
+    <link rel="stylesheet" href="../css/plugins/details.css">
+    
+    <link rel="stylesheet" href="../css/plugins/gallery.css">
+    
+    <link rel="stylesheet" href="../css/plugins/grid-box.css">
+    
+    <link rel="stylesheet" href="../css/plugins/image.css">
+    
+    <link rel="stylesheet" href="../css/plugins/infobox.css">
+    
+    <link rel="stylesheet" href="../css/plugins/latest_posts.css">
+    
+    <link rel="stylesheet" href="../css/plugins/list_dir.css">
+    
+    <link rel="stylesheet" href="../css/plugins/search.css">
+    
+    <link rel="stylesheet" href="../css/plugins/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/tags.css">
+    
+    <link rel="stylesheet" href="../css/plugins/toc.css">
+    
+</head>
+<body>
+    <header>
+    
+    <a href="../index.html" class="logo-link">
+        <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
+    </a>
+    
+    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <nav>
+        <ul>
+        
+        <li>
+            <a href="../about.html">About</a>
+            
+        </li>
+        
+        </ul>
+    </nav>
+</header>
+
+    <div class="doc-container">
+        <aside class="sidebar">
+            <h3>Inhalt</h3>
+            <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
+            <ul class="nav-menu">
+<li class="dropdown">
+  <button class="dropbtn">01 Introduction</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../01-introduction/installation.html">Installation & Requirements</a></li>
+<li><a href="../01-introduction/first-steps.html">First Steps</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">02 User Manual</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../02-user-manual/interface.html">Interface</a></li>
+<li><a href="../02-user-manual/editor.html">Editor & Markdown</a></li>
+<li><a href="../02-user-manual/media.html">Medien & Bilder</a></li>
+<li><a href="../02-user-manual/frontmatter.html">Frontmatter</a></li>
+<li><a href="../02-user-manual/project-tools.html">Project-tools</a></li>
+<li><a href="../02-user-manual/site-renderer.html">Site Renderer</a></li>
+<li><a href="../02-user-manual/deployment.html">Deployment</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">03 Configuration</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
+<li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
+<li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
+<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">04 Development</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
+<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
+<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/compile.html">Compile</a></li>
+<li><a href="../04-development/app-context.html">App Context</a></li>
+<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown active-parent">
+  <button class="dropbtn">06 Plugins</button>
+  <div class="dropdown-content">
+<ul>
+<li class="dropdown">
+  <button class="dropbtn">Assets</button>
+  <div class="dropdown-content">
+<ul>
+</ul>
+  </div>
+</li>
+<li><a href="../06-plugins/obfuscate_test.html">Adresse Verschleierung (obfuscate)</a></li>
+<li><a href="../06-plugins/date.html">Aktuelles Datum</a></li>
+<li><a href="../06-plugins/box.html">Box Plugin Test</a></li>
+<li><a href="../06-plugins/breadcrumps.html">Breadcrumbs Plugin Test</a></li>
+<li><a href="../06-plugins/csv-test.html">CSV Import Test</a></li>
+<li><a href="../06-plugins/color.html">Color-Plugin</a></li>
+<li><a href="../06-plugins/details.html">Details Plugins</a></li>
+<li><a href="../06-plugins/gallerie.html" class="active">Galerie Test</a></li>
+<li><a href="../06-plugins/grid-box.html">Grid und Box</a></li>
+<li><a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a></li>
+<li><a href="../06-plugins/image.html">Image Plugin Test</a></li>
+<li><a href="../06-plugins/include.html">Include Plugin Test</a></li>
+<li><a href="../06-plugins/infoboxen.html">Infobox Test</a></li>
+<li><a href="../06-plugins/latest_post.html">Latest Post Test</a></li>
+<li><a href="../06-plugins/list_dir.html">List Dir Plugin</a></li>
+<li><a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a></li>
+<li><a href="../06-plugins/tabellen.html">Tabellen Test</a></li>
+<li><a href="../06-plugins/tags.html">Tags Plugin</a></li>
+<li><a href="../06-plugins/toc-test.html">Toc Test</a></li>
+</ul>
+  </div>
+</li>
+</ul>
+        </aside>
+
+        <main class="content">
+            
+    <nav class="breadcrumbs">
+    <ol>
+
+            <li>
+
+                    <a href="../index.html">Home</a>
+
+            </li>
+
+            <li>
+
+                    <a href="../06-plugins/index.html">06 Plugins</a>
+
+            </li>
+
+            <li>
+
+                    <span>Galerie Test</span>
+
+            </li>
+
+    </ol>
+</nav>
+
+<h2>Beschreibung</h2>
+<p>Erzeugt eine Bildergalerie mit Lightbox. Verwendet komprimierte Bilder für die Vorschau und verlinkt auf die Originalbilder in der Lightbox.</p>
+<h3>Zwei Modi:</h3>
+<h4>1. Aus einem Verzeichnis:</h4>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[gallery path=&quot;relativer/pfad/zum/ordner&quot; layout=&quot;grid&quot; cols=&quot;3&quot; ...]]
+</code></pre></div>
+
+<h4>2. Aus Markdown-Bildern im Inhalt:</h4>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="k">[[gallery layout=&quot;grid&quot; cols=&quot;3&quot; ...]]</span>
+<span class="w">  </span><span class="na">![Alt-Text 1](pfad/zum/bild1.jpg)</span>
+<span class="w">  </span><span class="na">![Alt-Text 2](pfad/zum/bild2.jpg)</span>
+<span class="k">[[/gallery]]</span>
+</code></pre></div>
+
+<h3>Parameter:</h3>
+<ul>
+<li>layout (str): 'grid' (Standard) oder 'masonry'.</li>
+<li>cols (int): Anzahl der Spalten. Standard: 3.</li>
+<li>ratio (str): Seitenverhältnis der Vorschaubilder. <ul>
+<li>Mögliche Werte: 'original', '1:1', '4:3', '3:2', '16:9', <strong>Standard: '4:3'</strong></li>
+</ul>
+</li>
+<li>gap (str): Abstand zwischen den Bildern (z.B. '1rem', '10px'). Standard: '1rem'.</li>
+</ul>
+<h2>Beispiele:</h2>
+<h3>Galerie mit Standard-Seitenverhältnis</h3>
+<p><code>[[gallery]]</code></p>
+<div class="gallery-layout-grid gallery-ratio-4-3" style="--gallery-cols: 3; --gallery-gap: 1rem;">
+<a href="#lightbox-735ede3a-0" class="gallery-thumb">  <img src="assets/bild-1-compressed.jpg" alt="Bild 1" loading="lazy"></a>
+<a href="#lightbox-735ede3a-1" class="gallery-thumb">  <img src="assets/bild-2-compressed.jpg" alt="Bild 2" loading="lazy"></a>
+<a href="#lightbox-735ede3a-2" class="gallery-thumb">  <img src="assets/bild-3-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-3" class="gallery-thumb">  <img src="assets/bild-4-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-4" class="gallery-thumb">  <img src="assets/bild-5-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-5" class="gallery-thumb">  <img src="assets/bild-6-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-6" class="gallery-thumb">  <img src="assets/bild-7-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-7" class="gallery-thumb">  <img src="assets/bild-8-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-8" class="gallery-thumb">  <img src="assets/bild-9-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-9" class="gallery-thumb">  <img src="assets/bild-10-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-10" class="gallery-thumb">  <img src="assets/bild-11-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-11" class="gallery-thumb">  <img src="assets/bild-12-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-12" class="gallery-thumb">  <img src="assets/bild-13-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-13" class="gallery-thumb">  <img src="assets/bild-14-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-14" class="gallery-thumb">  <img src="assets/bild-15-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-735ede3a-15" class="gallery-thumb">  <img src="assets/bild-16-compressed.jpg" alt="" loading="lazy"></a>
+</div>
+<div class="lightbox-container">
+<div class="lightbox-target" id="lightbox-735ede3a-0">
+    <a href="#lightbox-735ede3a-1" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-1.jpg" alt="Bild 1">
+    <figcaption class="lightbox-caption">Bild 1</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-1">
+    <a href="#lightbox-735ede3a-0" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-2" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-2.jpg" alt="Bild 2">
+    <figcaption class="lightbox-caption">Bild 2</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-2">
+    <a href="#lightbox-735ede3a-1" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-3" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-3.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-3">
+    <a href="#lightbox-735ede3a-2" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-4" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-4.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-4">
+    <a href="#lightbox-735ede3a-3" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-5" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-5.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-5">
+    <a href="#lightbox-735ede3a-4" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-6" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-6.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-6">
+    <a href="#lightbox-735ede3a-5" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-7" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-7.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-7">
+    <a href="#lightbox-735ede3a-6" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-8" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-8.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-8">
+    <a href="#lightbox-735ede3a-7" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-9" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-9.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-9">
+    <a href="#lightbox-735ede3a-8" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-10" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-10.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-10">
+    <a href="#lightbox-735ede3a-9" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-11" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-11.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-11">
+    <a href="#lightbox-735ede3a-10" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-12" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-12.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-12">
+    <a href="#lightbox-735ede3a-11" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-13" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-13.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-13">
+    <a href="#lightbox-735ede3a-12" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-14" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-14.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-14">
+    <a href="#lightbox-735ede3a-13" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-735ede3a-15" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-15.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-735ede3a-15">
+    <a href="#lightbox-735ede3a-14" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-16.jpg" alt="">
+</div>
+</div>
+
+<h3>Zwischentitel</h3>
+<p>Hier kommt noch etwas Text.</p>
+<h3>Galerie mit Quadrat-Seitenverhältnis</h3>
+<p><code>[[gallery ratio="1:1"]]</code></p>
+<div class="gallery-layout-grid gallery-ratio-1-1" style="--gallery-cols: 3; --gallery-gap: 1rem;">
+<a href="#lightbox-c3426c33-0" class="gallery-thumb">  <img src="assets/bild-1-compressed.jpg" alt="Bild 1" loading="lazy"></a>
+<a href="#lightbox-c3426c33-1" class="gallery-thumb">  <img src="assets/bild-2-compressed.jpg" alt="Bild 2" loading="lazy"></a>
+<a href="#lightbox-c3426c33-2" class="gallery-thumb">  <img src="assets/bild-3-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-3" class="gallery-thumb">  <img src="assets/bild-4-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-4" class="gallery-thumb">  <img src="assets/bild-5-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-5" class="gallery-thumb">  <img src="assets/bild-6-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-6" class="gallery-thumb">  <img src="assets/bild-7-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-7" class="gallery-thumb">  <img src="assets/bild-8-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-8" class="gallery-thumb">  <img src="assets/bild-9-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-9" class="gallery-thumb">  <img src="assets/bild-10-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-10" class="gallery-thumb">  <img src="assets/bild-11-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-11" class="gallery-thumb">  <img src="assets/bild-12-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-12" class="gallery-thumb">  <img src="assets/bild-13-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-13" class="gallery-thumb">  <img src="assets/bild-14-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-14" class="gallery-thumb">  <img src="assets/bild-15-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-c3426c33-15" class="gallery-thumb">  <img src="assets/bild-16-compressed.jpg" alt="" loading="lazy"></a>
+</div>
+<div class="lightbox-container">
+<div class="lightbox-target" id="lightbox-c3426c33-0">
+    <a href="#lightbox-c3426c33-1" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-1.jpg" alt="Bild 1">
+    <figcaption class="lightbox-caption">Bild 1</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-1">
+    <a href="#lightbox-c3426c33-0" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-2" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-2.jpg" alt="Bild 2">
+    <figcaption class="lightbox-caption">Bild 2</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-2">
+    <a href="#lightbox-c3426c33-1" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-3" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-3.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-3">
+    <a href="#lightbox-c3426c33-2" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-4" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-4.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-4">
+    <a href="#lightbox-c3426c33-3" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-5" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-5.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-5">
+    <a href="#lightbox-c3426c33-4" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-6" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-6.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-6">
+    <a href="#lightbox-c3426c33-5" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-7" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-7.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-7">
+    <a href="#lightbox-c3426c33-6" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-8" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-8.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-8">
+    <a href="#lightbox-c3426c33-7" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-9" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-9.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-9">
+    <a href="#lightbox-c3426c33-8" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-10" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-10.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-10">
+    <a href="#lightbox-c3426c33-9" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-11" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-11.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-11">
+    <a href="#lightbox-c3426c33-10" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-12" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-12.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-12">
+    <a href="#lightbox-c3426c33-11" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-13" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-13.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-13">
+    <a href="#lightbox-c3426c33-12" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-14" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-14.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-14">
+    <a href="#lightbox-c3426c33-13" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-c3426c33-15" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-15.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-c3426c33-15">
+    <a href="#lightbox-c3426c33-14" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-16.jpg" alt="">
+</div>
+</div>
+
+<h3>Galerie mit Masonry-Layout</h3>
+<p><code>[[gallery layout="masonry"]]</code></p>
+<div class="gallery-layout-masonry" style="--gallery-cols: 3; --gallery-gap: 1rem;">
+<a href="#lightbox-ff50f7cf-0">  <img class="gallery-item" src="assets/bild-1-compressed.jpg" alt="Bild 1" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-1">  <img class="gallery-item" src="assets/bild-2-compressed.jpg" alt="Bild 2" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-2">  <img class="gallery-item" src="assets/bild-3-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-3">  <img class="gallery-item" src="assets/bild-4-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-4">  <img class="gallery-item" src="assets/bild-5-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-5">  <img class="gallery-item" src="assets/bild-6-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-6">  <img class="gallery-item" src="assets/bild-7-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-7">  <img class="gallery-item" src="assets/bild-8-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-8">  <img class="gallery-item" src="assets/bild-9-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-9">  <img class="gallery-item" src="assets/bild-10-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-10">  <img class="gallery-item" src="assets/bild-11-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-11">  <img class="gallery-item" src="assets/bild-12-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-12">  <img class="gallery-item" src="assets/bild-13-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-13">  <img class="gallery-item" src="assets/bild-14-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-14">  <img class="gallery-item" src="assets/bild-15-compressed.jpg" alt="" loading="lazy"></a>
+<a href="#lightbox-ff50f7cf-15">  <img class="gallery-item" src="assets/bild-16-compressed.jpg" alt="" loading="lazy"></a>
+</div>
+<div class="lightbox-container">
+<div class="lightbox-target" id="lightbox-ff50f7cf-0">
+    <a href="#lightbox-ff50f7cf-1" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-1.jpg" alt="Bild 1">
+    <figcaption class="lightbox-caption">Bild 1</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-1">
+    <a href="#lightbox-ff50f7cf-0" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-2" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-2.jpg" alt="Bild 2">
+    <figcaption class="lightbox-caption">Bild 2</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-2">
+    <a href="#lightbox-ff50f7cf-1" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-3" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-3.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-3">
+    <a href="#lightbox-ff50f7cf-2" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-4" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-4.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-4">
+    <a href="#lightbox-ff50f7cf-3" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-5" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-5.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-5">
+    <a href="#lightbox-ff50f7cf-4" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-6" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-6.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-6">
+    <a href="#lightbox-ff50f7cf-5" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-7" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-7.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-7">
+    <a href="#lightbox-ff50f7cf-6" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-8" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-8.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-8">
+    <a href="#lightbox-ff50f7cf-7" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-9" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-9.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-9">
+    <a href="#lightbox-ff50f7cf-8" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-10" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-10.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-10">
+    <a href="#lightbox-ff50f7cf-9" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-11" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-11.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-11">
+    <a href="#lightbox-ff50f7cf-10" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-12" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-12.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-12">
+    <a href="#lightbox-ff50f7cf-11" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-13" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-13.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-13">
+    <a href="#lightbox-ff50f7cf-12" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-14" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-14.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-14">
+    <a href="#lightbox-ff50f7cf-13" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-ff50f7cf-15" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-15.jpg" alt="">
+</div>
+<div class="lightbox-target" id="lightbox-ff50f7cf-15">
+    <a href="#lightbox-ff50f7cf-14" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/bild-16.jpg" alt="">
+</div>
+</div>
+
+<h3>Blumen Galerie (Directory Listing)</h3>
+<p><code>[[gallery path="assets/blumen" layout="masonry" cols="4"]]</code></p>
+<div class="gallery-layout-masonry" style="--gallery-cols: 4; --gallery-gap: 1rem;">
+<a href="#lightbox-06e9566b-0">  <img class="gallery-item" src="assets/blumen/aaron-burden-hj-ngx9zchk-unsplash-compressed.jpg" alt="Aaron burden hj ngx9zchk unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-1">  <img class="gallery-item" src="assets/blumen/alexander-grey-savqflrm4do-unsplash-compressed.jpg" alt="Alexander grey savqflrm4do unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-2">  <img class="gallery-item" src="assets/blumen/andrew-small-efhcuc_fjru-unsplash-compressed.jpg" alt="Andrew small efhcuc fjru unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-3">  <img class="gallery-item" src="assets/blumen/annie-spratt-wbpr_yh0frg-unsplash-compressed.jpg" alt="Annie spratt wbpr yh0frg unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-4">  <img class="gallery-item" src="assets/blumen/annie-spratt-z-888xnjtmi-unsplash-compressed.jpg" alt="Annie spratt z 888xnjtmi unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-5">  <img class="gallery-item" src="assets/blumen/anthony-delanoix-1le3-dubr_i-unsplash-compressed.jpg" alt="Anthony delanoix 1le3 dubr i unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-6">  <img class="gallery-item" src="assets/blumen/boris-smokrovic-xwxrrzuqoxo-unsplash-compressed.jpg" alt="Boris smokrovic xwxrrzuqoxo unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-7">  <img class="gallery-item" src="assets/blumen/brigitte-tohm-buufetmnnjc-unsplash-compressed.jpg" alt="Brigitte tohm buufetmnnjc unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-8">  <img class="gallery-item" src="assets/blumen/eniko-kis-citwn1d61wm-unsplash-compressed.jpg" alt="Eniko kis citwn1d61wm unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-9">  <img class="gallery-item" src="assets/blumen/evie-s-ioq6qeibtbu-unsplash-compressed.jpg" alt="Evie s ioq6qeibtbu unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-10">  <img class="gallery-item" src="assets/blumen/flavia-bon-sw-tmgnlu3o-unsplash-compressed.jpg" alt="Flavia bon sw tmgnlu3o unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-11">  <img class="gallery-item" src="assets/blumen/isabella-fischer-nbconmop18g-unsplash-compressed.jpg" alt="Isabella fischer nbconmop18g unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-12">  <img class="gallery-item" src="assets/blumen/james-wainscoat-3gcvyw8zhqy-unsplash-compressed.jpg" alt="James wainscoat 3gcvyw8zhqy unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-13">  <img class="gallery-item" src="assets/blumen/jei-lee-bgcpxpozjfa-unsplash-compressed.jpg" alt="Jei lee bgcpxpozjfa unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-14">  <img class="gallery-item" src="assets/blumen/jei-lee-yrxuxvy4sq4-unsplash-compressed.jpg" alt="Jei lee yrxuxvy4sq4 unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-15">  <img class="gallery-item" src="assets/blumen/kiki-siepel-bewxlsn_bku-unsplash-compressed.jpg" alt="Kiki siepel bewxlsn bku unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-16">  <img class="gallery-item" src="assets/blumen/lee-dk7msqoz9fi-unsplash-compressed.jpg" alt="Lee dk7msqoz9fi unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-17">  <img class="gallery-item" src="assets/blumen/michael-joiner-2px8l5zplwc-unsplash-compressed.jpg" alt="Michael joiner 2px8l5zplwc unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-18">  <img class="gallery-item" src="assets/blumen/mio-ito-b_sltmxpkna-unsplash-compressed.jpg" alt="Mio ito b sltmxpkna unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-19">  <img class="gallery-item" src="assets/blumen/mister-starman-zzpd01gzjri-unsplash-compressed.jpg" alt="Mister starman zzpd01gzjri unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-20">  <img class="gallery-item" src="assets/blumen/pawel-czerwinski-rxdnnhmprge-unsplash-compressed.jpg" alt="Pawel czerwinski rxdnnhmprge unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-21">  <img class="gallery-item" src="assets/blumen/pawel-czerwinski-xny4lcekvzw-unsplash-compressed.jpg" alt="Pawel czerwinski xny4lcekvzw unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-22">  <img class="gallery-item" src="assets/blumen/pawel-czerwinski-y-aqq7xagni-unsplash-compressed.jpg" alt="Pawel czerwinski y aqq7xagni unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-23">  <img class="gallery-item" src="assets/blumen/quino-al-blmj6ryy3c0-unsplash-compressed.jpg" alt="Quino al blmj6ryy3c0 unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-24">  <img class="gallery-item" src="assets/blumen/roonz-nl-atgfrqpfffi-unsplash-compressed.jpg" alt="Roonz nl atgfrqpfffi unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-25">  <img class="gallery-item" src="assets/blumen/ryan-baker-2_ip8tfi8jm-unsplash-compressed.jpg" alt="Ryan baker 2 ip8tfi8jm unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-26">  <img class="gallery-item" src="assets/blumen/shannon-baldwin-z33hpeepdyc-unsplash-compressed.jpg" alt="Shannon baldwin z33hpeepdyc unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-27">  <img class="gallery-item" src="assets/blumen/sora-sagano-f6zzivdsq5k-unsplash-compressed.jpg" alt="Sora sagano f6zzivdsq5k unsplash" loading="lazy"></a>
+<a href="#lightbox-06e9566b-28">  <img class="gallery-item" src="assets/blumen/tj-holowaychuk-igrsa9rl11o-unsplash-compressed.jpg" alt="Tj holowaychuk igrsa9rl11o unsplash" loading="lazy"></a>
+</div>
+<div class="lightbox-container">
+<div class="lightbox-target" id="lightbox-06e9566b-0">
+    <a href="#lightbox-06e9566b-1" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/aaron-burden-hj-ngx9zchk-unsplash.jpg" alt="Aaron burden hj ngx9zchk unsplash">
+    <figcaption class="lightbox-caption">Aaron burden hj ngx9zchk unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-1">
+    <a href="#lightbox-06e9566b-0" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-2" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/alexander-grey-savqflrm4do-unsplash.jpg" alt="Alexander grey savqflrm4do unsplash">
+    <figcaption class="lightbox-caption">Alexander grey savqflrm4do unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-2">
+    <a href="#lightbox-06e9566b-1" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-3" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/andrew-small-efhcuc_fjru-unsplash.jpg" alt="Andrew small efhcuc fjru unsplash">
+    <figcaption class="lightbox-caption">Andrew small efhcuc fjru unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-3">
+    <a href="#lightbox-06e9566b-2" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-4" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/annie-spratt-wbpr_yh0frg-unsplash.jpg" alt="Annie spratt wbpr yh0frg unsplash">
+    <figcaption class="lightbox-caption">Annie spratt wbpr yh0frg unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-4">
+    <a href="#lightbox-06e9566b-3" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-5" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/annie-spratt-z-888xnjtmi-unsplash.jpg" alt="Annie spratt z 888xnjtmi unsplash">
+    <figcaption class="lightbox-caption">Annie spratt z 888xnjtmi unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-5">
+    <a href="#lightbox-06e9566b-4" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-6" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/anthony-delanoix-1le3-dubr_i-unsplash.jpg" alt="Anthony delanoix 1le3 dubr i unsplash">
+    <figcaption class="lightbox-caption">Anthony delanoix 1le3 dubr i unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-6">
+    <a href="#lightbox-06e9566b-5" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-7" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/boris-smokrovic-xwxrrzuqoxo-unsplash.jpg" alt="Boris smokrovic xwxrrzuqoxo unsplash">
+    <figcaption class="lightbox-caption">Boris smokrovic xwxrrzuqoxo unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-7">
+    <a href="#lightbox-06e9566b-6" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-8" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/brigitte-tohm-buufetmnnjc-unsplash.jpg" alt="Brigitte tohm buufetmnnjc unsplash">
+    <figcaption class="lightbox-caption">Brigitte tohm buufetmnnjc unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-8">
+    <a href="#lightbox-06e9566b-7" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-9" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/eniko-kis-citwn1d61wm-unsplash.jpg" alt="Eniko kis citwn1d61wm unsplash">
+    <figcaption class="lightbox-caption">Eniko kis citwn1d61wm unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-9">
+    <a href="#lightbox-06e9566b-8" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-10" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/evie-s-ioq6qeibtbu-unsplash.jpg" alt="Evie s ioq6qeibtbu unsplash">
+    <figcaption class="lightbox-caption">Evie s ioq6qeibtbu unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-10">
+    <a href="#lightbox-06e9566b-9" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-11" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/flavia-bon-sw-tmgnlu3o-unsplash.jpg" alt="Flavia bon sw tmgnlu3o unsplash">
+    <figcaption class="lightbox-caption">Flavia bon sw tmgnlu3o unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-11">
+    <a href="#lightbox-06e9566b-10" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-12" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/isabella-fischer-nbconmop18g-unsplash.jpg" alt="Isabella fischer nbconmop18g unsplash">
+    <figcaption class="lightbox-caption">Isabella fischer nbconmop18g unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-12">
+    <a href="#lightbox-06e9566b-11" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-13" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/james-wainscoat-3gcvyw8zhqy-unsplash.jpg" alt="James wainscoat 3gcvyw8zhqy unsplash">
+    <figcaption class="lightbox-caption">James wainscoat 3gcvyw8zhqy unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-13">
+    <a href="#lightbox-06e9566b-12" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-14" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/jei-lee-bgcpxpozjfa-unsplash.jpg" alt="Jei lee bgcpxpozjfa unsplash">
+    <figcaption class="lightbox-caption">Jei lee bgcpxpozjfa unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-14">
+    <a href="#lightbox-06e9566b-13" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-15" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/jei-lee-yrxuxvy4sq4-unsplash.jpg" alt="Jei lee yrxuxvy4sq4 unsplash">
+    <figcaption class="lightbox-caption">Jei lee yrxuxvy4sq4 unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-15">
+    <a href="#lightbox-06e9566b-14" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-16" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/kiki-siepel-bewxlsn_bku-unsplash.jpg" alt="Kiki siepel bewxlsn bku unsplash">
+    <figcaption class="lightbox-caption">Kiki siepel bewxlsn bku unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-16">
+    <a href="#lightbox-06e9566b-15" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-17" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/lee-dk7msqoz9fi-unsplash.jpg" alt="Lee dk7msqoz9fi unsplash">
+    <figcaption class="lightbox-caption">Lee dk7msqoz9fi unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-17">
+    <a href="#lightbox-06e9566b-16" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-18" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/michael-joiner-2px8l5zplwc-unsplash.jpg" alt="Michael joiner 2px8l5zplwc unsplash">
+    <figcaption class="lightbox-caption">Michael joiner 2px8l5zplwc unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-18">
+    <a href="#lightbox-06e9566b-17" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-19" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/mio-ito-b_sltmxpkna-unsplash.jpg" alt="Mio ito b sltmxpkna unsplash">
+    <figcaption class="lightbox-caption">Mio ito b sltmxpkna unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-19">
+    <a href="#lightbox-06e9566b-18" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-20" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/mister-starman-zzpd01gzjri-unsplash.jpg" alt="Mister starman zzpd01gzjri unsplash">
+    <figcaption class="lightbox-caption">Mister starman zzpd01gzjri unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-20">
+    <a href="#lightbox-06e9566b-19" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-21" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/pawel-czerwinski-rxdnnhmprge-unsplash.jpg" alt="Pawel czerwinski rxdnnhmprge unsplash">
+    <figcaption class="lightbox-caption">Pawel czerwinski rxdnnhmprge unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-21">
+    <a href="#lightbox-06e9566b-20" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-22" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/pawel-czerwinski-xny4lcekvzw-unsplash.jpg" alt="Pawel czerwinski xny4lcekvzw unsplash">
+    <figcaption class="lightbox-caption">Pawel czerwinski xny4lcekvzw unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-22">
+    <a href="#lightbox-06e9566b-21" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-23" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/pawel-czerwinski-y-aqq7xagni-unsplash.jpg" alt="Pawel czerwinski y aqq7xagni unsplash">
+    <figcaption class="lightbox-caption">Pawel czerwinski y aqq7xagni unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-23">
+    <a href="#lightbox-06e9566b-22" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-24" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/quino-al-blmj6ryy3c0-unsplash.jpg" alt="Quino al blmj6ryy3c0 unsplash">
+    <figcaption class="lightbox-caption">Quino al blmj6ryy3c0 unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-24">
+    <a href="#lightbox-06e9566b-23" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-25" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/roonz-nl-atgfrqpfffi-unsplash.jpg" alt="Roonz nl atgfrqpfffi unsplash">
+    <figcaption class="lightbox-caption">Roonz nl atgfrqpfffi unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-25">
+    <a href="#lightbox-06e9566b-24" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-26" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/ryan-baker-2_ip8tfi8jm-unsplash.jpg" alt="Ryan baker 2 ip8tfi8jm unsplash">
+    <figcaption class="lightbox-caption">Ryan baker 2 ip8tfi8jm unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-26">
+    <a href="#lightbox-06e9566b-25" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-27" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/shannon-baldwin-z33hpeepdyc-unsplash.jpg" alt="Shannon baldwin z33hpeepdyc unsplash">
+    <figcaption class="lightbox-caption">Shannon baldwin z33hpeepdyc unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-27">
+    <a href="#lightbox-06e9566b-26" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#lightbox-06e9566b-28" class="lightbox-nav next" aria-label="Nächstes Bild">&#10095;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/sora-sagano-f6zzivdsq5k-unsplash.jpg" alt="Sora sagano f6zzivdsq5k unsplash">
+    <figcaption class="lightbox-caption">Sora sagano f6zzivdsq5k unsplash</figcaption>
+</div>
+<div class="lightbox-target" id="lightbox-06e9566b-28">
+    <a href="#lightbox-06e9566b-27" class="lightbox-nav prev" aria-label="Voriges Bild">&#10094;</a>
+    <a href="#_" class="lightbox-close" aria-label="Schliessen">&times;</a>
+    <img class="lightbox-image" src="assets/blumen/tj-holowaychuk-igrsa9rl11o-unsplash.jpg" alt="Tj holowaychuk igrsa9rl11o unsplash">
+    <figcaption class="lightbox-caption">Tj holowaychuk igrsa9rl11o unsplash</figcaption>
+</div>
+</div>
+
+        </main>
+    </div>
+
+    <footer>
+    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    
+    <span class="footer-links">
+        
+        <a href="../datenschutz.html">Datenschutz</a> |
+        
+        <a href="../impressum.htm">Impressum</a>
+        
+    </span>
+    
+</footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

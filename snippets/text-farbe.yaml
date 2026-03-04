@@ -1,0 +1,4 @@
+category: Formatierung
+code: '[[color text="red"]]Roter Text[[/color]]'
+name: Text Farbe
+order: 10

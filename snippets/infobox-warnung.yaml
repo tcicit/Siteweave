@@ -1,0 +1,10 @@
+category: Formatierung
+code: '[[infobox type="warning" title="Achtung"]]
+
+  Wichtiger Hinweis!
+
+  [[/infobox]]
+
+  '
+name: Infobox (Warnung)
+order: 9

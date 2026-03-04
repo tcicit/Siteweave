@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor & Markdown | Benutzer Dokumentation</title>
+
+    
+    
+    <meta name="description" content="Projekt Dokumentation">
+    
+    
+    <meta name="keywords" content="Doku, Projekt, Static Generator">
+    
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/breadcrumbs.css">
+    
+    <link rel="stylesheet" href="../css/plugins/contact_form.css">
+    
+    <link rel="stylesheet" href="../css/plugins/details.css">
+    
+    <link rel="stylesheet" href="../css/plugins/gallery.css">
+    
+    <link rel="stylesheet" href="../css/plugins/grid-box.css">
+    
+    <link rel="stylesheet" href="../css/plugins/image.css">
+    
+    <link rel="stylesheet" href="../css/plugins/infobox.css">
+    
+    <link rel="stylesheet" href="../css/plugins/latest_posts.css">
+    
+    <link rel="stylesheet" href="../css/plugins/list_dir.css">
+    
+    <link rel="stylesheet" href="../css/plugins/search.css">
+    
+    <link rel="stylesheet" href="../css/plugins/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/tags.css">
+    
+    <link rel="stylesheet" href="../css/plugins/toc.css">
+    
+</head>
+<body>
+    <header>
+    
+    <a href="../index.html" class="logo-link">
+        <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
+    </a>
+    
+    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <nav>
+        <ul>
+        
+        <li>
+            <a href="../about.html">About</a>
+            
+        </li>
+        
+        </ul>
+    </nav>
+</header>
+
+    <div class="doc-container">
+        <aside class="sidebar">
+            <h3>Inhalt</h3>
+            <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
+            <ul class="nav-menu">
+<li class="dropdown">
+  <button class="dropbtn">01 Introduction</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../01-introduction/installation.html">Installation & Requirements</a></li>
+<li><a href="../01-introduction/first-steps.html">First Steps</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown active-parent">
+  <button class="dropbtn">02 User Manual</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../02-user-manual/interface.html">Interface</a></li>
+<li><a href="../02-user-manual/editor.html" class="active">Editor & Markdown</a></li>
+<li><a href="../02-user-manual/media.html">Medien & Bilder</a></li>
+<li><a href="../02-user-manual/frontmatter.html">Frontmatter</a></li>
+<li><a href="../02-user-manual/project-tools.html">Project-tools</a></li>
+<li><a href="../02-user-manual/site-renderer.html">Site Renderer</a></li>
+<li><a href="../02-user-manual/deployment.html">Deployment</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">03 Configuration</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
+<li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
+<li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
+<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">04 Development</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
+<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
+<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/compile.html">Compile</a></li>
+<li><a href="../04-development/app-context.html">App Context</a></li>
+<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">06 Plugins</button>
+  <div class="dropdown-content">
+<ul>
+<li class="dropdown">
+  <button class="dropbtn">Assets</button>
+  <div class="dropdown-content">
+<ul>
+</ul>
+  </div>
+</li>
+<li><a href="../06-plugins/obfuscate_test.html">Adresse Verschleierung (obfuscate)</a></li>
+<li><a href="../06-plugins/date.html">Aktuelles Datum</a></li>
+<li><a href="../06-plugins/box.html">Box Plugin Test</a></li>
+<li><a href="../06-plugins/breadcrumps.html">Breadcrumbs Plugin Test</a></li>
+<li><a href="../06-plugins/csv-test.html">CSV Import Test</a></li>
+<li><a href="../06-plugins/color.html">Color-Plugin</a></li>
+<li><a href="../06-plugins/details.html">Details Plugins</a></li>
+<li><a href="../06-plugins/gallerie.html">Galerie Test</a></li>
+<li><a href="../06-plugins/grid-box.html">Grid und Box</a></li>
+<li><a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a></li>
+<li><a href="../06-plugins/image.html">Image Plugin Test</a></li>
+<li><a href="../06-plugins/include.html">Include Plugin Test</a></li>
+<li><a href="../06-plugins/infoboxen.html">Infobox Test</a></li>
+<li><a href="../06-plugins/latest_post.html">Latest Post Test</a></li>
+<li><a href="../06-plugins/list_dir.html">List Dir Plugin</a></li>
+<li><a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a></li>
+<li><a href="../06-plugins/tabellen.html">Tabellen Test</a></li>
+<li><a href="../06-plugins/tags.html">Tags Plugin</a></li>
+<li><a href="../06-plugins/toc-test.html">Toc Test</a></li>
+</ul>
+  </div>
+</li>
+</ul>
+        </aside>
+
+        <main class="content">
+            
+    <h1>Editor & Markdown</h1>
+    
+    
+    <p style="color: #888; font-size: 0.9em;">Zuletzt aktualisiert: 2025-01-04</p>
+    
+
+    <nav class="breadcrumbs">
+    <ol>
+
+            <li>
+
+                    <a href="../index.html">Home</a>
+
+            </li>
+
+            <li>
+
+                    <a href="../02-user-manual/index.html">02 User Manual</a>
+
+            </li>
+
+            <li>
+
+                    <span>Editor & Markdown</span>
+
+            </li>
+
+    </ol>
+</nav>
+
+<p>The Sitewave is designed to make writing content as easy as possible. It uses <strong>Markdown</strong>, an easy-to-learn markup language that is converted to HTML when generating the web page.</p>
+<h2>1. Markdown Basics</h2>
+<p>You don't need to be a programmer to use Markdown. Here are the most important commands. Many of them can also be inserted directly via the <strong>toolbar</strong> at the top of the editor.</p>
+<h3>Text Formatting</h3>
+<ul>
+<li><strong>Bold:</strong> Enclose the text with two asterisks: <code>**Bold text**</code></li>
+<li><em>Italics:</em> Enclose the text with an asterisk: <code>*Italic text*</code></li>
+<li>Code: Enclose code snippets with backticks (grave accents) see the cheat sheet below. </li>
+</ul>
+<h3>Headings</h3>
+<p>Use hash symbols (<code>#</code>) at the beginning of a line to create headings. The number of hash symbols determines the level.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="gh"># Heading 1 (page title - only once per page!)</span>
+<span class="gu">## Heading 2 (main chapter)</span>
+<span class="gu">### Heading 3 (subchapter)</span>
+</code></pre></div>
+
+<h3>Lists</h3>
+<p><strong>Unordered list:</strong>
+Use hyphens <code>-</code> or asterisks <code>*</code>.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code> - Point 1
+ - Point 2
+   - Indented subpoint
+   - Indented subpoint
+</code></pre></div>
+
+<p><strong>Ordered list:</strong>
+Use numbers followed by a period.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="k">1.</span> First step
+<span class="k">2.</span> Second step
+</code></pre></div>
+
+<h3>Links</h3>
+<p>A link consists of the displayed text in square brackets and the URL in parentheses.</p>
+<p><code>Click me</code></p>
+<h3>Tables</h3>
+<p>Tables are created using vertical bars <code>|</code> and hyphens <code>-</code>.</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>| Header 1 | Header 2 |
+| ------ | ------ |
+| Content | Content |
+</code></pre></div>
+
+<h2>2. Using snippets</h2>
+<p>On the right side of the editor, you will find the <strong>“Snippets”</strong> tab. Snippets are reusable text modules that can save you a lot of typing (e.g., for complex tables or recurring layout elements).</p>
+<h3>Inserting snippets</h3>
+<ol>
+<li>Open the <strong>Snippets</strong> tab on the right-hand side (if hidden).</li>
+<li>Find the desired snippet in the list.</li>
+<li>Drag it with the mouse (<strong>drag &amp; drop</strong>) directly to the desired location in your text in the editor.</li>
+</ol>
+<h3>Creating your own snippets</h3>
+<p>You can create your own snippets:</p>
+<ol>
+<li>Click on the <strong>“Open snippet folder”</strong> icon in the toolbar (usually a folder symbol).</li>
+<li>Your operating system's file manager will open in the snippet directory.</li>
+<li>Create a new text file there (e.g., <code>my-signature.txt</code>).</li>
+<li>Write the Markdown code you want to reuse and save the file.</li>
+<li>The new snippet will now appear in the list in the editor.</li>
+</ol>
+<h2>3. Using plugins (shortcodes)</h2>
+<p>In addition to standard Markdown, the editor also supports <strong>plugins</strong> (also called shortcodes) to insert advanced features such as info boxes, galleries, or dynamic content.</p>
+<p>The syntax always uses double square brackets <code>[[...]]</code>.</p>
+<h3>Simple plugins</h3>
+<p>A simple plugin looks like this:</p>
+<p><code>[[date]]</code> (Inserts the current date, for example)</p>
+<h3>Plugins with parameters</h3>
+<p>Many plugins accept settings (parameters):</p>
+<p><code>[[infobox type="warning" title="Attention"]]</code></p>
+<h3>Plugins with content</h3>
+<p>Some plugins enclose a text area. They have an opening and a closing tag (with <code>/</code>):</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[infobox type=&quot;warning&quot; title=&quot;Warning&quot;]]
+This is the content of the box.
+[[/infobox]]
+</code></pre></div>
+
+<h4>This is an example of the “infobox” plugin</h4>
+<div class="infobox infobox-warning"><div class="infobox-title">Note</div><p>This is the content of the box.</p></div>
+
+<h4>Example of the image plugin</h4>
+<p>Simple image with shadow and frame:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[image src=&quot;assets/bild.jpg&quot; shadow=&quot;true&quot; border=&quot;true&quot;]]
+</code></pre></div>
+
+<p>Image aligned to the right with caption and lightbox:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[image src=&quot;assets/foto.jpg&quot; align=&quot;right&quot; width=&quot;300px&quot; caption=&quot;A beautiful photo&quot; lightbox=&quot;true&quot;]]
+</code></pre></div>
+
+<p>Image with rounded corners and overlay:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[image src=&quot;assets/banner.jpg&quot; radius=&quot;15px&quot; overlay=&quot;rgba(0,0,0,0.3)&quot;]]
+</code></pre></div>
+
+<p>Image with its own CSS class</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[image src=&quot;assets/screenshot.png&quot; class=&quot;my-special-frame shadow-effect&quot;]]
+</code></pre></div>
+
+<p>Image with link to Google (opens in a new tab):</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[image src=&quot;assets/logo.png&quot; href=&quot;https://google.com&quot; target=&quot;_blank&quot;]]
+</code></pre></div>
+
+<p>Image as internal link:</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code>[[image src=&quot;assets/button.png&quot; href=&quot;/contact.html&quot;]]
+</code></pre></div>
+
+<h2>Markdown cheat sheet</h2>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="s s-Atom">##</span> <span class="nv">Headers</span>
+
+<span class="s s-Atom">#</span> <span class="nv">This</span> <span class="o">is</span> <span class="s s-Atom">a</span> <span class="nv">Heading</span> <span class="s s-Atom">h1</span>
+<span class="s s-Atom">##</span> <span class="nv">This</span> <span class="o">is</span> <span class="s s-Atom">a</span> <span class="nv">Heading</span> <span class="s s-Atom">h2</span>
+<span class="s s-Atom">######</span> <span class="nv">This</span> <span class="o">is</span> <span class="s s-Atom">a</span> <span class="nv">Heading</span> <span class="s s-Atom">h6</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Emphasis</span>
+
+<span class="o">*</span><span class="nv">This</span> <span class="s s-Atom">text</span> <span class="s s-Atom">will</span> <span class="s s-Atom">be</span> <span class="s s-Atom">italic</span><span class="o">*</span>  
+<span class="k">_</span><span class="nv">This</span> <span class="s s-Atom">will</span> <span class="s s-Atom">also</span> <span class="s s-Atom">be</span> <span class="s s-Atom">italic_</span>
+
+<span class="s s-Atom">**</span><span class="nv">This</span> <span class="s s-Atom">text</span> <span class="s s-Atom">will</span> <span class="s s-Atom">be</span> <span class="s s-Atom">bold**</span>  
+<span class="k">__</span><span class="nv">This</span> <span class="s s-Atom">will</span> <span class="s s-Atom">also</span> <span class="s s-Atom">be</span> <span class="s s-Atom">bold__</span>
+
+<span class="k">_</span><span class="nv">You</span> <span class="s s-Atom">**can**</span> <span class="s s-Atom">combine</span> <span class="s s-Atom">them_</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Lists</span>
+
+<span class="s s-Atom">###</span> <span class="nv">Unordered</span>
+
+<span class="o">*</span> <span class="nv">Item</span> <span class="mi">1</span>
+<span class="o">*</span> <span class="nv">Item</span> <span class="mi">2</span>
+<span class="o">*</span> <span class="nv">Item</span> <span class="mi">2</span><span class="s s-Atom">a</span>
+<span class="o">*</span> <span class="nv">Item</span> <span class="mi">2</span><span class="s s-Atom">b</span>
+    <span class="o">*</span> <span class="nv">Item</span> <span class="mi">3</span><span class="s s-Atom">a</span>
+    <span class="o">*</span> <span class="nv">Item</span> <span class="mi">3</span><span class="s s-Atom">b</span>
+
+<span class="s s-Atom">###</span> <span class="nv">Ordered</span>
+
+<span class="mf">1.</span> <span class="nv">Item</span> <span class="mi">1</span>
+<span class="mf">2.</span> <span class="nv">Item</span> <span class="mi">2</span>
+<span class="mf">3.</span> <span class="nv">Item</span> <span class="mi">3</span>
+    <span class="mf">1.</span> <span class="nv">Item</span> <span class="mi">3</span><span class="s s-Atom">a</span>
+    <span class="mf">2.</span> <span class="nv">Item</span> <span class="mi">3</span><span class="s s-Atom">b</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Images</span>
+
+<span class="p">![</span><span class="nv">This</span> <span class="o">is</span> <span class="s s-Atom">an</span> <span class="s s-Atom">alt</span> <span class="s s-Atom">text</span><span class="p">.](</span><span class="o">/</span><span class="s s-Atom">image</span><span class="o">/</span><span class="s s-Atom">sample</span><span class="p">.</span><span class="s s-Atom">webp</span> <span class="s s-Atom">“</span><span class="nv">This</span> <span class="o">is</span> <span class="s s-Atom">a</span> <span class="s s-Atom">sample</span> <span class="s s-Atom">image</span><span class="p">.</span><span class="s s-Atom">”</span><span class="p">)</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Links</span>
+
+<span class="nv">You</span> <span class="s s-Atom">may</span> <span class="s s-Atom">be</span> <span class="s s-Atom">using</span> <span class="p">[</span><span class="nv">Markdown</span> <span class="nv">Live</span> <span class="nv">Preview</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">markdownlivepreview</span><span class="p">.</span><span class="s s-Atom">com/</span><span class="p">).</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Blockquotes</span>
+
+<span class="o">&gt;</span> <span class="nv">Markdown</span> <span class="o">is</span> <span class="s s-Atom">a</span> <span class="s s-Atom">lightweight</span> <span class="s s-Atom">markup</span> <span class="s s-Atom">language</span> <span class="s s-Atom">with</span> <span class="s s-Atom">plain</span><span class="o">-</span><span class="s s-Atom">text</span><span class="o">-</span><span class="s s-Atom">formatting</span> <span class="s s-Atom">syntax</span><span class="p">,</span> <span class="s s-Atom">created</span> <span class="s s-Atom">in</span> <span class="mi">2004</span> <span class="s s-Atom">by</span> <span class="nv">John</span> <span class="nv">Gruber</span> <span class="s s-Atom">with</span> <span class="nv">Aaron</span> <span class="nv">Swartz</span><span class="p">.</span>
+<span class="o">&gt;</span>
+<span class="s s-Atom">&gt;&gt;</span> <span class="nv">Markdown</span> <span class="o">is</span> <span class="s s-Atom">often</span> <span class="s s-Atom">used</span> <span class="s s-Atom">to</span> <span class="s s-Atom">format</span> <span class="s s-Atom">readme</span> <span class="s s-Atom">files</span><span class="p">,</span> <span class="s s-Atom">for</span> <span class="s s-Atom">writing</span> <span class="s s-Atom">messages</span> <span class="s s-Atom">in</span> <span class="s s-Atom">online</span> <span class="s s-Atom">discussion</span> <span class="s s-Atom">forums</span><span class="p">,</span> <span class="s s-Atom">and</span> <span class="s s-Atom">to</span> <span class="s s-Atom">create</span> <span class="s s-Atom">rich</span> <span class="s s-Atom">text</span> <span class="s s-Atom">using</span> <span class="s s-Atom">a</span> <span class="s s-Atom">plain</span> <span class="s s-Atom">text</span> <span class="s s-Atom">editor</span><span class="p">.</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Tables</span>
+
+<span class="p">|</span> <span class="nv">Left</span> <span class="s s-Atom">columns</span>  <span class="p">|</span> <span class="nv">Right</span> <span class="s s-Atom">columns</span> <span class="p">|</span>
+<span class="p">|</span> <span class="s s-Atom">-------------</span> <span class="p">|</span><span class="o">:-</span><span class="s s-Atom">-----------</span> <span class="s s-Atom">-:</span><span class="p">|</span>
+<span class="p">|</span> <span class="s s-Atom">left</span> <span class="s s-Atom">foo</span>      <span class="p">|</span> <span class="s s-Atom">right</span> <span class="s s-Atom">foo</span>     <span class="p">|</span>
+<span class="p">|</span> <span class="s s-Atom">left</span> <span class="s s-Atom">bar</span>      <span class="p">|</span> <span class="s s-Atom">right</span> <span class="s s-Atom">bar</span>     <span class="p">|</span>
+<span class="p">|</span> <span class="s s-Atom">left</span> <span class="s s-Atom">baz</span>      <span class="p">|</span> <span class="s s-Atom">right</span> <span class="s s-Atom">baz</span>     <span class="p">|</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Blocks</span> <span class="s s-Atom">of</span> <span class="s s-Atom">code</span>
+
+ <span class="err">```</span>
+ <span class="s s-Atom">let</span> <span class="s s-Atom">message</span> <span class="o">=</span> <span class="s s-Atom">‘</span><span class="nv">Hello</span> <span class="s s-Atom">world’</span><span class="p">;</span>
+ <span class="nf">alert</span><span class="p">(</span><span class="s s-Atom">message</span><span class="p">);</span>
+ <span class="err">```</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Inline</span> <span class="s s-Atom">code</span>
+
+<span class="err">`</span><span class="nv">This</span> <span class="s s-Atom">web</span> <span class="s s-Atom">site</span> <span class="o">is</span> <span class="s s-Atom">using</span> <span class="err">`</span><span class="s s-Atom">markedjs</span><span class="o">/</span><span class="s s-Atom">marked</span><span class="err">`</span><span class="p">.</span>
+</code></pre></div>
+
+        </main>
+    </div>
+
+    <footer>
+    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    
+    <span class="footer-links">
+        
+        <a href="../datenschutz.html">Datenschutz</a> |
+        
+        <a href="../impressum.htm">Impressum</a>
+        
+    </span>
+    
+</footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

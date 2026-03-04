@@ -1,0 +1,18 @@
+markdown
+Jinja2
+python-frontmatter
+Pillow
+Pygments
+PyQt6
+PyQt6-WebEngine
+weasyprint
+Babel
+requests
+pymarkdownlnt
+
+# Hinweis: Unter Ubuntu/Debian müssen zusätzlich folgende Pakete installiert werden:
+# sudo apt install libpangocairo-1.0-0
+# sudo apt install libcairo2
+# sudo apt install libgdk-pixbuf2.0-0
+# sudo apt install libffi-dev   
+# sudo apt install libxcb-cursor0

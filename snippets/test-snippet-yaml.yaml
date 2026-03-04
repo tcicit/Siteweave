@@ -1,0 +1,4 @@
+name: Test Snippet Yaml
+code: "Dies ist ein Test \n\nMit mehreren Zeilen "
+category: Allgemein
+order: 5

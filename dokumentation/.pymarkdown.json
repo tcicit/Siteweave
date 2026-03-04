@@ -1,0 +1,21 @@
+{
+    "plugins": {
+        "line-length": {
+            "enabled": false
+        },
+        "no-inline-html": {
+            "enabled": false
+        },
+        "no-duplicate-header": {
+            "enabled": false
+        },
+        "first-line-h1": {
+            "enabled": false
+        },
+        "no-trailing-punctuation": {
+            "enabled": false
+        }
+    }
+}
+
+

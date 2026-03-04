@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Post Test | Benutzer Dokumentation</title>
+
+    
+    
+    <meta name="description" content="Projekt Dokumentation">
+    
+    
+    <meta name="keywords" content="Doku, Projekt, Static Generator">
+    
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/breadcrumbs.css">
+    
+    <link rel="stylesheet" href="../css/plugins/contact_form.css">
+    
+    <link rel="stylesheet" href="../css/plugins/details.css">
+    
+    <link rel="stylesheet" href="../css/plugins/gallery.css">
+    
+    <link rel="stylesheet" href="../css/plugins/grid-box.css">
+    
+    <link rel="stylesheet" href="../css/plugins/image.css">
+    
+    <link rel="stylesheet" href="../css/plugins/infobox.css">
+    
+    <link rel="stylesheet" href="../css/plugins/latest_posts.css">
+    
+    <link rel="stylesheet" href="../css/plugins/list_dir.css">
+    
+    <link rel="stylesheet" href="../css/plugins/search.css">
+    
+    <link rel="stylesheet" href="../css/plugins/style.css">
+    
+    <link rel="stylesheet" href="../css/plugins/tags.css">
+    
+    <link rel="stylesheet" href="../css/plugins/toc.css">
+    
+</head>
+<body>
+    <header>
+    
+    <a href="../index.html" class="logo-link">
+        <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
+    </a>
+    
+    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <nav>
+        <ul>
+        
+        <li>
+            <a href="../about.html">About</a>
+            
+        </li>
+        
+        </ul>
+    </nav>
+</header>
+
+    <div class="doc-container">
+        <aside class="sidebar">
+            <h3>Inhalt</h3>
+            <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
+            <ul class="nav-menu">
+<li class="dropdown">
+  <button class="dropbtn">01 Introduction</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../01-introduction/installation.html">Installation & Requirements</a></li>
+<li><a href="../01-introduction/first-steps.html">First Steps</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">02 User Manual</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../02-user-manual/interface.html">Interface</a></li>
+<li><a href="../02-user-manual/editor.html">Editor & Markdown</a></li>
+<li><a href="../02-user-manual/media.html">Medien & Bilder</a></li>
+<li><a href="../02-user-manual/frontmatter.html">Frontmatter</a></li>
+<li><a href="../02-user-manual/project-tools.html">Project-tools</a></li>
+<li><a href="../02-user-manual/site-renderer.html">Site Renderer</a></li>
+<li><a href="../02-user-manual/deployment.html">Deployment</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">03 Configuration</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
+<li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
+<li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
+<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">04 Development</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
+<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
+<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/compile.html">Compile</a></li>
+<li><a href="../04-development/app-context.html">App Context</a></li>
+<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown active-parent">
+  <button class="dropbtn">06 Plugins</button>
+  <div class="dropdown-content">
+<ul>
+<li class="dropdown">
+  <button class="dropbtn">Assets</button>
+  <div class="dropdown-content">
+<ul>
+</ul>
+  </div>
+</li>
+<li><a href="../06-plugins/obfuscate_test.html">Adresse Verschleierung (obfuscate)</a></li>
+<li><a href="../06-plugins/date.html">Aktuelles Datum</a></li>
+<li><a href="../06-plugins/box.html">Box Plugin Test</a></li>
+<li><a href="../06-plugins/breadcrumps.html">Breadcrumbs Plugin Test</a></li>
+<li><a href="../06-plugins/csv-test.html">CSV Import Test</a></li>
+<li><a href="../06-plugins/color.html">Color-Plugin</a></li>
+<li><a href="../06-plugins/details.html">Details Plugins</a></li>
+<li><a href="../06-plugins/gallerie.html">Galerie Test</a></li>
+<li><a href="../06-plugins/grid-box.html">Grid und Box</a></li>
+<li><a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a></li>
+<li><a href="../06-plugins/image.html">Image Plugin Test</a></li>
+<li><a href="../06-plugins/include.html">Include Plugin Test</a></li>
+<li><a href="../06-plugins/infoboxen.html">Infobox Test</a></li>
+<li><a href="../06-plugins/latest_post.html" class="active">Latest Post Test</a></li>
+<li><a href="../06-plugins/list_dir.html">List Dir Plugin</a></li>
+<li><a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a></li>
+<li><a href="../06-plugins/tabellen.html">Tabellen Test</a></li>
+<li><a href="../06-plugins/tags.html">Tags Plugin</a></li>
+<li><a href="../06-plugins/toc-test.html">Toc Test</a></li>
+</ul>
+  </div>
+</li>
+</ul>
+        </aside>
+
+        <main class="content">
+            
+    <nav class="breadcrumbs">
+    <ol>
+
+            <li>
+
+                    <a href="../index.html">Home</a>
+
+            </li>
+
+            <li>
+
+                    <a href="../06-plugins/index.html">06 Plugins</a>
+
+            </li>
+
+            <li>
+
+                    <span>Latest Post Test</span>
+
+            </li>
+
+    </ol>
+</nav>
+
+<h2>Beschreibung</h2>
+<p>Generiert eine Liste der letzten Beiträge, gefiltert und sortiert.
+Verwendung:</p>
+<p><code>[[latest_posts count="5" sort="desc" tags="tag1,tag2" tag_mode="all" show_excerpt="true" excerpt_length="30" show_image="true"]]</code></p>
+<h3>Parameter:</h3>
+<ul>
+<li>count (int): Anzahl der anzuzeigenden Beiträge. Standard: 5.</li>
+<li>sort (str): 'asc' für aufsteigend, 'desc' für absteigend (Standard).</li>
+<li>tags (str): Kommagetrennte Liste von Tags zum Filtern der Beiträge.</li>
+<li>tag_mode (str): 'all' (Standard) für Beiträge mit allen Tags, 'any' für Beiträge mit mindestens einem Tag.</li>
+<li>show_excerpt (str): 'true' oder 'false' (Standard). Ob ein Auszug angezeigt werden soll.</li>
+<li>excerpt_length (int): Anzahl der Wörter im Auszug. Standard: 30.</li>
+<li>show_image (str): 'true' oder 'false' (Standard). Ob das Vorschaubild angezeigt werden soll. Der Kontext muss eine Liste <code>all_pages</code> enthalten, wobei jede Seite ein Dictionary mit mindestens den folgenden Schlüsseln ist:</li>
+<li>title: Titel der Seite</li>
+<li>path: Pfad zur Seite</li>
+<li>metadata: Dictionary mit Metadaten, einschließlich 'date' (ISO-Format) und 'tags' (Liste von Tags)</li>
+<li>content: Der Markdown-Inhalt der Seite</li>
+<li>featured_image: (optional) Pfad zum Vorschaubild der Seite</li>
+</ul>
+<h3>Rückgabe:</h3>
+<p>HTML-Liste der letzten Beiträge entsprechend den angegebenen Kriterien.</p>
+<h2>Beispiele für den Einsatz vom Latest Post Plugins</h2>
+<ul>
+<li>Beispiel (AND-Modus): <code>tags="Wandern, Test"</code> - Muss BEIDE Tags haben (tag_mode="all" (Standard): Eine Seite muss alle angegebenen Tags haben.)</li>
+</ul>
+<p>Keine Beiträge gefunden, die den Kriterien entsprechen.</p>
+
+<ul>
+<li>Beispiel (OR-Modus): <code>tags="Wandern, Natur" tag_mode="any"</code> - tag_mode="any": Eine Seite muss nur einen beliebigen der angegebenen Tags haben.</li>
+</ul>
+<p>Keine Beiträge gefunden, die den Kriterien entsprechen.</p>
+
+<ul>
+<li>Beispiel: <code>tags="Wandern"</code></li>
+</ul>
+<p>Keine Beiträge gefunden, die den Kriterien entsprechen.</p>
+
+<ul>
+<li>Beispiel: <code>latest_posts count="5" sort="desc"</code></li>
+</ul>
+<ul class="latest-posts-list">
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../04-development/contact-form.html">Embed contact form</a>
+<span class="post-date">22.02.2026</span>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../03-configuration/themes.html">Themes & Layouts</a>
+<span class="post-date">18.01.2026</span>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../03-configuration/application-settings.html">App Settings</a>
+<span class="post-date">17.01.2026</span>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../02-user-manual/site-renderer.html">Site Renderer</a>
+<span class="post-date">16.01.2026</span>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../02-user-manual/project-tools.html">Project-tools</a>
+<span class="post-date">16.01.2026</span>
+</div>
+</div>
+</li>
+</ul>
+
+<ul>
+<li>Beispiel: <code>latest_posts count="5" sort="asc"</code></li>
+</ul>
+<ul class="latest-posts-list">
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a>
+<span class="post-date">01.01.2000</span>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/infoboxen.html">Infobox Test</a>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/details.html">Details Plugins</a>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../01-introduction/first-steps.html">First Steps</a>
+<span class="post-date">01.01.2025</span>
+</div>
+</div>
+</li>
+</ul>
+
+<ul>
+<li>Beispiel: <code>latest_posts count="5"  show_excerpt="true" excerpt_length="30"</code></li>
+</ul>
+<ul class="latest-posts-list">
+<li class="with-excerpt">
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a>
+<span class="post-date">01.01.2000</span>
+</div>
+<p class="post-excerpt">Beschreibung Erstellt einen Code-Block mit Syntax-Highlighting. Es kann die Standart Markdown Syntax verwendet werden. Syntax: <div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</code></pre></div>
+ Argumente: - lang: Die Programmiersprache (z.B. python, javascript, html). Wenn weggelassen, wird versucht,...</p>
+</div>
+</li>
+<li class="with-excerpt">
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/infoboxen.html">Infobox Test</a>
+</div>
+<p class="post-excerpt">Beschreibung Verarbeitet das <div class="infobox infobox-info"></div>-Plugin. Syntax: <div class="infobox infobox-warning"><div class="infobox-title">Optionaler Titel</div><p>Inhalt...</p></div> Typen: info, success, warning, danger Der Inhalt der Infobox wird ebenfalls als Markdown verarbeitet. Beispiele Standard-Infobox Dies ist eine einfache Informationsbox...</p>
+</div>
+</li>
+<li class="with-excerpt">
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/details.html">Details Plugins</a>
+</div>
+<p class="post-excerpt">Beschreibung Dieses Plugin ist ideal für FAQs oder um zusätzliche Informationen zu verstecken, die nicht jeder sofort sehen muss. Erstellt einen ausklappbaren Inhaltsblock (). Syntax: <details><summary>Titel für die Zusammenfassung</summary><p>Inhalt...</p></details>...</p>
+</div>
+</li>
+<li class="with-excerpt">
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a>
+</div>
+<p class="post-excerpt">Beschreibung Dies ist kein Plugin, sondern ein Beispiel, wie ein Iframe in Markdown definiert werden kann. ``` Größere Karte anzeigen ``` Beispiel Test mit Open Street Map Größere Karte anzeigen</p>
+</div>
+</li>
+<li class="with-excerpt">
+<div class="post-content">
+<div class="post-header">
+<a href="../01-introduction/first-steps.html">First Steps</a>
+<span class="post-date">01.01.2025</span>
+</div>
+<p class="post-excerpt">After installing the editor, we will now guide you through creating your first website project and publishing your first post. 1. Create a New Project When you start the editor...</p>
+</div>
+</li>
+</ul>
+
+<ul>
+<li>Beispiel: <code>latest_posts</code></li>
+</ul>
+<ul class="latest-posts-list">
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/code-highlight.html">Syntax Highlighting Test</a>
+<span class="post-date">01.01.2000</span>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/infoboxen.html">Infobox Test</a>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/details.html">Details Plugins</a>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../06-plugins/i-fram_inmarkdown.html">I-Frame in Markdown</a>
+</div>
+</div>
+</li>
+<li>
+<div class="post-content">
+<div class="post-header">
+<a href="../01-introduction/first-steps.html">First Steps</a>
+<span class="post-date">01.01.2025</span>
+</div>
+</div>
+</li>
+</ul>
+
+        </main>
+    </div>
+
+    <footer>
+    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    
+    <span class="footer-links">
+        
+        <a href="../datenschutz.html">Datenschutz</a> |
+        
+        <a href="../impressum.htm">Impressum</a>
+        
+    </span>
+    
+</footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

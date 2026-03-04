@@ -1,0 +1,11 @@
+<h1>{{ page_title }}</h1>
+
+<p>Die folgenden Seiten sind mit dem Tag "<strong>{{ tag_name }}</strong>" versehen:</p>
+
+<ul>
+{% for page in pages %}
+    <li><a href="{{ relative_prefix }}{{ page.clean_path }}">{{ page.title }}</a></li>
+{% else %}
+    <li>Für diesen Tag wurden keine Seiten gefunden.</li>
+{% endfor %}
+</ul>

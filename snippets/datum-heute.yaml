@@ -1,0 +1,4 @@
+category: Allgemein
+code: '[[date format="%d.%m.%Y"]]'
+name: Datum (Heute)
+order: 6

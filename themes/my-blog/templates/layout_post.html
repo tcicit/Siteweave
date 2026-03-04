@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <article class="blog-post">
+        <header class="post-header">
+            <h1>{{ title }}</h1>
+            <div class="meta">
+                <span>Veröffentlicht am {{ date }}</span>
+                {% if author %} | <span>von {{ author }}</span>{% endif %}
+            </div>
+        </header>
+        
+        <div class="post-content">
+            {{ content }}
+        </div>
+        
+        {% if tags %}
+        <div class="post-tags">
+            Tags: 
+            {% for tag in tags %}
+            <span class="tag">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </article>
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="tag-groups-container">
+    {% for letter, group_tags in tags.items() %}
+    <div class="tag-group-section">
+        <h3 class="tag-group-letter" style="border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 10px;">{{ letter }}</h3>
+        
+        <ul class="tag-list" {% if cols > 1 %}style="display: grid; grid-template-columns: repeat({{ cols }}, 1fr); gap: 10px; list-style: none; padding: 0;"{% else %}style="list-style: none; padding: 0;"{% endif %}>
+            {% for tag in group_tags %}
+            <li style="margin-bottom: 5px;">
+                <a href="{{ relative_path_to_tags }}/{{ tag.slug }}.html" class="tag-link">{{ tag.name }}</a>
+                {% if show_count %}
+                <span class="tag-count" style="font-size: 0.85em; color: #888;">({{ tag.count }})</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .tag-groups-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+</style>

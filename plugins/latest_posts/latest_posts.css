@@ -1,0 +1,96 @@
+/* css/plugins/latest_posts.css */
+
+.latest-posts-list {
+    list-style: none;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-top: 1.5em;
+    background-color: var(--background-color-light);
+    border-radius: 0.5em;
+}
+
+.latest-posts-list li {
+    padding: 1em 0;
+    border-bottom: 1px solid var(--ui-border-color);
+    display: flex;
+    gap: 1.5em;
+}
+
+.latest-posts-list li:last-child {
+    border-bottom: none;
+}
+
+.latest-posts-list .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Der Abstand nach unten wird durch das li-Padding oder den Auszug gesteuert */
+}
+
+.latest-posts-list a {
+    /*text-decoration: none; */
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.1em;
+}
+
+.latest-posts-list a:hover {
+    color: var(--primary-color);
+}
+
+.latest-posts-list .post-date {
+    font-size: 0.9em;
+    color: var(--text-muted-color);
+    margin-left: 1em;
+    white-space: nowrap;
+}
+
+.latest-posts-list .post-excerpt {
+    font-size: 0.95em;
+    color: var(--text-muted-color);
+    margin: 0.75em 0 0 0;
+    padding-left: 1em;
+    border-left: 3px solid var(--ui-border-color);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* --- Layout-Anpassung für Einträge MIT Auszug --- */
+
+/* Wenn ein Auszug vorhanden ist, werden Titel und Datum untereinander dargestellt */
+.latest-posts-list li.with-excerpt .post-header {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.latest-posts-list li.with-excerpt .post-date {
+    margin-left: 0; /* Linken Abstand zurücksetzen */
+    margin-top: 0.3em; /* Etwas Abstand zum Titel */
+    font-size: 0.85em;
+}
+
+/* --- Layout-Anpassung für Einträge MIT Bild --- */
+.latest-posts-list .post-image {
+    flex: 0 0 120px; /* Nicht wachsen, nicht schrumpfen, Basisbreite 120px */
+    line-height: 0; /* Verhindert Lücken unter dem Bild */
+}
+
+.latest-posts-list .post-image a {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.latest-posts-list .post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.latest-posts-list .post-image a:hover img {
+    transform: scale(1.1);
+}
+.latest-posts-list .post-content {
+    flex: 1; /* Nimmt den restlichen Platz ein */
+}
