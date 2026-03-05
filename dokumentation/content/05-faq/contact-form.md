@@ -12,9 +12,8 @@ tags:
 - Dokumentation
 - Entwicklung
 title: Embed contact form
-weight: 110
+weight: 30
 ---
-
 
 Since this project is a generator for static websites, there is no database and no PHP backend code that can process form data directly.
 
@@ -29,6 +28,7 @@ Popular providers are:
 * **Formspree** (very simple, free basic plan)
 * **Netlify Forms** (if you host with Netlify)
 * **Getform**
+* **and odthers ...**
 
 ## Instructions (example with Formspree)
 
@@ -42,7 +42,7 @@ Register at formspree.io and create a new form. You will receive a URL that look
 
 You can easily use HTML code in Markdown files. Copy the following code to the place where you want the form to appear and replace the URL in `action` with your own.
 
-html
+```html
 <form action="https://formspree.io/f/DEINE_FORMSPREE_ID" method="POST" class="contact-form">
   
   <label>
@@ -102,4 +102,3 @@ To make the form look good, you can add some CSS to your `assets/css/style.css` 
 ## Data protection (GDPR)
 
 Since the data is sent to an external service provider (often in the US), you should mention this in your privacy policy. Many providers now also offer GDPR-compliant options or data processing agreements (DPA).
-

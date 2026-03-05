@@ -10,7 +10,7 @@ tags:
 - Dokumentation
 - konfiguration
 title: Worker Scripts & Automatisierung
-weight: 40
+weight: 50
 ---
 
 Worker scripts are Python scripts located in the `workers` directory of your project. They are designed for project-wide tasks that are independent of editing a single file.

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project settings (config.yaml) | Benutzer Dokumentation</title>
+    <title>Project Configuration (config.yaml) | Sitewaeve Dokumentation</title>
 
     
     
@@ -49,7 +49,7 @@
         <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
     </a>
     
-    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <h1><a href="../index.html">Sitewaeve Dokumentation</a></h1>
     <nav>
         <ul>
         
@@ -64,7 +64,7 @@
 
     <div class="doc-container">
         <aside class="sidebar">
-            <h3>Inhalt</h3>
+            <h3>Contents</h3>
             <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
             <ul class="nav-menu">
 <li class="dropdown">
@@ -94,11 +94,10 @@
   <button class="dropbtn">03 Configuration</button>
   <div class="dropdown-content">
 <ul>
-<li><a href="../03-configuration/project-settings.html" class="active">Project settings (config.yaml)</a></li>
 <li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/project-configuration.html" class="active">Project Configuration (config.yaml)</a></li>
 <li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
 <li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
-<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
 </ul>
   </div>
 </li>
@@ -106,12 +105,21 @@
   <button class="dropbtn">04 Development</button>
   <div class="dropdown-content">
 <ul>
-<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
 <li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
 <li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
 <li><a href="../04-development/compile.html">Compile</a></li>
 <li><a href="../04-development/app-context.html">App Context</a></li>
-<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">05 Faq</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../05-faq/faq.html">Häufig gestellte Fragen (FAQ)</a></li>
+<li><a href="../05-faq/search-function-local.html">Problems with the search function (local))</a></li>
+<li><a href="../05-faq/contact-form.html">Embed contact form</a></li>
 </ul>
   </div>
 </li>
@@ -148,11 +156,20 @@
 </ul>
   </div>
 </li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../datenschutz.html">Data protection</a></li>
+<li><a href="../impressum.html">Impressum</a></li>
 </ul>
         </aside>
 
         <main class="content">
             
+    <h1>Project Configuration (config.yaml)</h1>
+    
+    
+    <p style="color: #888; font-size: 0.9em;">Last updated: 2026-01-09</p>
+    
+
     <nav class="breadcrumbs">
     <ol>
 
@@ -170,123 +187,150 @@
 
             <li>
 
-                    <span>Project settings (config.yaml)</span>
+                    <span>Project Configuration (config.yaml)</span>
 
             </li>
 
     </ol>
 </nav>
 
-<p>Sitewave distinguishes between two types of configurations:</p>
-<ol>
-<li><strong>Project settings (<code>config.yaml</code>):</strong> Each project has its own configuration file. It determines how the website is generated (name, folder structure, etc.).</li>
-<li><strong>Application settings (<code>app_config.yaml</code>):</strong> This file is stored in the editor's main directory and controls the behavior of the application itself (language, window size, etc.).</li>
-</ol>
-<h2>1. Project settings (<code>config.yaml</code>)</h2>
-<p>This file is the heart of your website project. You can find it directly in the main directory of your project.</p>
-<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“My Website”</span>
-<span class="nt">site_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“https://beispiel.de”</span>
-<span class="nt">content_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“content”</span>
-<span class="nt">site_output_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“site_output”</span>
-<span class="nt">template_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“templates”</span>
-<span class="nt">assets_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“assets”</span>
-<span class="nt">plugin_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“plugins”</span>
-<span class="nt">css_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“css”</span>
-<span class="nt">js_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“js”</span>
-<span class="nt">backup_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“backup”</span>
-<span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">“.md”</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">“.markdown”</span><span class="p p-Indicator">]</span>
-<span class="nt">log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“INFO”</span>
+<p>The <code>config.yaml</code> file in your project's root directory is the central control center. It defines basic website properties, directory structures, and controls the behavior of the renderer and various project tools.</p>
+<p>Sitewave distinguishes between two types of configurations:
+1.  <strong>Project settings (<code>config.yaml</code>):</strong> Specific to the current project.
+2.  <strong>Application settings (<code>app_config.yaml</code>):</strong> Global editor settings (see separate section).</p>
+<p>You can edit the project settings via the <strong>File &gt; Project Settings</strong> menu item or edit the <code>config.yaml</code> file directly.</p>
+<h2>1. General Settings</h2>
+<p>These parameters define the identity and basic behavior of the website.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>site_name</code></td>
+<td style="text-align: left;">The name of the website. Used in the title (<code>&lt;title&gt;</code>) and header. Accessible via <code>{{ site_name }}</code>.</td>
+<td style="text-align: left;"><code>My Blog</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>site_url</code></td>
+<td style="text-align: left;">The final URL at which your website will be accessible. Important for creating the <code>sitemap.xml</code> and for absolute links.</td>
+<td style="text-align: left;"><code>https://example.com</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>site_logo</code></td>
+<td style="text-align: left;">Path to a logo file (relative to the project folder).</td>
+<td style="text-align: left;"><code>assets/logo.png</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>site_favicon</code></td>
+<td style="text-align: left;">Path to the favicon (the small icon in the browser tab).</td>
+<td style="text-align: left;"><code>assets/favicon.ico</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>default_template</code></td>
+<td style="text-align: left;">The default layout used if no <code>layout</code> is specified in the front matter of a page.</td>
+<td style="text-align: left;"><code>post</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>site_theme</code></td>
+<td style="text-align: left;">The theme to be used (folder name in <code>themes_directory</code>).</td>
+<td style="text-align: left;"><code>default</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>default_author</code></td>
+<td style="text-align: left;">Default author name if not specified in the front matter.</td>
+<td style="text-align: left;"><code>TCI</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>log_level</code></td>
+<td style="text-align: left;">Controls how detailed the log output is when generating the page (<code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>).</td>
+<td style="text-align: left;"><code>INFO</code></td>
+</tr>
+</tbody>
+</table>
+<h2>2. Directory Structure</h2>
+<p>Here you specify where the editor and renderer search for files and where results are written. All paths are relative to the project directory.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>content_directory</code></td>
+<td style="text-align: left;">Folder containing the Markdown content files (<code>.md</code>).</td>
+<td style="text-align: left;"><code>content</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>site_output_directory</code></td>
+<td style="text-align: left;">Target folder for the generated HTML website. <strong>Note:</strong> This folder is cleaned up with every build!</td>
+<td style="text-align: left;"><code>site_output</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>template_directory</code></td>
+<td style="text-align: left;">Folder for HTML templates (Jinja2).</td>
+<td style="text-align: left;"><code>templates</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>assets_directory</code></td>
+<td style="text-align: left;">Main folder for static files (images, CSS, JS). Contents are copied to output.</td>
+<td style="text-align: left;"><code>assets</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>plugin_directory</code></td>
+<td style="text-align: left;">Folder for custom Python plugins (shortcodes).</td>
+<td style="text-align: left;"><code>plugins</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>css_directory</code></td>
+<td style="text-align: left;">Specific subfolder within <code>assets_directory</code> for CSS.</td>
+<td style="text-align: left;"><code>css</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>js_directory</code></td>
+<td style="text-align: left;">Specific subfolder within <code>assets_directory</code> for JS.</td>
+<td style="text-align: left;"><code>js</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>backup_directory</code></td>
+<td style="text-align: left;">Destination folder for automatic backups of content.</td>
+<td style="text-align: left;"><code>backup</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>themes_directory</code></td>
+<td style="text-align: left;">Folder for themes.</td>
+<td style="text-align: left;"><code>themes</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>markdown_extensions</code></td>
+<td style="text-align: left;">List of file extensions recognized as Markdown content.</td>
+<td style="text-align: left;"><code>['.md', '.markdown']</code></td>
+</tr>
+</tbody>
+</table>
+<h2>3. Navigation</h2>
+<p>Navigation menus are defined via lists of links in the configuration.</p>
+<h3>Header Links (<code>header_links</code>)</h3>
+<p>Links for the main menu (top).</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">header_links</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Home</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.html</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Articles</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blog/index.html</span>
+<span class="w">    </span><span class="nt">sublinks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tech</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blog/tech.html</span>
 </code></pre></div>
 
-<h1>Project settings</h1>
-<h3>Explanation of options</h3>
-<ul>
-<li>
-<p><code>site_name</code>
-    The name of your website. Often used in the title (<code>&lt;title&gt;</code>) and header.</p>
-</li>
-<li>
-<p><code>site_url</code>
-    The final URL at which your website will be accessible. Important for creating the <code>sitemap.xml</code> and for absolute links.</p>
-</li>
-<li>
-<p><code>content_directory</code>
-    The folder where your Markdown files (<code>.md</code>) are located.</p>
-</li>
-<li>
-<p><code>site_output_directory</code>
-    The folder where the finished HTML website is generated. The contents of this folder are uploaded to the web server.</p>
-</li>
-<li>
-<p><code>template_directory</code>
-    The folder containing your Jinja2 layout templates (<code>.html</code>).</p>
-</li>
-<li>
-<p><code>assets_directory</code>
-    The main folder for all static files (images, CSS, JS, etc.). The contents of this folder will be copied to the <code>site_output_directory</code>.</p>
-</li>
-<li>
-<p><code>plugin_directory</code>
-    The folder for your custom Python plugins (shortcodes).</p>
-</li>
-<li>
-<p><code>css_directory</code> / <code>js_directory</code>
-    Specific subfolders within <code>assets_directory</code> for CSS and JavaScript files.</p>
-</li>
-<li>
-<p><code>backup_directory</code>
-    The folder where automatic backups of your <code>content</code> directory are stored.</p>
-</li>
-<li>
-<p><code>markdown_extensions</code>
-    A list of file extensions that should be recognized as Markdown content.</p>
-</li>
-<li>
-<p><code>log_level</code>
-    Controls how detailed the log output is when generating the page. Possible values: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>.</p>
-</li>
-</ul>
-<p>The <code>config.yaml</code> file in the root directory of your project controls all aspects of website generation. You can conveniently edit these settings via the <strong>File &gt; Project Settings</strong> menu item or edit the file directly.</p>
-<h2>1. Basic settings</h2>
-<ul>
-<li><strong><code>site_name</code></strong>: The name of your website (e.g., “My Blog”). It is used as <code>{{ site_name }}</code> in templates.</li>
-<li><strong><code>site_url</code></strong>: The full URL at which the site will be published (e.g., <code>https://mein-blog.de</code>). Important for SEO and absolute links.</li>
-<li><strong><code>site_logo</code></strong>: Path to a logo file (relative to the project folder).</li>
-<li><strong><code>site_favicon</code></strong>: Path to the favicon (the small icon in the browser tab).</li>
-</ul>
-<h2>2. Directories</h2>
-<p>The editor uses a default structure that you can customize here:</p>
-<ul>
-<li><strong><code>content_directory</code></strong>: Folder for Markdown files (default: <code>content</code>).</li>
-<li><strong><code>site_output_directory</code></strong>: Folder for the generated HTML page (default: <code>site_output</code>).</li>
-<li><strong><code>template_directory</code></strong>: Folder for HTML templates (default: <code>templates</code>).</li>
-<li><strong><code>assets_directory</code></strong>: Folder for static files (images, CSS, JS).</li>
-</ul>
-<h2>3. Social media (<code>social</code>)</h2>
-<p>You can store links to your social media profiles. This is a dictionary where the key is the platform and the value is the URL.</p>
-<p><strong>Example in <code>config.yaml</code>:</strong></p>
-<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">social</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">twitter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://twitter.com/deinname</span>
-<span class="w">  </span><span class="nt">github</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/deinname</span>
-<span class="w">  </span><span class="nt">linkedin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://linkedin.com/in/deinname</span>
-</code></pre></div>
-
-<p><strong>Integration in the template:</strong>
-You can access it via the variable <code>config.social</code>.</p>
-<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;social-links&quot;</span><span class="p">&gt;</span>
-    {% if config.social %}
-        {% for platform, url in config.social.items() %}
-            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ url }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;social-icon {{ platform }}&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>
-                {{ platform|capitalize }}
-            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-        {% endfor %}
-    {% endif %}
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></div>
-
-<h2>4. Footer links (<code>footer_links</code>)</h2>
-<p>This setting allows you to define a list of links for the footer area (e.g., legal notice, privacy policy).</p>
-<p><strong>Example in <code>config.yaml</code>:</strong></p>
+<h3>Footer Links (<code>footer_links</code>)</h3>
+<p>Links for the footer area (e.g., legal notice).</p>
 <div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">footer_links</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Legal notice</span>
 <span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/legal-notice.html</span>
@@ -314,59 +358,113 @@ You can access this via <code>config.footer_links</code>. Pay attention to <code
 <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<h2>5. Contact information (<code>contact</code>)</h2>
-<p>Here you can store structured contact data.</p>
-<p><strong>Example in <code>config.yaml</code>:</strong></p>
+<h2>4. Contact &amp; Social Media</h2>
+<p>You can store structured contact data and social media profiles.</p>
+<p><strong>Example:</strong></p>
 <div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">contact</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">John Doe</span>
 <span class="w">  </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">max@beispiel.de</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12345 Musterstadt</span>
+<span class="w">  </span><span class="nt">phone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">+49 123 4567</span>
+
+<span class="nt">social</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">twitter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://twitter.com/yourname</span>
+<span class="w">  </span><span class="nt">github</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/yourname</span>
 </code></pre></div>
 
+<p><strong>Note on Privacy:</strong>
+The renderer automatically obfuscates email addresses and phone numbers in the HTML output to protect them from spam bots.</p>
 <p><strong>Integration in the template:</strong></p>
 <div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contact-info&quot;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ config.contact.name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;mailto:{{ config.contact.email }}&quot;</span><span class="p">&gt;</span>{{ config.contact.email }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;social-links&quot;</span><span class="p">&gt;</span>
+    {% for platform, url in config.social.items() %}
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ url }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;social-icon {{ platform }}&quot;</span><span class="p">&gt;</span>{{ platform|capitalize }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    {% endfor %}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<h2>6. Export project as PDF (<code>pdf_export</code>)</h2>
-<h3>Define logo</h3>
-<p>You can now define the logo in your config.yaml in two ways:</p>
-<p>Use global logo: If you have already defined site_logo, it will be used automatically.</p>
+<h2>5. Tool Configurations</h2>
+<p>The <code>config.yaml</code> also controls the additional tools under "Project Tools".</p>
+<h3>Backup</h3>
+<p>Controls the behavior of the renderer and the backup tool.
+*   <code>backup_on_render</code>: (<code>true</code>/<code>false</code>) Automatically creates a backup of the old output folder before each render.
+*   <code>backup_rotation</code>: Number of backups to keep (e.g., <code>5</code>). Older ones are deleted.</p>
+<h3>Image Compression</h3>
+<p>Settings for the image optimization tool.
+* <code>jpeg_quality</code>: Quality for JPG images (0-100).
+* <code>png_compression</code>: Compression level for PNG (0-9).
+* <code>compressed_suffix</code>: Suffix for compressed files (if originals are to be retained).
+* <code>extensions</code>: Which file types are processed.</p>
+<h3>Linter</h3>
+<p>Settings for the front matter check (<code>lint_frontmatter.py</code>).
+* <code>defaults</code>: Default values that are entered if fields are missing in the front matter (e.g., <code>author: TCI</code>).</p>
+<h2>6. PDF Export (<code>pdf_export</code>)</h2>
+<p>Controls the appearance of the generated PDF manual.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>page_size</code>: Paper size (e.g., <code>A4</code>).</li>
+<li><code>orientation</code>: Orientation (<code>portrait</code> or <code>landscape</code>).</li>
+<li><code>margin_top</code>, <code>margin_bottom</code>, etc.: Page margins (e.g., <code>2cm</code>).</li>
+<li><code>show_cover_page</code>: Generate cover page? (<code>true</code>/<code>false</code>)</li>
+<li><code>show_page_numbers</code>: Display page numbers?</li>
+<li><code>toc_depth</code>: Depth of the table of contents (e.g., <code>3</code> for H1-H3).</li>
+<li><code>export_path</code>: Storage location for the PDF files.</li>
+</ul>
+<h3>Logo Logic</h3>
+<p>You can define the logo for the PDF in two ways:</p>
+<ol>
+<li><strong>Global Logo:</strong> If <code>site_logo</code> is defined, it is used automatically.</li>
+<li><strong>Specific PDF Logo:</strong> Use <code>cover_logo</code> under <code>pdf_export</code> to override the global logo.</li>
+</ol>
 <div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“My Project”</span>
 <span class="nt">site_logo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“assets/logo.png”</span>
+
+<span class="nt">pdf_export</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cover_logo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“assets/pdf_cover_logo.png”</span><span class="w"> </span><span class="c1"># Overrides site_logo for PDF</span>
+<span class="w">  </span><span class="nt">toc_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 
-<p>Use specific PDF logo: If you want to use a different image for the PDF, you can </p>
-<p>specify this under pdf_export:</p>
-<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">pdf_export</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cover_logo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">“assets/pdf_cover_logo.png”</span>
-</code></pre></div>
-
-<p>You can now control the depth of the table of contents in your config.yaml. To do this, add the pdf_export section (if it doesn't already exist) and set toc_depth.</p>
-<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nt">pdf_export</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Shows headings up to level 3 (H1, H2, H3) in the table of contents.</span>
-<span class="w">  </span><span class="c1"># H1 is the file title, H2 is ‘##’, H3 is ‘###’.</span>
-<span class="w">  </span><span class="nt">toc_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"> </span>
-</code></pre></div>
-
-<p>To exclude a page from the PDF, simply add the following to the front matter section of the corresponding Markdown file:</p>
+<h3>Excluding Pages</h3>
+<p>To exclude a specific page from the PDF, add <code>pdf_exclude: true</code> to the front matter of the Markdown file.</p>
 <div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="nn">---</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Page</span>
 <span class="nt">pdf_exclude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nn">---</span>
 </code></pre></div>
 
+<h2>7. SEO &amp; Metadata</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>meta_description</code></td>
+<td style="text-align: left;">Global description of the website (meta tag).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>meta_keywords</code></td>
+<td style="text-align: left;">Global keywords (meta tag).</td>
+</tr>
+</tbody>
+</table>
+
         </main>
     </div>
 
     <footer>
-    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    <span>&copy; 2026 Sitewaeve Dokumentation. Erstellt mit Sitewave.</span>
     
     <span class="footer-links">
         
-        <a href="../datenschutz.html">Datenschutz</a> |
+        <a href="../datenschutz.html">Data Protecion</a> |
         
         <a href="../impressum.htm">Impressum</a>
         

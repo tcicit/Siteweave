@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adresse Verschleierung (obfuscate) | Benutzer Dokumentation</title>
+    <title>Adresse Verschleierung (obfuscate) | Sitewaeve Dokumentation</title>
 
     
     
@@ -49,7 +49,7 @@
         <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
     </a>
     
-    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <h1><a href="../index.html">Sitewaeve Dokumentation</a></h1>
     <nav>
         <ul>
         
@@ -64,7 +64,7 @@
 
     <div class="doc-container">
         <aside class="sidebar">
-            <h3>Inhalt</h3>
+            <h3>Contents</h3>
             <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
             <ul class="nav-menu">
 <li class="dropdown">
@@ -94,11 +94,10 @@
   <button class="dropbtn">03 Configuration</button>
   <div class="dropdown-content">
 <ul>
-<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
 <li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/project-configuration.html">Project Configuration (config.yaml)</a></li>
 <li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
 <li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
-<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
 </ul>
   </div>
 </li>
@@ -106,12 +105,21 @@
   <button class="dropbtn">04 Development</button>
   <div class="dropdown-content">
 <ul>
-<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
 <li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
 <li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
 <li><a href="../04-development/compile.html">Compile</a></li>
 <li><a href="../04-development/app-context.html">App Context</a></li>
-<li><a href="../04-development/contact-form.html">Embed contact form</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">05 Faq</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../05-faq/faq.html">Häufig gestellte Fragen (FAQ)</a></li>
+<li><a href="../05-faq/search-function-local.html">Problems with the search function (local))</a></li>
+<li><a href="../05-faq/contact-form.html">Embed contact form</a></li>
 </ul>
   </div>
 </li>
@@ -148,6 +156,9 @@
 </ul>
   </div>
 </li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../datenschutz.html">Data protection</a></li>
+<li><a href="../impressum.html">Impressum</a></li>
 </ul>
         </aside>
 
@@ -201,34 +212,34 @@
 <li>E-Mail-Adresse (erstellt automatisch einen mailto: Link):</li>
 </ol>
 <p>markdown
-Kontaktieren Sie uns unter: <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#105;&#110;&#102;&#111;&#64;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#109;">&#105;&#x6e;&#102;&#111;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+Kontaktieren Sie uns unter: <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x69;&#110;&#102;&#111;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#105;&#110;&#102;&#x6f;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>Optional mit anderem Link-Text:</p>
 <p>markdown
-<a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#105;&#110;&#x66;&#111;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#109;">&#83;&#x63;&#104;&#x72;&#101;&#x69;&#98;&#101;&#110;&#32;&#x53;&#105;&#101;&#32;&#117;&#110;&#x73;&#32;&#101;&#x69;&#x6e;&#x65;&#32;&#69;&#x2d;&#77;&#x61;&#105;&#x6c;</a></p>
+<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#x69;&#x6e;&#x66;&#111;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;">&#83;&#x63;&#104;&#x72;&#x65;&#105;&#x62;&#101;&#110;&#x20;&#x53;&#105;&#x65;&#32;&#x75;&#110;&#115;&#x20;&#101;&#x69;&#110;&#x65;&#32;&#69;&#x2d;&#x4d;&#x61;&#105;&#x6c;</a></p>
 <ol>
 <li>Telefonnummer (erstellt automatisch einen tel: Link für Smartphones):</li>
 </ol>
 <p>markdown</p>
-<p>Rufen Sie an: <a href="&#116;&#101;&#x6c;&#x3a;&#x2b;&#52;&#57;&#x31;&#x32;&#51;&#52;&#x35;&#x36;&#x37;&#56;&#57;">&#x2b;&#x34;&#x39;&#x20;&#49;&#50;&#51;&#x20;&#52;&#x35;&#x36;&#x20;&#x37;&#x38;&#x39;</a></p>
+<p>Rufen Sie an: <a href="&#116;&#x65;&#108;&#x3a;&#x2b;&#x34;&#57;&#x31;&#50;&#x33;&#x34;&#53;&#x36;&#x37;&#56;&#57;">&#x2b;&#52;&#57;&#32;&#49;&#x32;&#51;&#x20;&#52;&#53;&#54;&#x20;&#x37;&#x38;&#57;</a></p>
 <ol>
 <li>Adresse oder beliebiger Text (nur Text-Verschleierung):</li>
 </ol>
 <p>markdown
-Unser Büro: &#77;&#117;&#x73;&#x74;&#101;&#x72;&#115;&#x74;&#114;&#97;&#xdf;&#x65;&#32;&#x31;&#44;&#32;&#49;&#50;&#x33;&#52;&#x35;&#x20;&#66;&#x65;&#x72;&#108;&#105;&#110;</p>
+Unser Büro: &#x4d;&#117;&#x73;&#x74;&#x65;&#x72;&#x73;&#x74;&#114;&#97;&#223;&#101;&#32;&#49;&#x2c;&#x20;&#x31;&#50;&#x33;&#x34;&#x35;&#32;&#66;&#101;&#114;&#108;&#105;&#x6e;</p>
 <p>Oder als Block:</p>
 <p>markdown
-&#77;&#117;&#115;&#x74;&#101;&#x72;&#115;&#x74;&#x72;&#x61;&#xdf;&#x65;&#32;&#x31;&#10;&#49;&#x32;&#51;&#52;&#53;&#32;&#66;&#x65;&#114;&#x6c;&#x69;&#x6e;</p>
+&#x4d;&#117;&#115;&#116;&#101;&#114;&#115;&#116;&#114;&#97;&#xdf;&#x65;&#x20;&#x31;&#xa;&#x31;&#50;&#x33;&#x34;&#53;&#32;&#x42;&#x65;&#x72;&#108;&#x69;&#110;</p>
 <p>Das Plugin mischt zufällig dezimale (&#64;) und hexadezimale (&#x40;) Kodierungen, was es für Bots noch schwieriger macht, Muster zu erkennen.</p>
 
         </main>
     </div>
 
     <footer>
-    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    <span>&copy; 2026 Sitewaeve Dokumentation. Erstellt mit Sitewave.</span>
     
     <span class="footer-links">
         
-        <a href="../datenschutz.html">Datenschutz</a> |
+        <a href="../datenschutz.html">Data Protecion</a> |
         
         <a href="../impressum.htm">Impressum</a>
         

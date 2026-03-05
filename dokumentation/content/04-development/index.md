@@ -3,16 +3,17 @@ author: TCI
 breadcrumbs: true
 date: '2026-01-15'
 draft: false
-featured_image: null
+featured_image: None
 layout: full-width
 pdf_exclude: true
 release_date: '2026-01-15'
 tags:
 - Dokumentation
 - Entwicklung
-title: D. Entwickler
+title: Development
 ---
 
-Dieser Index wurde automatisch erstellt.
+This index was created automatically.
 
-[[list_dir]]
+
+[[list_dir exclude="index.md" sort="weight"]]

@@ -9,8 +9,8 @@ release_date: '2026-01-16'
 tags:
 - Entwicklung
 title: Mehrsprachigkeit (i18n)
+weight: 30
 ---
-
 
 Sitewave is designed for multilingualism (internationalization / i18n). It uses the standard **GNU gettext** system and the Python library **Babel**.
 

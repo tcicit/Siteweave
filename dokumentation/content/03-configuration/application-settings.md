@@ -10,10 +10,9 @@ tags:
 - Konfiguration
 - Dokumentation
 - konfiguration
-title: App Settings 
-weight: 20
+title: App Settings
+weight: 10
 ---
-
 
 # App Settings (app_config.yaml)
 
@@ -96,5 +95,3 @@ The following parameters are automatically updated by the editor to restore the 
 * window_x, window_y
 
 **Note:** The color settings (editor_colors) have been removed from this file and are now managed separately via the App Tools > Color Settings dialog.
-
-

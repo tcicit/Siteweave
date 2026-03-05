@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embed contact form | Benutzer Dokumentation</title>
+    <title>Embed contact form | Sitewaeve Dokumentation</title>
 
     
     
@@ -49,7 +49,7 @@
         <img src="../assets/app_logo.svg" alt="Logo" class="header-logo">
     </a>
     
-    <h1><a href="../index.html">Benutzer Dokumentation</a></h1>
+    <h1><a href="../index.html">Sitewaeve Dokumentation</a></h1>
     <nav>
         <ul>
         
@@ -64,7 +64,7 @@
 
     <div class="doc-container">
         <aside class="sidebar">
-            <h3>Inhalt</h3>
+            <h3>Contents</h3>
             <!-- Automatische Navigation basierend auf der Ordnerstruktur -->
             <ul class="nav-menu">
 <li class="dropdown">
@@ -94,24 +94,32 @@
   <button class="dropbtn">03 Configuration</button>
   <div class="dropdown-content">
 <ul>
-<li><a href="../03-configuration/project-settings.html">Project settings (config.yaml)</a></li>
 <li><a href="../03-configuration/application-settings.html">App Settings</a></li>
+<li><a href="../03-configuration/project-configuration.html">Project Configuration (config.yaml)</a></li>
 <li><a href="../03-configuration/themes.html">Themes & Layouts</a></li>
 <li><a href="../03-configuration/worker-scripts.html">Worker Scripts & Automatisierung</a></li>
-<li><a href="../03-configuration/config-yaml.html">Configuration (config.yaml)</a></li>
+</ul>
+  </div>
+</li>
+<li class="dropdown">
+  <button class="dropbtn">04 Development</button>
+  <div class="dropdown-content">
+<ul>
+<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
+<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
+<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
+<li><a href="../04-development/compile.html">Compile</a></li>
+<li><a href="../04-development/app-context.html">App Context</a></li>
 </ul>
   </div>
 </li>
 <li class="dropdown active-parent">
-  <button class="dropbtn">04 Development</button>
+  <button class="dropbtn">05 Faq</button>
   <div class="dropdown-content">
 <ul>
-<li><a href="../04-development/multilingualism.html">Mehrsprachigkeit (i18n)</a></li>
-<li><a href="../04-development/plugins.html">Develop your own plugins</a></li>
-<li><a href="../04-development/architecture.html">Architektur & Konzepte</a></li>
-<li><a href="../04-development/compile.html">Compile</a></li>
-<li><a href="../04-development/app-context.html">App Context</a></li>
-<li><a href="../04-development/contact-form.html" class="active">Embed contact form</a></li>
+<li><a href="../05-faq/faq.html">Häufig gestellte Fragen (FAQ)</a></li>
+<li><a href="../05-faq/search-function-local.html">Problems with the search function (local))</a></li>
+<li><a href="../05-faq/contact-form.html" class="active">Embed contact form</a></li>
 </ul>
   </div>
 </li>
@@ -148,6 +156,9 @@
 </ul>
   </div>
 </li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../datenschutz.html">Data protection</a></li>
+<li><a href="../impressum.html">Impressum</a></li>
 </ul>
         </aside>
 
@@ -156,7 +167,7 @@
     <h1>Embed contact form</h1>
     
     
-    <p style="color: #888; font-size: 0.9em;">Zuletzt aktualisiert: 2026-02-22</p>
+    <p style="color: #888; font-size: 0.9em;">Last updated: 2026-02-22</p>
     
 
     <nav class="breadcrumbs">
@@ -170,7 +181,7 @@
 
             <li>
 
-                    <a href="../04-development/index.html">04 Development</a>
+                    <a href="../05-faq/index.html">05 Faq</a>
 
             </li>
 
@@ -192,6 +203,7 @@
 <li><strong>Formspree</strong> (very simple, free basic plan)</li>
 <li><strong>Netlify Forms</strong> (if you host with Netlify)</li>
 <li><strong>Getform</strong></li>
+<li><strong>and odthers ...</strong></li>
 </ul>
 <h2>Instructions (example with Formspree)</h2>
 <p>Here we show you how to set up a form with <strong>Formspree</strong>.</p>
@@ -199,28 +211,25 @@
 <p>Register at formspree.io and create a new form. You will receive a URL that looks like this: <code>https://formspree.io/f/deine-id</code>.</p>
 <h3>2. Insert form into Markdown</h3>
 <p>You can easily use HTML code in Markdown files. Copy the following code to the place where you want the form to appear and replace the URL in <code>action</code> with your own.</p>
-<p>html</p>
-<form action="https://formspree.io/f/DEINE_FORMSPREE_ID" method="POST" class="contact-form">
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;https://formspree.io/f/DEINE_FORMSPREE_ID&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contact-form&quot;</span><span class="p">&gt;</span>
 
-  <label>
+  <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
     Your email:
-    <input type="email" name="email" required>
-  </label>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">required</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 
-  <label>
+  <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
     Your message:
-    <textarea name="message" required></textarea>
-  </label>
+    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;message&quot;</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 
-  <button type="submit">Send</button>
-</form>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Send<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
 
-<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="err">###</span><span class="w"> </span><span class="nt">3</span><span class="o">.</span><span class="w"> </span><span class="nt">Styling</span><span class="w"> </span><span class="o">(</span><span class="nt">Optional</span><span class="o">)</span>
-
-<span class="nt">To</span><span class="w"> </span><span class="nt">make</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">form</span><span class="w"> </span><span class="nt">look</span><span class="w"> </span><span class="nt">good</span><span class="o">,</span><span class="w"> </span><span class="nt">you</span><span class="w"> </span><span class="nt">can</span><span class="w"> </span><span class="nt">add</span><span class="w"> </span><span class="nt">some</span><span class="w"> </span><span class="nt">CSS</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">your</span><span class="w"> </span><span class="err">`</span><span class="nt">assets</span><span class="o">/</span><span class="nt">css</span><span class="o">/</span><span class="nt">style</span><span class="p">.</span><span class="nc">css</span><span class="err">`</span><span class="w"> </span><span class="o">(</span><span class="nt">or</span><span class="w"> </span><span class="nt">your</span><span class="w"> </span><span class="nt">own</span><span class="w"> </span><span class="nt">CSS</span><span class="w"> </span><span class="nt">file</span><span class="o">):</span>
-
-<span class="err">```</span><span class="nt">css</span>
-<span class="p">.</span><span class="nc">contact-form</span><span class="w"> </span><span class="p">{</span>
+<h3>3. Styling (Optional)</h3>
+<p>To make the form look good, you can add some CSS to your <code>assets/css/style.css</code> (or your own CSS file):</p>
+<div class="codehilite" style="position: relative;"><button class="copy-code-btn" style="position: absolute; top: 0.5em; right: 0.5em; background: rgba(100, 100, 100, 0.5); color: #fff; border: none; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; font-size: 0.8em; z-index: 10; transition: background 0.2s;" onmouseover="this.style.background='rgba(100, 100, 100, 0.8)'" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'" onclick="const pre = this.parentElement.querySelector('pre'); const code = pre.innerText; navigator.clipboard.writeText(code).then(() => { this.textContent = 'Kopiert!'; setTimeout(() => { this.textContent = 'Kopieren'; }, 2000); }).catch(err => console.error('Fehler beim Kopieren:', err));">Kopieren</button><pre><span></span><code><span class="p">.</span><span class="nc">contact-form</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 <span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
 <span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
@@ -262,11 +271,11 @@
     </div>
 
     <footer>
-    <span>&copy; 2026 Benutzer Dokumentation. Erstellt mit Sitewave.</span>
+    <span>&copy; 2026 Sitewaeve Dokumentation. Erstellt mit Sitewave.</span>
     
     <span class="footer-links">
         
-        <a href="../datenschutz.html">Datenschutz</a> |
+        <a href="../datenschutz.html">Data Protecion</a> |
         
         <a href="../impressum.htm">Impressum</a>
         

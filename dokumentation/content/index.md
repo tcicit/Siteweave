@@ -4,14 +4,13 @@ breadcrumbs: true
 date: '2026-03-01'
 draft: false
 featured_image: ''
-layout: full-width
+layout: doc
 release_date: '2026-03-01'
 tags:
 - Home
-title: index.md
+title: Sitewave - Documentation
 ---
 
-# Sitewave - Documentation
 
 Welcome to the official documentation. Here you will find all the information you need to create, manage, and extend your website.
 

@@ -1,4 +1,4 @@
-site_name: Benutzer Dokumentation
+site_name: Sitewaeve Dokumentation
 site_url: http://localhost:8000
 content_directory: content
 site_output_directory: site_output
@@ -49,7 +49,7 @@ header_links:
 - title: About
   url: about.html
 footer_links:
-- title: Datenschutz
+- title: Data Protecion
   url: datenschutz.html
 - title: Impressum
   url: impressum.htm

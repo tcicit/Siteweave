@@ -12,7 +12,7 @@ tags:
 - Dokumentation
 - konfiguration
 title: Temlates Details
-weight: 70
+weight: 50
 ---
 
 The theme system in Sitewave is based on an inheritance mechanism (fallback chain). This means you can use a complete design package (theme) but still overwrite individual files in your project without having to change the original theme.
@@ -594,8 +594,3 @@ html
 {% endif %} 
 
 ```
-
-
-
-
-
