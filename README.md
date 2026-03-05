@@ -12,7 +12,7 @@ The project is currently in early stages (v0.2) and under active development. It
 * **Project Management:** Manage multiple website projects side by side.
 * **Integrated Renderer:** Generates static HTML directly from the app.
 * **Plugin System:** Extensible via Python scripts (e.g., Gallery, TOC, Obfuscate).
-* **Project Tools:** Includes Link Checker, Image Compressor, and Content Backup.
+* **Project Tools:** Includes Link Checker, Image Compressor, Content Backup and Spellchecker.
 * **Quality Assurance:** Integrated Linter for Markdown and Frontmatter.
 * **Bulk Editing:** Edit metadata for multiple files simultaneously.
 * **PDF Export:** Create manuals and documentation PDFs from your content.
@@ -29,7 +29,6 @@ The project is currently in early stages (v0.2) and under active development. It
 Ideas planned for future versions:
 
 - Publishing function to deploy sites to GitHub Pages or arbitrary web space.
-- Spellchecker for texts.
 - More page templates and themes.
 - Git integration for version control.
 - Additional plugins.

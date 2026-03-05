@@ -1,5 +1,6 @@
 from PyQt6.QtGui import QSyntaxHighlighter, QTextCharFormat, QColor, QFont
 from PyQt6.QtCore import QRegularExpression
+import re
 
 '''
 Docstring für syntax.py
@@ -12,16 +13,23 @@ Diese Klasse wird in der GUI verwendet, um die Markdown-Dateien mit ansprechende
 '''
 
 class MarkdownHighlighter(QSyntaxHighlighter):
-    def __init__(self, document):
+    def __init__(self, document, spell_checker=None):
         super().__init__(document)
         self.highlighting_rules = []
         self.dark_mode = False
         self.custom_colors = {}
+        self.spell_checker = spell_checker
+        self.spellcheck_enabled = False
+
         self.update_rules()
 
     def set_theme(self, dark_mode):
         self.dark_mode = dark_mode
         self.update_rules()
+        self.rehighlight()
+
+    def set_spellchecker_enabled(self, enabled):
+        self.spellcheck_enabled = enabled
         self.rehighlight()
 
     def update_rules(self):
@@ -122,6 +130,14 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         image_format.setForeground(QColor(colors['image_alt']))
         self.add_rule(r"!\[[^\]]*\]\([^)]+\)", image_format)
 
+        # 11. Spellcheck-Format
+        self.error_format = QTextCharFormat()
+        self.error_format.setUnderlineColor(QColor("red"))
+        self.error_format.setUnderlineStyle(QTextCharFormat.UnderlineStyle.SpellCheckUnderline)
+
+        # 12. Regex für Wörter (Unicode-fähig)
+        self.word_pattern = re.compile(r"[\w']+", re.UNICODE)
+
     def add_rule(self, pattern, format):
         rule = (QRegularExpression(pattern), format)
         self.highlighting_rules.append(rule)
@@ -159,6 +175,20 @@ class MarkdownHighlighter(QSyntaxHighlighter):
                 self.setCurrentBlockState(1)
             else:
                 self.setCurrentBlockState(0)
+        
+        # 3. Spell Checking (nur wenn nicht in einem Code-Block)
+        if self.spell_checker and self.spell_checker.dictionary and self.spellcheck_enabled and self.currentBlockState() != 1:
+            for match in self.word_pattern.finditer(text):
+                word = match.group(0)
+
+                # Ignoriere reine Zahlen oder Wörter, die Teil von URLs/Pfaden sind
+                if word.isnumeric() or '/' in word or '\\' in word or '_' in word:
+                    continue
+
+                # Prüfe das Wort
+                if not self.spell_checker.check(word):
+                    start_index = match.start()
+                    self.setFormat(start_index, len(word), self.error_format)
 
     def set_custom_colors(self, color_scheme):
         """

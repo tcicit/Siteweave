@@ -203,7 +203,7 @@ class ProjectConfigDialog(BaseConfigDialog):
             "Navigation": ["header_links", "footer_links"],
             "SEO": ["meta_description", "meta_keywords"],
             "Directories": ["content_directory", "site_output_directory", "themes_directory", "assets_directory", "plugin_directory"],
-            "Editor": ["default_template", "markdown_extensions"],
+            "Editor": ["default_template", "markdown_extensions", "spellcheck_enabled", "spellcheck_language"],
             "Backup": ["backup_directory", "backup_on_render", "backup_rotation"],
             "Social & Contact": ["contact", "social"],
             "PDF Export": ["pdf_export"],
@@ -213,7 +213,7 @@ class ProjectConfigDialog(BaseConfigDialog):
             "site_name", "site_theme", "default_author", "site_logo", "site_favicon", "site_url", "header_links", "footer_links", "contact", 
             "meta_description", "meta_keywords",
             "content_directory", "site_output_directory", "themes_directory", "default_template", 
-            "assets_directory", "plugin_directory", "backup_directory", "backup_on_render", "backup_rotation",
+            "assets_directory", "plugin_directory", "backup_directory", "backup_on_render", "backup_rotation", "spellcheck_enabled", "spellcheck_language",
             "pdf_export", "markdown_extensions", "log_level"
         ]
         self.init_ui()
@@ -228,6 +228,8 @@ class ProjectConfigDialog(BaseConfigDialog):
         self.config_data.setdefault("plugin_directory", "plugins")
         self.config_data.setdefault("backup_directory", "backup")
         self.config_data.setdefault("markdown_extensions", [".md", ".markdown"])
+        self.config_data.setdefault("spellcheck_enabled", True)
+        self.config_data.setdefault("spellcheck_language", "en_US")
         self.config_data.setdefault("log_level", "INFO")
 
         self.config_data.setdefault("image_compression", {
@@ -368,6 +370,14 @@ class ProjectConfigDialog(BaseConfigDialog):
             return
         elif key == "custom_css_path":
             widget = self.create_file_picker(key, value, key_path, file_filter=_("CSS Files (*.css);;All Files (*)"))
+            parent_layout.addRow(f"{str(key).replace('_', ' ').title()}:", widget)
+            self.inputs[tuple(key_path)] = (widget, type(value))
+            return
+        elif key == "spellcheck_language":
+            widget = QComboBox()
+            widget.setEditable(True)
+            widget.addItems(["en_US", "de_DE", "fr_FR", "es_ES"])
+            widget.setCurrentText(str(value))
             parent_layout.addRow(f"{str(key).replace('_', ' ').title()}:", widget)
             self.inputs[tuple(key_path)] = (widget, type(value))
             return

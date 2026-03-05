@@ -4,7 +4,7 @@ breadcrumbs: true
 date: '2025-01-01'
 draft: false
 featured_image: None
-layout: doc
+layout: full-width
 release_date: '2026-01-15'
 tags:
 - introduction
@@ -103,8 +103,40 @@ weasyprint
 Babel
 requests
 pymarkdownlnt
+pyenchant
 
 ```
+
+#### Spellchecker 
+
+Schritt 1: Abhängigkeiten installieren
+Zuerst muss pyenchant zum Projekt hinzugefügt werden.
+
+Python-Paket installieren:
+
+```bash
+pip install pyenchant
+```
+
+Füge pyenchant auch zu deiner requirements.txt-Datei hinzu.
+
+Backend-Wörterbücher installieren: pyenchant benötigt System-Wörterbücher. Die Installation hängt vom Betriebssystem ab. Dies ist ein wichtiger Hinweis für die spätere Distribution der App.
+
+**Linux (Debian/Ubuntu):**
+```bash
+sudo apt-get install hunspell hunspell-de-de hunspell-en-us
+```
+
+**macOS (via Homebrew):**
+```bash
+brew install hunspell
+```
+
+Wörterbücher müssen evtl. manuell in /Library/Spelling  oder ~/Library/Spelling abgelegt werden.
+
+**Windows:** Hier ist es am einfachsten, die Hunspell-Wörterbuchdateien (.dic, .aff) direkt mit deiner Anwendung auszuliefern und pyenchant den Pfad dorthin mitzuteilen.
+
+
 
 ## 3. Start the Application
 

@@ -1,7 +1,7 @@
 import os
 import re
-from PyQt6.QtWidgets import QPlainTextEdit, QWidget, QTextEdit
-from PyQt6.QtGui import QFontDatabase, QDragEnterEvent, QDropEvent, QPalette, QColor, QTextCursor, QPainter, QPaintEvent, QTextFormat
+from PyQt6.QtWidgets import QPlainTextEdit, QWidget, QTextEdit, QMenu
+from PyQt6.QtGui import QFontDatabase, QDragEnterEvent, QDropEvent, QPalette, QColor, QTextCursor, QPainter, QPaintEvent, QTextFormat, QAction
 from PyQt6.QtCore import Qt, pyqtSignal, QRect, QSize
 from gui.syntax import MarkdownHighlighter
 
@@ -31,12 +31,13 @@ class LineNumberArea(QWidget):
 class EditorWidget(QPlainTextEdit):
     fontSizeChanged = pyqtSignal(int)
 
-    def __init__(self):
+    def __init__(self, spell_checker=None):
         super().__init__()
         self.setAcceptDrops(True)
         self.file_path = None
         self.show_line_numbers = True
         self.custom_colors = {}
+        self.spell_checker = spell_checker
 
         # Versuche eine Monospace-Schriftart (wie Courier) zu setzen
         font = QFontDatabase.systemFont(QFontDatabase.SystemFont.FixedFont)
@@ -53,7 +54,7 @@ class EditorWidget(QPlainTextEdit):
         self.update_line_number_area_width(0)
 
         # Syntax Highlighting aktivieren
-        self.highlighter = MarkdownHighlighter(self.document())
+        self.highlighter = MarkdownHighlighter(self.document(), self.spell_checker)
 
     def line_number_area_width(self):
         if not self.show_line_numbers:
@@ -72,6 +73,10 @@ class EditorWidget(QPlainTextEdit):
     def set_line_numbers_visible(self, visible):
         self.show_line_numbers = visible
         self.update_line_number_area_width(0)
+
+    def set_spellchecker_enabled(self, enabled):
+        if hasattr(self, 'highlighter'):
+            self.highlighter.set_spellchecker_enabled(enabled)
 
     def set_custom_colors(self, colors):
         self.custom_colors = colors
@@ -219,6 +224,52 @@ class EditorWidget(QPlainTextEdit):
             super().wheelEvent(event)
 
     # --- Formatierungs-Funktionen ---
+
+    def contextMenuEvent(self, event):
+        menu = self.createStandardContextMenu()
+        
+        if self.spell_checker and self.highlighter.spellcheck_enabled:
+            cursor = self.cursorForPosition(event.pos())
+            cursor.select(QTextCursor.SelectionType.WordUnderCursor)
+            word = cursor.selectedText()
+
+            # Entferne führende/nachfolgende Satzzeichen für eine saubere Prüfung
+            clean_word = word.strip(".,;:!?\"'()[]{}")
+
+            if clean_word and not self.spell_checker.check(clean_word):
+                menu.addSeparator()
+                
+                suggestions = self.spell_checker.suggest(clean_word)
+                if suggestions:
+                    for suggestion in suggestions[:5]: # Zeige max. 5 Vorschläge
+                        action = QAction(suggestion, self)
+                        action.triggered.connect(lambda checked, s=suggestion, c=cursor: self.correct_word(c, s))
+                        menu.insertAction(menu.actions()[0], action)
+                else:
+                    no_suggestions = QAction(_("No suggestions"), self)
+                    no_suggestions.setEnabled(False)
+                    menu.insertAction(menu.actions()[0], no_suggestions)
+                
+                add_to_dict_action = QAction(_("Add to Dictionary"), self)
+                add_to_dict_action.triggered.connect(lambda: self.add_word_to_dict(clean_word))
+                menu.insertAction(menu.actions()[0], add_to_dict_action)
+                
+                menu.addSeparator()
+
+        menu.exec(event.globalPos())
+
+    def correct_word(self, cursor, new_word):
+        cursor.beginEditBlock()
+        cursor.removeSelectedText()
+        cursor.insertText(new_word)
+        cursor.endEditBlock()
+
+    def add_word_to_dict(self, word):
+        if self.spell_checker:
+            self.spell_checker.add_to_user_dictionary(word)
+            # Neu hervorheben, damit das Wort nicht mehr als Fehler markiert wird
+            if hasattr(self, 'highlighter'):
+                self.highlighter.rehighlight()
 
     def toggle_bold(self):
         self._surround_selection("**")

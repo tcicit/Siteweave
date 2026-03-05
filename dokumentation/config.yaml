@@ -60,3 +60,5 @@ site_theme: default-dokumentation
 default_author: TCI
 meta_description: Projekt Dokumentation
 meta_keywords: Doku, Projekt, Static Generator
+spellcheck_enabled: true
+spellcheck_language: en_US

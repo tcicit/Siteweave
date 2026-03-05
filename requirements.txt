@@ -9,6 +9,7 @@ weasyprint
 Babel
 requests
 pymarkdownlnt
+pyenchant
 
 # Hinweis: Unter Ubuntu/Debian müssen zusätzlich folgende Pakete installiert werden:
 # sudo apt install libpangocairo-1.0-0

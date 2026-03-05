@@ -177,10 +177,12 @@ Funktionen:
 
         # editor_colors wird in einem eigenen Dialog verwaltet und hier entfernt
         if 'editor_colors' in self.config_data:
+            self._hidden_editor_colors = self.config_data['editor_colors']
             del self.config_data['editor_colors']
 
         # recent_projects wird automatisch verwaltet und soll nicht editierbar sein
         if 'recent_projects' in self.config_data:
+            self._hidden_recent_projects = self.config_data['recent_projects']
             del self.config_data['recent_projects']
 
     def add_input_field(self, key, value, parent_layout=None, key_path=None):
@@ -264,3 +266,11 @@ Funktionen:
         if isinstance(widget, ToolbarLayoutEditor):
             return widget.get_data()
         return super().get_widget_value(widget, original_type)
+
+    def write_config(self, data):
+        # Restore hidden fields
+        if hasattr(self, '_hidden_editor_colors'):
+            data['editor_colors'] = self._hidden_editor_colors
+        if hasattr(self, '_hidden_recent_projects'):
+            data['recent_projects'] = self._hidden_recent_projects
+        super().write_config(data)

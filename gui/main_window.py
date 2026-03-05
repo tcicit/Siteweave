@@ -40,12 +40,14 @@ from .dialogs.search_dialog import SearchDialog
 from .dialogs.app_config_dialog import AppConfigDialog
 from .dialogs.project_config_dialog import ProjectConfigDialog
 from .dialogs.snippet_manager_dialog import SnippetManagerDialog
+from .dialogs.dictionary_manager_dialog import DictionaryManagerDialog
 from .dialogs.emoji_picker import EmojiPicker
 from .workers import WorkerThread
 from .dialogs.help_viewer import HelpViewer
 from .dialogs.color_settings_dialog import ColorSettingsDialog
 from .theme import apply_dark_theme, apply_light_theme
 from .dialogs.project_launcher import ProjectLauncher
+from .spellchecker import SpellChecker
 from .dialogs.create_project_dialog import CreateProjectDialog
 from .project_panel import ProjectPanel
 from core.config_manager import ConfigManager
@@ -178,6 +180,7 @@ class MainWindow(QMainWindow):
         self.app_config_manager = ConfigManager(self.app_config_path)
         self.app_config = self.load_app_config()
         
+        self.spell_checker = None
         # Initialize localization
         self.init_localization()
         
@@ -280,6 +283,7 @@ class MainWindow(QMainWindow):
         self.create_actions()
         self.init_toolbar()
         self.init_menu()
+        self.init_spellchecker()
         
         # Theme anwenden (nach UI-Initialisierung, da Editor/Preview existieren müssen)
         dark_mode = self.app_config.get('view_dark_mode', False)
@@ -309,6 +313,43 @@ class MainWindow(QMainWindow):
             i18n_init(app_root=self.app_root, locale=lang)
         except Exception as e:
             print(f"Localization init failed for {lang}, using default. ({e})")
+
+    def init_spellchecker(self):
+        """Initialisiert oder aktualisiert den Spellchecker basierend auf der Projektkonfiguration."""
+        # Versuche erst die spezifische Spellcheck-Sprache, dann Fallback auf Site-Language
+        dict_lang = self.project_config.get('spellcheck_language')
+        
+        if not dict_lang:
+            lang_code = self.project_config.get('language', 'en')
+            # Mapping von einfachen Codes zu pyenchant-spezifischen (z.B. de -> de_DE)
+            lang_map = {
+                'de': 'de_DE',
+                'en': 'en_US',
+                'fr': 'fr_FR',
+                'es': 'es_ES'
+            }
+            dict_lang = lang_map.get(lang_code, 'en_US')
+            
+        user_dict_path = os.path.join(self.project_root, ".user_dictionary.txt")
+
+        success = False
+        if self.spell_checker is None:
+            self.spell_checker = SpellChecker(dict_lang, user_dict_path)
+            # Prüfe, ob die initiale Erstellung erfolgreich war
+            success = self.spell_checker.dictionary is not None
+        else:
+            success = self.spell_checker.set_language(dict_lang, user_dict_path)
+
+        if not success:
+            QMessageBox.warning(self, _("Spellchecker Warning"),
+                                _("The dictionary for the language '{lang}' could not be found.\n\n"
+                                  "Please install the corresponding Hunspell dictionary for your system "
+                                  "(e.g., 'hunspell-de-de' on Debian/Ubuntu, or 'hunspell-de' on Arch/Fedora).").format(lang=dict_lang))
+        
+        self.editor.spell_checker = self.spell_checker
+        if hasattr(self.editor, 'highlighter'):
+            self.editor.highlighter.spell_checker = self.spell_checker
+        self.editor.highlighter.rehighlight()
 
     def init_ui(self):
         """
@@ -351,14 +392,15 @@ class MainWindow(QMainWindow):
         self.splitter.addWidget(self.left_splitter)
         
         # 2. Editor
-        self.editor = EditorWidget()
-        self.editor.textChanged.connect(self.on_text_changed)
-        self.editor.fontSizeChanged.connect(self.update_font_size_config)
+        self.editor = EditorWidget(spell_checker=self.spell_checker)
         
         show_line_numbers = self.app_config.get('view_show_line_numbers', True)
         self.editor.set_line_numbers_visible(show_line_numbers)
         
         self.splitter.addWidget(self.editor)
+
+        # Spellchecker initial aktivieren/deaktivieren
+        self.editor.set_spellchecker_enabled(self.project_config.get('spellcheck_enabled', True))
         
         # 3. Preview
         self.preview = PreviewWidget(self.project_root, self.app_root)
@@ -367,7 +409,7 @@ class MainWindow(QMainWindow):
         self.splitter.addWidget(self.preview)
 
         # Scroll synchronization: Editor -> Preview
-        self.editor.verticalScrollBar().valueChanged.connect(self.sync_scroll)
+        self.editor.verticalScrollBar().valueChanged.connect(self.sync_scroll_and_line_numbers)
         self.preview.loadFinished.connect(self.restore_scroll_position)
 
         # 4. Panels (docks)
@@ -383,6 +425,10 @@ class MainWindow(QMainWindow):
             self.left_splitter.restoreState(self.left_splitter_state)
 
         main_layout.addWidget(self.splitter)
+
+        # Signale verbinden, nachdem alle UI-Elemente (Editor, Preview, Outline) erstellt wurden
+        self.editor.textChanged.connect(self.on_text_changed)
+        self.editor.fontSizeChanged.connect(self.update_font_size_config)
 
     def create_dock_panels(self):
         # Frontmatter
@@ -457,6 +503,9 @@ class MainWindow(QMainWindow):
         # Bulk Edit Action
         self.bulk_edit_frontmatter_act = QAction(_("Bulk Edit Frontmatter"), self)
         self.bulk_edit_frontmatter_act.triggered.connect(self.show_bulk_edit_dialog)        
+
+        self.manage_dictionary_act = QAction(_("Manage Dictionary..."), self)
+        self.manage_dictionary_act.triggered.connect(self.show_dictionary_manager)
 
         self.save_act = QAction(_("Save"), self)
         self.save_act.setShortcut("Ctrl+S")
@@ -553,6 +602,11 @@ class MainWindow(QMainWindow):
         self.toggle_line_numbers_act.setChecked(self.app_config.get('view_show_line_numbers', True))
         self.toggle_line_numbers_act.triggered.connect(self.toggle_line_numbers)
 
+        self.toggle_spellcheck_act = QAction(_("Spell Checking"), self)
+        self.toggle_spellcheck_act.setCheckable(True)
+        self.toggle_spellcheck_act.setChecked(self.project_config.get('spellcheck_enabled', True))
+        self.toggle_spellcheck_act.triggered.connect(self.toggle_spellcheck)
+
         self.dark_mode_act = QAction(_("Dark Mode"), self)
         self.dark_mode_act.setCheckable(True)
         self.dark_mode_act.setChecked(self.app_config.get('view_dark_mode', False))
@@ -609,6 +663,7 @@ class MainWindow(QMainWindow):
         view_menu.addAction(self.toolbar.toggleViewAction())
         view_menu.addAction(self.toggle_preview_act)
         view_menu.addAction(self.toggle_line_numbers_act)
+        view_menu.addAction(self.toggle_spellcheck_act)
         view_menu.addAction(self.dark_mode_act)
         view_menu.addSeparator()
         
@@ -631,6 +686,7 @@ class MainWindow(QMainWindow):
         project_tools_menu = menubar.addMenu(_("&Project Tools"))
         
         project_tools_menu.addAction(self.bulk_edit_frontmatter_act)
+        project_tools_menu.addAction(self.manage_dictionary_act)
         project_tools_menu.addSeparator()
 
         self.populate_tools_menu(project_tools_menu, category="project")
@@ -954,11 +1010,14 @@ class MainWindow(QMainWindow):
     def update_font_size_config(self, size):
         self.app_config['editor_font_size'] = size
 
-    def sync_scroll(self, value):
+    def sync_scroll_and_line_numbers(self, value):
         """Synchronizes scroll position from the editor to the preview."""
+        # Zeilennummern-Bereich aktualisieren, wenn gescrollt wird
+        self.editor.line_number_area.update()
+
         if not self.preview.isVisible():
             return
-            
+
         scrollbar = self.editor.verticalScrollBar()
         max_val = scrollbar.maximum()
         
@@ -973,7 +1032,7 @@ class MainWindow(QMainWindow):
     def restore_scroll_position(self, ok=True):
         """Restores the scroll position after the preview reloads."""
         if ok:
-            self.sync_scroll(self.editor.verticalScrollBar().value())
+            self.sync_scroll_and_line_numbers(self.editor.verticalScrollBar().value())
 
     def update_status_bar(self):
         if not self.current_file_path:
@@ -1149,6 +1208,12 @@ class MainWindow(QMainWindow):
         self.editor.set_line_numbers_visible(checked)
         self.app_config['view_show_line_numbers'] = checked
 
+    def toggle_spellcheck(self, checked):
+        self.editor.set_spellchecker_enabled(checked)
+        self.project_config['spellcheck_enabled'] = checked
+        self.project_config_manager.update({'spellcheck_enabled': checked})
+        self.project_config_manager.save()
+
     def toggle_dark_mode(self, checked):
         self.apply_theme(checked)
 
@@ -1217,6 +1282,7 @@ class MainWindow(QMainWindow):
         dialog = ProjectConfigDialog(config_path, self.app_root, self)
         if dialog.exec():
             self.project_config = self.load_project_config()
+            self.init_spellchecker() # Sprache könnte sich geändert haben
             self.update_frontmatter_layouts()
     
     def show_bulk_edit_dialog(self):
@@ -1278,6 +1344,15 @@ class MainWindow(QMainWindow):
         dialog = SnippetManagerDialog(snippets_dir, self)
         if dialog.exec():
             self.snippets.refresh_snippets()
+
+    def show_dictionary_manager(self):
+        if not self.spell_checker:
+            QMessageBox.warning(self, _("Error"), _("Spellchecker is not initialized."))
+            return
+        dialog = DictionaryManagerDialog(self.spell_checker, self)
+        dialog.exec()
+        # Re-highlight editor to reflect changes (e.g. removed words might now be errors)
+        self.editor.highlighter.rehighlight()
 
     def create_new_post(self, initial_dir=None):
         # Wenn die Funktion vom Menü/Toolbar aufgerufen wird, ist initial_dir ein bool (checked).
