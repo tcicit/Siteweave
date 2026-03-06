@@ -272,7 +272,7 @@ class BaseConfigDialog(QDialog):
                 start_dir = os.path.dirname(abs_path) if os.path.isfile(abs_path) else abs_path
 
         if dialog_title is None: dialog_title = _("Select File")
-        file_path, _ = QFileDialog.getOpenFileName(self, dialog_title, start_dir, file_filter)
+        file_path, _filter = QFileDialog.getOpenFileName(self, dialog_title, start_dir, file_filter)
         if file_path:
             try:
                 rel_path = os.path.relpath(file_path, os.path.dirname(self.config_path))

@@ -21,6 +21,7 @@ The project is currently in early stages (v0.2) and under active development. It
 * **Snippets:** Create and reuse text snippets across your pages.
 * **Site Templates:** Flexible design with Jinja2 templates.
 * **Worker Scripts:** Support for background tasks and automation.
+*  **Spellchecker** for text editing
 
 ![Screenshot](screenshot.png)
 
@@ -77,7 +78,11 @@ source venv/bin/activate   # Linux/Mac
 pip install -r requirements.txt
 ```
 
-4. Start the editor:
+4. Install hunspell
+
+...
+
+5. Start the editor:
 
 ```bash
 python run_editor.py

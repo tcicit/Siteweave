@@ -78,7 +78,9 @@ class DictionaryManagerDialog(QDialog):
             QMessageBox.information(self, _("Info"), _("The dictionary is empty. Nothing to export."))
             return
 
-        file_path, _ = QFileDialog.getSaveFileName(self, _("Export Dictionary"), "", _("Text Files (*.txt);;All Files (*)"))
+        # file_path, _ = QFileDialog.getSaveFileName(self, _("Export Dictionary"), "", _("Text Files (*.txt);;All Files (*)"))
+        file_path, selected_filter = QFileDialog.getSaveFileName(self, _("Export Dictionary"), "", _("Text Files (*.txt);;All Files (*)"))
+
         if file_path:
             try:
                 with open(file_path, 'w', encoding='utf-8') as f:
@@ -91,7 +93,7 @@ class DictionaryManagerDialog(QDialog):
     def import_dictionary(self):
         if not self.spell_checker: return
 
-        file_path, _ = QFileDialog.getOpenFileName(self, _("Import Dictionary"), "", _("Text Files (*.txt);;All Files (*)"))
+        file_path, _filter = QFileDialog.getOpenFileName(self, _("Import Dictionary"), "", _("Text Files (*.txt);;All Files (*)"))
         if not file_path:
             return
 

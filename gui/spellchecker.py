@@ -54,17 +54,12 @@ class SpellChecker:
         """Fügt ein Wort zum persönlichen Wörterbuch hinzu und speichert es."""
         if self.user_dictionary is not None:
             self.user_dictionary.add(word)
-            # PyPWL speichert nicht automatisch, daher manuell hinzufügen.
-            with open(self.user_dict_path, 'a', encoding='utf-8') as f:
-                f.write(f"{word}\n")
 
     def add_words_to_user_dictionary(self, words_to_add):
         """Adds a list of words to the user dictionary efficiently."""
         if self.user_dictionary is not None and words_to_add:
-            with open(self.user_dict_path, 'a', encoding='utf-8') as f:
-                for word in words_to_add:
-                    self.user_dictionary.add(word)
-                    f.write(f"{word}\n")
+            for word in words_to_add:
+                self.user_dictionary.add(word)
 
     def get_user_words(self):
         """Gibt eine Liste der Wörter im Benutzerwörterbuch zurück."""
