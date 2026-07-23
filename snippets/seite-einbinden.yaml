@@ -1,0 +1,4 @@
+code: '[[include page="pfad/zur/seite.md"]]'
+name: Seite einbinden
+order: 2
+category: Allgemein

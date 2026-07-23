@@ -1,0 +1,18 @@
+name: Musterimpressum für Einzelunternehmer
+code: '
+
+  Vorname und Name Max Mustermann
+
+  Strasse und Hausnummer Musterstrasse 1
+
+  Postleitzahl und Ort 8000 Musterstadt Schweiz
+
+  Telefonnummer 044 000 00 00
+
+  ggf. Fax wenn vorhanden oder gewünscht
+
+  E-Mail Max.Muster@……. ch
+
+  Umsatzsteuer-Identifikationsnummer wenn vorhanden '
+category: General
+order: 30

@@ -1,0 +1,401 @@
+/* Documentation Template Styles */
+:root {
+    /* Colors */
+    --color-primary: #2980b9; /* Dunkelblau für Akzente */
+    --color-secondary: #3498db; /* Hellblau für Hover-Effekte */
+    --color-text: #333; /* Haupttextfarbe */
+    --color-text-light: #666; /* Leichtere Textfarbe */
+    --color-text-lighter: #888; /* Noch hellere Textfarbe */
+    --color-link: var(--color-primary); /* Linkfarbe */
+    --color-background: #fff; /* Haupt-Hintergrundfarbe */
+    --color-background-light: #f7f9fa; /* Leichter Hintergrund für Sidebar */
+    --color-background-lighter: #f0f0f0; /* Für Code-Hintergrund */
+    --color-background-code-block: #f6f8fa; /* Spezieller Hintergrund für Code-Blöcke */
+    --color-background-blockquote: #f9f9f9; /* Hintergrund für Blockquotes */
+    --color-border-light: #eee; /* Helle Rahmenfarbe */
+    --color-border-medium: #e1e4e8; /* Mittlere Rahmenfarbe */
+    --color-border-dark: #ccc; /* Dunklere Rahmenfarbe */
+    --color-code-text: #c7254e; /* Textfarbe für Inline-Code */
+    --color-header-shadow: rgba(0,0,0,0.15); /* Schatten für Header */
+    --color-dropdown-shadow: rgba(0,0,0,0.2); /* Schatten für Dropdowns */
+    --color-image-shadow: rgba(0,0,0,0.1); /* Schatten für Bilder */
+    --color-image-shadow-hover: rgba(0,0,0,0.2); /* Stärkerer Schatten bei Hover */
+
+    /* Typography */
+    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-code: 'Fira Code', 'Consolas', monospace; /* Moderne Monospace-Schriftart */
+    --font-size-base: 1rem;
+    --font-size-small: 0.9rem;
+    --font-size-xsmall: 0.85rem;
+    --font-size-header-title: 1.5rem; /* Grösserer Titel im Header */
+    --font-size-404-large: 8em;
+    --font-size-404-medium: 1.5em;
+
+    /* Spacing */
+    --spacing-xxs: 2px;
+    --spacing-xs: 5px;
+    --spacing-sm: 6px;
+    --spacing-md: 10px;
+    --spacing-lg: 15px;
+    --spacing-xl: 20px;
+    --spacing-xxl: 40px;
+    --spacing-h1-bottom: 10px;
+    --spacing-h2-top: 2em;
+    --spacing-blockquote-left: 15px;
+    --spacing-blockquote-padding: 10px 15px;
+    --spacing-pre-padding: 15px;
+    --spacing-sidebar-item-padding: 6px 10px;
+    --spacing-dropdown-item-padding: 10px 15px;
+
+    /* Dimensions */
+    --header-height: 70px; /* Etwas höherer Header */
+    --sidebar-width: 280px;
+    --max-content-width: 800px;
+
+    /* Border Radius */
+    --border-radius-sm: 3px;
+    --border-radius-md: 4px;
+    --border-radius-lg: 5px;
+}
+
+body {
+    font-family: var(--font-family-base);
+    margin: 0;
+    padding: 0;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a { color: var(--color-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+header {
+    background: var(--color-primary);
+    color: var(--color-background);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-xl);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 var(--spacing-xxs) var(--spacing-xs) var(--color-header-shadow);
+    /* Moderner Touch: Leichter Gradient */
+    background: linear-gradient(to right, var(--color-primary), #3498db);
+}
+
+.logo-link { display: flex; align-items: center; }
+.header-logo { height: 40px; margin-right: var(--spacing-lg); }
+
+header h1 { margin: 0; font-size: var(--font-size-header-title); }
+header h1 a { color: var(--color-background); text-decoration: none; }
+header nav { margin-left: auto; }
+header nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+
+/* Hamburger Menu Toggle (Checkbox Hack) */
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    margin-left: auto;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--color-background);
+    user-select: none;
+}
+
+header nav li { position: relative; }
+header nav a { 
+    color: var(--color-background); 
+    margin-left: var(--spacing-lg); 
+    text-decoration: none; 
+    font-size: var(--font-size-small); 
+    display: block; 
+    padding: var(--spacing-xs) var(--spacing-md); /* Etwas mehr Padding */
+    border-radius: var(--border-radius-md);
+    transition: background-color 0.3s ease; /* Sanfter Übergang */
+}
+header nav a:hover { 
+    background-color: rgba(255, 255, 255, 0.2); /* Leichter Hintergrund bei Hover */
+}
+
+/* Dropdown Menu */
+header nav .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--color-background);
+    box-shadow: 0 var(--spacing-xxs) var(--spacing-xs) var(--color-dropdown-shadow);
+    min-width: 160px;
+    z-index: 1000;
+    border-radius: var(--border-radius-md);
+}
+header nav li:hover .dropdown { display: block; }
+header nav .dropdown li { display: block; margin: 0; }
+header nav .dropdown a { 
+    color: var(--color-text); 
+    padding: var(--spacing-md) var(--spacing-lg); 
+    margin: 0; 
+    display: block; 
+}
+header nav .dropdown a:hover { 
+    background: var(--color-background-light); 
+    color: var(--color-primary); 
+}
+
+/* Layout Container */
+.doc-container {
+    display: flex;
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--color-background-light);
+    border-right: 1px solid var(--color-border-medium);
+    padding: var(--spacing-xl);
+    position: fixed;
+    top: var(--header-height);
+    bottom: 0;
+    overflow-y: auto;
+    /* Optional: Sanfter Schatten für die Sidebar */
+    box-shadow: 2px 0 5px var(--color-header-shadow);
+}
+
+.sidebar h3 { 
+    font-size: var(--font-size-small); 
+    text-transform: uppercase; 
+    color: var(--color-text-light); 
+    margin-top: 0; 
+    margin-bottom: var(--spacing-lg); 
+}
+
+/* Styles für das generierte Menü */
+.sidebar ul { list-style: none; padding: 0; margin: 0; }
+.sidebar li { margin-bottom: var(--spacing-xxs); }
+.sidebar a, .sidebar .dropbtn { 
+    text-decoration: none; 
+    color: var(--color-text); 
+    font-size: var(--font-size-small); 
+    display: block; 
+    padding: var(--spacing-sidebar-item-padding); 
+    border-radius: var(--border-radius-md);
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.sidebar a:hover, .sidebar .dropbtn:hover { 
+    background-color: var(--color-border-medium); 
+    color: var(--color-primary); 
+}
+.sidebar a.active { 
+    background-color: var(--color-border-medium); 
+    color: var(--color-primary); 
+    font-weight: bold; 
+}
+
+/* Dropdown/Submenu Styles */
+.sidebar .dropdown-content { display: none; padding-left: var(--spacing-lg); }
+.sidebar .active-parent > .dropdown-content, 
+.sidebar .dropdown:hover > .dropdown-content { display: block; }
+.sidebar .dropbtn::after { content: ' ▼'; font-size: 0.7em; float: right; }
+
+/* Main Content */
+.content {
+    margin-left: calc(var(--sidebar-width) + var(--spacing-xl));
+    padding: var(--spacing-xxl);
+    max-width: var(--max-content-width);
+    flex: 1;
+}
+
+h1 { 
+    border-bottom: 1px solid var(--color-border-light); 
+    padding-bottom: var(--spacing-md); 
+    margin-top: 0; 
+}
+h2 { margin-top: var(--spacing-h2-top); }
+code { 
+    background: var(--color-background-lighter); 
+    padding: var(--spacing-xxs) var(--spacing-xs); 
+    border-radius: var(--border-radius-sm); 
+    font-family: var(--font-family-code); 
+    color: var(--color-code-text); 
+}
+pre { 
+    background: var(--color-background-code-block); 
+    padding: var(--spacing-lg); 
+    border-radius: var(--border-radius-lg); 
+    overflow-x: auto; 
+    border: 1px solid var(--color-border-medium); 
+}
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { 
+    border-left: 4px solid var(--color-primary); 
+    margin: 1.5em 0; 
+    padding-left: var(--spacing-lg); 
+    color: var(--color-text-light); 
+    background: var(--color-background-blockquote); 
+    padding: var(--spacing-blockquote-padding); 
+}
+img { 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: var(--border-radius-md); 
+    border: 1px solid var(--color-border-light); 
+}
+
+/* Globaler Stil für alle Bilder */
+img {
+    max-width: 100%;
+    height: auto;
+    
+    /* Rahmen (hellgrau) */
+    border: 1px solid var(--color-border-dark);
+    
+    /* Schatten (leicht und weich) */
+    box-shadow: 0 4px 6px var(--color-image-shadow);
+    
+    /* Abgerundete Ecken */
+    border-radius: var(--border-radius-md);
+}
+
+/* Optional: Hover-Effekt (Schatten wird stärker, wenn man mit der Maus drüberfährt) */
+img:hover {
+    box-shadow: 0 8px 12px var(--color-image-shadow-hover);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Footer */
+footer {
+    margin-left: calc(var(--sidebar-width) + var(--spacing-xl));
+    padding: var(--spacing-xl) var(--spacing-xxl);
+    border-top: 1px solid var(--color-border-light);
+    font-size: var(--font-size-xsmall);
+    color: var(--color-text-lighter);
+    text-align: center;
+    background: var(--color-background);
+}
+
+.footer-links {
+    margin-left: 1em;
+}
+
+.footer-links a {
+    margin: 0 var(--spacing-xs);
+    color: var(--color-text-light);
+}
+
+@media (max-width: 768px) {
+    .sidebar { display: none; } /* Mobile: Hide sidebar for simplicity */
+    .content { margin-left: 0; }
+    footer { margin-left: 0; }
+
+    /* Responsive Header Menu */
+    .menu-icon {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background: var(--color-primary);
+        box-shadow: 0 var(--spacing-xs) var(--spacing-sm) var(--color-header-shadow);
+        z-index: 99;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        padding: var(--spacing-md) 0;
+    }
+
+    header nav a {
+        margin-left: 0;
+        padding: var(--spacing-md) var(--spacing-xl);
+    }
+
+    /* Zeige Menü wenn Checkbox aktiviert ist */
+    #menu-toggle:checked ~ nav {
+        display: block;
+    }
+}
+
+/* Styles for the 404 page */
+/* Container holding the image and the text */
+.container_404 {
+  position: relative;
+  text-align: center;
+  color: var(--color-background);
+  height: 100%;
+}
+
+.image_404 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} 
+
+/* Centered text */
+.centered_404 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-404-large);
+  font-weight: bold;
+  color: var(--color-background); 
+  
+} 
+
+.home_404 {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-404-medium);
+  font-weight: bold;
+  color: var(--color-background); 
+  background-color: var(--color-text);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.home_404:hover {
+  background-color: var(--color-text-light);
+}
+
+.message_404 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-404-medium);
+  font-weight: bold;
+  color: var(--color-background); 
+  background-color: var(--color-text);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+}
+
+.message_404:hover {
+  background-color: var(--color-text-light);   
+  
+}

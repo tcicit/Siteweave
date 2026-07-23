@@ -1,0 +1,41 @@
+/* --- Table of Contents (TOC) Plugin Styles --- */
+.toc {
+    border: 1px solid var(--border-color);
+    background-color: var(--ui-background-color);
+    padding: 1em 1.5em;
+    margin: 2em 0;
+    border-radius: 4px;
+}
+.toc .toctitle {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+}
+.toc ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.toc ul ul {
+    padding-left: 1.5em; /* Indent nested lists */
+}
+.toc li {
+    margin-bottom: 0.3em;
+}
+.toc a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+.headerlink {
+  visibility: hidden;
+  text-decoration: none;
+  color: var(--primary-color);
+  margin-left: 0.5em;
+}
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+  visibility: visible;
+}

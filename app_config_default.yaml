@@ -1,0 +1,125 @@
+iew_show_preview: true
+view_show_toolbar: true
+view_show_line_numbers: true
+view_dark_mode: false
+editor_font_size: 12
+editor_font_family: Monospace
+preview_font_family: Sans Serif
+preview_font_size: 14
+action_icons:
+  new_act: add
+  switch_project_act: start
+  save_act: save
+  insert_img_act: image
+  insert_file_act: link
+  emoji_act: emoji
+  gallery_act: gallery
+  exit_act: close
+  undo_act: undo
+  redo_act: redo
+  select_all_act: select_all
+  search_act: search
+  replace_act: find_replace
+  toggle_preview_act: preview
+  dark_mode_act: dark_mode
+  config_act: info
+  project_config_act: settings
+  manage_snippets_act: snippets
+  render_act: render
+  open_browser_act: browser
+  about_act: about
+  bold_act: bold
+  italic_act: italic
+  code_act: code
+  h1_act: h1
+  h2_act: h2
+  h3_act: h3
+  ul_act: list_ul
+  ol_act: list_numbered
+  table_act: table
+toolbar_layout:
+- new_act
+- save_act
+- separator
+- undo_act
+- redo_act
+- search_act
+- select_all_act
+- separator
+- replace_act
+- separator
+- toggle_preview_act
+- switch_project_act
+- project_config_act
+- separator
+- spacer
+- gallery_act
+- insert_img_act
+- insert_file_act
+- separator
+- bold_act
+- italic_act
+- code_act
+- separator
+- h1_act
+- h2_act
+- h3_act
+- separator
+- ul_act
+- ol_act
+- separator
+- table_act
+- emoji_act
+- spacer
+- render_act
+- open_browser_act
+autosave_interval: 300
+autosave_on_close: false
+autosave_on_switch: false
+last_file: 
+media_thumbnail_size: 200
+auto_open_last_project: true
+language: en_US
+paths:
+  snippets: snippets
+  themes: themes
+  locales: locales
+  pdf_themes: pdf_themes
+  plugins: plugins
+  scripts: scripts
+media_manager_sort_index: 0
+media_manager_sort_descending: false
+external_editors:
+- name: GIMP
+  extensions:
+  - .jpg
+  - .jpeg
+  - .png
+  - .webp
+  - .xcf
+  - .gif
+  command:
+  - flatpak
+  - run
+  - org.gimp.GIMP
+  icon: applications-other
+- name: Inkscape
+  extensions:
+  - .svg
+  command:
+  - flatpak
+  - run
+  - org.inkscape.Inkscape
+  icon: applications-other
+- name: xreader
+  extensions:
+  - .pdf
+  command:
+  - xreader
+  - '%U'
+  icon: applications-other
+window_width: 1200
+window_height: 800
+window_x: 100
+window_y: 100
+recent_projects:

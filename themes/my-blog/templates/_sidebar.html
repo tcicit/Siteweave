@@ -1,0 +1,15 @@
+<aside class="sidebar">
+    <h2>Navigation</h2>
+    <div class="sidebar-nav">
+        {{ generate_index_html(site_structure, relative_prefix, current_output_path) | safe }}
+    </div>
+
+    {# Hier könntest du weitere Sidebar-Inhalte hinzufügen #}
+    {# z.B. mit Plugins wie [[latest_posts]] oder [[tags_cloud]] #}
+
+    <h4>About Me</h4>
+    <p>Hi, I'm [Your Name], a passionate blogger and web developer. I love sharing my thoughts on technology, programming, and life. Welcome to my blog!</p>    
+
+    [[tags_cloud limit=10]]
+
+</aside>

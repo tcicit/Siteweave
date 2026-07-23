@@ -1,0 +1,10 @@
+category: Formatierung
+code: '[[box title="Titel" bgcolor="#eaf7ff"]]
+
+  Inhalt der Box
+
+  [[/box]]
+
+  '
+name: Box (Farbig)
+order: 8

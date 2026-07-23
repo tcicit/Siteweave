@@ -1,0 +1,14 @@
+<header>
+    <div class="container">
+        <h1><a href="#home">{{ config.site_name }}</a></h1>
+        <nav>
+            <ul>
+            {% for link in config.header_links %}
+            <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+            {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</header>

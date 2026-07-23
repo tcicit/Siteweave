@@ -1,0 +1,7 @@
+name: Image with all Parametes
+code: '[[image src="image.jpg" width="300px" height="200px" align="center" border="true"
+  shadow="true" radius="10px" caption="Mein Bild" lightbox="true" overlay="rgba(0,0,0,0.3)"
+  alt="Alternativtext" class="custom-class" href="https://example.com" target="_blank"
+  zoom="true" opacity="0.8"]]'
+category: Medien
+order: 31

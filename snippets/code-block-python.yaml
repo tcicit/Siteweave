@@ -1,0 +1,10 @@
+category: Formatierung
+code: '[[code lang="python"]]
+
+  print("Hello World")
+
+  [[/code]]
+
+  '
+name: Code Block (Python)
+order: 11

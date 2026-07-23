@@ -1,0 +1,4 @@
+name: Bilder-Galerie alle Bilder im Path
+code: '[[gallery  path="assets/images"]]'
+category: Medien
+order: 12

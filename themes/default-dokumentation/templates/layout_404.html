@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>404 - Seite nicht gefunden</h1>
+
+
+
+ <div class="container_404">  
+  <img class="image_404" src="{{ featured_image }}" alt="{{ title }}">
+  
+  <a href="/" class="home_404">Home</a>
+  <div class="centered_404">{{ title }}</div>
+  <div class="message_404">{{ content }}</div>
+
+</div> 
+
+{% endblock %}

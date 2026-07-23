@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Styling für das Breadcrumbs-Plugin
+   ========================================================================== */
+
+.breadcrumbs {
+    margin-bottom: 1.5rem;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.breadcrumbs li {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+    content: '›'; /* Separator */
+    margin: 0 0.5em;
+    color: #999;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    color: #333; /* Aktuelle Seite Text */
+    font-weight: bold;
+}

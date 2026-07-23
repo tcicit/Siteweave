@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <article class="blog-post">
+
+        {% if featured_image %}
+        <div class="featured-image">
+            <img src="{{ featured_image }}" alt="Featured Image">
+        </div>
+        {% endif %} 
+
+        <header class="post-header">
+            <h1>{{ page_title or title }}</h1>
+            <div class="meta">
+                <span>Veröffentlicht am {{ date }}</span>
+                {% if author %} | <span>von {{ author }}</span>{% endif %}
+            </div>
+        </header>
+        
+        <div class="post-content">
+            {{ content | safe }}
+        </div>
+        
+        {% if tags %}
+        <div class="post-tags">
+            Tags: 
+            {% for tag in tags %}
+            <span class="tag">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </article>
+{% endblock %}

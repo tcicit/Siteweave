@@ -1,0 +1,38 @@
+/* --- Infobox Plugin Styles --- */
+.infobox {
+    padding: 1em 1.5em;
+    margin: 1.5em 0;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: var(--background-color-light);
+}
+
+.infobox p:last-child {
+    margin-bottom: 0;
+}
+
+.infobox-info {
+    border-left-color: #4341dd; /* Blue */
+    background-color: aliceblue;
+}
+
+.infobox-success {
+    border-left-color: #0dbd15; /* Green */
+    background-color: honeydew;   
+}
+
+.infobox-warning {
+    border-left-color: #fdfa3a; /* Yellow */
+    background-color: lightgoldenrodyellow;
+}
+
+.infobox-error {
+    border-left-color: #fa5305; /* Red */
+    background-color: mistyrose;   
+}
+
+.infobox-title {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-size: 1.1em;
+}

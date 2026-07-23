@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="200"
+   height="200"
+   viewBox="0 0 200 200"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="app_logo.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   inkscape:export-filename="app_logo.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.4570313"
+     inkscape:cx="103.55706"
+     inkscape:cy="102.25537"
+     inkscape:window-width="1920"
+     inkscape:window-height="1128"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2"
+     showguides="false" />
+  <g
+     id="g2"
+     transform="translate(-5.5806999,3.4626381)">
+    <g
+       id="g4">
+      <rect
+         width="190.97176"
+         height="190.97176"
+         x="10.09482"
+         y="1.051482"
+         ry="16.184046"
+         stroke="#000000"
+         stroke-width="9.02824"
+         fill="none"
+         id="rect1"
+         style="fill:#eeeeee;fill-opacity:1" />
+      <g
+         id="g3">
+        <path
+           d="m 28.080696,96.080696 v -68 h 20 l 20,25 20,-25 H 108.0807 v 68 H 88.080696 v -39 l -20,25 -20,-25 v 39 z m 125.000004,0 -30,-33 h 20 v -35 h 20 v 35 h 20 z"
+           id="path1" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:53.5506px;font-family:'Noto Mono';-inkscape-font-specification:'Noto Mono';letter-spacing:9.48645px;writing-mode:lr-tb;direction:ltr;fill:none;fill-opacity:0.933333;stroke:#000000;stroke-width:8.92509"
+           x="28.857534"
+           y="160.53148"
+           id="text1"><tspan
+             sodipodi:role="line"
+             id="tspan1"
+             x="28.857534"
+             y="160.53148"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';letter-spacing:9.48645px;stroke-width:8.92509">EDIT</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

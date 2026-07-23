@@ -1,0 +1,2304 @@
+# English translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-03-04 14:59+0100\n"
+"PO-Revision-Date: 2026-03-04 14:58+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: core/renderer.py:179
+#, python-brace-format
+msgid "Warning: Plugin '{plugin_name}' has no 'handle' function."
+msgstr ""
+
+#: core/renderer.py:203
+#, python-brace-format
+msgid ""
+"Warning: Maximum plugin nesting depth reached for page '{page_title}'. "
+"Possible infinite loop?"
+msgstr ""
+
+#: core/renderer.py:203 workers/plugin_docs.py:28 workers/plugin_docs.py:173
+msgid "Unknown"
+msgstr ""
+
+#: core/renderer.py:311
+msgid "Config correction: 'footer_links' is a single object. Converting to list."
+msgstr ""
+
+#: core/renderer.py:315
+msgid "Config correction: 'footer_links' is a map. Converting values to list."
+msgstr ""
+
+#: core/renderer.py:322
+msgid "Config correction: 'header_links' is a single object. Converting to list."
+msgstr ""
+
+#: core/renderer.py:325
+msgid "Config correction: 'header_links' is a map. Converting values to list."
+msgstr ""
+
+#: core/renderer.py:345
+#, python-brace-format
+msgid "Configuration file '{config_path}' not found. Using defaults."
+msgstr ""
+
+#: core/renderer.py:352
+#, python-brace-format
+msgid ""
+"\n"
+"CRITICAL ERROR in '{config_path}':"
+msgstr ""
+
+#: core/renderer.py:354
+msgid ""
+"  Cause: Probably duplicate keys or sections (e.g. [contact] defined "
+"twice)."
+msgstr ""
+
+#: core/renderer.py:355
+msgid "  Solution: Open the file and remove duplicates manually.\n"
+msgstr ""
+
+#: core/renderer.py:412
+msgid ""
+"\n"
+"Copying local assets..."
+msgstr ""
+
+#: core/renderer.py:424
+#, python-brace-format
+msgid "  - Copying from '{source_path}' to '{dest_path}'"
+msgstr ""
+
+#: core/renderer.py:429
+msgid "  - No local asset directories found in content folder."
+msgstr ""
+
+#: core/renderer.py:435
+msgid ""
+"\n"
+"Generating sitemap.xml..."
+msgstr ""
+
+#: core/renderer.py:437
+msgid "Warning: SITE_URL is not configured to a real domain. Skipping sitemap."
+msgstr ""
+
+#: core/renderer.py:438
+msgid "         Please adjust the SITE_URL variable in config.yaml."
+msgstr ""
+
+#: core/renderer.py:463
+#, python-brace-format
+msgid "  - sitemap.xml successfully created: {sitemap_path}"
+msgstr ""
+
+#: core/renderer.py:470
+msgid ""
+"\n"
+"Copying static directories (CSS, JS, Assets)..."
+msgstr ""
+
+#: core/renderer.py:481
+#, python-brace-format
+msgid "  - '{source_path}' successfully copied/merged to '{dest_path}'."
+msgstr ""
+
+#: core/renderer.py:483
+#, python-brace-format
+msgid "  - Static directory '{source_path}' not found or empty, skipping."
+msgstr ""
+
+#: core/renderer.py:492
+#, python-brace-format
+msgid "Theme directory not found: {path}"
+msgstr ""
+
+#: core/renderer.py:495
+#, python-brace-format
+msgid ""
+"\n"
+"Copying theme assets for '{theme}'..."
+msgstr ""
+
+#: core/renderer.py:504
+#, python-brace-format
+msgid "  - Merged theme {sub} to {dst}"
+msgstr ""
+
+#: core/renderer.py:530
+msgid ""
+"\n"
+"Processing plugin assets (CSS/JS)..."
+msgstr ""
+
+#: core/renderer.py:554
+#, python-brace-format
+msgid "  - Plugin CSS copied ({source_type}): {filename}"
+msgstr ""
+
+#: core/renderer.py:557
+#, python-brace-format
+msgid "  - Plugin JS copied ({source_type}): {filename}"
+msgstr ""
+
+#: core/renderer.py:579
+#, python-brace-format
+msgid ""
+"Info: Neither global plugin directory '{global_dir}' nor project plugin "
+"directory '{project_dir}' found."
+msgstr ""
+
+#: core/renderer.py:582
+msgid ""
+"\n"
+"Loading plugins..."
+msgstr ""
+
+#: core/renderer.py:607
+#, python-brace-format
+msgid ""
+"Warning: Plugin directory '{item}' in '{directory}' ignored. Missing "
+"'{item}.py' or '__init__.py'."
+msgstr ""
+
+#: core/renderer.py:620
+#, python-brace-format
+msgid "  - Plugin '{plugin_name}' successfully loaded ({source_type})."
+msgstr ""
+
+#: core/renderer.py:622
+#, python-brace-format
+msgid ""
+"Warning: Plugin '{plugin_name}' in '{directory}' has no 'handle' function"
+" and is ignored."
+msgstr ""
+
+#: core/renderer.py:624
+#, python-brace-format
+msgid "Error loading plugin '{plugin_name}' from '{directory}': {e}"
+msgstr ""
+
+#: core/renderer.py:634
+#, python-brace-format
+msgid ""
+"\n"
+"Output directory '{output_dir}' is empty or does not exist. Skipping "
+"backup."
+msgstr ""
+
+#: core/renderer.py:643
+#, python-brace-format
+msgid ""
+"\n"
+"Creating backup of existing output directory '{output_dir}'..."
+msgstr ""
+
+#: core/renderer.py:654
+#, python-brace-format
+msgid "  - Backup successfully created at: '{backup_dest_path}'"
+msgstr ""
+
+#: core/renderer.py:672
+#, python-brace-format
+msgid "  - Rotated (deleted) old backup: {p}"
+msgstr ""
+
+#: core/renderer.py:674
+#, python-brace-format
+msgid "Warning during backup rotation: {e}"
+msgstr ""
+
+#: core/renderer.py:677
+#, python-brace-format
+msgid "ERROR backing up output directory: {e}"
+msgstr ""
+
+#: core/renderer.py:679
+msgid ""
+"\n"
+"Backup skipped (disabled in config)."
+msgstr ""
+
+#: core/renderer.py:683
+#, python-brace-format
+msgid "Cleaning output directory '{output_dir}'..."
+msgstr ""
+
+#: core/renderer.py:685
+msgid "  - Old output directory removed."
+msgstr ""
+
+#: core/renderer.py:688
+#, python-brace-format
+msgid "ERROR cleaning output directory: {e}"
+msgstr ""
+
+#: core/renderer.py:689
+msgid ""
+"The build process continues, but the output directory might be in an "
+"inconsistent state."
+msgstr ""
+
+#: core/renderer.py:693
+#, python-brace-format
+msgid "  - Empty output directory '{output_dir}' recreated."
+msgstr ""
+
+#: core/renderer.py:737
+msgid "Incremental render: Skipping backup and clean."
+msgstr ""
+
+#: core/renderer.py:741
+msgid "Searching for Markdown files..."
+msgstr ""
+
+#: core/renderer.py:747
+#, python-brace-format
+msgid "No Markdown files found in '{content_dir}'. Nothing to render."
+msgstr ""
+
+#: core/renderer.py:779
+#, python-brace-format
+msgid "  - Added theme templates: {path}"
+msgstr ""
+
+#: core/renderer.py:783
+#, python-brace-format
+msgid ""
+"\n"
+"Adding global plugin template directory: '{dir}'"
+msgstr ""
+
+#: core/renderer.py:800
+msgid ""
+"\n"
+"--- DEBUG: Loaded configuration for footer ---"
+msgstr ""
+
+#: core/renderer.py:814
+msgid ""
+"\n"
+"Searching for plugin CSS files (Global & Local)..."
+msgstr ""
+
+#: core/renderer.py:821
+#, python-brace-format
+msgid "  - Found: {web_path}"
+msgstr ""
+
+#: core/renderer.py:826
+#, python-brace-format
+msgid "Error: 'base.html' could not be loaded from directory '{dir}'."
+msgstr ""
+
+#: core/renderer.py:827
+#, python-brace-format
+msgid "Details: {e}"
+msgstr ""
+
+#: core/renderer.py:828
+msgid "Please create a 'base.html' file in the templates directory."
+msgstr ""
+
+#: core/renderer.py:832
+msgid ""
+"\n"
+"Phase 1: Collecting data and building page structure..."
+msgstr ""
+
+#: core/renderer.py:854
+#, python-brace-format
+msgid "  - Skipping draft (special page): {relative_path}"
+msgstr ""
+
+#: core/renderer.py:858
+#, python-brace-format
+msgid "  - Collected (special page): {relative_path}"
+msgstr ""
+
+#: core/renderer.py:860
+#, python-brace-format
+msgid "Error parsing special page {input_path}: {e}"
+msgstr ""
+
+#: core/renderer.py:873
+#, python-brace-format
+msgid "Error parsing {input_path}: {e}"
+msgstr ""
+
+#: core/renderer.py:878
+#, python-brace-format
+msgid "  - Skipping draft: {relative_path}"
+msgstr ""
+
+#: core/renderer.py:887
+#, python-brace-format
+msgid "    -> Adding 'release_date' ({date}) to '{path}'."
+msgstr ""
+
+#: core/renderer.py:893
+#, python-brace-format
+msgid "    -> Setting missing 'date' to '{date}' in '{path}'."
+msgstr ""
+
+#: core/renderer.py:909
+msgid "This date is automatically added by the system and should not be removed."
+msgstr ""
+
+#: core/renderer.py:910
+msgid "It can be adjusted to control the creation date of a post."
+msgstr ""
+
+#: core/renderer.py:918
+#, python-brace-format
+msgid "ERROR writing back metadata in '{input_path}': {e}"
+msgstr ""
+
+#: core/renderer.py:975
+#, python-brace-format
+msgid "  - Collected (standard page): {relative_path}"
+msgstr ""
+
+#: core/renderer.py:979
+msgid ""
+"\n"
+"Generating global pages and plugin pages..."
+msgstr ""
+
+#: core/renderer.py:985
+#, python-brace-format
+msgid "  - Executing page generation for plugin '{plugin_name}'..."
+msgstr ""
+
+#: core/renderer.py:996
+#, python-brace-format
+msgid "ERROR in page generation by plugin '{plugin_name}': {e}"
+msgstr ""
+
+#: core/renderer.py:998
+msgid ""
+"\n"
+"Generating search index..."
+msgstr ""
+
+#: core/renderer.py:1003
+#, python-brace-format
+msgid "  - Search index successfully created: {path}"
+msgstr ""
+
+#: core/renderer.py:1005
+#, python-brace-format
+msgid "Error creating search index: {e}"
+msgstr ""
+
+#: core/renderer.py:1032
+msgid ""
+"\n"
+"Phase 2: Generating individual pages..."
+msgstr ""
+
+#: core/renderer.py:1054
+#, python-brace-format
+msgid "  - Skipping (up-to-date): {path}"
+msgstr ""
+
+#: core/renderer.py:1057
+#, python-brace-format
+msgid "Skipping: {path}"
+msgstr ""
+
+#: core/renderer.py:1062
+#, python-brace-format
+msgid "  - Processing: {input_path} -> {output_path}"
+msgstr ""
+
+#: core/renderer.py:1067
+#, python-brace-format
+msgid "Processing: {path}"
+msgstr ""
+
+#: core/renderer.py:1081
+#, python-brace-format
+msgid ""
+"Warning: Layout template '{template_name}' (requested by '{input_path}') "
+"not found. 'base.html' is used as fallback."
+msgstr ""
+
+#: core/renderer.py:1136
+msgid ""
+"\n"
+"Generating homepage..."
+msgstr ""
+
+#: core/renderer.py:1140
+msgid "Generating homepage..."
+msgstr ""
+
+#: core/renderer.py:1144
+msgid "My Collections"
+msgstr ""
+
+#: core/renderer.py:1149
+#, python-brace-format
+msgid "  - Loading content for homepage from '{path}'"
+msgstr ""
+
+#: core/renderer.py:1194
+#, python-brace-format
+msgid "Error parsing '{path}': {e}"
+msgstr ""
+
+#: core/renderer.py:1197
+#, python-brace-format
+msgid ""
+"  - '{path}/index.md' not found. Homepage will be created without "
+"additional content."
+msgstr ""
+
+#: core/renderer.py:1213
+msgid ""
+"Error: No suitable template found for homepage (neither layout, "
+"index_page.html nor base.html)."
+msgstr ""
+
+#: core/renderer.py:1229
+msgid "  - 'index.html' successfully created."
+msgstr ""
+
+#: core/renderer.py:1232
+msgid ""
+"\n"
+"Generating 404 error page..."
+msgstr ""
+
+#: core/renderer.py:1235
+msgid "Generating 404 error page..."
+msgstr ""
+
+#: core/renderer.py:1241
+msgid "Page not found"
+msgstr ""
+
+#: core/renderer.py:1247
+#, python-brace-format
+msgid ""
+"Warning: Template '{template_name}' for 404 page not found. 'base.html' "
+"is used."
+msgstr ""
+
+#: core/renderer.py:1285
+msgid "  - '404.html' successfully created."
+msgstr ""
+
+#: core/renderer.py:1287
+#, python-brace-format
+msgid "Error creating 404 page: {e}"
+msgstr ""
+
+#: core/renderer.py:1289
+#, python-brace-format
+msgid "  - '{path}' not found. No 404.html page will be created."
+msgstr ""
+
+#: core/renderer.py:1300
+msgid ""
+"\n"
+"Site generation completed."
+msgstr ""
+
+#: core/renderer.py:1316
+msgid "Rendering successfully completed."
+msgstr ""
+
+#: core/renderer.py:1318
+#, python-brace-format
+msgid ""
+"\n"
+"\n"
+"Loaded plugins ({count}):\n"
+msgstr ""
+
+#: core/renderer.py:1320
+msgid ""
+"\n"
+"\n"
+"No plugins loaded."
+msgstr ""
+
+#: gui/backup_manager.py:19
+msgid "Backup Manager"
+msgstr ""
+
+#: gui/backup_manager.py:33
+msgid "Restore"
+msgstr ""
+
+#: gui/backup_manager.py:37 gui/dialogs/snippet_manager_dialog.py:61
+#: gui/dialogs/snippet_manager_dialog.py:227 gui/file_tree.py:163
+#: gui/file_tree.py:371
+msgid "Delete"
+msgstr ""
+
+#: gui/backup_manager.py:53 gui/backup_manager.py:84 gui/backup_manager.py:89
+#: gui/backup_manager.py:98 gui/dialogs/color_settings_dialog.py:155
+#: gui/dialogs/color_settings_dialog.py:177 gui/dialogs/config_base.py:68
+#: gui/dialogs/config_base.py:80 gui/dialogs/config_base.py:315
+#: gui/dialogs/create_project_dialog.py:55
+#: gui/dialogs/create_project_dialog.py:65
+#: gui/dialogs/create_project_dialog.py:70
+#: gui/dialogs/create_project_dialog.py:81
+#: gui/dialogs/create_project_dialog.py:102 gui/dialogs/help_viewer.py:86
+#: gui/dialogs/new_post_dialog.py:157 gui/dialogs/new_post_dialog.py:160
+#: gui/dialogs/project_launcher.py:131 gui/dialogs/project_launcher.py:212
+#: gui/dialogs/snippet_editor_dialog.py:52
+#: gui/dialogs/snippet_manager_dialog.py:115 gui/file_tree.py:215
+#: gui/file_tree.py:309 gui/file_tree.py:339 gui/file_tree.py:358
+#: gui/file_tree.py:364 gui/file_tree.py:381 gui/main_window.py:914
+#: gui/main_window.py:934 gui/main_window.py:1086 gui/main_window.py:1310
+#: gui/main_window.py:1335 gui/main_window.py:1388 gui/main_window.py:1497
+#: gui/main_window.py:1514 gui/project_panel.py:189 gui/project_panel.py:215
+#: gui/project_panel.py:231
+msgid "Error"
+msgstr ""
+
+#: gui/backup_manager.py:53 gui/backup_manager.py:89
+msgid "Please select a backup."
+msgstr ""
+
+#: gui/backup_manager.py:60 gui/dialogs/project_manager_dialog.py:79
+#: gui/dialogs/project_manager_dialog.py:91 gui/main_window.py:1019
+#: gui/main_window.py:1048 gui/main_window.py:1064
+msgid "Warning"
+msgstr ""
+
+#: gui/backup_manager.py:61
+#, python-brace-format
+msgid ""
+"Do you really want to overwrite the content of '{content_dir}' with the "
+"backup?\n"
+"Current changes will be lost!"
+msgstr ""
+
+#: gui/backup_manager.py:82 gui/dialogs/config_base.py:312
+#: gui/dialogs/project_launcher.py:176 gui/dialogs/project_launcher.py:209
+#: gui/main_window.py:1379
+msgid "Success"
+msgstr ""
+
+#: gui/backup_manager.py:82
+msgid "Backup successfully restored."
+msgstr ""
+
+#: gui/backup_manager.py:84
+#, python-brace-format
+msgid "Error restoring backup: {e}"
+msgstr ""
+
+#: gui/backup_manager.py:96
+msgid "Deleted"
+msgstr ""
+
+#: gui/backup_manager.py:96
+#, python-brace-format
+msgid "Backup {backup_file} was deleted."
+msgstr ""
+
+#: gui/backup_manager.py:98
+#, python-brace-format
+msgid "Could not delete backup: {e}"
+msgstr ""
+
+#: gui/editor_widget.py:46
+msgid "Select a file on the left to edit..."
+msgstr ""
+
+#: gui/file_tree.py:140
+msgid "New File"
+msgstr ""
+
+#: gui/file_tree.py:144 gui/file_tree.py:209
+msgid "New Folder"
+msgstr ""
+
+#: gui/file_tree.py:151 gui/file_tree.py:289 gui/project_panel.py:163
+msgid "Rename"
+msgstr ""
+
+#: gui/file_tree.py:155
+msgid "Clone"
+msgstr ""
+
+#: gui/file_tree.py:159
+msgid "Move..."
+msgstr ""
+
+#: gui/file_tree.py:168
+msgid "Sort by"
+msgstr ""
+
+#: gui/file_tree.py:170
+msgid "Name (A-Z)"
+msgstr ""
+
+#: gui/file_tree.py:174
+msgid "Name (Z-A)"
+msgstr ""
+
+#: gui/file_tree.py:178
+msgid "Date (Newest First)"
+msgstr ""
+
+#: gui/file_tree.py:182
+msgid "Date (Oldest First)"
+msgstr ""
+
+#: gui/file_tree.py:186
+msgid "Weight (Frontmatter)"
+msgstr ""
+
+#: gui/file_tree.py:209
+msgid "Folder Name:"
+msgstr ""
+
+#: gui/file_tree.py:215
+#, python-brace-format
+msgid "Could not create folder: {e}"
+msgstr ""
+
+#: gui/file_tree.py:289 gui/project_panel.py:183
+msgid "New Name:"
+msgstr ""
+
+#: gui/file_tree.py:298
+msgid "Update Links?"
+msgstr ""
+
+#: gui/file_tree.py:299
+msgid "Do you want to update links in other files to point to the new name?"
+msgstr ""
+
+#: gui/file_tree.py:306
+msgid "Links Updated"
+msgstr ""
+
+#: gui/file_tree.py:306
+#, python-brace-format
+msgid "Updated links in {count} files."
+msgstr ""
+
+#: gui/file_tree.py:309
+#, python-brace-format
+msgid "Could not rename: {e}"
+msgstr ""
+
+#: gui/file_tree.py:339
+#, python-brace-format
+msgid "Could not clone item: {e}"
+msgstr ""
+
+#: gui/file_tree.py:350
+#, python-brace-format
+msgid "Move '{name}' to..."
+msgstr ""
+
+#: gui/file_tree.py:358
+#, python-brace-format
+msgid "A file or folder with the name '{name}' already exists in the destination."
+msgstr ""
+
+#: gui/file_tree.py:364
+#, python-brace-format
+msgid "Could not move item: {e}"
+msgstr ""
+
+#: gui/file_tree.py:371
+#, python-brace-format
+msgid "Do you really want to delete '{name}'?"
+msgstr ""
+
+#: gui/file_tree.py:381
+#, python-brace-format
+msgid "Could not delete: {e}"
+msgstr ""
+
+#: gui/frontmatter_panel.py:115 gui/frontmatter_panel.py:229
+msgid "Frontmatter ▼"
+msgstr ""
+
+#: gui/frontmatter_panel.py:156
+msgid "Lower numbers appear first (e.g. -10 before 0)."
+msgstr ""
+
+#: gui/frontmatter_panel.py:162
+msgid "Path to image"
+msgstr ""
+
+#: gui/frontmatter_panel.py:174 gui/frontmatter_panel.py:271
+msgid "No Image"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:25 gui/frontmatter_panel.py:183
+msgid "Title:"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:30 gui/frontmatter_panel.py:184
+msgid "Author:"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:71 gui/frontmatter_panel.py:185
+msgid "Date:"
+msgstr ""
+
+#: gui/frontmatter_panel.py:186
+msgid "Release:"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:64 gui/frontmatter_panel.py:187
+msgid "Layout:"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:80 gui/frontmatter_panel.py:188
+msgid "Weight:"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:86 gui/frontmatter_panel.py:189
+msgid "Tags:"
+msgstr ""
+
+#: gui/frontmatter_panel.py:190
+msgid "Image:"
+msgstr ""
+
+#: gui/frontmatter_panel.py:192
+msgid "Draft:"
+msgstr ""
+
+#: gui/frontmatter_panel.py:193
+msgid "Breadcrumbs:"
+msgstr ""
+
+#: gui/frontmatter_panel.py:229
+msgid "Frontmatter ▶"
+msgstr ""
+
+#: gui/frontmatter_panel.py:252 gui/main_window.py:1026
+msgid "Select Image"
+msgstr ""
+
+#: gui/frontmatter_panel.py:252 gui/main_window.py:1026
+msgid "Images (*.png *.jpg *.jpeg *.gif *.svg *.webp);;All Files (*)"
+msgstr ""
+
+#: gui/frontmatter_panel.py:285
+msgid "Invalid"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:437 gui/dialogs/project_launcher.py:90
+#: gui/dialogs/project_manager_dialog.py:54 gui/frontmatter_panel.py:287
+msgid "Not Found"
+msgstr ""
+
+#: gui/frontmatter_panel.py:297
+msgid "Title is required"
+msgstr ""
+
+#: gui/log_viewer_panel.py:71 gui/log_viewer_panel.py:140
+msgid "Logs ▼"
+msgstr ""
+
+#: gui/log_viewer_panel.py:95
+msgid "Refresh"
+msgstr ""
+
+#: gui/log_viewer_panel.py:99
+msgid "Auto-Refresh"
+msgstr ""
+
+#: gui/log_viewer_panel.py:104
+msgid "Clear"
+msgstr ""
+
+#: gui/log_viewer_panel.py:140
+msgid "Logs ▶"
+msgstr ""
+
+#: gui/log_viewer_panel.py:166
+msgid "Waiting for logs..."
+msgstr ""
+
+#: gui/log_viewer_panel.py:182
+#, python-brace-format
+msgid ""
+"... [older logs hidden] ...\n"
+"{content}"
+msgstr ""
+
+#: gui/log_viewer_panel.py:196
+#, python-brace-format
+msgid "Error reading logs: {e}"
+msgstr ""
+
+#: gui/main_window.py:98
+msgid "Double-click on an entry opens the file at the corresponding location."
+msgstr ""
+
+#: gui/main_window.py:105
+msgid "Unknown Error"
+msgstr ""
+
+#: gui/main_window.py:210 gui/main_window.py:980
+msgid "Ready"
+msgstr ""
+
+#: gui/main_window.py:214
+msgid "Ln 1, Col 1"
+msgstr ""
+
+#: gui/main_window.py:393
+msgid "Frontmatter"
+msgstr ""
+
+#: gui/main_window.py:400
+msgid "Outline"
+msgstr ""
+
+#: gui/main_window.py:408
+msgid "Snippets"
+msgstr ""
+
+#: gui/main_window.py:415
+msgid "Logs"
+msgstr ""
+
+#: gui/main_window.py:444
+msgid "New Post"
+msgstr ""
+
+#: gui/main_window.py:448
+msgid "Switch Project"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:11 gui/main_window.py:451
+msgid "Create New Project"
+msgstr ""
+
+#: gui/main_window.py:454
+msgid "Project Settings"
+msgstr ""
+
+#: gui/main_window.py:458
+msgid "Bulk Edit Frontmatter"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:69 gui/main_window.py:461
+msgid "Save"
+msgstr ""
+
+#: gui/main_window.py:465
+msgid "Insert Image"
+msgstr ""
+
+#: gui/main_window.py:469
+msgid "Link File"
+msgstr ""
+
+#: gui/main_window.py:470
+msgid "Insert link to a file"
+msgstr ""
+
+#: gui/main_window.py:474
+msgid "Create Gallery"
+msgstr ""
+
+#: gui/main_window.py:475
+msgid "Select images and create gallery"
+msgstr ""
+
+#: gui/main_window.py:478
+msgid "Insert Emoji"
+msgstr ""
+
+#: gui/main_window.py:479
+msgid "Insert an emoji or icon"
+msgstr ""
+
+#: gui/main_window.py:482
+msgid "Exit"
+msgstr ""
+
+#: gui/main_window.py:486
+msgid "Undo"
+msgstr ""
+
+#: gui/main_window.py:490
+msgid "Redo"
+msgstr ""
+
+#: gui/main_window.py:494
+msgid "Select All"
+msgstr ""
+
+#: gui/main_window.py:497
+msgid "Select All (Ctrl+A)"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:58 gui/dialogs/search_dialog.py:71
+#: gui/main_window.py:499
+msgid "Search"
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:40 gui/dialogs/search_dialog.py:113
+#: gui/main_window.py:503
+msgid "Replace"
+msgstr ""
+
+#: gui/main_window.py:508
+msgid "Bold"
+msgstr ""
+
+#: gui/main_window.py:510
+msgid "Bold (Ctrl+B)"
+msgstr ""
+
+#: gui/main_window.py:513
+msgid "Italic"
+msgstr ""
+
+#: gui/main_window.py:515
+msgid "Italic (Ctrl+I)"
+msgstr ""
+
+#: gui/main_window.py:518
+msgid "Code"
+msgstr ""
+
+#: gui/main_window.py:519
+msgid "Inline Code"
+msgstr ""
+
+#: gui/main_window.py:531
+msgid "List"
+msgstr ""
+
+#: gui/main_window.py:532
+msgid "Bulleted List"
+msgstr ""
+
+#: gui/main_window.py:535
+msgid "Num."
+msgstr ""
+
+#: gui/main_window.py:536
+msgid "Numbered List"
+msgstr ""
+
+#: gui/main_window.py:539
+msgid "Table"
+msgstr ""
+
+#: gui/main_window.py:540 gui/main_window.py:1115 gui/main_window.py:1117
+msgid "Insert Table"
+msgstr ""
+
+#: gui/main_window.py:545
+msgid "Preview"
+msgstr ""
+
+#: gui/main_window.py:551
+msgid "Line Numbers"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:62 gui/main_window.py:556
+msgid "Dark Mode"
+msgstr ""
+
+#: gui/main_window.py:561
+msgid "App Settings"
+msgstr ""
+
+#: gui/main_window.py:564
+msgid "Manage Snippets..."
+msgstr ""
+
+#: gui/main_window.py:568 workers/renderer.py:49
+msgid "Render Site"
+msgstr ""
+
+#: gui/main_window.py:572
+msgid "Open in Browser"
+msgstr ""
+
+#: gui/main_window.py:573
+msgid "Opens the generated site in the default browser"
+msgstr ""
+
+#: gui/main_window.py:577 gui/main_window.py:1561
+msgid "About"
+msgstr ""
+
+#: gui/main_window.py:584
+msgid "&File"
+msgstr ""
+
+#: gui/main_window.py:598
+msgid "&Edit"
+msgstr ""
+
+#: gui/main_window.py:608
+msgid "&View"
+msgstr ""
+
+#: gui/main_window.py:619
+msgid "&App Tools"
+msgstr ""
+
+#: gui/main_window.py:623
+msgid "Color Settings"
+msgstr ""
+
+#: gui/main_window.py:631
+msgid "&Project Tools"
+msgstr ""
+
+#: gui/main_window.py:639
+msgid "&Render"
+msgstr ""
+
+#: gui/main_window.py:644
+msgid "&Help"
+msgstr ""
+
+#: gui/main_window.py:806 gui/main_window.py:866
+msgid "Unsaved Changes"
+msgstr ""
+
+#: gui/main_window.py:807
+msgid "Do you want to save changes before closing?"
+msgstr ""
+
+#: gui/main_window.py:867
+msgid "Do you want to save changes before switching?"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:86 gui/main_window.py:914
+#, python-brace-format
+msgid "Could not load file: {e}"
+msgstr ""
+
+#: gui/main_window.py:934
+#, python-brace-format
+msgid "Could not save file: {e}"
+msgstr ""
+
+#: gui/main_window.py:991
+msgid "UNSAVED"
+msgstr ""
+
+#: gui/main_window.py:1001
+#, python-brace-format
+msgid "Ln {line}, Col {col}"
+msgstr ""
+
+#: gui/main_window.py:1019
+msgid "Please open a file first to insert an image."
+msgstr ""
+
+#: gui/main_window.py:1048
+msgid "Please open a file first to insert a link."
+msgstr ""
+
+#: gui/dialogs/config_base.py:232 gui/dialogs/config_base.py:274
+#: gui/main_window.py:1055
+msgid "Select File"
+msgstr ""
+
+#: gui/dialogs/config_base.py:230 gui/main_window.py:1055
+msgid "All Files (*)"
+msgstr ""
+
+#: gui/main_window.py:1064
+msgid "Please open a file first to insert a gallery."
+msgstr ""
+
+#: gui/main_window.py:1071
+msgid "Select Images"
+msgstr ""
+
+#: gui/main_window.py:1071
+msgid "Images (*.png *.jpg *.jpeg *.gif *.svg *.webp)"
+msgstr ""
+
+#: gui/main_window.py:1086
+#, python-brace-format
+msgid "Could not create gallery folder: {e}"
+msgstr ""
+
+#: gui/main_window.py:1115
+msgid "Rows:"
+msgstr ""
+
+#: gui/main_window.py:1117
+msgid "Columns:"
+msgstr ""
+
+#: gui/main_window.py:1310
+#, python-brace-format
+msgid "The file '{filename}' already exists."
+msgstr ""
+
+#: gui/main_window.py:1333
+#, python-brace-format
+msgid "Created: {filename}"
+msgstr ""
+
+#: gui/main_window.py:1335
+#, python-brace-format
+msgid "Could not create file: {e}"
+msgstr ""
+
+#: gui/main_window.py:1338
+#, python-brace-format
+msgid "Running '{worker_name}'..."
+msgstr ""
+
+#: gui/main_window.py:1362
+#, python-brace-format
+msgid "{worker_name} finished!"
+msgstr ""
+
+#: gui/main_window.py:1369 gui/main_window.py:1376
+#, python-brace-format
+msgid "Result: {worker_name}"
+msgstr ""
+
+#: gui/main_window.py:1385
+msgid "Error!"
+msgstr ""
+
+#: gui/main_window.py:1388
+#, python-brace-format
+msgid ""
+"Error in {worker_name}:\n"
+"{err}"
+msgstr ""
+
+#: gui/main_window.py:1414
+msgid "Project Created"
+msgstr ""
+
+#: gui/main_window.py:1415
+msgid "New project created. Do you want to open it now?"
+msgstr ""
+
+#: gui/main_window.py:1447
+msgid "Rendering Site..."
+msgstr ""
+
+#: gui/main_window.py:1447
+msgid "Cancel"
+msgstr ""
+
+#: gui/main_window.py:1472
+msgid "Creating backup before rendering..."
+msgstr ""
+
+#: gui/main_window.py:1486
+msgid "Backup Error"
+msgstr ""
+
+#: gui/main_window.py:1487
+msgid "Backup failed!"
+msgstr ""
+
+#: gui/main_window.py:1490
+msgid "Backup complete. Starting renderer..."
+msgstr ""
+
+#: gui/main_window.py:1495
+msgid "Backup Error!"
+msgstr ""
+
+#: gui/main_window.py:1497
+#, python-brace-format
+msgid ""
+"Error in Backup Worker:\n"
+"{err}"
+msgstr ""
+
+#: gui/main_window.py:1514
+#, python-brace-format
+msgid ""
+"The start page was not found:\n"
+"{index_path}\n"
+"\n"
+"Please render the project first."
+msgstr ""
+
+#: gui/main_window.py:1561
+#, python-brace-format
+msgid ""
+"{APP_NAME}\n"
+"{APP_VERSION}\n"
+"\n"
+"A simple editor for static websites."
+msgstr ""
+
+#: gui/outline_panel.py:25 gui/outline_panel.py:57
+msgid "Outline ▼"
+msgstr ""
+
+#: gui/outline_panel.py:57
+msgid "Outline ▶"
+msgstr ""
+
+#: gui/preview_widget.py:124
+#, python-brace-format
+msgid "Error loading plugin {plugin_name} for preview: {e}"
+msgstr ""
+
+#: gui/project_panel.py:40 gui/project_panel.py:85
+msgid "Projects ▼"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:28 gui/project_panel.py:60
+#: plugins/search/search.py:43
+msgid "Search..."
+msgstr ""
+
+#: gui/project_panel.py:85
+msgid "Projects ▶"
+msgstr ""
+
+#: gui/project_panel.py:120
+msgid "Current"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:222 gui/project_panel.py:161
+msgid "Open"
+msgstr ""
+
+#: gui/project_panel.py:162
+msgid "Open in File Manager"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:224 gui/project_panel.py:165
+msgid "Remove from List"
+msgstr ""
+
+#: gui/project_panel.py:183
+msgid "Rename Project"
+msgstr ""
+
+#: gui/project_panel.py:189
+msgid "A folder with this name already exists."
+msgstr ""
+
+#: gui/project_panel.py:208
+msgid "Project Renamed"
+msgstr ""
+
+#: gui/project_panel.py:209
+msgid "The current project was renamed. The window will reload."
+msgstr ""
+
+#: gui/project_panel.py:215
+#, python-brace-format
+msgid ""
+"Could not rename project: {e}\n"
+"Make sure no files are open in the folder."
+msgstr ""
+
+#: gui/project_panel.py:231
+msgid "The folder does not exist anymore."
+msgstr ""
+
+#: gui/snippet_panel.py:51 gui/snippet_panel.py:100
+msgid "Snippets ▼"
+msgstr ""
+
+#: gui/snippet_panel.py:72 gui/snippet_panel.py:116
+msgid "All Categories"
+msgstr ""
+
+#: gui/snippet_panel.py:100
+msgid "Snippets ▶"
+msgstr ""
+
+#: gui/dialogs/app_config_dialog.py:28
+msgid "Available Items"
+msgstr ""
+
+#: gui/dialogs/app_config_dialog.py:36
+msgid "Toolbar Layout"
+msgstr ""
+
+#: gui/dialogs/app_config_dialog.py:63
+msgid "Up"
+msgstr ""
+
+#: gui/dialogs/app_config_dialog.py:64
+msgid "Down"
+msgstr ""
+
+#: gui/dialogs/app_config_dialog.py:256
+msgid "SVG Icons (*.svg);;All Files (*)"
+msgstr ""
+
+#: gui/dialogs/app_config_dialog.py:256
+msgid "Select Icon"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:15
+msgid "Markdown Color Settings"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:61
+msgid "Light Mode"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:73
+#: gui/dialogs/project_manager_dialog.py:45 workers/markdown_linter.py:101
+msgid "Close"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:128
+msgid "Select Color"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:155
+#, python-brace-format
+msgid "Could not load colors: {e}"
+msgstr ""
+
+#: gui/dialogs/color_settings_dialog.py:177
+#, python-brace-format
+msgid "Could not save colors: {e}"
+msgstr ""
+
+#: gui/dialogs/config_base.py:33
+#, python-brace-format
+msgid "Settings ({filename})"
+msgstr ""
+
+#: gui/dialogs/config_base.py:68
+#, python-brace-format
+msgid ""
+"Configuration file not found:\n"
+"{config_path}"
+msgstr ""
+
+#: gui/dialogs/config_base.py:80
+#, python-brace-format
+msgid ""
+"Error loading configuration:\n"
+"{e}"
+msgstr ""
+
+#: gui/dialogs/config_base.py:176
+msgid "Complex List (YAML/JSON Format)"
+msgstr ""
+
+#: gui/dialogs/config_base.py:179
+msgid "Enter values comma separated"
+msgstr ""
+
+#: gui/dialogs/config_base.py:230
+msgid "Images (*.png *.jpg *.jpeg *.svg *.gif *.webp *.ico)"
+msgstr ""
+
+#: gui/dialogs/config_base.py:258
+msgid "Select Directory"
+msgstr ""
+
+#: gui/dialogs/config_base.py:295
+#, python-brace-format
+msgid "The field '{label}' is required."
+msgstr ""
+
+#: gui/dialogs/config_base.py:299
+msgid "The field 'Site Url' must start with http:// or https://."
+msgstr ""
+
+#: gui/dialogs/config_base.py:308
+msgid "Validation Error"
+msgstr ""
+
+#: gui/dialogs/config_base.py:312
+msgid ""
+"Settings saved.\n"
+"Please restart the application to apply all changes."
+msgstr ""
+
+#: gui/dialogs/config_base.py:315
+#, python-brace-format
+msgid ""
+"Error saving:\n"
+"{e}"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:15
+msgid "Create"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:21
+msgid "Project Location"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:25
+msgid "Select parent directory"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:29
+msgid "Location:"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:48
+msgid "Select Parent Directory"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:55
+msgid "Please select a valid parent directory."
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:65
+msgid "The field 'Site Name' is required."
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:70
+msgid "The Site URL must start with http:// or https://"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:81
+#, python-brace-format
+msgid "The folder '{folder}' already exists."
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:102
+#, python-brace-format
+msgid "Could not create project: {e}"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:117
+#: gui/dialogs/create_project_dialog.py:122 gui/dialogs/project_launcher.py:200
+#: gui/dialogs/project_launcher.py:205
+msgid "Home"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:117 gui/dialogs/project_launcher.py:200
+msgid "Welcome"
+msgstr ""
+
+#: gui/dialogs/create_project_dialog.py:117 gui/dialogs/project_launcher.py:200
+msgid "This is your new project."
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:13
+msgid "Help"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:39
+msgid "Search:"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:62 gui/dialogs/help_viewer.py:113
+msgid "Export PDF"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:65
+msgid "Print"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:83
+#, python-brace-format
+msgid "Help - {title}"
+msgstr ""
+
+#: gui/dialogs/help_viewer.py:113
+msgid "PDF Files (*.pdf)"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:11
+msgid "Create New Post"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:22
+msgid "Post Title"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:35
+msgid "Filename:"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:54
+msgid "Folder:"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:77
+msgid "Niedrigere Zahlen erscheinen zuerst."
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:85
+msgid "tag1, tag2 (comma separated)"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:89
+msgid "Mark as Draft"
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:157
+msgid "Please enter a title."
+msgstr ""
+
+#: gui/dialogs/new_post_dialog.py:160
+msgid "Please enter a filename."
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:75
+msgid "+ Add Link"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:88 plugins/search/search.py:68
+msgid "Title"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:90
+#: gui/dialogs/project_config_dialog.py:160
+msgid "URL"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:148
+msgid "+ Add Social Link"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:158
+msgid "Platform (e.g. twitter)"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:370
+msgid "CSS Files (*.css);;All Files (*)"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:416
+msgid "Theme Exists"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:417
+#, python-brace-format
+msgid ""
+"The theme '{new_theme}' already exists in your project's themes folder. "
+"No files were copied."
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:432
+msgid "Theme Copied"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:433
+#, python-brace-format
+msgid "The theme '{new_theme}' has been copied to your project's themes folder."
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:435
+msgid "Copy Error"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:435
+#, python-brace-format
+msgid "Could not copy theme: {e}"
+msgstr ""
+
+#: gui/dialogs/project_config_dialog.py:437
+#, python-brace-format
+msgid "The source for theme '{new_theme}' could not be found."
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:32
+msgid "Register / New Project - Sitewave"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:50
+msgid "Welcome! Please select a project."
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:55
+msgid "Recently opened:"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:68
+msgid "Open Other..."
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:72
+msgid "Create New Project..."
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:125 gui/dialogs/project_manager_dialog.py:63
+msgid "Select Project Folder"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:131
+msgid "The selected path does not exist anymore."
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:142
+msgid "No project found"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:143
+msgid ""
+"No configuration file (config.yaml or config.toml) was found in this "
+"folder.\\nWould you like to initialize a new project here?"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:167
+msgid "New Project"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:176
+#, python-brace-format
+msgid "New project based on '{template_name}' created."
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:209
+msgid "New project has been successfully created."
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:212
+#, python-brace-format
+msgid "Could not initialize project: {e}"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:223 gui/dialogs/project_launcher.py:231
+#: gui/dialogs/project_manager_dialog.py:33
+#: gui/dialogs/project_manager_dialog.py:85
+msgid "Edit Path"
+msgstr ""
+
+#: gui/dialogs/project_launcher.py:231 gui/dialogs/project_manager_dialog.py:85
+msgid "New Path:"
+msgstr ""
+
+#: gui/dialogs/project_manager_dialog.py:11
+msgid "Manage Projects"
+msgstr ""
+
+#: gui/dialogs/project_manager_dialog.py:30
+msgid "Register (Add)"
+msgstr ""
+
+#: gui/dialogs/project_manager_dialog.py:36
+msgid "Unregister"
+msgstr ""
+
+#: gui/dialogs/project_manager_dialog.py:70
+msgid "Info"
+msgstr ""
+
+#: gui/dialogs/project_manager_dialog.py:70
+msgid "Project is already registered."
+msgstr ""
+
+#: gui/dialogs/project_manager_dialog.py:79
+msgid "Please select a project to unregister."
+msgstr ""
+
+#: gui/dialogs/project_manager_dialog.py:91
+msgid "Please select a project to edit."
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:11
+msgid "Search & Replace"
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:18
+msgid "Find:"
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:25
+msgid "Replace with:"
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:31
+msgid "Case sensitive"
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:36
+msgid "Find"
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:43
+msgid "Replace All"
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:71
+#, python-brace-format
+msgid "'{text}' not found."
+msgstr ""
+
+#: gui/dialogs/search_dialog.py:113
+#, python-brace-format
+msgid "{count} occurrences replaced."
+msgstr ""
+
+#: gui/dialogs/snippet_editor_dialog.py:21
+msgid "Edit Snippet"
+msgstr ""
+
+#: gui/dialogs/snippet_editor_dialog.py:27
+#: gui/dialogs/snippet_editor_dialog.py:61
+#: gui/dialogs/snippet_manager_dialog.py:130
+#: gui/dialogs/snippet_manager_dialog.py:183
+#: gui/dialogs/snippet_manager_dialog.py:185
+#: gui/dialogs/snippet_manager_dialog.py:208 workers/snippet_docs.py:66
+#: workers/snippet_docs.py:76
+msgid "General"
+msgstr ""
+
+#: gui/dialogs/snippet_editor_dialog.py:39
+msgid "Name:"
+msgstr ""
+
+#: gui/dialogs/snippet_editor_dialog.py:40
+msgid "Category:"
+msgstr ""
+
+#: gui/dialogs/snippet_editor_dialog.py:41
+msgid "Code:"
+msgstr ""
+
+#: gui/dialogs/snippet_editor_dialog.py:52
+msgid "Please enter a name."
+msgstr ""
+
+#: gui/dialogs/snippet_manager_dialog.py:31
+msgid "Manage Snippets"
+msgstr ""
+
+#: gui/dialogs/snippet_manager_dialog.py:53
+msgid "Add..."
+msgstr ""
+
+#: gui/dialogs/snippet_manager_dialog.py:57
+msgid "Edit..."
+msgstr ""
+
+#: gui/dialogs/snippet_manager_dialog.py:115
+#, python-brace-format
+msgid "Could not save {filename}: {e}"
+msgstr ""
+
+#: gui/dialogs/snippet_manager_dialog.py:227
+#, python-brace-format
+msgid "Are you sure you want to delete the snippet '{snippet_name}'?"
+msgstr ""
+
+#: plugins/search/search.py:67
+msgid "All"
+msgstr ""
+
+#: plugins/search/search.py:69
+msgid "Tags"
+msgstr ""
+
+#: plugins/search/search.py:70
+msgid "Content"
+msgstr ""
+
+#: plugins/search/search.py:170
+msgid "No results found."
+msgstr ""
+
+#: plugins/search/search.py:229 plugins/search/search.py:231
+msgid "Previous"
+msgstr ""
+
+#: plugins/search/search.py:257 plugins/search/search.py:259
+msgid "Next"
+msgstr ""
+
+#: workers/backup_content.py:16
+msgid "Content Backup (ZIP)"
+msgstr ""
+
+#: workers/backup_content.py:17
+msgid "Creates a ZIP archive of the entire content folder with versioning."
+msgstr ""
+
+#: workers/backup_content.py:28
+msgid "Error: Content directory not found."
+msgstr ""
+
+#: workers/backup_content.py:31
+msgid "Error: Project root not in context."
+msgstr ""
+
+#: workers/backup_content.py:51
+msgid "Starting backup..."
+msgstr ""
+
+#: workers/backup_content.py:58
+#, python-brace-format
+msgid "Backing up: {file}"
+msgstr ""
+
+#: workers/backup_content.py:79
+#, python-brace-format
+msgid "Backup successfully created: {output_filename}"
+msgstr ""
+
+#: workers/backup_content.py:81
+#, python-brace-format
+msgid "Error creating backup: {e}"
+msgstr ""
+
+#: workers/clear_cache.py:15
+msgid "Clear Cache"
+msgstr ""
+
+#: workers/clear_cache.py:16
+msgid "Deletes the output directory, backups, and plugin cache."
+msgstr ""
+
+#: workers/clear_cache.py:25 workers/plugin_docs.py:92
+#: workers/snippet_docs.py:21
+msgid "Error: Project root not found."
+msgstr ""
+
+#: workers/clear_cache.py:40
+#, python-brace-format
+msgid "Successfully cleared output directory: {dir}"
+msgstr ""
+
+#: workers/clear_cache.py:42
+#, python-brace-format
+msgid "Error clearing output directory: {e}"
+msgstr ""
+
+#: workers/clear_cache.py:51
+#, python-brace-format
+msgid "Successfully cleared backup directory: {dir}"
+msgstr ""
+
+#: workers/clear_cache.py:53
+#, python-brace-format
+msgid "Error clearing backup directory: {e}"
+msgstr ""
+
+#: workers/clear_cache.py:71
+#, python-brace-format
+msgid "Error clearing pycache {path}: {e}"
+msgstr ""
+
+#: workers/clear_cache.py:74
+msgid "Successfully cleared plugin caches (__pycache__)."
+msgstr ""
+
+#: workers/clear_cache.py:77
+msgid "Nothing to clear."
+msgstr ""
+
+#: workers/compressor.py:13
+msgid "Image Compressor"
+msgstr ""
+
+#: workers/compressor.py:14
+msgid "Compresses images in the content folder."
+msgstr ""
+
+#: workers/link_checker.py:17
+msgid "Check Links"
+msgstr ""
+
+#: workers/link_checker.py:18
+msgid "Checks for broken links in the content directory."
+msgstr ""
+
+#: workers/link_checker.py:46
+msgid "Error: Project context not found."
+msgstr ""
+
+#: workers/link_checker.py:48
+#, python-brace-format
+msgid ""
+"\n"
+"--- Starting Link Check (App Version: {version}) ---"
+msgstr ""
+
+#: workers/link_checker.py:51
+msgid ""
+"Warning: The 'requests' library is not installed. External HTTP links "
+"will be skipped."
+msgstr ""
+
+#: workers/link_checker.py:52
+msgid "         Install it with: pip install requests"
+msgstr ""
+
+#: workers/link_checker.py:71
+#, python-brace-format
+msgid "Could not read file {file_path}: {e}"
+msgstr ""
+
+#: workers/link_checker.py:94
+msgid "Image"
+msgstr ""
+
+#: workers/link_checker.py:94
+msgid "Link"
+msgstr ""
+
+#: workers/link_checker.py:104
+#, python-brace-format
+msgid ""
+"Broken external {type_label} in {rel_path} -> {link_target} (HTTP "
+"{status_code})"
+msgstr ""
+
+#: workers/link_checker.py:107
+#, python-brace-format
+msgid ""
+"Broken external {type_label} in {rel_path} -> {link_target} (Connection "
+"Error)"
+msgstr ""
+
+#: workers/link_checker.py:120
+msgid "Source file not found"
+msgstr ""
+
+#: workers/link_checker.py:121
+#, python-brace-format
+msgid ""
+"Broken internal {type_label} in {rel_path} -> {link_target} (Source file "
+".md/.markdown not found)"
+msgstr ""
+
+#: workers/link_checker.py:123
+msgid "File not found"
+msgstr ""
+
+#: workers/link_checker.py:124
+#, python-brace-format
+msgid ""
+"Broken internal {type_label} in {rel_path} -> {link_target} (Target file "
+"not found)"
+msgstr ""
+
+#: workers/link_checker.py:141
+msgid "--- Link Check Finished ---"
+msgstr ""
+
+#: workers/link_checker.py:144
+msgid "Link check finished. No broken links found."
+msgstr ""
+
+#: workers/link_checker.py:149
+#, python-brace-format
+msgid ""
+"File: {rel_path} (Line {line})\n"
+"Link: {link}\n"
+"Error: {error}"
+msgstr ""
+
+#: workers/link_checker.py:156
+#, python-brace-format
+msgid "Summary: {count} broken links found."
+msgstr ""
+
+#: workers/markdown_linter.py:18
+msgid "Check Markdown Syntax (Current File)"
+msgstr ""
+
+#: workers/markdown_linter.py:19
+msgid "Validates the currently open Markdown file with pymarkdownlnt."
+msgstr ""
+
+#: workers/markdown_linter.py:49
+msgid "Markdown Syntax Report"
+msgstr ""
+
+#: workers/markdown_linter.py:56
+msgid "Click on an error to jump to the line:"
+msgstr ""
+
+#: workers/markdown_linter.py:117
+msgid ""
+"Error: The package 'pymarkdownlnt' is not installed.\n"
+"Please run 'pip install pymarkdownlnt'."
+msgstr ""
+
+#: workers/markdown_linter.py:120
+#, python-brace-format
+msgid "Error: File not found: {path}"
+msgstr ""
+
+#: workers/markdown_linter.py:146
+msgid "No syntax errors found. Everything looks good!"
+msgstr ""
+
+#: workers/markdown_linter.py:153
+#, python-brace-format
+msgid ""
+"Problems found:\n"
+"\n"
+"{output}"
+msgstr ""
+
+#: workers/markdown_linter.py:156
+#, python-brace-format
+msgid "Critical error during execution: {e}"
+msgstr ""
+
+#: workers/markdown_linter.py:169
+msgid "No file is currently open in the editor."
+msgstr ""
+
+#: workers/markdown_linter.py:172
+msgid "The currently open file is not a Markdown file."
+msgstr ""
+
+#: workers/markdown_linter.py:182
+msgid "Syntax check finished. See dialog for details."
+msgstr ""
+
+#: workers/normalize.py:12
+msgid "Normalize Project"
+msgstr ""
+
+#: workers/normalize.py:13
+msgid "Cleans up file names and checks links."
+msgstr ""
+
+#: workers/pdf_export.py:14
+msgid "Export as PDF"
+msgstr ""
+
+#: workers/pdf_export.py:15
+msgid "Exports the currently open file as PDF."
+msgstr ""
+
+#: workers/pdf_export.py:28
+msgid "Error: No file opened."
+msgstr ""
+
+#: workers/pdf_export.py:33 workers/project_to_pdf.py:45
+msgid "Error: 'weasyprint' not installed. Please run 'pip install weasyprint'."
+msgstr ""
+
+#: workers/pdf_export.py:50 workers/snippet_docs.py:80
+msgid "Untitled"
+msgstr ""
+
+#: workers/pdf_export.py:91
+msgid "Page"
+msgstr ""
+
+#: workers/pdf_export.py:100
+msgid "Printed on"
+msgstr ""
+
+#: workers/pdf_export.py:146
+#, python-brace-format
+msgid "Error loading custom CSS: {e}"
+msgstr ""
+
+#: workers/pdf_export.py:162
+#, python-brace-format
+msgid "Error: Could not create export directory: {e}"
+msgstr ""
+
+#: workers/pdf_export.py:176
+#, python-brace-format
+msgid "PDF successfully created: {filename}"
+msgstr ""
+
+#: workers/pdf_export.py:178 workers/project_to_pdf.py:253
+#, python-brace-format
+msgid "Error creating PDF: {e}"
+msgstr ""
+
+#: workers/plugin_docs.py:13
+msgid "Generate Plugin Documentation"
+msgstr ""
+
+#: workers/plugin_docs.py:16
+msgid "Creates a help file (plugins.md) from the plugin docstrings."
+msgstr ""
+
+#: workers/plugin_docs.py:104
+#, python-brace-format
+msgid "Error: Plugin directory not found: {plugins_dir}"
+msgstr ""
+
+#: workers/plugin_docs.py:113
+msgid "Plugin Documentation"
+msgstr ""
+
+#: workers/plugin_docs.py:116
+msgid "Available Plugins"
+msgstr ""
+
+#: workers/plugin_docs.py:118
+msgid ""
+"This documentation was automatically generated from the plugin source "
+"codes."
+msgstr ""
+
+#: workers/plugin_docs.py:183
+msgid "automatically detected"
+msgstr ""
+
+#: workers/plugin_docs.py:191
+#, python-brace-format
+msgid "Error parsing {filename}: {e}"
+msgstr ""
+
+#: workers/plugin_docs.py:195 workers/project_to_markdown.py:106
+#: workers/project_to_pdf.py:179
+msgid "Table of Contents"
+msgstr ""
+
+#: workers/plugin_docs.py:200 workers/plugin_docs.py:212
+msgid "name"
+msgstr ""
+
+#: workers/plugin_docs.py:222
+msgid "Syntax"
+msgstr ""
+
+#: workers/plugin_docs.py:230
+msgid "Parameters"
+msgstr ""
+
+#: workers/plugin_docs.py:236
+msgid "Examples"
+msgstr ""
+
+#: workers/plugin_docs.py:250
+#, python-brace-format
+msgid ""
+"Documentation for {count} plugins created: "
+"assets/help/plugins_dokumentaion.md"
+msgstr ""
+
+#: workers/plugin_docs.py:254 workers/plugin_docs.py:255
+#: workers/snippet_docs.py:94
+#, python-brace-format
+msgid "Error writing file: {e}"
+msgstr ""
+
+#: workers/project_to_markdown.py:15
+msgid "Export Project as Markdown"
+msgstr ""
+
+#: workers/project_to_markdown.py:16
+msgid "Merges all Markdown files into a single Markdown file."
+msgstr ""
+
+#: workers/project_to_markdown.py:70 workers/project_to_pdf.py:40
+msgid "Error: Project context missing."
+msgstr ""
+
+#: workers/project_to_markdown.py:102
+msgid "Date"
+msgstr ""
+
+#: workers/project_to_markdown.py:196
+#, python-brace-format
+msgid "Markdown export created: {path}"
+msgstr ""
+
+#: workers/project_to_markdown.py:198
+#, python-brace-format
+msgid "Error creating Markdown export: {e}"
+msgstr ""
+
+#: workers/project_to_pdf.py:16
+msgid "Export Project PDF"
+msgstr ""
+
+#: workers/project_to_pdf.py:17
+msgid "Merges all Markdown files into a single PDF handbook."
+msgstr ""
+
+#: workers/project_to_pdf.py:96
+msgid "Handbuch / Dokumentation"
+msgstr ""
+
+#: workers/project_to_pdf.py:251
+#, python-brace-format
+msgid "PDF Manual created: {path}"
+msgstr ""
+
+#: workers/renderer.py:13
+msgid "Generate Website"
+msgstr ""
+
+#: workers/renderer.py:14
+msgid "Generates the static website."
+msgstr ""
+
+#: workers/renderer.py:50
+msgid "How do you want to render the site?"
+msgstr ""
+
+#: workers/renderer.py:53
+msgid "Full Render"
+msgstr ""
+
+#: workers/renderer.py:54
+msgid "Changed Pages Only"
+msgstr ""
+
+#: workers/renderer.py:81
+msgid "Rendering cancelled."
+msgstr ""
+
+#: workers/snippet_docs.py:13
+msgid "Generate Snippet Documentation"
+msgstr ""
+
+#: workers/snippet_docs.py:16
+msgid "Creates a help file (snippets.md) from the existing snippets."
+msgstr ""
+
+#: workers/snippet_docs.py:37
+#, python-brace-format
+msgid "Error: Snippet directory '{snippets_dir}' not found or is not a directory."
+msgstr ""
+
+#: workers/snippet_docs.py:50
+#, python-brace-format
+msgid "Error loading {filename}: {e}"
+msgstr ""
+
+#: workers/snippet_docs.py:54
+msgid "Snippet Documentation"
+msgstr ""
+
+#: workers/snippet_docs.py:57
+msgid "Available Snippets"
+msgstr ""
+
+#: workers/snippet_docs.py:59
+msgid "This documentation was automatically generated from the snippet files."
+msgstr ""
+
+#: workers/snippet_docs.py:92
+#, python-brace-format
+msgid "Documentation for {count} snippets created: assets/help/snippets.md"
+msgstr ""
+

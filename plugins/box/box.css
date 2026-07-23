@@ -1,0 +1,22 @@
+/* Styles for the Box Plugin */
+.plugin-box {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    background-color: #f6f8fa; /* Default background, overridden by inline style */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.plugin-box-title {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 0.5rem;
+}
+
+.plugin-box-content p:last-child {
+    margin-bottom: 0;
+}

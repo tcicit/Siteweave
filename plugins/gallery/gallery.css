@@ -1,0 +1,184 @@
+/* -------------------------------------------------------------------------- */
+/*                            Galerie Haupt-Layouts                           */
+/* -------------------------------------------------------------------------- */
+
+/* Basis-Styling für das Grid-Layout */
+.gallery-layout-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--gallery-cols, 3), 1fr);
+    gap: var(--gallery-gap, 1rem);
+    margin: 2rem 0;
+}
+
+/* --- Verbessertes Masonry-Layout mit CSS Columns --- */
+.gallery-layout-masonry {
+    /* Definiert die Anzahl der Spalten und den Abstand */
+    column-count: var(--gallery-cols, 3);
+    column-gap: var(--gallery-gap, 1rem);
+    margin: 2rem 0;
+}
+
+.gallery-layout-masonry a {
+    display: block;
+    /* Verhindert, dass ein einzelnes Bild über zwei Spalten geteilt wird */
+    break-inside: avoid;
+    margin-bottom: var(--gallery-gap, 1rem); /* Abstand zwischen den Bildern in einer Spalte */
+    line-height: 0;
+}
+
+.gallery-layout-masonry .gallery-item {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gallery-layout-masonry .gallery-item:hover {
+    transform: scale(1.03);
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                      Grid-Layout mit Seitenverhältnissen                   */
+/* -------------------------------------------------------------------------- */
+
+/* Container für das Vorschaubild, um das Seitenverhältnis zu erzwingen */
+.gallery-layout-grid .gallery-thumb {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+   
+
+}
+
+/* Das Bild im Vorschaubild-Container */
+.gallery-layout-grid .gallery-thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Stellt sicher, dass das Bild den Container füllt, ohne das Seitenverhältnis zu verzerren */
+    transition: transform 0.3s ease;
+
+
+}
+
+.gallery-layout-grid .gallery-thumb:hover img {
+    transform: scale(1.1);
+}
+
+/* Seitenverhältnisse für das Grid-Layout */
+.gallery-ratio-1-1 .gallery-thumb { aspect-ratio: 1 / 1; }
+.gallery-ratio-4-3 .gallery-thumb { aspect-ratio: 4 / 3; }
+.gallery-ratio-3-2 .gallery-thumb { aspect-ratio: 3 / 2; }
+.gallery-ratio-16-9 .gallery-thumb { aspect-ratio: 16 / 9; }
+
+/* Spezialfall: Originales Seitenverhältnis */
+/* Hier wird das Bild nicht beschnitten, sondern das Grid-Item passt sich an */
+.gallery-ratio-original .gallery-thumb {
+    aspect-ratio: auto;
+}
+.gallery-ratio-original .gallery-thumb img {
+    position: static; /* Überschreibt die absolute Positionierung */
+    object-fit: contain;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Lightbox                                  */
+/* -------------------------------------------------------------------------- */
+
+/* Container für alle Lightbox-Overlays, um sie aus dem normalen Fluss zu nehmen */
+.lightbox-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Lässt Klicks "durchfallen", wenn keine Lightbox aktiv ist */
+}
+
+/* Das Overlay, das erscheint, wenn ein Bild angeklickt wird */
+.lightbox-target {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Standardmässig ausserhalb des Bildschirms */
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, left 0s 0.4s;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Wenn die ID im URL-Fragment ist, wird die Lightbox sichtbar */
+.lightbox-target:target {
+    left: 0;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: auto; /* Macht die Lightbox und ihre Links klickbar */
+}
+
+/* Das Bild in der Lightbox */
+.lightbox-image {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Bildunterschrift */
+.lightbox-caption {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Schliessen-Button */
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.lightbox-close:hover {
+    color: #ccc;
+}
+
+/* Navigationspfeile (Vor/Zurück) */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    padding: 0 2rem;
+    transition: color 0.2s;
+    user-select: none;
+}
+.lightbox-nav:hover {
+    color: #fff;
+}
+.lightbox-nav.prev { left: 0; }
+.lightbox-nav.next { right: 0; }

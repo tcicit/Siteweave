@@ -1,0 +1,95 @@
+/* 
+   PDF Theme: Modern Handbook
+   Nutzt CSS Paged Media für WeasyPrint Export
+*/
+
+@page {
+    size: A4;
+    margin: 2.5cm 2cm;
+
+    @bottom-right {
+        content: "Seite " counter(page) " von " counter(pages);
+        font-size: 9pt;
+        color: #777;
+        font-family: sans-serif;
+    }
+
+    @bottom-left {
+        content: string(title);
+        font-size: 9pt;
+        color: #777;
+        font-family: sans-serif;
+    }
+}
+
+/* Titel für die Fußzeile aus der Hauptüberschrift extrahieren */
+h1 { string-set: title content(); }
+
+/* Vermeide Seitenumbrüche direkt nach Überschriften */
+h1, h2, h3, h4 { 
+    page-break-after: avoid; 
+    color: #2c3e50;
+    font-family: sans-serif;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Deckblatt-Styling */
+.cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    border: 1px solid #eee; /* Optischer Rahmen fürs Deckblatt */
+}
+
+.cover-title {
+    font-size: 32pt;
+    margin-top: 4cm;
+}
+
+.cover-subtitle {
+    font-size: 18pt;
+    color: #666;
+}
+
+/* Inhaltsverzeichnis (TOC) */
+.toc h1 { page-break-before: always; }
+.toc ul { list-style: none; padding: 0; }
+.toc li a::after {
+    content: target-counter(attr(href), page);
+    float: right;
+}
+.toc li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 0.5em;
+}
+
+/* Code-Blöcke */
+pre {
+    background-color: #f8f9fa;
+    padding: 1em;
+    border-radius: 4px;
+    border: 1px solid #e1e4e8;
+    font-size: 9pt;
+    overflow: hidden; /* WeasyPrint skaliert das meist selbst */
+}
+
+/* Bilder */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+    border-radius: 2px;
+}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section id="{{ section_id }}" class="{{ section_class }}" {% if background_image %}style="background-image: url('{{ relative_prefix }}{{ background_image }}');"{% endif %}>
+        <div class="content-wrapper">
+            <h2>{{ title }}</h2>
+            {{ content }}
+        </div>
+    </section>
+{% endblock %}

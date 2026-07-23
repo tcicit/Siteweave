@@ -1,0 +1,545 @@
+/* Standard Blog Styles */
+
+/* 
+   Lokale Fonts einbinden 
+   Stelle sicher, dass die Dateien unter assets/fonts/ liegen.
+*/
+@font-face {
+    font-family: 'BodyFont';
+    src: url('../assets/fonts/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'TitleFont';
+    src: url('../assets/fonts/Anton/Anton-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CodeFont';
+    src: url('../assets/fonts/SourceCodePro/SourceCodePro-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root {
+    /* Font Families */
+    --font-body: 'BodyFont', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-headings: 'TitleFont', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-code: 'CodeFont', 'Consolas', 'Monaco', 'Lucida Console', monospace;
+    --font-table: var(--font-body);
+
+    /* Font Sizes */
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.75rem;
+    --font-size-h4: 1.5rem;
+    --font-size-h5: 1.25rem;
+    --font-size-h6: 1.1rem;
+
+    /* Spacing */
+    --margin-paragraph: 1.5rem;
+    --margin-heading-top: 2.5rem;
+
+    /* Global Colors */
+    --primary-color: #6C7A72;
+    --bg-color: #f4f4f4;
+    --card-bg: #ffffff;
+    --header-bg: #A5B9C7;
+    --footer-bg: transparent;
+
+    /* Text Colors */
+    --text-color: #333333;
+    --text-muted: #666666;
+    --text-light: #888888;
+    --heading-color: #2c3e50;
+    --link-color: #2980b9;
+    --link-hover: #1f6391;
+
+    /* Borders & Shadows */
+    --border-color: #eeeeee;
+    --border-dark: #dddddd;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --shadow-strong: rgba(0, 0, 0, 0.1);
+
+    /* Tables */
+    --table-header-bg: #353535;
+    --table-header-text: #e4e4e4;
+    --table-row-even: #f9f9f9;
+    --table-row-odd: #d0d0d0;
+    --table-row-hover: #acacac;
+    --table-border: #000000;
+
+    /* Sidebar Colors */
+    --sidebar-bg: #fcfcfc;
+    --sidebar-border: #ececec;
+    --sidebar-heading-border: #eee;
+    --sidebar-nav-hover: #f0f0f0;
+    --sidebar-nav-active-bg: #e8f5e9;
+    --sidebar-text: var(--text-color);
+
+    /* Status & 404 */
+    --bg-dark-overlay: #333333;
+    --bg-dark-hover: #555555;
+    --text-on-dark: #ffffff;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+p, ul, ol, blockquote {
+    margin-top: 0;
+    margin-bottom: var(--margin-paragraph);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header & Navigation */
+header {
+    background: var(--header-bg);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    margin-bottom: 2rem;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 { margin: 0; font-size: 1.5rem; }
+header h1 a { 
+    color: var(--text-color); 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+    position: relative;
+}
+
+header h1 a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+header h1 a:hover { color: var(--primary-color); text-decoration: none; }
+header h1 a:hover::after { width: 100%; }
+
+.header-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link { display: flex; align-items: center; }
+.header-logo { height: 90px; margin-right: 15px; }
+
+
+
+nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+nav li { position: relative; margin-left: 20px; }
+nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.2s;
+    display: block;
+}
+nav a:hover { color: var(--primary-color); }
+
+/* Dropdown */
+nav .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--header-bg);
+    box-shadow: 0 4px 10px var(--shadow-strong);
+    min-width: 180px;
+    z-index: 100;
+    border-radius: 4px;
+    padding: 5px 0;
+}
+nav li:hover .dropdown { display: block; }
+nav .dropdown li { margin: 0; display: block; font-family: var(--font-body); }
+nav .dropdown a { padding: 8px 15px; font-size: 0.95rem; color: var(--text-muted); }
+nav .dropdown a:hover { background: var(--table-row-even); color: var(--primary-color); }
+
+/* Content */
+article {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    margin-bottom: 30px;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+    font-family: var(--font-headings);
+    color: var(--heading-color); 
+    margin-top: var(--margin-heading-top); 
+}
+
+h1 { font-size: var(--font-size-h1); margin-top: 0;  padding-bottom: 10px; }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
+
+a { color: var(--link-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; border-radius: 4px; }
+
+/* Code & Pre */
+code, pre, kbd, samp {
+    font-family: var(--font-code);
+    font-size: 0.9em;
+}
+
+/* Blog Post Meta */
+.post-header { margin-bottom: 2rem; }
+.meta { color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem; }
+.post-tags { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); }
+.tag { 
+    background: var(--border-color); color: var(--text-muted); 
+    padding: 3px 8px; border-radius: 3px; 
+    font-size: 0.85rem; margin-right: 5px; 
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 40px;
+    border-top: 1px solid var(--border-dark);
+}
+
+
+
+/* Styles for the 404 page */
+/* Container holding the image and the text */
+.container_404 {
+  position: relative;
+  text-align: center;
+  color: var(--text-on-dark);
+  height: 100%;
+}
+
+.image_404 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} 
+
+/* Centered text */
+.centered_404 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8em;
+  font-weight: bold;
+  color: var(--text-on-dark); 
+  
+} 
+
+.home_404 {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text-on-dark); 
+  background-color: var(--bg-dark-overlay);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.home_404:hover {
+  background-color: var(--bg-dark-hover);
+}
+
+.message_404 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text-on-dark); 
+  background-color: var(--bg-dark-overlay);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.message_404:hover {
+  background-color: var(--bg-dark-hover);   
+  
+} 
+
+/* Table Styles */
+table {
+    font-family: var(--font-table);
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid var(--table-border);
+}
+
+table th, table td {
+    border: 1px solid var(--border-dark);
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+}
+table tr:nth-child(even) { background-color: var(--table-row-even); }
+table tr:nth-child(odd) { background-color: var(--table-row-odd); }  
+
+table tr:hover { background-color: var(--table-row-hover); } 
+
+.featured-image {
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: inset 0 0 10px var(--shadow-strong);
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+
+/* --- Sidebar Layout System --- */
+
+.sidebar-layout {
+    display: flex;
+    gap: 40px;           /* Abstand zwischen Inhalt und Sidebar */
+    margin-top: 20px;
+    align-items: flex-start; /* Verhindert, dass die Sidebar unnötig gestreckt wird */
+}
+
+/* Hauptinhalts-Bereich */
+.content-area {
+    flex: 3;             /* Nimmt 3/4 des verfügbaren Platzes ein */
+    min-width: 0;        /* Verhindert Layout-Bugs bei breiten Tabellen oder Code-Blöcken */
+}
+
+/* Sidebar-Styling */
+.sidebar {
+    flex: 1;             /* Nimmt 1/4 des verfügbaren Platzes ein */
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--sidebar-border);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    border-bottom: 2px solid var(--sidebar-heading-border);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+
+/* Sidebar Accordion Styles */
+ .sidebar-nav ul {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+ .sidebar-nav li {
+     position: relative;
+     margin-bottom: 2px;
+ }
+ .sidebar-nav a {
+     display: block;
+     padding: 10px 15px;
+     color: var(--sidebar-text);
+     text-decoration: none;
+     border-radius: 8px;
+     transition: all 0.3s ease;
+     font-size: 0.95rem;
+     border: 1px solid transparent;
+ }
+ /* Modern Hover Effect */
+ .sidebar-nav a:hover {
+     background-color: var(--sidebar-nav-hover);
+     color: var(--primary-color);
+     padding-left: 20px; /* Leichtes Einrücken beim Hover */
+     border-color: var(--sidebar-heading-border);
+ }
+ /* Active State */
+ .sidebar-nav li.active > a, .nav-menu li.active > a {
+     background-color: var(--sidebar-nav-active-bg);
+     color: var(--sidebar-text);
+     font-weight: 600;
+ }
+ .sidebar-nav ul ul {
+     /* display: none; */
+     padding-left: 1rem;
+     margin-left: 10px;
+     border-left: 1px solid var(--sidebar-heading-border);
+  /* Hierarchielinie */
+ }
+ /* Sichtbarkeit für alle Unterelemente sicherstellen */
+ .sidebar-nav li.is-open > ul, 
+ .sidebar-nav li.is-open > .dropdown-content {
+     display: block !important;
+ }
+ .sidebar-nav li.is-open > .menu-toggle {
+     transform: rotate(90deg);
+ }
+ .menu-toggle {
+     position: absolute;
+     right: 12px;
+     top: 12px;
+     cursor: pointer;
+     color: var(--sidebar-text);
+     font-size: 0.75rem;
+     transition: transform 0.3s ease;
+     z-index: 2;
+ }
+
+/* Navigation Menu Struktur */
+.nav-menu, .nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul {
+    padding-left: 15px; /* Einrückung für Unterordner */
+    border-left: 1px solid var(--sidebar-heading-border);
+    margin-left: 10px;
+}
+
+.nav-menu li {
+    margin: 4px 0;
+    position: relative;
+}
+
+/* Gemeinsame Styles für Links und Ordner-Buttons */
+.nav-menu a, 
+.nav-menu .dropbtn {
+    display: block;
+    padding: 8px 12px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.nav-menu a:hover, 
+.nav-menu .dropbtn:hover {
+    background-color: var(--sidebar-nav-hover);
+    color: var(--primary-color);
+}
+
+/* Aktiver Zustand (Aktuelle Seite) */
+.nav-menu li.active > a {
+    background-color: var(--sidebar-nav-active-bg);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Ordner-Styling */
+.nav-menu li.folder > .dropbtn::before {
+    content: "📁";
+    margin-right: 8px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.nav-menu li.folder.active-parent > .dropbtn::before {
+    content: "📂";
+}
+
+/* Datei-Styling */
+.nav-menu li.file,
+.nav-menu li.file > a::before {
+    content: "📄";
+    margin-right: 8px;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+.nav-menu li.active-parent > .dropbtn::after {
+    transform: rotate(90deg);
+}
+
+/* Sichtbarkeit der Untermenüs */
+.nav-menu .dropdown-content {
+    display: none;
+}
+
+.nav-menu li.is-open > .dropdown-content {
+    display: block;
+}
+
+/* --- Responsive Anpassungen --- */
+
+@media (max-width: 900px) {
+    .sidebar-layout {
+        gap: 20px;       /* Weniger Abstand auf Tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-layout {
+        flex-direction: column; /* Stapelt Sidebar und Inhalt vertikal */
+    }
+
+    /* Bei einer linken Sidebar soll der Inhalt auf Mobile trotzdem OBEN stehen */
+    .sidebar-layout.sidebar-left {
+        flex-direction: column-reverse;
+    }
+
+    .content-area, 
+    .sidebar {
+        width: 100%;    /* Volle Breite auf Smartphones */
+        flex: none;
+    }
+    
+    .sidebar {
+        margin-top: 20px;
+    }
+}

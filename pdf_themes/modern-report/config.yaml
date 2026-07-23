@@ -1,0 +1,25 @@
+# PDF Theme Configuration: Modern Handbook
+name: "Modern Handbook"
+description: "Ein sauberes, professionelles Layout für technische Dokumentationen."
+
+page_setup:
+  size: "A4"
+  orientation: "portrait"
+  margins:
+    top: "2.5cm"
+    bottom: "2.5cm"
+    left: "3cm"
+    right: "2cm"
+
+typography:
+  base_font: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+  code_font: "'Cascadia Code', 'Fira Code', Consolas, monospace"
+  font_size: "11pt"
+  line_height: 1.6
+
+features:
+  show_cover: true
+  show_toc: true
+  show_page_numbers: true
+  page_number_format: "Seite {current} von {total}"
+  toc_depth: 2

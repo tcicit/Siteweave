@@ -1,0 +1,4 @@
+category: Struktur
+code: '[[include src="pfad/zur/datei.md"]]'
+name: Datei einbinden
+order: 26

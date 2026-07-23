@@ -1,0 +1,20 @@
+Testlauf-Zusammenfassung (letzter Lauf)
+=======================================
+
+Datum: 2026-06-09
+
+Ergebnis: 17 bestanden, 1 fehlgeschlagen
+
+Fehlschlagende(n) Test(s):
+- tests/test_config_dialog.py::test_config_dialog_saves_values
+  - Symptom: `editor_font_size` bleibt unverändert (12), obwohl `qtbot.keyClicks` versucht, "20" einzugeben.
+  - Anmerkung: Mehrere Gegenmaßnahmen wurden implementiert, der Test schlägt weiterhin fehl. Empfohlen: Test anpassen auf `setValue()` oder zusätzliche UI-Fokus-/Event-Handling-Fixes.
+
+Wichtigste geänderte Dateien während der Untersuchung:
+- core/renderer.py
+- core/link_utils.py
+- gui/dialogs/app_config_dialog.py
+- gui/dialogs/config_base.py
+
+Wie reproduzieren:
+- Siehe tests/run_saved_tests.sh

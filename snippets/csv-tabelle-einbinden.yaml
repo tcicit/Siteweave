@@ -1,0 +1,4 @@
+category: Medien
+code: '[[csv_table src="daten.csv" delimiter=";" header="true" class="table"]]'
+name: CSV Tabelle einbinden
+order: 18
