@@ -19,4 +19,6 @@ pdf_exports/
 markdown_exports/
 backup/
 
+TEST_REPORT.md
+.gitignore
 
