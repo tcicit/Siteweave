@@ -1,0 +1,209 @@
+@page {
+    size: A4;
+    margin: 2cm;
+
+}
+
+@page:left {
+    margin-left: 3cm;
+    margin-right: 2cm;
+
+    @bottom-right {
+        content: counter(page);
+        font-family: sans-serif;
+        font-size: 10pt;
+    }
+    @top-left {
+        content: string(chapter-name);
+        font-family: sans-serif;
+        font-size: 10pt;
+    }
+}
+
+@page:right {       
+    margin-left: 2cm;
+    margin-right: 3cm;
+    @bottom-left {
+        content: counter(page);
+        font-family: sans-serif;
+        font-size: 10pt;
+    }
+    @top-right {
+        content: string(chapter-name); /* Zeigt den erfassten Kapitelnamen an */
+        font-family: sans-serif;
+        font-size: 10pt;
+    }
+}
+
+
+@page :first {
+    @bottom-right { content: none; }
+}
+
+
+:root {
+  --primary-bg-color: #fdf2e9;
+  --primary-color: #e67e22;
+  --secondary-color: #2c3e50;
+  --text-color: #333;
+
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+h1 {
+    color: var(--secondary-color);
+    break-before: page;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    page-break-after: avoid; /* Verhindert einen Seitenumbruch direkt nach dem H1 */
+    string-set: chapter-name content(); /* Erfasst den Inhalt des h1 als 'chapter-name' */
+}
+
+h2 {
+    color:var(--text-color);
+    margin-top: 2em;
+    border-bottom: 1px solid var(--secondary-color);
+    break-before: page;
+    margin-top: 0; /* Verhindert unnötigen Platz oben auf der neuen Seite */
+    
+}
+
+p {
+  widows: 2;
+  orphans: 2;
+}
+
+/* Spezielle Regeln für das Inhaltsverzeichnis */
+@page toc {
+    @top-center { content: none; } /* Keine Kopfzeile im Inhaltsverzeichnis */
+    @bottom-right { content: none; } /* Keine Seitenzahl im Inhaltsverzeichnis */
+}
+
+.recipe {
+    /* Erzwingt einen Seitenumbruch vor jedem Rezept */
+    break-before: page;
+}
+
+/* 
+   Spezialregel: Wenn ein Rezept oder eine H2 direkt auf eine H1 folgt, 
+   darf kein Seitenumbruch dazwischen stattfinden. 
+*/
+h1 + .recipe, 
+h1 + h2, 
+h1 + .recipe h2 {
+    break-before: avoid !important;
+}
+
+/* Kochbuch spezifisch: Zutatenliste */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    background: var(--primary-bg-color);
+    padding: 15px;
+    border-radius: 5px;
+    break-inside: avoid;
+}
+
+/* Rezept-Metadaten Box (Zeit, Personen, etc.) */
+.recipe-metadata {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--primary-bg-color);
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    padding: 12px 5px;
+    margin: 1.5em 0;
+    break-inside: avoid;
+}
+
+.recipe-metadata-item {
+    text-align: center;
+    flex: 1;
+}
+
+.recipe-metadata-item:not(:last-child) {
+    border-right: 1px solid rgba(230, 126, 34, 0.2); /* Dezentere Trennlinie */
+}
+
+.recipe-metadata-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* Optional: Ein benutzerdefiniertes Aufzählungszeichen für die Zutatenliste */ 
+ul li::before {
+    content: "▢ ";
+    color: var(--primary-color);
+}
+
+/* Inhaltsverzeichnis Styling */
+#toc ul { background: none; }
+#toc li { list-style: none; }
+#toc li::before { content: none; }
+.toc-chapter { font-weight: bold; margin-top: 10px; color: #2c3e50; }
+.toc-page a { 
+    padding-left: 1.5em; /* Rückt die Rezepte unter den Kapiteln ein */
+    text-decoration: none; 
+    color: #333; 
+    display: block;
+}
+.toc-page a::after {
+    content: leader('.') target-counter(attr(href), page);
+}
+
+/* Bilder */
+img {
+    max-width: 100%;    /* Verhindert horizontales Überlaufen */
+    max-height: 23cm;   /* Begrenzt die Höhe (A4 minus Margins und etwas Puffer) */
+    height: auto;
+    display: block;
+    margin: 1cm auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    break-inside: avoid; /* Verhindert das Zerschneiden von Bildern über zwei Seiten */
+}
+
+/* Tabellen (falls vorhanden) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+thead {
+    display: table-header-group; /* Wiederholt den Header auf jeder Seite */
+}
+
+table, th, td {
+    border: 1px solid var(--secondary-color);
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}   
+
+th {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+/* even oder odd Zeilen hervorheben */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}       

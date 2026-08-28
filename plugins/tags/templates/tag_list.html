@@ -1,0 +1,12 @@
+<ul class="tag-list" {% if cols > 1 %}style="display: grid; grid-template-columns: repeat({{ cols }}, 1fr); gap: 10px; list-style: none; padding: 0;"{% else %}style="list-style: none; padding: 0;"{% endif %}>
+    {% for tag in tags %}
+        <li>
+            <a href="{{ relative_path_to_tags }}/{{ tag.slug }}.html">
+                {{ tag.name }}
+            </a>
+            {% if show_count %}
+            <span class="tag-count">({{ tag.count }})</span>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

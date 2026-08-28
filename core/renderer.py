@@ -414,10 +414,8 @@ class SiteRenderer:
 
     def copy_local_assets(self, content_dir, output_dir):
         """
-        Finds all asset-like subdirectories (e.g., 'assets', '_assets', '_media')
-        within the content directory and copies them to the corresponding location
-        in the output directory. An asset directory is one that starts with an underscore
-        or matches the name configured in `assets_directory`.
+        Finds configured asset subdirectories within the content directory and copies
+        them to the corresponding location in the output directory.
         """
         self.logger.info(_("\nCopying local assets..."))
         asset_dirs_found = 0
@@ -425,8 +423,7 @@ class SiteRenderer:
         
         for root, dirs, files in os.walk(content_dir, topdown=True):
             # Create a list of directories to copy from the current level
-            # An asset directory is one that starts with an underscore or matches the name from config.
-            dirs_to_copy = [d for d in dirs if d.startswith('_') or d == assets_dirname_from_config]
+            dirs_to_copy = [d for d in dirs if d == assets_dirname_from_config]
             
             if not dirs_to_copy:
                 continue
@@ -448,7 +445,7 @@ class SiteRenderer:
             dirs[:] = [d for d in dirs if d not in dirs_to_copy]
 
         if asset_dirs_found == 0:
-            self.logger.info(_("  - No local asset directories (like 'assets' or '_assets') found in content folder."))
+            self.logger.info(_("  - No local asset directories matching the configured name found in content folder."))
 
     def generate_sitemap(self, pages, output_dir):
         """

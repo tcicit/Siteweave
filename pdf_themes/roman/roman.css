@@ -1,0 +1,184 @@
+/* Seitenlayout */
+@page {
+  size: A4;
+  margin-top: 2.5cm;
+  margin-bottom: 2.5cm;
+  margin-left: 2.5cm;
+  margin-right: 2cm;
+
+  @top-center {
+    content: string(book-title);
+    font-size: 9pt;
+    color: #666;
+  }
+
+  @bottom-left {
+    content: string(chapter-title);
+    font-size: 9pt;
+    color: #666;
+    border-top: 0.3pt solid #ddd;
+  }
+
+  @bottom-right {
+    content: "Seite " counter(page);
+    font-size: 9pt;
+    color: #666;
+    border-top: 0.3pt solid #ddd;
+  }
+}
+
+@page:left {
+  margin-left: 3cm;
+  margin-right: 2cm;
+  @bottom-right { content: none; }
+}
+
+@page:right {
+  margin-left: 2cm;
+  margin-right: 3cm;
+}
+
+@page:first {
+  @top-center { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+body {
+  font-family: Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.title-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.book-title {
+  font-size: 4rem;
+  margin: 0;
+  string-set: book-title content();
+}
+
+.book-subtitle {
+  font-size: 1.6rem;
+  margin: 1rem 0 0.5rem;
+  color: #555;
+}
+
+.book-meta,
+.chapter-meta {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.book-description {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.toc-section {
+  padding: 1rem 2rem;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  margin-bottom: 0.55rem;
+}
+
+.toc-list ul {
+  margin: 0.35rem 0 0.5rem 1.5rem;
+  padding-left: 0;
+}
+
+.toc-list a {
+  text-decoration: none;
+  color: #111;
+}
+
+.toc-list a::after {
+  content: leader('.') target-counter(attr(href), page);
+}
+
+.chapter {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin-bottom: 2rem;
+}
+
+.chapter-index {
+  margin: 0.8rem 0 1.2rem;
+  padding: 0.9rem 1rem;
+  background: #f8f7f3;
+  border-left: 3px solid #b08962;
+}
+
+.chapter-index-title {
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+.chapter-index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapter-index-list li {
+  margin-bottom: 0.3rem;
+}
+
+.chapter-index-list a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.chapter-title {
+  break-before: right;
+  page-break-before: right;
+  string-set: chapter-title content();
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.chapter-subtitle {
+  font-size: 1.1rem;
+  margin: 0.25rem 0 1rem;
+  color: #555;
+}
+
+.chapter-content {
+  text-align: justify;
+  widows: 2;
+  orphans: 2;
+}
+
+.chapter-content img {
+  max-width: 100%;
+  display: block;
+  margin: 1rem auto;
+  page-break-inside: avoid;
+}
+
+.page-break {
+  break-before: page;
+}

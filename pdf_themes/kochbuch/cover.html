@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body class="cover-body">
+    
+    <img src="file://{{ templates_dir }}/cover.jpg" class="cover-image">
+    
+    <div class="cover-container">
+        <h1 class="book-title">{{ config.Book_Title }}</h1>
+        <h2 class="book-subtitle">{{ config.Subtitle }}</h2>
+        <div class="authors">
+            {% for author in config.Authors %}{{ author }}{% if not loop.last %}, {% endif %}{% endfor %}
+        </div>
+    </div>
+</body>
+</html>

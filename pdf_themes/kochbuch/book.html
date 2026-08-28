@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ config.Language }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ config.Book_Title }}</title>
+</head>
+<body>
+    <section id="toc" style="page: toc;">
+        <h3>Inhaltsverzeichnis</h3>
+        <nav>
+            <ul>
+                {% for chapter in chapters %}
+                    {% if chapter.name %}
+                        <li class="toc-chapter"><a href="#{{ chapter.name|slugize }}">{{ chapter.name }}</a></li>
+                        {% for page in chapter.pages %}
+                            <li class="toc-page"><a href="#{{ page.title|slugize }}">{{ page.title }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        {# Kapitel ohne Namen: keine Linien/Seitenzahlen anzeigen #}
+                        {% for page in chapter.pages %}
+                            <li class="toc-page no-leader"><a href="#{{ page.title|slugize }}">{{ page.title }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+    </section>
+
+    {% for chapter in chapters %}
+    <section class="chapter"{% if chapter.name %} id="{{ chapter.name|slugize }}"{% endif %}>
+        <h1 class="chapter-title">{{ chapter.name }}</h1>
+        {% for page in chapter.pages %}
+        <article id="{{ page.title|slugize }}" class="recipe">
+            {{ page.content|safe }}
+        </article>
+        {% endfor %}
+    </section>
+    {% endfor %}
+</body>
+</html>

@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+    {% if featured_image %}
+        <div class="featured-image">
+            <img src="{{ featured_image }}" alt="{{ page_title or title }}">
+        </div>
+    {% endif %}
+    
     <article>
         {% if page_title or title %}
         <h1>{{ page_title or title }}</h1>

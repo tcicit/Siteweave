@@ -1,0 +1,45 @@
+/* Seitenlayout */
+@page {
+  size: A4;
+  margin: 2.5cm;
+
+  @bottom-center {
+    content: counter(page);
+    font-size: 10pt;
+  }
+}
+
+/* Inhaltsverzeichnis */
+.toc {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  margin-bottom: 5px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: black;
+}
+
+.toc a::after {
+  content: leader('.') target-counter(attr(href), page);
+}
+
+/* Kapitel */
+h1 {
+  break-before: page;
+}
+
+.meta {
+  font-size: 10pt;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+/* Seitenumbruch */
+.page-break {
+  break-before: page;
+}

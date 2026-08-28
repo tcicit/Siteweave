@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+ <link rel="stylesheet" href="{{ css_file }}">
+  <title>{{ book_title }}</title>
+</head>
+<body>
+
+<h1>{{ book_title }}</h1>
+
+<!-- Inhaltsverzeichnis -->
+<h2>Inhaltsverzeichnis</h2>
+<ul class="toc">
+  {% for chapter in chapters %}
+    <li>
+      <a href="#{{ chapter.id }}">
+        {{ chapter.number }}. {{ chapter.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="page-break"></div>
+
+<ul class="toc">
+  {% for chapter in chapters %}
+    <li>
+      <a href="#{{ chapter.id }}">
+        {{ chapter.number }}. {{ chapter.title }}
+      </a>
+
+      <ul>
+        {% for sub in chapter.subheadings %}
+          <li>
+            <a href="#{{ sub.id }}">
+              {{ sub.number }} {{ sub.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+    </li>
+  {% endfor %}
+</ul>
+
+<!-- Kapitel -->
+{% for chapter in chapters %}
+  <h1 id="{{ chapter.id }}">
+    {{ chapter.number }}. {{ chapter.title }}
+  </h1>
+  
+  
+  <div class="meta">
+    {{ chapter.author }} – {{ chapter.date }}
+  </div>
+
+  <div class="content">
+    {{ chapter.content | safe }}
+  </div>
+
+{% endfor %}
+
+</body>
+</html>

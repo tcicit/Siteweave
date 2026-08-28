@@ -515,6 +515,19 @@ table tr:hover { background-color: var(--table-row-hover); }
     display: block;
 }
 
+
+.metadata_body {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background-color: var(--sidebar-nav-active-bg);
+    padding: 10px;
+}
+
+
+
+
+
 /* --- Responsive Anpassungen --- */
 
 @media (max-width: 900px) {

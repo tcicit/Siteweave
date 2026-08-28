@@ -1,0 +1,7 @@
+<div class="tag-cloud">
+    {% for tag in tags %}
+        <a href="{{ relative_path_to_tags }}/{{ tag.slug }}.html" class="tag-cloud-item" style="font-size: {{ tag.size }}; opacity: {{ tag.opacity }};{% if tag.color %} color: {{ tag.color }};{% endif %}">
+            {{ tag.name }}
+        </a>
+    {% endfor %}
+</div>

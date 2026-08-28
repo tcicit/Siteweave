@@ -1,9 +1,52 @@
 import os
+import logging
 import yaml
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLineEdit, QListWidget, QListWidgetItem, QTabWidget
 from PyQt6.QtCore import Qt, pyqtSignal
 from PyQt6.QtGui import QFont
 from core.i18n import _
+
+logger = logging.getLogger(__name__)
+
+def validate_emoji_data(data):
+    """Return only emoji entries matching the [character, keywords] schema."""
+    if not isinstance(data, dict):
+        logger.warning("Emoji configuration must contain a mapping of categories.")
+        return {}
+
+    validated_data = {}
+    for category, emojis in data.items():
+        if not isinstance(category, str) or not category.strip():
+            logger.warning("Skipping emoji category with an invalid name: %r", category)
+            continue
+        if not isinstance(emojis, list):
+            logger.warning("Skipping emoji category '%s': expected a list.", category)
+            continue
+
+        valid_emojis = []
+        for index, entry in enumerate(emojis, 1):
+            if not isinstance(entry, (list, tuple)) or len(entry) != 2:
+                logger.warning(
+                    "Skipping invalid emoji entry %s in category '%s': expected [character, keywords].",
+                    index,
+                    category,
+                )
+                continue
+
+            char, keywords = entry
+            if not isinstance(char, str) or not char.strip():
+                logger.warning("Skipping emoji entry %s in category '%s': character is empty.", index, category)
+                continue
+            if not isinstance(keywords, str):
+                logger.warning("Skipping emoji entry %s in category '%s': keywords must be text.", index, category)
+                continue
+
+            valid_emojis.append((char, keywords))
+
+        if valid_emojis:
+            validated_data[category] = valid_emojis
+
+    return validated_data
 
 class EmojiPicker(QDialog):
     """
@@ -50,8 +93,9 @@ class EmojiPicker(QDialog):
             try:
                 with open(self.emoji_config_path, "r", encoding="utf-8") as f:
                     data = yaml.safe_load(f)
-                    if isinstance(data, dict):
-                        return data
+                    validated_data = validate_emoji_data(data)
+                    if validated_data:
+                        return validated_data
             except Exception as e:
                 print(f"Fehler beim Laden der Emoji-Konfiguration: {e}")
         
@@ -75,7 +119,11 @@ class EmojiPicker(QDialog):
             list_widget.setFont(font)
             list_widget.itemClicked.connect(self.on_item_clicked)
             
-            for char, keywords in emojis:
+            for entry in emojis:
+                if not isinstance(entry, (list, tuple)) or len(entry) != 2:
+                    logger.warning("Skipping malformed emoji entry in category '%s'.", category)
+                    continue
+                char, keywords = entry
                 item = QListWidgetItem(char)
                 
                 # Hex Code berechnen (für Tooltip und Suche)

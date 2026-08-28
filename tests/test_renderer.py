@@ -11,6 +11,7 @@ from core.renderer import (
     SiteRenderer,
     process_plugins
 )
+from gui.dialogs.emoji_picker import validate_emoji_data
 
 def test_is_markdown_file():
     extensions = [".md", ".markdown"]
@@ -86,6 +87,38 @@ def test_site_renderer_initialization(tmp_path):
     renderer = SiteRenderer(str(project_dir))
     assert renderer.config["site_name"] == "Test Site"
     assert os.path.abspath(renderer.content_directory) == os.path.abspath(str(project_dir / "my_content"))
+
+def test_validate_emoji_data_skips_malformed_entries():
+    data = {
+        "Valid": [["😀", "happy"], ["🧩"]],
+        "Not a list": "invalid",
+        "Empty character": [["", "ignored"]],
+        "Invalid keywords": [["✅", 42]],
+    }
+
+    assert validate_emoji_data(data) == {"Valid": [("😀", "happy")]}
+
+def test_copy_local_assets_ignores_underscore_directories(tmp_path):
+    content_dir = tmp_path / "content"
+    output_dir = tmp_path / "output"
+    content_dir.mkdir()
+
+    (content_dir / "assets").mkdir()
+    (content_dir / "assets" / "image.txt").write_text("asset", encoding="utf-8")
+    (content_dir / "_assets").mkdir()
+    (content_dir / "_assets" / "private.txt").write_text("private", encoding="utf-8")
+    (content_dir / "_about").mkdir()
+    (content_dir / "_about" / "help.md").write_text("# Help", encoding="utf-8")
+
+    renderer = SiteRenderer.__new__(SiteRenderer)
+    renderer.assets_directory = str(content_dir / "assets")
+    renderer.logger = MagicMock()
+
+    renderer.copy_local_assets(str(content_dir), str(output_dir))
+
+    assert (output_dir / "assets" / "image.txt").is_file()
+    assert not (output_dir / "_assets").exists()
+    assert not (output_dir / "_about").exists()
 
 def test_process_plugins_with_failing_plugin():
     """Testet, wie das System reagiert, wenn ein Plugin-Handler eine Exception wirft."""

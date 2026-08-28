@@ -2,7 +2,9 @@
 
 {% block content %}
 <div class="sidebar-layout sidebar-left">
-    {% include '_sidebar.html' %}
-    <main class="content-area">{% include '_content_body.html' %}</main>
+
+    {% include 'partials/sidebar.html' %}
+
+    <main class="content-area">{% include 'partials/content_body.html' %}</main>
 </div>
 {% endblock %}

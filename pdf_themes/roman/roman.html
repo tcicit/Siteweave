@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{ css_file }}">
+  <title>{{ book_title }}</title>
+</head>
+<body>
+
+<div class="title-page">
+  <h1 class="book-title">{{ book_title }}</h1>
+  {% if subtitle %}<p class="book-subtitle">{{ subtitle }}</p>{% endif %}
+  <p class="book-meta">
+    {% if authors %}{{ authors | join(', ') }}{% endif %}
+    {% if publisher %} • {{ publisher }}{% endif %}
+  </p>
+  {% if book_description %}
+  <div class="book-description">{{ book_description }}</div>
+  {% endif %}
+</div>
+
+<div class="page-break"></div>
+
+<section class="toc-section">
+  <h2>Inhaltsverzeichnis</h2>
+  {% macro render_toc(items) %}
+    <ul class="toc-list">
+      {% for item in items %}
+        <li>
+          <a href="#{{ item.id }}">{{ item.number }} {{ item.title }}</a>
+          {% if item.children %}
+            {{ render_toc(item.children) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endmacro %}
+
+  {{ render_toc(chapters) }}
+</section>
+
+<div class="page-break"></div>
+
+<section class="content-section">
+  {% macro render_chapters(items, level=1) %}
+    {% for item in items %}
+      <article class="chapter" id="{{ item.id }}">
+        {% if level == 1 %}
+          <h1 class="chapter-title">{{ item.number }} {{ item.title }}</h1>
+        {% elif level == 2 %}
+          <h2 class="chapter-title">{{ item.number }} {{ item.title }}</h2>
+        {% elif level == 3 %}
+          <h3 class="chapter-title">{{ item.number }} {{ item.title }}</h3>
+        {% else %}
+          <h4 class="chapter-title">{{ item.number }} {{ item.title }}</h4>
+        {% endif %}
+
+        {% if item.subtitle %}
+          <p class="chapter-subtitle">{{ item.subtitle }}</p>
+        {% endif %}
+
+        {% if item.author or item.date %}
+          <p class="chapter-meta">{{ item.author }}{% if item.author and item.date %} • {% endif %}{{ item.date }}</p>
+        {% endif %}
+
+        {% if item.children %}
+          <div class="chapter-index">
+            <p class="chapter-index-title">Rezepte in diesem Kapitel</p>
+            <ul class="chapter-index-list">
+              {% for child in item.children %}
+                <li><a href="#{{ child.id }}">{{ child.number }} {{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <div class="chapter-content">{{ item.content | safe }}</div>
+      </article>
+      {% if item.children %}
+        {{ render_chapters(item.children, level + 1) }}
+      {% endif %}
+    {% endfor %}
+  {% endmacro %}
+
+  {{ render_chapters(chapters) }}
+</section>
+
+</body>
+</html>

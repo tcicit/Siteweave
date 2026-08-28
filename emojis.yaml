@@ -21,7 +21,9 @@
   - ["😇", "engel halo unschuldig"]
   - ["🤪", "verrückt crazy witzig"]
   - ["😈", "teufel devil böse"]
-  
+  - ["🤡", "clown lustig witzig"]
+  - ["👽", "außerirdisch alien ufo"]
+    
 "Objekte & Technik":
   - ["🚀", "rakete rocket start launch"]
   - ["💻", "computer laptop pc code"]
@@ -102,7 +104,6 @@
   - ["🕙", "uhr zeit 10 Uhr"]
   - ["🕚", "uhr zeit 11 Uhr"]
   - ["🕛", "uhr zeit 12 Uhr"]
-  - ["", ]
 
 
 "Natur & Tiere":
@@ -244,3 +245,10 @@
   - ["🇭🇷", "kroatien croatia flagge"]
   - ["🇧🇦", "bosnien bosnia flagge"]
   - ["🇦🇱", "albanien albania flagge"]
+  - ["🇲🇪", "montenegro montenegro flagge"]
+  - ["🇲🇰", "mazedonien macedonia flagge"]
+  - ["🇦🇲", "armenien armenia flagge"]
+  - ["🇦🇿", "aserbaidschan azerbaijan flagge"]
+  - ["🇬🇪", "georgien georgia flagge"]
+  - ["🇰🇿", "kasachstan kazakhstan flagge"]
+  

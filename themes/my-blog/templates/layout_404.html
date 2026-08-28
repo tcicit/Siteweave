@@ -2,12 +2,16 @@
 
 {% block content %}
 
-<h1>404 - Seite nicht gefunden</h1>
-
-
 
  <div class="container_404">  
-  <img class="image_404" src="{{ featured_image }}" alt="{{ title }}">
+
+    <h1>404 - Seite nicht gefunden</h1>
+    
+    {% if featured_image %}
+        <div class="featured-image">
+            <img src="{{ featured_image }}" alt="{{ page_title or title }}">
+        </div>
+    {% endif %}
   
   <a href="/" class="home_404">Home</a>
   <div class="centered_404">{{ title }}</div>
