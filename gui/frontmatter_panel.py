@@ -1,6 +1,7 @@
 import os
 import shutil
 import filecmp
+import yaml
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QFormLayout, QLineEdit, 
                              QCheckBox, QDateEdit, QComboBox, QScrollArea, QFrame, QPushButton, QSizePolicy, QMessageBox,
                              QHBoxLayout, QFileDialog, QLabel, QCompleter, QSpinBox)
@@ -141,11 +142,16 @@ class MultiValueLineEdit(QLineEdit):
 class FrontmatterPanel(QWidget):
     dataChanged = pyqtSignal()
 
+    KNOWN_KEYS = {
+        'title', 'author', 'date', 'release_date', 'layout', 'weight',
+        'tags', 'featured_image', 'draft', 'breadcrumbs',
+    }
+
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(0)
+        layout.setContentsMargins(4, 4, 4, 4)
+        layout.setSpacing(4)
 
         # Toggle Button
         self.toggle_btn = QPushButton(_("Frontmatter ▼"))
@@ -168,7 +174,16 @@ class FrontmatterPanel(QWidget):
         self.scroll.setFrameShape(QFrame.Shape.NoFrame)
         
         content_widget = QWidget()
-        self.form_layout = QFormLayout(content_widget)
+        content_layout = QVBoxLayout(content_widget)
+        content_layout.setContentsMargins(4, 4, 4, 4)
+        content_layout.setSpacing(6)
+        self.form_layout = QFormLayout()
+        self.form_layout.setContentsMargins(0, 0, 0, 0)
+        self.form_layout.setHorizontalSpacing(8)
+        self.form_layout.setVerticalSpacing(3)
+        self.form_layout.setFieldGrowthPolicy(
+            QFormLayout.FieldGrowthPolicy.ExpandingFieldsGrow
+        )
         
         # Felder definieren
         self.title_edit = QLineEdit()
@@ -202,15 +217,16 @@ class FrontmatterPanel(QWidget):
         image_layout.setContentsMargins(0, 0, 0, 0)
         image_layout.addWidget(self.featured_image_edit)
         self.select_image_btn = QPushButton("...")
-        self.select_image_btn.setFixedWidth(30)
+        self.select_image_btn.setFixedSize(28, 26)
         self.select_image_btn.clicked.connect(self.select_featured_image)
         image_layout.addWidget(self.select_image_btn)
 
         # Bild-Vorschau Label
         self.image_preview_label = QLabel(_("No Image"))
-        self.image_preview_label.setFixedSize(200, 150)
+        self.image_preview_label.setFixedSize(64, 48)
         self.image_preview_label.setStyleSheet("border: 1px solid palette(mid); border-radius: 4px;")
         self.image_preview_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        image_layout.addWidget(self.image_preview_label)
 
         self.draft_check = QCheckBox()
         self.breadcrumbs_check = QCheckBox()
@@ -224,10 +240,37 @@ class FrontmatterPanel(QWidget):
         self.form_layout.addRow(_("Weight:"), self.weight_edit)
         self.form_layout.addRow(_("Tags:"), self.tags_edit)
         self.form_layout.addRow(_("Image:"), image_layout)
-        self.form_layout.addRow("", self.image_preview_label)
-        self.form_layout.addRow(_("Draft:"), self.draft_check)
-        self.form_layout.addRow(_("Breadcrumbs:"), self.breadcrumbs_check)
-        
+        flags_layout = QHBoxLayout()
+        flags_layout.setContentsMargins(0, 0, 0, 0)
+        flags_layout.setSpacing(12)
+        flags_layout.addWidget(QLabel(_("Draft:")))
+        flags_layout.addWidget(self.draft_check)
+        flags_layout.addWidget(QLabel(_("Breadcrumbs:")))
+        flags_layout.addWidget(self.breadcrumbs_check)
+        flags_layout.addStretch()
+        self.form_layout.addRow(flags_layout)
+        content_layout.addLayout(self.form_layout)
+
+        self.custom_fields_section = QWidget()
+        custom_section_layout = QVBoxLayout(self.custom_fields_section)
+        custom_section_layout.setContentsMargins(0, 4, 0, 0)
+        custom_section_layout.setSpacing(4)
+        custom_header = QHBoxLayout()
+        custom_header.setContentsMargins(0, 0, 0, 0)
+        custom_header.addWidget(QLabel(_("Custom Fields")))
+        custom_header.addStretch()
+        self.add_custom_field_button = QPushButton(_("+ Add Field"))
+        self.add_custom_field_button.setFixedHeight(26)
+        self.add_custom_field_button.clicked.connect(self.add_custom_field)
+        custom_header.addWidget(self.add_custom_field_button)
+        custom_section_layout.addLayout(custom_header)
+
+        self.custom_fields_layout = QVBoxLayout()
+        self.custom_fields_layout.setContentsMargins(0, 0, 0, 0)
+        self.custom_fields_layout.setSpacing(3)
+        custom_section_layout.addLayout(self.custom_fields_layout)
+        content_layout.addWidget(self.custom_fields_section)
+
         self.scroll.setWidget(content_widget)
         layout.addWidget(self.scroll)
         
@@ -246,6 +289,8 @@ class FrontmatterPanel(QWidget):
         
         # Speicher für unbekannte Felder, damit diese nicht verloren gehen
         self.extra_data = {}
+        self.custom_field_rows = []
+        self.custom_fields_valid = True
 
         # Initiale Validierung
         self.validate_fields()
@@ -332,12 +377,89 @@ class FrontmatterPanel(QWidget):
 
     def validate_fields(self):
         # Titel ist ein Pflichtfeld
-        if not self.title_edit.text().strip():
-            self.title_edit.setStyleSheet("border: 2px solid #e74c3c;")
-            self.title_edit.setToolTip(_("Title is required"))
-        else:
-            self.title_edit.setStyleSheet("")
-            self.title_edit.setToolTip("")
+        title_valid = bool(self.title_edit.text().strip())
+        self._set_field_validity(
+            self.title_edit, title_valid, _("Title is required")
+        )
+
+        seen_keys = set()
+        custom_fields_valid = True
+        for row in self.custom_field_rows:
+            key = row['key'].text().strip()
+            invalid_reason = ""
+            if not key:
+                invalid_reason = _("Field name is required")
+            elif key in self.KNOWN_KEYS:
+                invalid_reason = _("This field is already managed above")
+            elif key in seen_keys:
+                invalid_reason = _("Field names must be unique")
+            else:
+                seen_keys.add(key)
+            self._set_field_validity(row['key'], not invalid_reason, invalid_reason)
+            custom_fields_valid = custom_fields_valid and not invalid_reason
+
+        self.custom_fields_valid = custom_fields_valid
+        return title_valid and custom_fields_valid
+
+    @staticmethod
+    def _set_field_validity(widget, valid, message=""):
+        widget.setStyleSheet("" if valid else "border: 2px solid #e74c3c;")
+        widget.setToolTip(message)
+
+    def add_custom_field(self, key="", value=None):
+        row_widget = QWidget(self.custom_fields_section)
+        row_layout = QHBoxLayout(row_widget)
+        row_layout.setContentsMargins(0, 0, 0, 0)
+        row_layout.setSpacing(4)
+
+        key_edit = QLineEdit()
+        key_edit.setPlaceholderText(_("Field name"))
+        key_edit.setText(str(key))
+        value_edit = QLineEdit()
+        value_edit.setPlaceholderText(_("Value"))
+        value_display = yaml.safe_dump(
+            value, default_flow_style=True, allow_unicode=True
+        ).strip() if value is not None else "null"
+        value_edit.setText(value_display if key else "")
+        remove_button = QPushButton("−")
+        remove_button.setFixedSize(28, 26)
+        remove_button.setToolTip(_("Remove field"))
+
+        row_layout.addWidget(key_edit, 1)
+        row_layout.addWidget(value_edit, 2)
+        row_layout.addWidget(remove_button)
+        self.custom_fields_layout.addWidget(row_widget)
+
+        row = {
+            'widget': row_widget,
+            'key': key_edit,
+            'value': value_edit,
+            'original_key': key,
+            'original_value': value,
+            'original_display': value_display,
+        }
+        self.custom_field_rows.append(row)
+        key_edit.textChanged.connect(self.emit_changed)
+        value_edit.textChanged.connect(self.emit_changed)
+        remove_button.clicked.connect(
+            lambda _checked=False, field_row=row: self.remove_custom_field(field_row)
+        )
+        self.validate_fields()
+        return row
+
+    def remove_custom_field(self, row):
+        if row not in self.custom_field_rows:
+            return
+        self.custom_field_rows.remove(row)
+        self.custom_fields_layout.removeWidget(row['widget'])
+        row['widget'].deleteLater()
+        self.emit_changed()
+
+    def _clear_custom_fields(self):
+        for row in self.custom_field_rows:
+            self.custom_fields_layout.removeWidget(row['widget'])
+            row['widget'].deleteLater()
+        self.custom_field_rows.clear()
 
     def populate_layouts(self, template_dirs):
         self.layout_combo.clear()
@@ -386,15 +508,20 @@ class FrontmatterPanel(QWidget):
             self.breadcrumbs_check.setChecked(bool(metadata.get('breadcrumbs', True)))
             
             # Unbekannte Felder speichern
-            known_keys = {'title', 'author', 'date', 'release_date', 'layout', 'weight', 'tags', 'featured_image', 'draft', 'breadcrumbs'}
-            self.extra_data = {k: v for k, v in metadata.items() if k not in known_keys}
+            self.extra_data = {
+                key: value for key, value in metadata.items()
+                if key not in self.KNOWN_KEYS
+            }
+            self._clear_custom_fields()
+            for key, value in self.extra_data.items():
+                self.add_custom_field(key, value)
         finally:
             self.blockSignals(False)
         self.validate_fields()
         self.update_image_preview()
 
     def get_data(self):
-        data = self.extra_data.copy()
+        data = {}
         data['title'] = self.title_edit.text()
         data['author'] = self.author_edit.text()
         data['date'] = self.date_edit.date().toString("yyyy-MM-dd")
@@ -412,5 +539,15 @@ class FrontmatterPanel(QWidget):
             
         data['draft'] = self.draft_check.isChecked()
         data['breadcrumbs'] = self.breadcrumbs_check.isChecked()
-        
+
+        for row in self.custom_field_rows:
+            key = row['key'].text().strip()
+            if not key or key in self.KNOWN_KEYS or key in data:
+                continue
+            value = row['value'].text()
+            if key == row['original_key'] and value == row['original_display']:
+                data[key] = row['original_value']
+            else:
+                data[key] = value
+
         return data

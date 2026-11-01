@@ -15,6 +15,7 @@ The project is currently in early stages (v0.2) and under active development. It
 * **Plugin System:** Extensible via Python scripts (e.g., Gallery, TOC, Obfuscate).
 * **Project Tools:** Includes Link Checker, Image Compressor, Content Backup and Spellchecker.
 * **Quality Assurance:** Integrated Linter for Markdown and Frontmatter.
+* **Flexible Frontmatter:** Edit custom template metadata alongside the standard page fields.
 * **Bulk Editing:** Edit metadata for multiple files simultaneously.
 * **PDF Export:** Create manuals and documentation PDFs from your content.
 * **Themes:** Light and Dark Mode support.

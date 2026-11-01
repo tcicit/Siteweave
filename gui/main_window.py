@@ -1260,6 +1260,14 @@ class MainWindow(QMainWindow):
             return
 
         if editor is self.editor:
+            self.frontmatter_panel.validate_fields()
+            if not self.frontmatter_panel.custom_fields_valid:
+                QMessageBox.warning(
+                    self,
+                    _("Invalid Custom Fields"),
+                    _("Custom field names must be non-empty, unique, and different from built-in fields."),
+                )
+                return
             editor.metadata = self.frontmatter_panel.get_data()
         metadata = editor.metadata
         content = editor.toPlainText()
