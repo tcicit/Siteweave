@@ -1,29 +1,30 @@
 import os
+import shutil
+import filecmp
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QFormLayout, QLineEdit, 
-                             QCheckBox, QDateEdit, QComboBox, QScrollArea, QFrame, QPushButton, QSizePolicy,
+                             QCheckBox, QDateEdit, QComboBox, QScrollArea, QFrame, QPushButton, QSizePolicy, QMessageBox,
                              QHBoxLayout, QFileDialog, QLabel, QCompleter, QSpinBox)
 from PyQt6.QtCore import QDate, pyqtSignal, Qt
 from PyQt6.QtGui import QDragEnterEvent, QDropEvent, QPixmap
 from core.i18n import _
 
-'''
-Docstring for main_window
-Main application window.    
-- Contains the editor, preview, and various panels (Outline, Snippets, Frontmatter, Log Viewer).
-- Manages app and project configuration, actions, menus and toolbars.
-- Allows loading, editing and saving Markdown files with frontmatter.
-- Supports themes, localization and running worker scripts. 
-The main class is `MainWindow`, which inherits from `QMainWindow`.
-'''
+"""
+FrontmatterPanel: Dock widget for viewing and editing Markdown YAML frontmatter.
+Provides inputs for title, author, dates, tags, layout, and featured image.
+"""
 
 class DropLineEdit(QLineEdit):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setAcceptDrops(True)
         self.base_path = None
+        self.project_root = None
 
     def set_base_path(self, path):
         self.base_path = path
+
+    def set_project_root(self, root):
+        self.project_root = root
 
     def dragEnterEvent(self, event: QDragEnterEvent):
         if event.mimeData().hasUrls():
@@ -36,6 +37,41 @@ class DropLineEdit(QLineEdit):
             urls = event.mimeData().urls()
             if urls:
                 file_path = urls[0].toLocalFile()
+                # Wenn das Bild außerhalb des Projekts liegt: in assets/images kopieren
+                if self.project_root and os.path.isfile(file_path):
+                    abs_file = os.path.abspath(file_path)
+                    abs_proj = os.path.abspath(self.project_root)
+                    try:
+                        is_inside = (os.path.commonpath([abs_proj, abs_file]) == abs_proj)
+                    except ValueError:
+                        is_inside = False
+                    if not is_inside:
+                        dest_dir = os.path.join(abs_proj, "assets", "images")
+                        dest_path = os.path.join(dest_dir, os.path.basename(file_path))
+                        try:
+                            os.makedirs(dest_dir, exist_ok=True)
+                            counter = 1
+                            name_r, ext_p = os.path.splitext(os.path.basename(file_path))
+                            while os.path.exists(dest_path):
+                                if os.path.samefile(abs_file, dest_path) or filecmp.cmp(
+                                    abs_file, dest_path, shallow=False
+                                ):
+                                    break
+                                dest_path = os.path.join(dest_dir, f"{name_r}_{counter}{ext_p}")
+                                counter += 1
+                            else:
+                                shutil.copy2(abs_file, dest_path)
+                            file_path = dest_path
+                        except OSError as error:
+                            QMessageBox.warning(
+                                self, _("Asset Import Failed"),
+                                _("Could not copy '{filename}' to the project assets folder:\n{error}").format(
+                                    filename=os.path.basename(file_path), error=error
+                                ),
+                            )
+                            event.ignore()
+                            return
+
                 if self.base_path:
                     try:
                         base_dir = os.path.dirname(self.base_path)
@@ -234,6 +270,10 @@ class FrontmatterPanel(QWidget):
         else:
             self.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
             self.setMaximumHeight(self.toggle_btn.sizeHint().height())
+
+    def set_project_root(self, root):
+        self.project_root = root
+        self.featured_image_edit.set_project_root(root)
 
     def set_current_file_path(self, path):
         self.featured_image_edit.set_base_path(path)

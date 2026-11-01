@@ -121,7 +121,7 @@ class DashboardWidget(QWidget):
             self.cards['pub'].value_lbl.setText(str(stats.get('pages', {}).get('published', 0)))
             self.cards['draft'].value_lbl.setText(str(stats.get('pages', {}).get('drafts', 0)))
             self.cards['size'].value_lbl.setText(stats.get('output_size', '0 B'))
-            self.cards['render'].value_lbl.setText(stats.get('last_render', _('Never')))
+            self.cards['render'].value_lbl.setText(stats.get('last_render') or _('Never'))
         
         if hasattr(self, 'recent_list'):
             self.recent_list.clear()

@@ -55,14 +55,20 @@ class ConfigManager:
     def load(self, defaults=None):
         """
         Load configuration from the file.
-        If the file does not exist, use the provided defaults.
+        If defaults is provided, merge missing keys.
+        If loading an app_config YAML and no defaults are provided, use DEFAULT_APP_CONFIG.
         """
-        effective_defaults = DEFAULT_APP_CONFIG.copy()
+        effective_defaults = {}
+        # Only use DEFAULT_APP_CONFIG if this config file is an app_config file
+        base_name = os.path.basename(self.config_path).lower()
+        if base_name.startswith("app_config"):
+            effective_defaults = DEFAULT_APP_CONFIG.copy()
+
         if defaults:
             effective_defaults.update(defaults)
 
         if not os.path.exists(self.config_path):
-            self.config = effective_defaults
+            self.config = effective_defaults.copy()
             return self.config
 
         try:
@@ -72,7 +78,8 @@ class ConfigManager:
             logger.error(f"Fehler beim Laden der Konfiguration '{self.config_path}': {e}")
             self.config = {}
 
-        self._merge_defaults(self.config, effective_defaults)
+        if effective_defaults:
+            self._merge_defaults(self.config, effective_defaults)
             
         return self.config
 

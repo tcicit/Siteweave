@@ -11,6 +11,8 @@ except ImportError:
     print("Bitte installiere es mit: pip install python-frontmatter")
     exit(1)
 
+from core.i18n import _
+
 MARKDOWN_EXTENSIONS = [".md", ".markdown"]
 
 # Definiert, welche Felder vorhanden sein sollten und was ihre Standardwerte sind.
@@ -41,11 +43,17 @@ def is_markdown_file(filename):
     """Prüft, ob eine Datei eine Markdown-Datei ist."""
     return any(filename.endswith(ext) for ext in MARKDOWN_EXTENSIONS)
 
-def check_and_update_frontmatter(content_dir, config=None):
-    """Durchläuft das Inhaltsverzeichnis und prüft/aktualisiert das Frontmatter."""
-    logger.info(f"Überprüfe und aktualisiere Frontmatter im Verzeichnis '{content_dir}'...")
+def check_and_update_frontmatter(content_dir, config=None, fix=True):
+    """
+    Durchläuft das Inhaltsverzeichnis und prüft/aktualisiert das Frontmatter.
+    Wenn fix=False, wird nur geprüft und protokolliert (Dry-Run / reines Linting),
+    ohne Dateien auf der Festplatte zu verändern.
+    """
+    mode_text = _("Prüfe und aktualisiere") if fix else _("Prüfe (Dry-Run)")
+    logger.info(f"{mode_text} Frontmatter im Verzeichnis '{content_dir}'...")
     updated_files_count = 0
     warning_count = 0
+    created_index_count = 0
 
     # Schema aus Config laden/überschreiben
     schema = FRONTMATTER_SCHEMA.copy()
@@ -59,7 +67,6 @@ def check_and_update_frontmatter(content_dir, config=None):
                 schema[key] = {'type': type(value), 'default': value}
 
     # Stelle sicher, dass in jedem Verzeichnis eine index.md vorhanden ist
-    created_index_count = 0
     for root, dirs, files in os.walk(content_dir):
         # Skip hidden directories
         dir_name = os.path.basename(root)
@@ -71,27 +78,33 @@ def check_and_update_frontmatter(content_dir, config=None):
         contains_content = any(is_markdown_file(f) for f in files) or bool(dirs)
         if not has_index and contains_content:
             index_path = os.path.join(root, 'index.md')
-            title = 'Index'
-            # Der Titel stammt vom Verzeichnisnamen, außer im Content-Root
-            if os.path.normpath(root) != os.path.normpath(content_dir):
-                title = os.path.basename(root).replace('_', ' ').replace('-', ' ').title()
-            fm = {
-                'title': title,
-                'release_date': schema['release_date']['default']() if callable(schema['release_date']['default']) else schema['release_date']['default'],
-                'date': schema['release_date']['default']() if callable(schema['release_date']['default']) else schema['release_date']['default'],
-                'tags': [],
-                'draft': False,
-                'layout': schema['layout']['default'],
-                'breadcrumbs': schema['breadcrumbs']['default']
-            }
-            post_obj = frontmatter.Post(f"\n\nDieser Index wurde automatisch erstellt.\n\n[[list_dir]]", **fm)
-            try:
-                with open(index_path, 'w', encoding='utf-8') as f:
-                    f.write(frontmatter.dumps(post_obj))
-                created_index_count += 1
-                logger.info(f"  - [ERSTELLT] '{os.path.relpath(index_path, content_dir)}' wurde angelegt.")
-            except Exception as e:
-                logger.error(f"Konnte '{index_path}' nicht erstellen: {e}")
+            rel_index_path = os.path.relpath(index_path, content_dir)
+            if not fix:
+                logger.warning(f"  - [FEHLT] '{rel_index_path}' fehlt.")
+                warning_count += 1
+            else:
+                title = 'Index'
+                if os.path.normpath(root) != os.path.normpath(content_dir):
+                    title = os.path.basename(root).replace('_', ' ').replace('-', ' ').title()
+                fm = {
+                    'title': title,
+                    'release_date': schema['release_date']['default']() if callable(schema['release_date']['default']) else schema['release_date']['default'],
+                    'date': schema['release_date']['default']() if callable(schema['release_date']['default']) else schema['release_date']['default'],
+                    'tags': [],
+                    'draft': False,
+                    'layout': schema['layout']['default'],
+                    'breadcrumbs': schema['breadcrumbs']['default']
+                }
+                index_body = _("\n\nThis index was automatically created.\n\n[[list_dir]]")
+                post_obj = frontmatter.Post(index_body, **fm)
+                try:
+                    with open(index_path, 'w', encoding='utf-8') as f:
+                        f.write(frontmatter.dumps(post_obj))
+                    created_index_count += 1
+                    logger.info(f"  - [ERSTELLT] '{rel_index_path}' wurde angelegt.")
+                except Exception as e:
+                    logger.error(f"Konnte '{index_path}' nicht erstellen: {e}")
+                    warning_count += 1
 
     if created_index_count > 0:
         logger.info(f"{created_index_count} fehlende index.md-Datei(en) wurden erstellt.")
@@ -109,47 +122,67 @@ def check_and_update_frontmatter(content_dir, config=None):
                 metadata = post.metadata
                 made_change = False
 
-                # --- Felder hinzufügen und korrigieren ---
+                # --- Felder prüfen ---
 
                 # 1. `release_date` sicherstellen (wichtig für Sortierung)
                 if 'release_date' not in metadata:
                     default_release_date = schema['release_date']['default']
-                    metadata['release_date'] = default_release_date() if callable(default_release_date) else default_release_date
-                    logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': 'release_date' auf '{metadata['release_date']}' gesetzt.")
-                    made_change = True
+                    val = default_release_date() if callable(default_release_date) else default_release_date
+                    if fix:
+                        metadata['release_date'] = val
+                        logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': 'release_date' auf '{val}' gesetzt.")
+                        made_change = True
+                    else:
+                        logger.warning(f"  - [WARNUNG] '{relative_path}': 'release_date' fehlt.")
+                        warning_count += 1
 
                 # 2. `date` mit `release_date` synchronisieren, falls fehlend
                 if 'date' not in metadata:
-                    metadata['date'] = metadata['release_date']
-                    logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': 'date' auf '{metadata['date']}' gesetzt.")
-                    made_change = True
+                    val = metadata.get('release_date') or (schema['release_date']['default']() if callable(schema['release_date']['default']) else schema['release_date']['default'])
+                    if fix:
+                        metadata['date'] = val
+                        logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': 'date' auf '{val}' gesetzt.")
+                        made_change = True
+                    else:
+                        logger.warning(f"  - [WARNUNG] '{relative_path}': 'date' fehlt.")
+                        warning_count += 1
 
                 # 3. `title` prüfen und ggf. aus Inhalt extrahieren
                 if 'title' not in metadata:
                     extracted_title = extract_title_from_content(post.content, filename)
-                    metadata['title'] = extracted_title
-                    logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': 'title' aus Inhalt extrahiert -> '{extracted_title}'.")
-                    made_change = True
+                    if fix:
+                        metadata['title'] = extracted_title
+                        logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': 'title' aus Inhalt extrahiert -> '{extracted_title}'.")
+                        made_change = True
+                    else:
+                        logger.warning(f"  - [WARNUNG] '{relative_path}': 'title' fehlt (könnte '{extracted_title}' sein).")
+                        warning_count += 1
 
                 # 4. Restliche Felder aus dem Schema prüfen
                 for key, rules in schema.items():
                     if key not in metadata and 'default' in rules:
-                        metadata[key] = rules['default']() if callable(rules['default']) else rules['default']
-                        logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': Fehlendes Feld '{key}' auf '{metadata[key]}' gesetzt.")
-                        made_change = True
+                        val = rules['default']() if callable(rules['default']) else rules['default']
+                        if fix:
+                            metadata[key] = val
+                            logger.info(f"  - [HINZUGEFÜGT] '{relative_path}': Fehlendes Feld '{key}' auf '{val}' gesetzt.")
+                            made_change = True
+                        else:
+                            logger.warning(f"  - [WARNUNG] '{relative_path}': Fehlendes Feld '{key}'.")
+                            warning_count += 1
 
                 # 5. Typ von 'tags' korrigieren (häufiger Fehler)
                 if 'tags' in metadata and not isinstance(metadata['tags'], list):
-                    logger.warning(f"'{relative_path}': 'tags' ist keine Liste. Versuche zu korrigieren.")
+                    logger.warning(f"'{relative_path}': 'tags' ist keine Liste.")
                     warning_count += 1
-                    if isinstance(metadata['tags'], str) and metadata['tags']:
-                        metadata['tags'] = [tag.strip() for tag in re.split(r'[,\s]+', metadata['tags']) if tag.strip()]
-                        logger.info(f"    -> Korrigiert zu: {metadata['tags']}")
-                        made_change = True
-                    else:
-                        metadata['tags'] = schema['tags']['default']
-                        logger.info(f"    -> Zurückgesetzt auf Standard: {metadata['tags']}")
-                        made_change = True
+                    if fix:
+                        if isinstance(metadata['tags'], str) and metadata['tags']:
+                            metadata['tags'] = [tag.strip() for tag in re.split(r'[,\s]+', metadata['tags']) if tag.strip()]
+                            logger.info(f"    -> Korrigiert zu: {metadata['tags']}")
+                            made_change = True
+                        else:
+                            metadata['tags'] = schema['tags']['default']
+                            logger.info(f"    -> Zurückgesetzt auf Standard: {metadata['tags']}")
+                            made_change = True
 
                 # 6. Tags in der Liste prüfen (müssen Strings sein)
                 if 'tags' in metadata and isinstance(metadata['tags'], list):
@@ -162,12 +195,12 @@ def check_and_update_frontmatter(content_dir, config=None):
                             logger.warning(f"'{relative_path}': Tag '{tag}' (Typ: {type(tag).__name__}) zu String konvertiert.")
                         else:
                             new_tags.append(tag)
-                    if tags_changed:
+                    if tags_changed and fix:
                         metadata['tags'] = new_tags
                         made_change = True
 
                 # --- Datei zurückschreiben, wenn Änderungen vorgenommen wurden ---
-                if made_change:
+                if fix and made_change:
                     with open(file_path, 'w', encoding='utf-8') as f:
                         f.write(frontmatter.dumps(post))
                     updated_files_count += 1
@@ -177,13 +210,22 @@ def check_and_update_frontmatter(content_dir, config=None):
                 warning_count += 1
 
     logger.info("Prüfung abgeschlossen.")
-    if updated_files_count > 0:
-        logger.info(f"{updated_files_count} Datei(en) wurden erfolgreich aktualisiert.")
+    if fix:
+        if updated_files_count > 0:
+            logger.info(f"{updated_files_count} Datei(en) wurden erfolgreich aktualisiert.")
+        else:
+            logger.info("Alle Dateien scheinen auf dem neuesten Stand zu sein.")
     else:
-        logger.info("Alle Dateien scheinen auf dem neuesten Stand zu sein.")
+        logger.info(f"Dry-Run abgeschlossen: {warning_count} Warnung(en) gefunden.")
 
-    if warning_count > 0:
+    if warning_count > 0 and fix:
         logger.warning(f"Es gab {warning_count} Warnung(en). Bitte überprüfe die Ausgabe oben.")
+
+    return {
+        "updated_files": updated_files_count,
+        "created_indices": created_index_count,
+        "warnings": warning_count
+    }
 
 def run(context):
     """
@@ -192,9 +234,14 @@ def run(context):
     content_dir = context.get('content_dir', 'content')
     project_root = context.get('project_root', '.')
     config = context.get('config', {})
+    fix = context.get('fix', True)
+    if context.get('dry_run', False):
+        fix = False
     
     # Logger konfigurieren
     configure_logger("lint_frontmatter", project_root)
     
-    check_and_update_frontmatter(content_dir, config)
-    return "Frontmatter-Check abgeschlossen."
+    result = check_and_update_frontmatter(content_dir, config, fix=fix)
+    if not fix:
+        return f"Frontmatter-Check (Dry-Run) abgeschlossen: {result['warnings']} Problem(e) gefunden."
+    return f"Frontmatter-Check abgeschlossen: {result['updated_files']} Datei(en) aktualisiert."

@@ -1,20 +1,15 @@
 Testlauf-Zusammenfassung (letzter Lauf)
 =======================================
 
-Datum: 2026-06-09
+Datum: 2026-11-01
 
-Ergebnis: 17 bestanden, 1 fehlgeschlagen
+Ergebnis: 29 bestanden, 0 fehlgeschlagen
 
-Fehlschlagende(n) Test(s):
-- tests/test_config_dialog.py::test_config_dialog_saves_values
-  - Symptom: `editor_font_size` bleibt unverändert (12), obwohl `qtbot.keyClicks` versucht, "20" einzugeben.
-  - Anmerkung: Mehrere Gegenmaßnahmen wurden implementiert, der Test schlägt weiterhin fehl. Empfohlen: Test anpassen auf `setValue()` oder zusätzliche UI-Fokus-/Event-Handling-Fixes.
+Status:
+- Alle Tests laufen headless sauber und schnell durch (0.32s).
+- Der blockierende Dialog `QMessageBox.information` in `test_config_dialog_saves_values` wurde im Test gemockt.
+- Offscreen-Qt-Plattform in `conftest.py` gesetzt.
+- Neue Tests für Linter (Dry-Run vs. Fix) und Renderer (Nicht-Mutation von Quelldateien) hinzugefügt.
 
-Wichtigste geänderte Dateien während der Untersuchung:
-- core/renderer.py
-- core/link_utils.py
-- gui/dialogs/app_config_dialog.py
-- gui/dialogs/config_base.py
-
-Wie reproduzieren:
-- Siehe tests/run_saved_tests.sh
+Ausführung:
+- pytest

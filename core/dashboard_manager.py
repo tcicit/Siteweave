@@ -34,7 +34,7 @@ class DashboardManager:
             'recent_files': [],
             'output_size': "0 B",
             'media': {'count': 0, 'size': "0 B"},
-            'last_render': 'Nie',
+            'last_render': None,
             'seo_warnings': 0
         }
         

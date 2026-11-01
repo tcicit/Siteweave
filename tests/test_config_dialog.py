@@ -1,5 +1,5 @@
 import pytest
-from PyQt6.QtWidgets import QComboBox, QSpinBox
+from PyQt6.QtWidgets import QComboBox, QSpinBox, QMessageBox
 from gui.dialogs.app_config_dialog import AppConfigDialog
 from core.config_manager import ConfigManager
 
@@ -19,14 +19,17 @@ def test_config_dialog_loads_correct_values(qtbot, temp_app_config):
     # Prüfen, ob der Wert aus temp_app_config ("de") korrekt geladen wurde
     assert lang_combo.currentData() == "de" or lang_combo.currentText() == "Deutsch"
 
-def test_config_dialog_saves_values(qtbot, temp_app_config):
+def test_config_dialog_saves_values(qtbot, temp_app_config, monkeypatch):
     """
     Prüft, ob Änderungen im Dialog korrekt in die Datei zurückgeschrieben werden.
     """
+    # Verhindere, dass QMessageBox.information im Testlauf blockiert
+    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+
     dialog = AppConfigDialog(config_path=temp_app_config)
     qtbot.addWidget(dialog)
 
-    # Beispiel: Schriftgröße ändern (angenommen das Widget ist eine QSpinBox namens 'font_size_spin')
+    # Beispiel: Schriftgröße ändern (QSpinBox namens 'font_size_spin')
     font_spin = dialog.findChild(QSpinBox, "font_size_spin")
     assert font_spin is not None
 

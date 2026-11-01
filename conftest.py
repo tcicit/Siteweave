@@ -3,6 +3,9 @@ import os
 import yaml
 import pytest
 
+# Ensure offscreen Qt platform for headless tests
+os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+
 # Fügt das Stammverzeichnis des Projekts zum Python-Pfad hinzu.
 # Dies stellt sicher, dass pytest Module wie 'manage_translations'
 # und Pakete wie 'gui' finden kann.

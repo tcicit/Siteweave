@@ -1,0 +1,12 @@
+<h1>{{ page_title }}</h1>
+<div class="metadata">
+    {% if author %}<strong>Autor:</strong> {{ author }}<br>{% endif %}
+    {% if date %}<strong>Datum:</strong> {{ date }}<br>{% endif %}
+    {% if tags %}<strong>Tags:</strong> {% for tag in tags %}<a href="{{ relative_prefix }}tags/{{ tag | slugify }}.html">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}
+</div>
+{% if featured_image %}
+<figure class="featured-image">
+    <img src="{{ featured_image }}" alt="{{ page_title }}">
+</figure>
+{% endif %}
+{{ content | safe }}

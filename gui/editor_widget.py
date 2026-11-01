@@ -1,6 +1,8 @@
 import os
 import re
-from PyQt6.QtWidgets import QPlainTextEdit, QWidget, QTextEdit, QMenu
+import shutil
+import filecmp
+from PyQt6.QtWidgets import QPlainTextEdit, QWidget, QTextEdit, QMenu, QMessageBox
 from PyQt6.QtGui import QFontDatabase, QDragEnterEvent, QDropEvent, QPalette, QColor, QTextCursor, QPainter, QPaintEvent, QTextFormat, QAction, QDragMoveEvent
 from PyQt6.QtCore import Qt, pyqtSignal, QRect, QSize
 from gui.syntax import MarkdownHighlighter
@@ -31,10 +33,13 @@ class LineNumberArea(QWidget):
 class EditorWidget(QPlainTextEdit):
     fontSizeChanged = pyqtSignal(int)
 
-    def __init__(self, spell_checker=None):
+    def __init__(self, spell_checker=None, project_root=None):
         super().__init__()
         self.setAcceptDrops(True)
         self.file_path = None
+        self.project_root = project_root
+        self.metadata = {}
+        self.frontmatter_modified = False
         self.show_line_numbers = True
         self.custom_colors = {}
         self.spell_checker = spell_checker
@@ -206,11 +211,70 @@ class EditorWidget(QPlainTextEdit):
         else:
             super().dropEvent(event)
 
+    def is_dirty(self):
+        """Returns True if the document content or frontmatter was modified."""
+        return self.document().isModified() or self.frontmatter_modified
+
+    def import_external_asset(self, target_path):
+        """
+        If target_path is an image outside project_root, copies it to
+        project_root/assets/images and returns the new absolute path.
+        """
+        if not target_path or not self.project_root or not os.path.isfile(target_path):
+            return target_path
+
+        ext = os.path.splitext(target_path)[1].lower()
+        if ext not in ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp']:
+            return target_path
+
+        abs_target = os.path.abspath(target_path)
+        abs_project = os.path.abspath(self.project_root)
+
+        # Check if already within project directory
+        try:
+            if os.path.commonpath([abs_project, abs_target]) == abs_project:
+                return target_path
+        except ValueError:
+            pass
+
+        dest_dir = os.path.join(abs_project, "assets", "images")
+        base_name = os.path.basename(abs_target)
+        dest_file = os.path.join(dest_dir, base_name)
+        try:
+            os.makedirs(dest_dir, exist_ok=True)
+            counter = 1
+            name_root, ext_part = os.path.splitext(base_name)
+            while os.path.exists(dest_file):
+                if os.path.samefile(abs_target, dest_file) or filecmp.cmp(
+                    abs_target, dest_file, shallow=False
+                ):
+                    return dest_file
+                dest_file = os.path.join(dest_dir, f"{name_root}_{counter}{ext_part}")
+                counter += 1
+
+            shutil.copy2(abs_target, dest_file)
+            return dest_file
+        except OSError as error:
+            QMessageBox.warning(
+                self,
+                _("Asset Import Failed"),
+                _("Could not copy '{filename}' to the project assets folder:\n{error}").format(
+                    filename=base_name, error=error
+                ),
+            )
+            return None
+
     def insert_file_link(self, target_path):
         # Externe Links direkt einfügen
         if target_path.startswith(('http:', 'https:', 'mailto:')):
             self.insertPlainText(f"[{target_path}]({target_path})")
             return
+
+        # Bei Bildern außerhalb des Projekts: automatisch in assets/images importieren
+        imported_path = self.import_external_asset(target_path)
+        if imported_path is None:
+            return
+        target_path = imported_path
 
         # Relativen Pfad berechnen, falls wir wissen, wo wir sind
         rel_path = target_path
@@ -240,6 +304,10 @@ class EditorWidget(QPlainTextEdit):
 
     def insert_image_plugin(self, target_path):
         """Fügt ein Bild mit der [[image]] Plugin-Syntax ein."""
+        imported_path = self.import_external_asset(target_path)
+        if imported_path is None:
+            return
+        target_path = imported_path
         rel_path = target_path
         if self.file_path:
             try:

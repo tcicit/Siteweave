@@ -1,15 +1,9 @@
 from PyQt6.QtGui import QPalette, QColor
 
-'''
-Docstring for main_window
-Main application window.
-Contains the file explorer, editor, preview and various panels.
-Manages app and project configuration, actions, menus and toolbars.
-Allows loading, editing and saving Markdown files with frontmatter.
-Supports themes, localization and running worker scripts.
-The main class is `MainWindow`, which inherits from `QMainWindow`.
-
-'''
+"""
+Theme definitions for the Siteweave application.
+Provides functions to configure dark and light palettes and styles.
+"""
 
 
 def apply_dark_theme(app):

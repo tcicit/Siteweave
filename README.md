@@ -9,6 +9,7 @@ The project is currently in early stages (v0.2) and under active development. It
 ## Features
 
 * **Markdown Editor:** Syntax highlighting and live preview.
+* **Document Workflow:** Edit multiple files in tabs, restore open tabs per project, use `Ctrl+P` to open files quickly, and drag external images into the editor to copy them into `assets/images/`.
 * **Project Management:** Manage multiple website projects side by side.
 * **Integrated Renderer:** Generates static HTML directly from the app.
 * **Plugin System:** Extensible via Python scripts (e.g., Gallery, TOC, Obfuscate).

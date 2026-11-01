@@ -34,6 +34,7 @@ from PyQt6.QtCore import Qt, QSettings, QTimer, QUrl, pyqtSignal, QObject
 from PyQt6.QtCore import QFileSystemWatcher
 from .file_tree import FileTree
 from .editor_widget import EditorWidget
+from .document_tab_widget import DocumentTabWidget
 from .preview_widget import PreviewWidget
 from .outline_panel import OutlinePanel
 from .snippet_panel import SnippetPanel
@@ -41,6 +42,7 @@ from .frontmatter_panel import FrontmatterPanel
 from .dialogs.new_post_dialog import NewPostDialog
 from .log_viewer_panel import LogViewerPanel
 from .dialogs.search_dialog import SearchDialog
+from .dialogs.quick_open_dialog import QuickOpenDialog
 from .dialogs.app_config_dialog import AppConfigDialog
 from .dialogs.project_config_dialog import ProjectConfigDialog
 from .dialogs.snippet_manager_dialog import SnippetManagerDialog
@@ -184,7 +186,7 @@ class MainWindow(QMainWindow):
         # File system watcher for external changes
         self.file_watcher = QFileSystemWatcher(self)
         self.file_watcher.fileChanged.connect(self.on_current_file_changed_externally)
-        self._ignore_next_file_change = False # Flag to prevent reacting to own saves
+        self._ignored_file_changes = set()
         self._ignore_timer = QTimer(self)
         self._ignore_timer.setSingleShot(True)
         self._ignore_timer.setInterval(1000) # Ignore changes for 1 second after save
@@ -276,8 +278,6 @@ class MainWindow(QMainWindow):
 
         # Preview Font anwenden
         self.update_preview_font()
-
-        self.editor.cursorPositionChanged.connect(self.update_cursor_label)
 
         self.create_actions()
         self.init_toolbar()
@@ -431,20 +431,16 @@ class MainWindow(QMainWindow):
         
         # Page 1: Editor Area
         self.editor_area = QSplitter(Qt.Orientation.Horizontal)
-        self.editor = EditorWidget(spell_checker=self.spell_checker)
+        self.editor_tabs = DocumentTabWidget()
+        self.editor = self._create_editor_widget()
         
         # Signal für das Einfügen von Medien verbinden (jetzt wo der Editor existiert)
-        self.media_library.insert_requested.connect(self.editor.insert_file_link)
-        self.media_library.insert_plugin_requested.connect(self.editor.insert_image_plugin)
+        self.media_library.insert_requested.connect(self.insert_file_link)
+        self.media_library.insert_plugin_requested.connect(self.insert_image_plugin)
         
-        show_line_numbers = self.app_config.get('view_show_line_numbers', True)
-        self.editor.set_line_numbers_visible(show_line_numbers)
-        
-        self.editor_area.addWidget(self.editor)
+        self.editor_area.addWidget(self.editor_tabs)
 
         # Spellchecker initial aktivieren/deaktivieren
-        self.editor.set_spellchecker_enabled(self.project_config.get('spellcheck_enabled', True))
-        
         # 3. Preview
         self.preview = PreviewWidget(self.project_root, self.app_root)
         show_preview = self.app_config.get('view_show_preview', True)
@@ -458,7 +454,6 @@ class MainWindow(QMainWindow):
         self.refresh_dashboard()
 
         # Scroll synchronization: Editor -> Preview
-        self.editor.verticalScrollBar().valueChanged.connect(self.sync_scroll_and_line_numbers)
         self.preview.loadFinished.connect(self.restore_scroll_position)
 
         # 4. Panels (docks)
@@ -478,13 +473,105 @@ class MainWindow(QMainWindow):
         main_layout.addWidget(self.splitter)
 
         # Signale verbinden, nachdem alle UI-Elemente (Editor, Preview, Outline) erstellt wurden
-        self.editor.textChanged.connect(self.on_text_changed)
-        self.editor.fontSizeChanged.connect(self.update_font_size_config)
+        self.editor_tabs.current_document_changed.connect(self.on_document_changed)
+        self.editor_tabs.all_tabs_closed.connect(self.on_all_tabs_closed)
+        self.editor_tabs.save_requested.connect(self.save_file)
+        self.on_document_changed(self.editor, None)
+
+    def _create_editor_widget(self):
+        editor = EditorWidget(
+            spell_checker=self.spell_checker,
+            project_root=self.project_root,
+        )
+        editor.set_line_numbers_visible(self.app_config.get('view_show_line_numbers', True))
+        editor.set_spellchecker_enabled(self.project_config.get('spellcheck_enabled', True))
+        editor.set_dark_mode(self.app_config.get('view_dark_mode', False))
+
+        font = editor.font()
+        font.setFamily(self.app_config.get('editor_font_family', 'Monospace'))
+        editor.setFont(font)
+        editor.set_font_size(self.app_config.get('editor_font_size', 12))
+
+        editor.textChanged.connect(lambda document_editor=editor: self.on_text_changed(document_editor))
+        editor.fontSizeChanged.connect(self.update_font_size_config)
+        editor.cursorPositionChanged.connect(
+            lambda document_editor=editor: self.update_cursor_label()
+            if document_editor is self.editor else None
+        )
+        editor.verticalScrollBar().valueChanged.connect(
+            lambda value, document_editor=editor:
+                self.sync_scroll_and_line_numbers(value, document_editor)
+        )
+        return editor
+
+    def on_document_changed(self, editor, file_path):
+        previous_editor = self.__dict__.get('_active_tab_editor')
+        if (
+            previous_editor is not None
+            and previous_editor is not editor
+            and previous_editor.is_dirty()
+            and self.app_config.get('autosave_on_switch', False)
+        ):
+            self.save_file(previous_editor)
+
+        self._active_tab_editor = editor
+        self.editor = editor
+        self.current_file_path = file_path
+        self.frontmatter_modified = getattr(editor, 'frontmatter_modified', False)
+
+        if hasattr(self, 'frontmatter_panel'):
+            self.frontmatter_panel.set_data(getattr(editor, 'metadata', {}))
+            self.frontmatter_panel.set_current_file_path(file_path)
+
+        if file_path:
+            self.file_tree.set_current_file_path(file_path)
+            self.preview.set_base_path(file_path)
+            self.preview.update_preview(editor.toPlainText())
+            self.outline.update_outline(editor.toPlainText())
+        else:
+            self.preview.update_preview("")
+            self.outline.update_outline("")
+
+        self.update_status_bar()
+        self.update_cursor_label()
+
+    def on_all_tabs_closed(self):
+        self._active_tab_editor = None
+        self.current_file_path = None
+        self.frontmatter_modified = False
+        self.editor = self._create_editor_widget()
+        if hasattr(self, 'frontmatter_panel'):
+            self.frontmatter_panel.set_data({})
+            self.frontmatter_panel.set_current_file_path(None)
+        self.show_dashboard()
+
+    def insert_file_link(self, target_path):
+        self.editor.insert_file_link(target_path)
+
+    def insert_image_plugin(self, target_path):
+        self.editor.insert_image_plugin(target_path)
+
+    def _get_open_editors(self):
+        tabs = self.__dict__.get('editor_tabs')
+        if tabs is not None:
+            return tabs.get_all_editors()
+        editor = self.__dict__.get('editor')
+        return [editor] if editor is not None else []
+
+    def _save_all_dirty_editors(self):
+        dirty_editors = [
+            editor for editor in self._get_open_editors()
+            if editor.file_path and editor.is_dirty()
+        ]
+        for editor in dirty_editors:
+            self.save_file(editor)
+        return not any(editor.is_dirty() for editor in dirty_editors)
 
     def create_dock_panels(self):
         # Frontmatter
         self.frontmatter_panel = FrontmatterPanel()
         self.frontmatter_panel.setObjectName("FrontmatterPanel")
+        self.frontmatter_panel.set_project_root(self.project_root)
         self.frontmatter_panel.dataChanged.connect(self.on_frontmatter_changed)
         self.update_frontmatter_layouts()
         self.add_dock_panel(self.frontmatter_panel, _("Frontmatter"), "FrontmatterDock")
@@ -574,7 +661,7 @@ class MainWindow(QMainWindow):
 
         self.save_act = QAction(_("Save"), self)
         self.save_act.setShortcut("Ctrl+S")
-        self.save_act.triggered.connect(self.save_file)
+        self.save_act.triggered.connect(lambda: self.save_file())
 
         self.insert_img_act = QAction(_("Insert Image"), self)
         self.insert_img_act.setShortcut("Ctrl+Shift+I") # Changed because Ctrl+I is commonly used for Italic
@@ -603,20 +690,25 @@ class MainWindow(QMainWindow):
         # Edit Actions
         self.undo_act = QAction(_("Undo"), self)
         self.undo_act.setShortcut(QKeySequence.StandardKey.Undo)
-        self.undo_act.triggered.connect(self.editor.undo)
+        self.undo_act.triggered.connect(lambda: self.editor.undo())
 
         self.redo_act = QAction(_("Redo"), self)
         self.redo_act.setShortcut(QKeySequence.StandardKey.Redo)
-        self.redo_act.triggered.connect(self.editor.redo)
+        self.redo_act.triggered.connect(lambda: self.editor.redo())
 
         self.select_all_act = QAction(_("Select All"), self)
         self.select_all_act.setShortcut(QKeySequence.StandardKey.SelectAll)
-        self.select_all_act.triggered.connect(self.editor.selectAll)
+        self.select_all_act.triggered.connect(lambda: self.editor.selectAll())
         self.select_all_act.setToolTip(_("Select All (Ctrl+A)"))
 
         self.search_act = QAction(_("Search"), self)
         self.search_act.setShortcut("Ctrl+F")
         self.search_act.triggered.connect(self.show_search_dialog)
+
+        self.quick_open_act = QAction(_("Quick Open"), self)
+        self.quick_open_act.setShortcut("Ctrl+P")
+        self.quick_open_act.setShortcutContext(Qt.ShortcutContext.WindowShortcut)
+        self.quick_open_act.triggered.connect(self.show_quick_open)
 
         self.replace_act = QAction(_("Replace"), self)
         self.replace_act.setShortcut("Ctrl+H")
@@ -626,16 +718,16 @@ class MainWindow(QMainWindow):
         self.bold_act = QAction(_("Bold"), self)
         self.bold_act.setShortcut("Ctrl+B")
         self.bold_act.setToolTip(_("Bold (Ctrl+B)"))
-        self.bold_act.triggered.connect(self.editor.toggle_bold)
+        self.bold_act.triggered.connect(lambda: self.editor.toggle_bold())
         
         self.italic_act = QAction(_("Italic"), self)
         self.italic_act.setShortcut("Ctrl+I")
         self.italic_act.setToolTip(_("Italic (Ctrl+I)"))
-        self.italic_act.triggered.connect(self.editor.toggle_italic)
+        self.italic_act.triggered.connect(lambda: self.editor.toggle_italic())
         
         self.code_act = QAction(_("Code"), self)
         self.code_act.setToolTip(_("Inline Code"))
-        self.code_act.triggered.connect(self.editor.toggle_code)
+        self.code_act.triggered.connect(lambda: self.editor.toggle_code())
         
         self.h1_act = QAction("H1", self)
         self.h1_act.triggered.connect(lambda: self.editor.set_header(1))
@@ -726,6 +818,7 @@ class MainWindow(QMainWindow):
         edit_menu.addAction(self.select_all_act)
         edit_menu.addSeparator()
         edit_menu.addAction(self.search_act)
+        edit_menu.addAction(self.quick_open_act)
         edit_menu.addAction(self.replace_act)
 
         # 3. Ansicht
@@ -931,37 +1024,54 @@ class MainWindow(QMainWindow):
                     self.toolbar.addAction(action)
 
     def closeEvent(self, event):
+        dirty_editors = [editor for editor in self.editor_tabs.get_all_editors() if editor.is_dirty()]
+        if dirty_editors:
+            autosave = self.app_config.get('autosave_on_close', False)
+            if autosave:
+                for editor in dirty_editors:
+                    self.save_file(editor)
+            else:
+                reply = QMessageBox.question(
+                    self, _("Unsaved Changes"),
+                    _("Open documents have unsaved changes. Do you want to save them before closing?"),
+                    QMessageBox.StandardButton.Save | QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel
+                )
 
-        # UI-Zustand (Geometrie und Toolbars/Docks) in app_config.yaml speichern
-        # UI-Zustand (Geometrie, Toolbars/Docks und Splitter) in app_config.yaml speichern
+                if reply == QMessageBox.StandardButton.Save:
+                    for editor in dirty_editors:
+                        self.save_file(editor)
+                elif reply == QMessageBox.StandardButton.Discard:
+                    dirty_editors = []
+                elif reply == QMessageBox.StandardButton.Cancel:
+                    event.ignore()
+                    return
+
+            if any(editor.is_dirty() for editor in dirty_editors):
+                event.ignore()
+                return
+
+        try:
+            self.project_config_manager.update({
+                'open_files': self.editor_tabs.get_open_paths(),
+                'last_open_file': self.current_file_path,
+            })
+            self.project_config_manager.save()
+        except Exception as error:
+            QMessageBox.critical(
+                self, _("Error"),
+                _("Could not save the open-document session:\n{error}").format(error=error),
+            )
+            event.ignore()
+            return
+
         self.app_config_manager.save_ui_state("main_window", self.saveGeometry(), self.saveState())
         self.app_config_manager.save_ui_state("main_window_main_splitter", state=self.splitter.saveState())
         self.app_config_manager.save_ui_state("main_window_left_splitter", state=self.left_splitter.saveState())
         self.app_config_manager.save_ui_state("main_window_editor_area_splitter", state=self.editor_area.saveState())
 
-        # Dashboard-Worker sauber beenden
         if hasattr(self, 'dashboard_worker') and self.dashboard_worker.isRunning():
             self.dashboard_worker.quit()
             self.dashboard_worker.wait()
-
-        # Check for unsaved changes
-        if self.current_file_path and (self.editor.document().isModified() or self.frontmatter_modified):
-            autosave = self.app_config.get('autosave_on_close', False)
-            
-            if autosave:
-                self.save_file()
-            else:
-                reply = QMessageBox.question(
-                    self, _("Unsaved Changes"),
-                    _("Do you want to save changes before closing?"),
-                    QMessageBox.StandardButton.Save | QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel
-                )
-                
-                if reply == QMessageBox.StandardButton.Save:
-                    self.save_file()
-                elif reply == QMessageBox.StandardButton.Cancel:
-                    event.ignore()
-                    return
 
         # GUI-Einstellungen in globale App-Config speichern
         self.app_config['view_show_preview'] = self.preview.isVisible()
@@ -974,7 +1084,7 @@ class MainWindow(QMainWindow):
 
     def _reset_ignore_flag(self):
         """Setzt das Flag zurück, das interne Speicherungen ignoriert."""
-        self._ignore_next_file_change = False
+        self._ignored_file_changes.clear()
 
     def on_tree_clicked(self, index):
         file_path = self.file_tree.get_file_path(index)
@@ -982,20 +1092,60 @@ class MainWindow(QMainWindow):
             self.load_file(file_path)
 
     def load_last_file(self):
-        last_file = self.settings.value("last_file")
-        last_file = self.app_config_manager.get("last_file")
-        # Check if a path was stored and if the file still exists
-        if last_file and isinstance(last_file, str) and os.path.exists(last_file):
-            # Check whether the file belongs to the current project
-            if os.path.abspath(last_file).startswith(os.path.abspath(self.project_root)):
-                self.load_file(last_file)
+        session_paths = self.project_config.get('open_files', [])
+        if isinstance(session_paths, list):
+            valid_paths = []
+            for path in session_paths:
+                if not isinstance(path, str) or not path:
+                    continue
+                path = path if os.path.isabs(path) else os.path.join(self.project_root, path)
+                path = os.path.abspath(path)
+                if os.path.isfile(path) and self._is_project_path(path):
+                    valid_paths.append(path)
+            for path in valid_paths:
+                self.load_file(path)
+
+            active_path = self.project_config.get('last_open_file')
+            if isinstance(active_path, str) and active_path and not os.path.isabs(active_path):
+                active_path = os.path.join(self.project_root, active_path)
+            if isinstance(active_path, str):
+                active_path = os.path.abspath(active_path)
+            if active_path in valid_paths:
+                index = self.editor_tabs.find_tab_by_path(active_path)
+                if index != -1:
+                    self.editor_tabs.setCurrentIndex(index)
+            if valid_paths:
                 return
+
+        last_file = self.project_config.get('last_open_file')
+        if isinstance(last_file, str) and last_file and not os.path.isabs(last_file):
+            last_file = os.path.join(self.project_root, last_file)
+        if not isinstance(last_file, str) or not last_file:
+            last_file = self.app_config_manager.get("last_file")
+        if isinstance(last_file, str) and last_file:
+            last_file = os.path.abspath(last_file)
+        if last_file and os.path.isfile(last_file) and self._is_project_path(last_file):
+            self.load_file(last_file)
+            return
 
         # Fallback: try to load index.md in the content directory
         index_path = os.path.join(self.content_dir, "index.md")
         if os.path.exists(index_path):
             self.load_file(index_path)
             self.show_dashboard() # Zeige trotzdem das Dashboard zuerst
+
+    def _is_project_path(self, path):
+        try:
+            return os.path.commonpath(
+                [os.path.abspath(self.project_root), os.path.abspath(path)]
+            ) == os.path.abspath(self.project_root)
+        except ValueError:
+            return False
+
+    def show_quick_open(self):
+        dialog = QuickOpenDialog(self.content_dir, self)
+        dialog.file_selected.connect(self.load_file)
+        dialog.exec()
 
     def show_dashboard(self):
         """Wechselt zur Dashboard-Ansicht."""
@@ -1028,96 +1178,108 @@ class MainWindow(QMainWindow):
 
     def check_unsaved_changes(self):
         """Checks for unsaved changes before switching context."""
-        if self.current_file_path and (self.editor.document().isModified() or self.frontmatter_modified):
+        dirty_editors = [editor for editor in self._get_open_editors() if editor.is_dirty()]
+        if dirty_editors:
             autosave = self.app_config.get('autosave_on_switch', False)
-            
             if autosave:
-                self.save_file()
-                return True
+                return self._save_all_dirty_editors()
             else:
                 reply = QMessageBox.question(
                     self, _("Unsaved Changes"),
-                    _("Do you want to save changes before switching?"),
+                    _("Open documents have unsaved changes. Do you want to save them before switching?"),
                     QMessageBox.StandardButton.Save | QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel
                 )
                 
                 if reply == QMessageBox.StandardButton.Save:
-                    self.save_file()
-                    return True
+                    return self._save_all_dirty_editors()
                 elif reply == QMessageBox.StandardButton.Discard:
+                    for editor in dirty_editors:
+                        editor.document().setModified(False)
+                        editor.frontmatter_modified = False
+                        self.editor_tabs.update_tab_title(editor)
                     return True
                 elif reply == QMessageBox.StandardButton.Cancel:
                     return False
         return True
 
     def load_file(self, file_path):
-        # Verhindern, dass die gleiche Datei neu geladen wird
-        if self.current_file_path and os.path.abspath(self.current_file_path) == os.path.abspath(file_path):
+        if not file_path:
             return
+        file_path = os.path.abspath(file_path)
 
-        if not self.check_unsaved_changes():
+        existing_index = self.editor_tabs.find_tab_by_path(file_path)
+        if existing_index != -1:
+            self.editor_tabs.setCurrentIndex(existing_index)
+            self.content_stack.setCurrentIndex(1)
             return
-
-        # Remove old file from watcher
-        if self.current_file_path and self.current_file_path in self.file_watcher.files():
-            self.file_watcher.removePath(self.current_file_path)
 
         try:
-            # Datei mit python-frontmatter laden
             post = frontmatter.load(file_path)
-            
-            self.current_file_path = file_path
-            self.app_config_manager.update({"last_file": file_path})
-            self.app_config_manager.save()
-            self.content_stack.setCurrentIndex(1) # Zum Editor wechseln
-            self.editor.file_path = file_path
-            
-            # Aktuelle Datei im Baum markieren
-            self.file_tree.set_current_file_path(file_path)
-            
-            # Inhalt in Editor (ohne Frontmatter)
-            self.editor.setPlainText(post.content)
-            self.editor.moveCursor(QTextCursor.MoveOperation.End)
-            self.editor.document().setModified(False)
-            
-            # Metadaten in Panel
-            self.frontmatter_panel.set_data(post.metadata)
-            self.frontmatter_panel.set_current_file_path(file_path)
-            self.frontmatter_modified = False
-            
-            self.preview.set_base_path(file_path)
-            self.preview.update_preview(post.content)
-            self.outline.update_outline(post.content)
-            self.update_status_bar()
+            if self.editor.file_path is None and not self.editor.is_dirty():
+                editor = self.editor
+            else:
+                editor = self._create_editor_widget()
 
-            # Add new file to watcher
-            if self.current_file_path not in self.file_watcher.files():
-                self.file_watcher.addPath(self.current_file_path)
+            editor.file_path = file_path
+            editor.metadata = post.metadata.copy()
+            editor.frontmatter_modified = False
+
+            if self.editor_tabs.indexOf(editor) == -1:
+                self.editor_tabs.add_document(editor, file_path)
+            else:
+                self.editor_tabs.set_document_path(editor, file_path)
+
+            editor.setPlainText(post.content)
+            editor.moveCursor(QTextCursor.MoveOperation.End)
+            editor.document().setModified(False)
+
+            self.editor_tabs.setCurrentWidget(editor)
+            self.content_stack.setCurrentIndex(1)
+            self.on_document_changed(editor, file_path)
+
+            try:
+                self.app_config_manager.update({"last_file": file_path})
+                self.app_config_manager.save()
+            except Exception as error:
+                QMessageBox.warning(
+                    self, _("Error"),
+                    _("The file opened, but the last-file setting could not be saved:\n{error}").format(
+                        error=error
+                    ),
+                )
+            if file_path not in self.file_watcher.files():
+                self.file_watcher.addPath(file_path)
 
         except Exception as e:
             QMessageBox.critical(self, _("Error"), _("Could not load file: {e}").format(e=e))
 
-    def save_file(self):
-        if not self.current_file_path:
+    def save_file(self, editor=None):
+        editor = editor or self.editor
+        file_path = getattr(editor, 'file_path', None)
+        if not file_path:
             return
-        
-        # Set flag to ignore the file watcher's signal for a short period
-        self._ignore_next_file_change = True
-        self._ignore_timer.start() # Start timer to reset flag
-        
+
+        if editor is self.editor:
+            editor.metadata = self.frontmatter_panel.get_data()
+        metadata = editor.metadata
+        content = editor.toPlainText()
+
+        self._ignored_file_changes.add(os.path.abspath(file_path))
+        self._ignore_timer.start()
+
         try:
-            # Daten zusammenführen
-            metadata = self.frontmatter_panel.get_data()
-            content = self.editor.toPlainText()
-            
             post = frontmatter.Post(content, **metadata)
-            
-            with open(self.current_file_path, 'w', encoding='utf-8') as f:
-                f.write(frontmatter.dumps(post))
-            
-            self.editor.document().setModified(False)
-            self.frontmatter_modified = False
-            self.update_status_bar()
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(frontmatter.dumps(post))
+
+            editor.document().setModified(False)
+            editor.frontmatter_modified = False
+            if editor is self.editor:
+                self.frontmatter_modified = False
+                self.update_status_bar()
+            self.editor_tabs.update_tab_title(editor)
+            if file_path not in self.file_watcher.files():
+                self.file_watcher.addPath(file_path)
         except Exception as e:
             QMessageBox.critical(self, _("Error"), _("Could not save file: {e}").format(e=e))
 
@@ -1127,16 +1289,18 @@ class MainWindow(QMainWindow):
         aktuell geöffneten Datei feststellt.
         """
         # Wenn unsere eigene Speicherung dies ausgelöst hat, ignorieren wir es
-        if self._ignore_next_file_change:
+        normalized_path = os.path.abspath(path)
+        if normalized_path in self._ignored_file_changes:
+            self._ignored_file_changes.discard(normalized_path)
             return
 
-        # Ignorieren, wenn die Änderung nicht die aktuell geöffnete Datei betrifft
-        if not self.current_file_path or os.path.abspath(path) != os.path.abspath(self.current_file_path):
+        editor = self.editor_tabs.get_editor_for_path(path)
+        if editor is None:
             return
 
         # Wenn das Dokument lokal nicht geändert wurde, laden wir es einfach stillschweigend neu
-        if not self.editor.document().isModified() and not self.frontmatter_modified:
-            self.load_file(self.current_file_path)
+        if not editor.is_dirty():
+            self._reload_editor(editor, path)
             return
 
         # Wenn es ungespeicherte Änderungen gibt, fragen wir den Benutzer
@@ -1149,38 +1313,63 @@ class MainWindow(QMainWindow):
         )
 
         if reply == QMessageBox.StandardButton.Yes:
-            self.load_file(self.current_file_path)
+            self._reload_editor(editor, path)
+
+    def _reload_editor(self, editor, file_path):
+        try:
+            post = frontmatter.load(file_path)
+            editor.metadata = post.metadata.copy()
+            editor.frontmatter_modified = False
+            editor.setPlainText(post.content)
+            editor.document().setModified(False)
+            self.editor_tabs.update_tab_title(editor)
+            if file_path not in self.file_watcher.files():
+                self.file_watcher.addPath(file_path)
+            if editor is self.editor:
+                self.on_document_changed(editor, file_path)
+        except Exception as error:
+            QMessageBox.critical(
+                self, _("Error"), _("Could not reload file: {error}").format(error=error)
+            )
 
     def autosave_file(self):
-        # Nur speichern, wenn eine Datei offen ist und Änderungen vorliegen
-        is_modified = (self.current_file_path and 
-                      (self.editor.document().isModified() or self.frontmatter_modified))
-        if is_modified:
-            self.save_file()
+        for editor in self.editor_tabs.get_all_editors():
+            if editor.file_path and editor.is_dirty():
+                self.save_file(editor)
 
-    def on_text_changed(self):
+    def on_text_changed(self, editor=None):
+        editor = editor or self.editor
+        if editor is not self.editor:
+            return
         # Live-Update der Vorschau
-        content = self.editor.toPlainText()
+        content = editor.toPlainText()
         self.preview.update_preview(content)
         self.outline.update_outline(content)
+        self.editor_tabs.update_tab_title(editor)
         self.update_status_bar()
 
     def on_frontmatter_changed(self):
         self.frontmatter_modified = True
+        self.editor.frontmatter_modified = True
+        self.editor.metadata = self.frontmatter_panel.get_data()
+        self.editor_tabs.update_tab_title(self.editor)
         self.update_status_bar()
 
     def update_font_size_config(self, size):
         self.app_config['editor_font_size'] = size
 
-    def sync_scroll_and_line_numbers(self, value):
+    def sync_scroll_and_line_numbers(self, value, editor=None):
         """Synchronizes scroll position from the editor to the preview."""
+        editor = editor or self.editor
+        if editor is not self.editor:
+            return
         # Zeilennummern-Bereich aktualisieren, wenn gescrollt wird
-        self.editor.line_number_area.update()
+        editor.line_number_area.update()
 
         if not self.preview.isVisible():
             return
 
-        scrollbar = self.editor.verticalScrollBar()
+        scrollbar = editor.verticalScrollBar()
         max_val = scrollbar.maximum()
         
         if max_val > 0:
@@ -1211,7 +1400,7 @@ class MainWindow(QMainWindow):
 
         is_dashboard = self.content_stack.currentIndex() == 0
         
-        if not is_dashboard and (self.editor.document().isModified() or self.frontmatter_modified):
+        if not is_dashboard and self.editor.is_dirty():
             self.status_label.setText(f"[{_('UNSAVED')}] {display_path}")
             self.setWindowTitle(f"* {os.path.basename(self.current_file_path)} - {self.project_name} - {APP_NAME}")
         elif not is_dashboard:
@@ -1380,10 +1569,10 @@ class MainWindow(QMainWindow):
         picker.exec()
 
     def show_search_dialog(self, focus_replace=False):
-        # Create dialog (lazy loading: only if not existing)
-        if not hasattr(self, 'search_dialog') or self.search_dialog is None:
-            self.search_dialog = SearchDialog(self.editor, self)
-            self.search_dialog.finished.connect(self._on_search_closed)
+        if hasattr(self, 'search_dialog') and self.search_dialog is not None:
+            self.search_dialog.close()
+        self.search_dialog = SearchDialog(self.editor, self)
+        self.search_dialog.finished.connect(self._on_search_closed)
         
         self.search_dialog.show()
         if focus_replace:
@@ -1400,11 +1589,13 @@ class MainWindow(QMainWindow):
         self.preview.setVisible(checked)
 
     def toggle_line_numbers(self, checked):
-        self.editor.set_line_numbers_visible(checked)
+        for editor in self._get_open_editors():
+            editor.set_line_numbers_visible(checked)
         self.app_config['view_show_line_numbers'] = checked
 
     def toggle_spellcheck(self, checked):
-        self.editor.set_spellchecker_enabled(checked)
+        for editor in self._get_open_editors():
+            editor.set_spellchecker_enabled(checked)
         self.project_config['spellcheck_enabled'] = checked
         self.project_config_manager.update({'spellcheck_enabled': checked})
         self.project_config_manager.save()
@@ -1419,7 +1610,8 @@ class MainWindow(QMainWindow):
         else:
             apply_light_theme(app)
 
-        self.editor.set_dark_mode(dark_mode)
+        for editor in self._get_open_editors():
+            editor.set_dark_mode(dark_mode)
         self.preview.set_dark_mode(dark_mode)
         
         # Update icons
@@ -1483,9 +1675,8 @@ class MainWindow(QMainWindow):
             self.update_frontmatter_layouts()
     
     def show_bulk_edit_dialog(self):
-        # Speichere aktuelle Datei, um Konflikte zu vermeiden
-        if self.current_file_path and self.editor.document().isModified():
-            self.save_file()
+        if not self._save_all_dirty_editors():
+            return
 
         dialog = BulkEditDialog(self.project_root, self.content_dir)
         if dialog.exec():
@@ -1516,16 +1707,18 @@ class MainWindow(QMainWindow):
             
             show_line_numbers = self.app_config.get('view_show_line_numbers', True)
             self.toggle_line_numbers_act.setChecked(show_line_numbers)
-            self.editor.set_line_numbers_visible(show_line_numbers)
+            for editor in self._get_open_editors():
+                editor.set_line_numbers_visible(show_line_numbers)
 
             # Schriftgröße anwenden
             font_size = self.app_config.get('editor_font_size', 12)
             font_family = self.app_config.get('editor_font_family', 'Monospace')
             
-            font = self.editor.font()
-            font.setFamily(font_family)
-            self.editor.setFont(font)
-            self.editor.set_font_size(font_size)
+            for editor in self._get_open_editors():
+                font = editor.font()
+                font.setFamily(font_family)
+                editor.setFont(font)
+                editor.set_font_size(font_size)
 
             # Thumbnail-Größe für MediaLibrary aktualisieren
             media_thumb_size = self.app_config.get('media_thumbnail_size', 100)
@@ -1715,9 +1908,8 @@ class MainWindow(QMainWindow):
 
     def run_renderer(self):
         """Triggers the site rendering process, with an optional backup step."""
-        # Save unsaved changes before doing anything
-        if self.current_file_path and (self.editor.document().isModified() or self.frontmatter_modified):
-            self.save_file()
+        if not self._save_all_dirty_editors():
+            return
 
         # --- Progress Dialog Setup ---
         self.progress_helper = ProgressHelper()
@@ -1866,11 +2058,10 @@ class MainWindow(QMainWindow):
             mode_key = 'dark' if is_dark else 'light'
             color_scheme = all_colors.get(mode_key, {})
 
-            if hasattr(self.editor, 'highlighter'):
-                self.editor.highlighter.set_custom_colors(color_scheme)
-                self.editor.highlighter.rehighlight()
-            
-            # Auch dem Editor selbst die Farben geben (für aktuelle Zeile)
-            self.editor.set_custom_colors(color_scheme)
+            for editor in self._get_open_editors():
+                if hasattr(editor, 'highlighter'):
+                    editor.highlighter.set_custom_colors(color_scheme)
+                    editor.highlighter.rehighlight()
+                editor.set_custom_colors(color_scheme)
         except Exception as e:
             print(f"Error loading colors: {e}")

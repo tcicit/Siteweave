@@ -133,3 +133,62 @@ def test_process_plugins_with_failing_plugin():
     # Aktuell wird die Exception nach oben durchgereicht
     with pytest.raises(RuntimeError, match="Plugin critical failure"):
         process_plugins("Text mit [[fail]] Plugin", context, None, plugins_collection)
+
+def test_renderer_does_not_modify_source_markdown_files(tmp_path):
+    """Testet, dass der Renderer Quell-Markdown-Dateien nicht auf der Festplatte verändert."""
+    project_dir = tmp_path / "project"
+    project_dir.mkdir()
+    content_dir = project_dir / "content"
+    content_dir.mkdir()
+    templates_dir = project_dir / "templates"
+    templates_dir.mkdir()
+
+    # Minimal config
+    config_data = {
+        "site_name": "Test Site",
+        "content_directory": "content",
+        "templates_directory": "templates",
+        "site_output_directory": "site_output"
+    }
+    (project_dir / "config.yaml").write_text(yaml.dump(config_data), encoding="utf-8")
+
+    # Minimal template
+    (templates_dir / "base.html").write_text("<html><body>{{ content }}</body></html>", encoding="utf-8")
+
+    # Markdown file without release_date or date
+    test_file = content_dir / "page.md"
+    original_content = "---\ntitle: Unmodified Page\n---\nHello World"
+    test_file.write_text(original_content, encoding="utf-8")
+
+    renderer = SiteRenderer(str(project_dir))
+    renderer.render()
+
+    # The source file on disk must not have been modified
+    assert test_file.read_text(encoding="utf-8") == original_content
+
+def test_renderer_handles_css_directory_pointing_to_output(tmp_path):
+    """Testet, dass der Renderer nicht mit shutil.SameFileError abstürzt, wenn css_directory im Output liegt."""
+    project_dir = tmp_path / "project"
+    project_dir.mkdir()
+    content_dir = project_dir / "content"
+    content_dir.mkdir()
+    templates_dir = project_dir / "templates"
+    templates_dir.mkdir()
+
+    # Config with css_directory pointing into site_output
+    config_data = {
+        "site_name": "Test Site",
+        "content_directory": "content",
+        "templates_directory": "templates",
+        "site_output_directory": "site_output",
+        "css_directory": "site_output/css",
+        "js_directory": "site_output/js"
+    }
+    (project_dir / "config.yaml").write_text(yaml.dump(config_data), encoding="utf-8")
+    (templates_dir / "base.html").write_text("<html><body>{{ content }}</body></html>", encoding="utf-8")
+    (content_dir / "index.md").write_text("---\ntitle: Home\n---\nHello", encoding="utf-8")
+
+    renderer = SiteRenderer(str(project_dir))
+    # Must not raise shutil.Error: ... are the same file
+    renderer.render()
+

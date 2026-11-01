@@ -405,8 +405,10 @@ class SiteRenderer:
                 if is_markdown_file(file, self.markdown_extensions):
                     file_path = os.path.join(root, file)
                     relative_path = os.path.relpath(file_path, directory)
-                    # Note: self.config["assets_directory"] is the name (e.g. "assets"), self.assets_directory is the absolute path
-                    asset_file = os.path.join(self.config["assets_directory"], relative_path.replace(self.config["content_directory"], ""))
+                    # Note: self.config.get("assets_directory") is the name (e.g. "assets"), self.assets_directory is the absolute path
+                    assets_dir_name = self.config.get("assets_directory", "assets")
+                    content_dir_name = self.config.get("content_directory", "content")
+                    asset_file = os.path.join(assets_dir_name, relative_path.replace(content_dir_name, ""))
                     
                     markdown_files.append((file, relative_path, asset_file))
         
@@ -487,19 +489,48 @@ class SiteRenderer:
         ensuring the destination is always up-to-date.
         """
         self.logger.info(_("\nCopying static directories (CSS, JS, Assets)..."))
+        abs_output_dir = os.path.abspath(output_dir)
+
         # Verwende die absoluten Pfade aus der Instanz
         for source_path in [self.css_directory, self.js_directory, self.assets_directory]:
+            if not os.path.isdir(source_path):
+                self.logger.info(_("  - Static directory '{source_path}' not found, skipping.").format(source_path=source_path))
+                continue
+
             dir_name = os.path.basename(source_path)
             dest_path = os.path.join(output_dir, dir_name)
 
-            if os.path.isdir(source_path) and os.listdir(source_path):
+            abs_src = os.path.abspath(source_path)
+            abs_dst = os.path.abspath(dest_path)
+
+            # Prüfe, ob Quell- und Zielpfad identisch sind
+            is_same = (abs_src == abs_dst)
+            if not is_same and os.path.exists(dest_path):
+                try:
+                    is_same = os.path.samefile(source_path, dest_path)
+                except OSError:
+                    pass
+
+            if is_same:
+                self.logger.info(_("  - Static directory '{source_path}' is identical to destination, skipping copy.").format(source_path=source_path))
+                continue
+
+            # Prüfe, ob die Quelle bereits innerhalb des Ausgabeordners liegt
+            try:
+                if os.path.commonpath([abs_output_dir, abs_src]) == abs_output_dir:
+                    self.logger.info(_("  - Static directory '{source_path}' is located inside output directory, skipping copy.").format(source_path=source_path))
+                    continue
+            except ValueError:
+                pass
+
+            if os.listdir(source_path):
                 # IMPORTANT: dirs_exist_ok=True (Python 3.8+) merges directories
                 # instead of replacing them. This is crucial so that global assets
                 # do not remove local assets (e.g. from index.md).
                 shutil.copytree(source_path, dest_path, dirs_exist_ok=True)
                 self.logger.info(_("  - '{source_path}' successfully copied/merged to '{dest_path}'.").format(source_path=source_path, dest_path=dest_path))
             else:
-                self.logger.info(_("  - Static directory '{source_path}' not found or empty, skipping.").format(source_path=source_path))
+                self.logger.info(_("  - Static directory '{source_path}' is empty, skipping.").format(source_path=source_path))
 
     def copy_theme_assets(self, output_dir, theme_name):
         """Copies assets from the selected theme to the output directory."""
@@ -854,44 +885,13 @@ class SiteRenderer:
                 self.logger.info(_("  - Skipping draft: {relative_path}").format(relative_path=relative_path))
                 continue
 
-            # NEW: Add 'release_date' if missing and write it back to the file.
-            # This ensures each page has a fixed creation date for sorting.
-            made_change_to_frontmatter = False
+            # Ensure 'release_date' and 'date' exist in memory for consistent rendering and sorting
+            # without modifying the source markdown file on disk.
             if 'release_date' not in post.metadata:
-                release_date = datetime.now().strftime('%Y-%m-%d')
-                post.metadata['release_date'] = release_date
-                self.logger.info(_("    -> Adding 'release_date' ({date}) to '{path}'.").format(date=release_date, path=relative_path))
-                made_change_to_frontmatter = True
+                post.metadata['release_date'] = datetime.now().strftime('%Y-%m-%d')
 
-            # If 'date' is missing, set it to release_date to ensure consistent sorting.
             if 'date' not in post.metadata:
                 post.metadata['date'] = post.metadata['release_date']
-                self.logger.info(_("    -> Setting missing 'date' to '{date}' in '{path}'.").format(date=post.metadata['date'], path=relative_path))
-                made_change_to_frontmatter = True
-
-            if made_change_to_frontmatter:
-                try:
-                    # Instead of using frontmatter.dump() directly, export the content as a string
-                    # so we can insert a comment for the automatically added date.
-                    exported_content = frontmatter.dumps(post)
-                    
-                    # Insert the comment above the 'release_date' line.
-                    lines = exported_content.splitlines()
-                    new_lines = []
-                    comment_added = False
-                    for line in lines:
-                        # Add the comment only once, in case both 'date' and 'release_date' were added.
-                        if line.strip().startswith('release_date:') and not comment_added:
-                            new_lines.append('# ' + _('This date is automatically added by the system and should not be removed.'))
-                            new_lines.append('# ' + _('It can be adjusted to control the creation date of a post.'))
-                            comment_added = True
-                        new_lines.append(line)
-                    
-                    final_content = '\n'.join(new_lines) + '\n'
-                    with open(input_path, 'w', encoding='utf-8') as f:
-                        f.write(final_content)
-                except Exception as e:
-                    self.logger.error(_("ERROR writing back metadata in '{input_path}': {e}").format(input_path=input_path, e=e))
 
             page_title = post.metadata.get('title', extract_title(post.content, file))
 
