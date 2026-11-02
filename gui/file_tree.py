@@ -88,6 +88,7 @@ class FileTreeDelegate(QStyledItemDelegate):
 
 class FileTree(QTreeView):
     create_file_requested = pyqtSignal(str)
+    path_renamed = pyqtSignal(str, str)
 
     def __init__(self, root_path):
         super().__init__()
@@ -239,6 +240,7 @@ class FileTree(QTreeView):
             new_path = os.path.join(os.path.dirname(old_path), new_name)
             try:
                 os.rename(old_path, new_path)
+                self.path_renamed.emit(old_path, new_path)
                 
                 # Links aktualisieren?
                 reply = QMessageBox.question(

@@ -27,6 +27,15 @@ The project is currently in early stages (v0.2) and under active development. It
 
 ![Screenshot](screenshot.png)
 
+## GUI architecture
+
+The main window is a composition of focused feature components. `DocumentManager`
+owns document loading, saving, external-change handling, dirty-state decisions,
+and project-session restoration. `ThemeManager` applies palettes and external
+QSS templates, while `ActionManager` builds the window's actions, menus, and
+toolbar. Dashboard, editor, project, and setup behavior live in separate
+components; `MainWindow` remains the public integration point.
+
 ## Roadmap
 
 Ideas planned for future versions:
@@ -38,7 +47,7 @@ Ideas planned for future versions:
 - App installer for Linux, Mac, and Windows.
 - The documentation needs to be reworked.
 - Translate all comments to english.
-- The application architecture needs to be refactored
+- Further modularization of the application architecture
 
 
 ## Documentation and examples

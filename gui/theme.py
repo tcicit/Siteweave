@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from PyQt6.QtGui import QPalette, QColor
 
 """
@@ -36,47 +38,8 @@ def apply_dark_theme(app):
 
     app.setPalette(palette)
 
-    app.setStyleSheet("""
-        QToolTip { 
-            color: #ffffff; 
-            background-color: #2a82da; 
-            border: 1px solid white; 
-        }
-        QDockWidget::title {
-            background: #353535;
-            text-align: center;
-            padding: 5px;
-        }
-        /* Fix für helle Panels in der rechten Leiste */
-        QScrollArea, QTabWidget::pane {
-            background-color: #2d2d2d;
-            border: none;
-        }
-        /* Eingabefelder */
-        QLineEdit, QTextEdit, QPlainTextEdit, QAbstractSpinBox {
-            background-color: #1e1e1e;
-            color: white;
-            border: 1px solid #555;
-        }
-        /* Listen und Bäume */
-        QTreeView, QListView, QTableView {
-            background-color: #1e1e1e;
-            color: white;
-            border: 1px solid #555;
-        }
-        /* Menüs */
-        QMenuBar, QMenu {
-            background-color: #353535;
-            color: white;
-        }
-        QMenuBar::item:selected, QMenu::item:selected {
-            background-color: #2a82da;
-        }
-        /* Splitter */
-        QSplitter::handle {
-            background-color: #454545;
-        }
-    """)
+    stylesheet = Path(__file__).with_name("themes").joinpath("dark.qss").read_text(encoding="utf-8")
+    app.setStyleSheet(stylesheet)
 
 def apply_light_theme(app):
     """Setzt ein helles Theme für die gesamte App."""
@@ -108,5 +71,5 @@ def apply_light_theme(app):
 
     app.setPalette(palette)
 
-    # Stylesheet zurücksetzen (entfernt die Dark-Mode Anpassungen)
-    app.setStyleSheet("")
+    stylesheet = Path(__file__).with_name("themes").joinpath("light.qss").read_text(encoding="utf-8")
+    app.setStyleSheet(stylesheet)
