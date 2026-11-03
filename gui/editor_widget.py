@@ -215,6 +215,10 @@ class EditorWidget(QPlainTextEdit):
         """Returns True if the document content or frontmatter was modified."""
         return self.document().isModified() or self.frontmatter_modified
 
+    def set_project_root(self, project_root):
+        """Aktualisiert das Projektverzeichnis für Asset-Imports."""
+        self.project_root = project_root
+
     def import_external_asset(self, target_path):
         """
         If target_path is an image outside project_root, copies it to

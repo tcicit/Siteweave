@@ -65,3 +65,6 @@ meta_description: Projekt Dokumentation
 meta_keywords: Doku, Projekt, Static Generator
 spellcheck_enabled: true
 spellcheck_language: en_US
+open_files:
+- /home/tci/Dokumente/Entwicklung/Python/apps/Siteweave/dokumentation/content/index.md
+last_open_file: /home/tci/Dokumente/Entwicklung/Python/apps/Siteweave/dokumentation/content/index.md

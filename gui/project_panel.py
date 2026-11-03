@@ -90,6 +90,11 @@ class ProjectPanel(QWidget):
             self.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
             self.setMaximumHeight(self.toggle_btn.sizeHint().height())
 
+    def set_current_project_path(self, path):
+        """Aktualisiert das aktive Projekt und hebt es in der Liste hervor."""
+        self.current_project_path = path
+        self.load_projects()
+
     def load_projects(self):
         self.list_widget.clear()
         recent = self.get_recent_projects()

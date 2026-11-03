@@ -195,6 +195,12 @@ class LogViewerPanel(QWidget):
         except Exception as e:
             self.text_edit.setPlainText(_("Error reading logs: {e}").format(e=e))
 
+    def set_log_file(self, log_file_path):
+        """Wechselt die Log-Datei (z.B. bei einem Projektwechsel) und lädt sie neu."""
+        self.log_file_path = log_file_path
+        self.last_mtime = 0
+        self.reload_log()
+
     def clear_log(self):
         # Versuche die Datei zu leeren
         try:

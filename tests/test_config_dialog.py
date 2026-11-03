@@ -39,3 +39,66 @@ def test_config_dialog_saves_values(qtbot, temp_app_config, monkeypatch):
     # Config neu laden und prüfen
     new_config = ConfigManager(temp_app_config).load()
     assert new_config["editor_font_size"] == 20
+
+
+def test_create_project_dialog_creates_clean_project(qtbot, tmp_path):
+    from gui.dialogs.create_project_dialog import CreateProjectDialog
+
+    app_root = tmp_path / "app"
+    app_root.mkdir()
+    (app_root / "themes").mkdir()
+
+    parent_dir = tmp_path / "projects"
+    parent_dir.mkdir()
+
+    dialog = CreateProjectDialog(app_root=str(app_root))
+    qtbot.addWidget(dialog)
+
+    dialog.name_input.setText("My Awesome Blog")
+    dialog.path_input.setText(str(parent_dir))
+
+    # Path preview updates
+    expected_path = parent_dir / "My_Awesome_Blog"
+    assert "My_Awesome_Blog" in dialog.path_preview_lbl.text()
+    assert dialog.create_btn.isEnabled()
+
+    # Create project
+    dialog.create_project()
+
+    assert dialog.created_project_path == str(expected_path)
+    assert expected_path.is_dir()
+    assert (expected_path / "config.yaml").is_file()
+    assert (expected_path / "content" / "index.md").is_file()
+    assert (expected_path / "site_output").is_dir()
+    assert (expected_path / "assets").is_dir()
+
+    # Verify config content
+    project_cfg = ConfigManager(str(expected_path / "config.yaml")).load()
+    assert project_cfg["site_name"] == "My Awesome Blog"
+    assert project_cfg["backup_on_render"] is True
+    assert project_cfg["backup_rotation"] == 10
+
+
+def test_create_project_dialog_prevents_duplicate_folder(qtbot, tmp_path):
+    from gui.dialogs.create_project_dialog import CreateProjectDialog
+
+    app_root = tmp_path / "app"
+    app_root.mkdir()
+    (app_root / "themes").mkdir()
+
+    parent_dir = tmp_path / "projects"
+    parent_dir.mkdir()
+
+    existing_dir = parent_dir / "Existing_Project"
+    existing_dir.mkdir()
+
+    dialog = CreateProjectDialog(app_root=str(app_root))
+    qtbot.addWidget(dialog)
+
+    dialog.name_input.setText("Existing Project")
+    dialog.path_input.setText(str(parent_dir))
+
+    # Should detect collision and disable create button
+    assert dialog.create_btn.isEnabled() is False
+    assert "Warning" in dialog.path_preview_lbl.text() or "Warnung" in dialog.path_preview_lbl.text()
+

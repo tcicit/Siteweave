@@ -83,6 +83,17 @@ class PreviewWidget(QWebEngineView):
             self.load_plugins()
             self.load_plugin_css()
 
+    def set_project_root(self, project_root):
+        """Aktualisiert das Projektverzeichnis, lädt Plugins neu und leert die Vorschau."""
+        self.project_root = project_root
+        self.plugins.clear()
+        self.plugin_css_content = ""
+        self.set_base_path(None)
+        self.update_preview("")
+        if self.project_root and self.app_root:
+            self.load_plugins()
+            self.load_plugin_css()
+
     def load_plugins(self):
         """Lädt Plugins dynamisch für die Vorschau."""
         plugin_dirs = []

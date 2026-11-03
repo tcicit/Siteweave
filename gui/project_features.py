@@ -1,10 +1,14 @@
 import ast
 import frontmatter
 import os
+import sys
 
 from PyQt6.QtCore import Qt, QUrl
 from PyQt6.QtGui import QDesktopServices
 from PyQt6.QtWidgets import QDialog, QMessageBox, QProgressDialog
+
+from core import APP_NAME
+from core.config_manager import ConfigManager
 
 from .dialogs.app_config_dialog import AppConfigDialog
 from .dialogs.bulk_edit_dialog import BulkEditDialog
@@ -209,16 +213,11 @@ class ProjectFeaturesMixin:
         self.worker.error.connect(on_error)
         self.worker.start()
     def switch_project(self):
-        if not self.check_unsaved_changes():
-            return
-
         launcher = ProjectLauncher(self.app_root)
         if launcher.exec() == QDialog.DialogCode.Accepted:
             new_project_path = launcher.selected_project
-            if new_project_path and new_project_path != self.project_root:
-                self.new_window = self.__class__(new_project_path)
-                self.new_window.show()
-                self.close()
+            if new_project_path and os.path.abspath(new_project_path) != os.path.abspath(self.project_root):
+                self.switch_to_project_path(new_project_path)
     def create_new_project_dialog(self):
         dialog = CreateProjectDialog(self.app_root, self)
         if dialog.exec():
@@ -235,20 +234,167 @@ class ProjectFeaturesMixin:
     def add_to_recent_projects(self, path):
         config = self.app_config_manager.load()
         recent = config.get("recent_projects", [])
-        if path not in recent:
-            recent.insert(0, path)
-            self.app_config_manager.update({"recent_projects": recent})
-            self.app_config_manager.save()
-            if hasattr(self, 'project_panel'):
-                self.project_panel.load_projects()
+        norm_path = os.path.abspath(path)
+        recent = [p for p in recent if os.path.abspath(p) != norm_path]
+        recent.insert(0, path)
+        recent = recent[:10]
+        self.app_config_manager.update({"recent_projects": recent})
+        self.app_config_manager.save()
+        if hasattr(self, 'project_panel'):
+            self.project_panel.load_projects()
     def switch_to_project_path(self, path):
-        """Switch directly to a project path (called from ProjectPanel)."""
-        if not self.check_unsaved_changes():
+        """Switch directly to a project path in-place without restarting the window."""
+        if not path or not os.path.isdir(path):
             return
 
-        self.new_window = self.__class__(path)
-        self.new_window.show()
-        self.close()
+        target_path = os.path.abspath(path)
+        if os.path.abspath(self.project_root) == target_path:
+            return
+
+        # 1. Check for unsaved changes in current project
+        if hasattr(self, 'check_unsaved_changes') and not self.check_unsaved_changes():
+            return
+
+        # 2. Save session of current project
+        if hasattr(self, '_document_manager'):
+            try:
+                self._document_manager().save_session()
+            except Exception as e:
+                print(f"Error saving session before project switch: {e}")
+
+        # 3. Stop background workers
+        if hasattr(self, 'tag_worker') and self.tag_worker.isRunning():
+            self.tag_worker.quit()
+            self.tag_worker.wait()
+
+        if hasattr(self, 'dashboard_worker') and self.dashboard_worker.isRunning():
+            self.dashboard_worker.quit()
+            self.dashboard_worker.wait()
+
+        if hasattr(self, 'worker') and self.worker.isRunning():
+            self.worker.quit()
+            self.worker.wait()
+
+        # 4. Remove file watchers for the current project
+        if hasattr(self, 'file_watcher'):
+            watched = self.file_watcher.files()
+            if watched:
+                self.file_watcher.removePaths(watched)
+        if hasattr(self, '_ignored_file_changes'):
+            self._ignored_file_changes.clear()
+
+        # 5. Close all open editor tabs
+        if hasattr(self, 'editor_tabs'):
+            self.editor_tabs.close_all_tabs()
+
+        # 6. Update project paths and configuration
+        old_project_root = self.project_root
+        self.project_root = target_path
+        self.project_name = os.path.basename(self.project_root)
+        self.content_dir = os.path.join(self.project_root, "content")
+        self.assets_dir = os.path.join(self.project_root, "assets")
+        self.current_file_path = None
+        self.frontmatter_modified = False
+        self.setWindowTitle(f"{self.project_name} - {APP_NAME}")
+
+        # Ensure content directory exists
+        if not os.path.exists(self.content_dir):
+            try:
+                os.makedirs(self.content_dir, exist_ok=True)
+            except OSError:
+                pass
+
+        # Load project configuration
+        config_file = os.path.join(self.project_root, "config.yaml")
+        self.project_config_manager = ConfigManager(config_file)
+        self.project_config = self.load_project_config()
+
+        # 7. Update sys.path, working directory, and Qt logger
+        if old_project_root in sys.path and old_project_root != self.app_root:
+            sys.path.remove(old_project_root)
+        if self.project_root not in sys.path:
+            sys.path.insert(0, self.project_root)
+
+        if os.path.isdir(self.project_root):
+            try:
+                os.chdir(self.project_root)
+            except OSError as e:
+                print(f"Error changing working directory: {e}")
+
+        try:
+            from core.logging import configure_logger
+            configure_logger("qt", self.project_root)
+        except Exception as e:
+            print(f"Error configuring logger: {e}")
+
+        # 8. Reset active editor widget
+        if hasattr(self, '_create_editor_widget'):
+            self.editor = self._create_editor_widget()
+        elif hasattr(self, 'editor') and hasattr(self.editor, 'set_project_root'):
+            self.editor.set_project_root(self.project_root)
+
+        if hasattr(self, 'on_document_changed') and hasattr(self, 'editor'):
+            self.on_document_changed(self.editor, None)
+
+        # 9. Update UI components
+        if hasattr(self, 'project_panel'):
+            self.project_panel.set_current_project_path(self.project_root)
+
+        if hasattr(self, 'file_tree'):
+            self.file_tree.set_root_path(self.content_dir)
+
+        if hasattr(self, 'media_library'):
+            self.media_library.update_project(self.project_root, self.assets_dir, self.content_dir)
+
+        if hasattr(self, 'preview'):
+            self.preview.set_project_root(self.project_root)
+
+        if hasattr(self, 'frontmatter_panel'):
+            self.frontmatter_panel.set_project_root(self.project_root)
+            self.update_frontmatter_layouts()
+            self.frontmatter_panel.set_data({})
+            self.frontmatter_panel.set_current_file_path(None)
+
+        if hasattr(self, 'log_viewer'):
+            self.log_viewer.set_log_file(os.path.join(self.project_root, "worker.log"))
+
+        if hasattr(self, 'toggle_spellcheck_act'):
+            self.toggle_spellcheck_act.setChecked(self.project_config.get('spellcheck_enabled', True))
+
+        if hasattr(self, 'init_spellchecker'):
+            self.init_spellchecker()
+
+        # 10. Re-initialize background workers
+        if hasattr(self, 'dashboard') and hasattr(self.dashboard, 'refresh'):
+            from core.dashboard_manager import DashboardWorker
+            self.dashboard_worker = DashboardWorker(self.project_root, self.project_config)
+            self.dashboard_worker.stats_ready.connect(self.dashboard.refresh)
+
+        if hasattr(self, 'workers_dir') and hasattr(self, 'frontmatter_panel'):
+            tag_worker_path = os.path.join(self.workers_dir, "tag_collector.py")
+            if os.path.exists(tag_worker_path):
+                self.tag_worker = WorkerThread(tag_worker_path, {'content_dir': self.content_dir, 'project_root': self.project_root})
+                self.tag_worker.finished.connect(self.frontmatter_panel.set_available_tags)
+                self.tag_worker.start()
+
+        # 11. Add to recent projects
+        if hasattr(self, 'add_to_recent_projects'):
+            self.add_to_recent_projects(self.project_root)
+
+        # 12. Load session / files of the new project
+        if hasattr(self, 'load_last_file'):
+            self.load_last_file()
+
+        if hasattr(self, 'editor_tabs') and self.editor_tabs.count() == 0:
+            if hasattr(self, 'show_dashboard'):
+                self.show_dashboard()
+        elif hasattr(self, 'refresh_dashboard'):
+            self.refresh_dashboard()
+
+        if hasattr(self, 'update_status_bar'):
+            self.update_status_bar()
+        if hasattr(self, 'update_cursor_label'):
+            self.update_cursor_label()
     def run_renderer(self):
         """Triggers the site rendering process, with an optional backup step."""
         if not self._save_all_dirty_editors():

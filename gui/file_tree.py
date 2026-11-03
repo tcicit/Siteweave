@@ -120,6 +120,20 @@ class FileTree(QTreeView):
         self.delegate = FileTreeDelegate(self)
         self.setItemDelegate(self.delegate)
 
+    def set_root_path(self, root_path):
+        """Aktualisiert das Wurzelverzeichnis des Dateibaums für einen Projektwechsel."""
+        if hasattr(self.proxy_model, 'weight_cache'):
+            self.proxy_model.weight_cache.clear()
+        if hasattr(self, 'delegate'):
+            self.delegate.set_current_path(None)
+        if not os.path.exists(root_path):
+            try:
+                os.makedirs(root_path, exist_ok=True)
+            except OSError:
+                pass
+        self.fs_model.setRootPath(root_path)
+        self.setRootIndex(self.proxy_model.mapFromSource(self.fs_model.index(root_path)))
+
     def set_current_file_path(self, path):
         self.delegate.set_current_path(path)
         self.viewport().update()

@@ -224,3 +224,116 @@ def test_bulk_edit_reloads_current_open_tab(monkeypatch, tmp_path):
 
     window._reload_editor.assert_called_once_with(editor, file_path)
     assert window.current_file_path == file_path
+
+
+def test_switch_to_project_path_in_place_updates_all_components(tmp_path):
+    old_proj = tmp_path / "old_project"
+    old_proj.mkdir()
+    new_proj = tmp_path / "new_project"
+    new_proj.mkdir()
+    (new_proj / "content").mkdir()
+    (new_proj / "config.yaml").write_text("site_name: New\n", encoding="utf-8")
+
+    window = SimpleNamespace(
+        project_root=str(old_proj),
+        project_name="old_project",
+        app_root=str(tmp_path),
+        content_dir=str(old_proj / "content"),
+        assets_dir=str(old_proj / "assets"),
+        current_file_path="dummy.md",
+        frontmatter_modified=False,
+        setWindowTitle=MagicMock(),
+        check_unsaved_changes=MagicMock(return_value=True),
+        _document_manager=MagicMock(return_value=MagicMock()),
+        tag_worker=MagicMock(isRunning=MagicMock(return_value=True)),
+        dashboard_worker=MagicMock(isRunning=MagicMock(return_value=True)),
+        worker=MagicMock(isRunning=MagicMock(return_value=False)),
+        file_watcher=MagicMock(files=MagicMock(return_value=["file1.md"])),
+        _ignored_file_changes={"file1.md"},
+        editor_tabs=MagicMock(count=MagicMock(return_value=0)),
+        project_config_manager=None,
+        project_config={},
+        load_project_config=MagicMock(return_value={"site_name": "New"}),
+        editor=MagicMock(),
+        on_document_changed=MagicMock(),
+        file_tree=MagicMock(),
+        media_library=MagicMock(),
+        preview=MagicMock(),
+        frontmatter_panel=MagicMock(),
+        update_frontmatter_layouts=MagicMock(),
+        log_viewer=MagicMock(),
+        toggle_spellcheck_act=MagicMock(),
+        init_spellchecker=MagicMock(),
+        dashboard=MagicMock(),
+        workers_dir=str(tmp_path / "workers"),
+        app_config_manager=MagicMock(load=MagicMock(return_value={"recent_projects": []})),
+        add_to_recent_projects=MagicMock(),
+        load_last_file=MagicMock(),
+        show_dashboard=MagicMock(),
+        update_status_bar=MagicMock(),
+        update_cursor_label=MagicMock(),
+    )
+
+    old_dashboard_worker = window.dashboard_worker
+    ProjectFeaturesMixin.switch_to_project_path(window, str(new_proj))
+
+    assert window.project_root == str(new_proj)
+    assert window.project_name == "new_project"
+    assert window.content_dir == str(new_proj / "content")
+    assert window.assets_dir == str(new_proj / "assets")
+
+    # Checked unsaved changes and saved session
+    window.check_unsaved_changes.assert_called_once()
+    window._document_manager().save_session.assert_called_once()
+
+    # Stopped workers
+    window.tag_worker.quit.assert_called_once()
+    old_dashboard_worker.quit.assert_called_once()
+
+    # Cleared watchers and closed tabs
+    window.file_watcher.removePaths.assert_called_once_with(["file1.md"])
+    window.editor_tabs.close_all_tabs.assert_called_once()
+
+    # Updated UI widgets
+    window.file_tree.set_root_path.assert_called_once_with(str(new_proj / "content"))
+    window.media_library.update_project.assert_called_once_with(
+        str(new_proj), str(new_proj / "assets"), str(new_proj / "content")
+    )
+    window.preview.set_project_root.assert_called_once_with(str(new_proj))
+    window.frontmatter_panel.set_project_root.assert_called_once_with(str(new_proj))
+    window.log_viewer.set_log_file.assert_called_once_with(str(new_proj / "worker.log"))
+    window.init_spellchecker.assert_called_once()
+    window.load_last_file.assert_called_once()
+    window.show_dashboard.assert_called_once()
+
+
+def test_switch_to_project_path_aborts_on_unsaved_changes(tmp_path):
+    old_proj = tmp_path / "old"
+    old_proj.mkdir()
+    new_proj = tmp_path / "new"
+    new_proj.mkdir()
+
+    window = SimpleNamespace(
+        project_root=str(old_proj),
+        check_unsaved_changes=MagicMock(return_value=False),
+        editor_tabs=MagicMock(),
+    )
+
+    ProjectFeaturesMixin.switch_to_project_path(window, str(new_proj))
+
+    assert window.project_root == str(old_proj)
+    window.editor_tabs.close_all_tabs.assert_not_called()
+
+
+def test_switch_to_project_path_ignores_same_path(tmp_path):
+    proj = tmp_path / "proj"
+    proj.mkdir()
+
+    window = SimpleNamespace(
+        project_root=str(proj),
+        check_unsaved_changes=MagicMock(),
+    )
+
+    ProjectFeaturesMixin.switch_to_project_path(window, str(proj))
+    window.check_unsaved_changes.assert_not_called()
+
