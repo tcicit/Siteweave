@@ -10,12 +10,13 @@ from PyQt6.QtWidgets import (
     QLabel, QLineEdit, QPushButton, QComboBox, QDialogButtonBox,
     QFileDialog, QMessageBox, QSizePolicy, QFrame
 )
-from PyQt6.QtGui import QPixmap, QIcon
+from PyQt6.QtGui import QPixmap, QIcon, QCursor
 from PyQt6.QtCore import Qt
 
 from core import APP_NAME
 from core.config_manager import ConfigManager
 from core.i18n import _
+from .template_library_dialog import TemplateLibraryDialog
 
 
 class CreateProjectDialog(QDialog):
@@ -135,11 +136,22 @@ class CreateProjectDialog(QDialog):
         theme_lbl = QLabel(_("Select a template theme:"))
         theme_left.addWidget(theme_lbl)
 
+        combo_row = QHBoxLayout()
+        combo_row.setContentsMargins(0, 0, 0, 0)
+        combo_row.setSpacing(8)
+
         self.theme_combo = QComboBox()
         self.theme_combo.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         self._populate_themes()
         self.theme_combo.currentIndexChanged.connect(self.update_theme_preview)
-        theme_left.addWidget(self.theme_combo)
+        combo_row.addWidget(self.theme_combo)
+
+        self.open_library_btn = QPushButton(_("🖼️ Browse Library..."))
+        self.open_library_btn.setToolTip(_("Open visual template library with screenshots and descriptions"))
+        self.open_library_btn.clicked.connect(self.open_template_library)
+        combo_row.addWidget(self.open_library_btn)
+
+        theme_left.addLayout(combo_row)
 
         theme_desc = QLabel(_("Themes define the styling and page layouts of your website."))
         theme_desc.setStyleSheet("color: palette(placeholder-text); font-size: 11px;")
@@ -152,6 +164,9 @@ class CreateProjectDialog(QDialog):
         # Rechte Seite: Theme-Vorschau
         self.theme_preview = QLabel(_("No preview available"))
         self.theme_preview.setFixedSize(200, 112)
+        self.theme_preview.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.theme_preview.setToolTip(_("Click to open template library"))
+        self.theme_preview.mousePressEvent = lambda e: self.open_template_library()
         self.theme_preview.setStyleSheet(
             "border: 1px solid palette(mid); background: palette(alternate-base); border-radius: 4px;"
         )
@@ -291,6 +306,17 @@ class CreateProjectDialog(QDialog):
         else:
             self.theme_preview.setPixmap(QPixmap())
             self.theme_preview.setText(_("No preview for\n{theme}").format(theme=theme_name))
+
+    def open_template_library(self):
+        """Öffnet die grafische Vorlagen-Bibliothek (Variante A)."""
+        current_theme = self.theme_combo.currentData() or "none"
+        dialog = TemplateLibraryDialog(self.app_root, selected_theme=current_theme, parent=self)
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            selected = dialog.selected_theme
+            idx = self.theme_combo.findData(selected)
+            if idx >= 0:
+                self.theme_combo.setCurrentIndex(idx)
+            self.update_theme_preview()
 
     def update_path_preview(self):
         """Aktualisiert die Pfadvorschau und validiert die Eingabe."""

@@ -1,0 +1,8 @@
+name: "my-blog"
+title: "Modernes Blog"
+category: "Blog"
+description: "Voll ausgestattetes Blog-Theme mit zweispaltigem Layout, Sidebar, Autoren-Box, Social Links, Beitrags-Metadaten und Tag-Übersichten."
+author: "Siteweave"
+version: "1.0"
+tags: ["Blog", "Magazin", "Sidebar", "Tags", "Social Links"]
+

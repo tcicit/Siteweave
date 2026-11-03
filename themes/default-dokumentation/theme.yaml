@@ -1,0 +1,8 @@
+name: "default-dokumentation"
+title: "Dokumentation & Handbuch"
+category: "Dokumentation"
+description: "Optimiert für Software-Handbücher, Wissensdatenbanken und technische Dokumentationen mit Sidebar-Navigation, Inhaltsverzeichnis (TOC) und Code-Highlighting."
+author: "Siteweave"
+version: "1.0"
+tags: ["Dokumentation", "Wiki", "TOC", "Code Highlighting", "Handbuch"]
+

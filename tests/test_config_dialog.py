@@ -102,3 +102,38 @@ def test_create_project_dialog_prevents_duplicate_folder(qtbot, tmp_path):
     assert dialog.create_btn.isEnabled() is False
     assert "Warning" in dialog.path_preview_lbl.text() or "Warnung" in dialog.path_preview_lbl.text()
 
+
+def test_template_library_dialog_loads_and_selects_theme(qtbot, tmp_path):
+    from gui.dialogs.template_library_dialog import TemplateLibraryDialog
+
+    app_root = tmp_path / "app"
+    app_root.mkdir()
+    themes_dir = app_root / "themes"
+    themes_dir.mkdir()
+
+    # Create dummy theme
+    sample_theme = themes_dir / "sample-theme"
+    sample_theme.mkdir()
+    (sample_theme / "theme.yaml").write_text(
+        "title: 'Sample Theme'\ncategory: 'Blog'\ndescription: 'Nice blog'\n",
+        encoding="utf-8"
+    )
+
+    dialog = TemplateLibraryDialog(app_root=str(app_root), selected_theme="none")
+    qtbot.addWidget(dialog)
+
+    # Has at least "none" and "sample-theme"
+    assert len(dialog.themes) >= 2
+    assert "sample-theme" in dialog.card_widgets
+
+    # Selection updates
+    dialog.select_theme("sample-theme")
+    assert dialog.selected_theme == "sample-theme"
+    assert "Sample Theme" in dialog.detail_title.text()
+
+    # Filtering works
+    dialog.search_input.setText("Sample")
+    assert dialog.card_widgets["sample-theme"].isHidden() is False
+    assert dialog.card_widgets["none"].isHidden() is True
+
+
